@@ -97,8 +97,8 @@
   const hero = document.getElementById("inicio");
   if (hero) {
     const s = scene(hero);
-    const go = () => s.tween(0.9, 1900);
-    setTimeout(go, FX.reduce ? 0 : 2300);
+    const go = () => s.tween(0.9, 1200);
+    setTimeout(go, FX.reduce ? 0 : 1400);
   }
 
   // 2 y 5. Escenas con video: el video corre solo y el avance sale de su tiempo
@@ -131,7 +131,7 @@
         const t0 = performance.now();
         startPulse();
         const step = (t) => {
-          const k = clamp01((t - t0) / 1000);
+          const k = clamp01((t - t0) / 600);
           act.__e = ease(k);
           if (k < 1) requestAnimationFrame(step);
           else { stopPulse(); v.play().catch(() => s.tween(1, 2500)); }
@@ -142,8 +142,8 @@
     onShow(act, play, 0.55);
     replay(act, play);
   }
-  videoScene("anatomia", { rate: 1.75, end: 1 });
-  videoScene("proceso", { rate: 1.6, end: 0.8, tail: 900 });
+  videoScene("anatomia", { rate: 2.6, end: 1 });
+  videoScene("proceso", { rate: 2.4, end: 0.8, tail: 600 });
 
   // 4. Parque: la cámara recorre sola las cinco paradas; los botones llevan a cada una
   const tour = document.getElementById("parque");
@@ -154,9 +154,9 @@
     const next = () => {
       i++;
       if (i >= STOPS.length) return;
-      s.tween(STOPS[i], i === 0 ? 1100 : 900, () => { timer = setTimeout(next, 1700); });
+      s.tween(STOPS[i], i === 0 ? 700 : 600, () => { timer = setTimeout(next, 1000); });
     };
-    const play = () => { clearTimeout(timer); i = -1; s.set(0); timer = setTimeout(next, 500); };
+    const play = () => { clearTimeout(timer); i = -1; s.set(0); timer = setTimeout(next, 300); };
     onShow(tour, play, 0.55);
     replay(tour, play);
     // Tocar una parada lleva la cámara ahí (sin mover la página)
@@ -166,7 +166,7 @@
       e.preventDefault(); e.stopPropagation();
       clearTimeout(timer);
       i = STOPS.length;
-      s.tween(STOPS[+b.dataset.stop], 900);
+      s.tween(STOPS[+b.dataset.stop], 600);
     }, true);
   }
 
@@ -179,7 +179,7 @@
       t0 = performance.now();
       startPulse();
       const step = (t) => {
-        const k = clamp01((t - t0) / 2600);
+        const k = clamp01((t - t0) / 1600);
         foot.__auto = ease(k);
         if (k < 1) requestAnimationFrame(step); else stopPulse();
       };

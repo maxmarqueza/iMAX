@@ -14,18 +14,21 @@ main [data-sc-stage] { position: relative; height: 100svh; overflow: hidden; }
 .svc__rail::-webkit-scrollbar { display: none; }
 .svc__rail > * { scroll-snap-align: start; }
 .svc__item a { cursor: pointer; }
-.svc .aparece > * { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.svc .aparece > * { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity .4s var(--ease), transform .4s var(--ease); }
 .svc .aparece.is-in > * { opacity: 1; transform: none; }
-.svc .aparece.is-in > :nth-child(2) { transition-delay: .08s; }
-.svc .aparece.is-in > :nth-child(3) { transition-delay: .16s; }
-.svc .aparece.is-in > :nth-child(4) { transition-delay: .24s; }
-.svc .aparece.is-in > :nth-child(5) { transition-delay: .32s; }
-.svc .aparece.is-in > :nth-child(6) { transition-delay: .4s; }
+.svc .aparece.is-in > :nth-child(2) { transition-delay: .05s; }
+.svc .aparece.is-in > :nth-child(3) { transition-delay: .1s; }
+.svc .aparece.is-in > :nth-child(4) { transition-delay: .15s; }
+.svc .aparece.is-in > :nth-child(5) { transition-delay: .2s; }
+.svc .aparece.is-in > :nth-child(6) { transition-delay: .25s; }
 @media (hover: hover) { .svc__item a:hover img { transform: scale(1.04); } .svc__item img { transition: transform .5s var(--ease); } }
 
 /* Pie: una pantalla; la salida por la M corre sola al aparecer */
 .foot__scene { height: auto !important; }
 .foot__stage { position: relative !important; height: 100svh !important; }
+
+/* Apariciones del motor (bloques de texto): más rápidas */
+[data-sc-in], [data-sc-stagger] > * { transition-duration: 380ms; }
 
 /* Botón para repetir una escena */
 .repetir { position: absolute; z-index: 60; left: var(--sc-gutter); top: 80px; min-height: 36px; padding: 0 14px; border: 1px solid rgba(255, 255, 255, .5); border-radius: 999px;

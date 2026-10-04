@@ -103,7 +103,7 @@
   function curtain() {
     const t0 = performance.now() + 120;
     const step = (t) => {
-      open = [0, 1, 2, 3].map((i) => ease(FX.clamp01((t - t0 - i * 120) / 760)));
+      open = [0, 1, 2, 3].map((i) => ease(FX.clamp01((t - t0 - i * 80) / 520)));
       draw(); drawEdges();
       if (open[3] < 1) requestAnimationFrame(step);
       else { open = null; lastKey = ""; draw(); edge.remove(); }
