@@ -12,18 +12,12 @@
   let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, metrics = null, lastKey = "";
   let open = FX.reduce ? null : [0, 0, 0, 0];
 
-  // Proporción de la palabra en pantallas anchas. ?portada=media|compacta|horizontal|panoramica permite comparar
-  //   w: ancho de la palabra respecto a la pantalla; cy: altura del centro; sy: escala vertical; side: frase a un lado
-  const VARIANTS = {
-    actual: { w: 0.84, cy: 0.42 },
-    media: { w: 0.64, cy: 0.42 },
-    compacta: { w: 0.46, cy: 0.44 },
-    horizontal: { w: 0.5, cy: 0.5, side: true },
-    panoramica: { w: 0.88, cy: 0.42, sy: 0.58 },
-  };
-  const pick = (new URLSearchParams(location.search).get("portada") || "").toLowerCase();
-  const V = VARIANTS[pick] || VARIANTS.actual;
-  let sy = 1;
+  // Variantes para comparar la altura de la portada (?portada=corta|losa|baja; ver script.js).
+  // "losa": la placa de concreto cubre la palabra y la frase; debajo ya se ve la nave.
+  // "baja": la placa solo cubre la palabra; la frase va sobre la nave.
+  const MODE = document.documentElement.dataset.portada || "";
+  const BAJA = MODE === "baja", LOSA = MODE === "losa" || BAJA;
+  let slab = 0;
 
   // Video: archivo según el ancho; solo corre con la portada en pantalla
   if (!FX.reduce && video) {
@@ -40,19 +34,15 @@
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     metrics = FX.plate.measure(ctx);
     const narrow = w < 700;
-    const v = narrow ? { w: 0.9, cy: 0.36 } : V;
-    sy = v.sy || 1;
-    const target = Math.min(w * v.w, 1440, (h * (narrow ? 1.2 : 1.9)) / sy);
+    const target = Math.min(w * (narrow ? 0.9 : 0.84), 1440, h * (narrow ? 1.2 : 1.9));
     size = (100 * target) / metrics.width;
-    const cap = (metrics.cap / 100) * size * sy;
-    const cy = h * v.cy;
+    const cap = (metrics.cap / 100) * size;
+    const cy = h * (LOSA ? (narrow ? 0.3 : 0.31) : narrow ? 0.36 : 0.42);
     baseline = cy + cap / 2;
-    left = v.side ? Math.max(48, w * 0.06) : (w - target) / 2;
-    stage.classList.toggle("is-side", !!v.side);
-    if (v.side) {
-      stage.style.setProperty("--wm-right", Math.round(left + target + w * 0.04) + "px");
-      stage.style.setProperty("--wm-mid", Math.round(cy) + "px");
-    }
+    left = (w - target) / 2;
+    // Dónde termina la losa: abajo de la frase ("losa") o justo abajo de la palabra ("baja")
+    slab = !LOSA ? 0 : BAJA ? baseline + size * 0.1 : Math.min(h * 0.72, baseline + size * 0.14 + (narrow ? 96 : 74));
+    stage.style.setProperty("--slab", Math.round(slab) + "px");
     // Asta derecha de la M: por ahí entra la cámara
     ox = left + (metrics.stops[2] / 100) * size - 0.17 * size;
     oy = cy;
@@ -72,7 +62,24 @@
     lastKey = key;
     canvas.style.opacity = alpha.toFixed(3);
     if (alpha <= 0) return;
-    FX.plate.draw(ctx, { w, h, dpr, color: PLATE, size, left, baseline, ox, oy, scale, open, metrics, sy });
+    FX.plate.draw(ctx, { w, h, dpr, color: PLATE, size, left, baseline, ox, oy, scale, open, metrics });
+    if (LOSA) {
+      // Borde de la losa: crece con el mismo zoom; debajo, la escena con una sombra corta y un canto amarillo
+      const e = oy + (slab - oy) * scale;
+      if (e < h) {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.fillRect(0, e, w, h - e);
+        ctx.globalCompositeOperation = "source-over";
+        const g = ctx.createLinearGradient(0, e, 0, e + 28);
+        g.addColorStop(0, "rgba(17,20,22,.4)");
+        g.addColorStop(1, "rgba(17,20,22,0)");
+        ctx.fillStyle = g;
+        ctx.fillRect(0, e, w, 28);
+        ctx.fillStyle = "#ffc20e";
+        ctx.fillRect(0, e - 4, w, 4);
+      }
+    }
   }
 
   // Cortinas de andén al cargar
@@ -86,7 +93,7 @@
     ectx.setTransform(f.dpr, 0, 0, f.dpr, 0, 0);
     ectx.clearRect(0, 0, f.w, f.h);
     if (!open || !metrics) return;
-    const k = size / 100, cap = metrics.cap * k * sy, pad = size * 0.06 * sy;
+    const k = size / 100, cap = metrics.cap * k, pad = size * 0.06;
     for (let i = 0; i < 4; i++) {
       const o = open[i];
       if (o <= 0 || o >= 1) continue;
@@ -103,7 +110,6 @@
     }
     ectx.globalCompositeOperation = "destination-in";
     ectx.save();
-    if (sy !== 1) { ectx.translate(0, baseline); ectx.scale(1, sy); ectx.translate(0, -baseline); }
     FX.plate.setFont(ectx, size);
     ectx.textBaseline = "alphabetic";
     ectx.fillStyle = "#000";
