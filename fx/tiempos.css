@@ -62,7 +62,7 @@
 .tt__zone--3 { left: calc((var(--c2) + 100) * .5%); opacity: clamp(0, calc((100 - var(--c2) - 9) / 6), 1); }
 
 /* Botones de tiempo */
-.tt__modes { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: clamp(48px, 8vh, 84px); display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; opacity: 0; visibility: hidden; transition: opacity .5s var(--ease), visibility 0s .5s; }
+.tt__modes { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: calc(clamp(48px, 8vh, 84px) + var(--barra, 0px)); display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; opacity: 0; visibility: hidden; transition: opacity .5s var(--ease), visibility 0s .5s; }
 .build__stage.is-tt .tt__modes { opacity: 1; visibility: visible; transition: opacity .5s var(--ease); }
 .tt__modes button { min-height: 42px; padding: 0 16px; border: 1px solid rgba(255, 255, 255, .34); border-radius: 999px; background: rgba(13, 26, 38, .55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: .9rem; font-weight: 600; cursor: pointer; transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease); }
 .tt__modes button[aria-pressed="true"] { background: var(--sc-accent); border-color: var(--sc-accent); color: var(--sc-accent-ink); }
@@ -72,7 +72,7 @@
   .tt__zone { top: 92px; padding: 4px 9px; font-size: .74rem; }
   .tt__zone i { display: none; }
   .tt__grip { width: 48px; height: 48px; top: 40%; }
-  .tt__modes { left: var(--sc-gutter); right: var(--sc-gutter); bottom: 40px; justify-content: flex-start; }
+  .tt__modes { left: var(--sc-gutter); right: var(--sc-gutter); bottom: calc(40px + var(--barra, 0px)); justify-content: flex-start; }
   .tt__modes button { min-height: 38px; padding: 0 12px; font-size: .82rem; }
   .tt__line::before { top: 96px; }
   .build__stage.is-tt .plan { display: none; }

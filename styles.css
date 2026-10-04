@@ -94,6 +94,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 /* 1. Portada: placa de concreto con IMAX recortado; por las letras se ve la nave en video.
    Al bajar, la cámara atraviesa la M (fx/portada.js) y queda la nave a pantalla completa con la frase. */
 .hero__stage { background: var(--concrete); }
+.hero__stage.is-dentro { background-color: #0d1923; }
 .hero__scene {
   position: absolute; inset: 0; will-change: transform;
   transform: translate3d(calc(var(--px, 0) * -16px), calc(var(--py, 0) * -10px + (1 - clamp(0, calc((var(--sc-p, 0) - .03) / .3), 1)) * var(--hero-shift, -19svh)), 0) scale(calc(1.13 - .09 * var(--sc-p, 0)));
@@ -106,13 +107,13 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .hero__edge { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; z-index: 3; pointer-events: none; }
 .hero__intro { position: absolute; z-index: 4; left: var(--sc-gutter); right: var(--sc-gutter); top: var(--wm-bottom, 62%); display: grid; justify-items: center; gap: 22px; text-align: center; opacity: calc(1 - clamp(0, calc(var(--sc-p, 0) / .1), 1)); }
 .hero__h1 { font-size: clamp(1.05rem, .9rem + .7vw, 1.6rem); font-weight: 760; font-stretch: 112%; letter-spacing: -.01em; line-height: 1.2; }
-.hero__say { --s: clamp(0, calc((var(--sc-p, 0) - .56) / .16), 1); position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(40px, 8vh, 84px); max-width: 82rem; margin-inline: auto; color: #fff;
+.hero__say { --s: clamp(0, calc((var(--sc-p, 0) - .56) / .16), 1); position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: calc(clamp(40px, 8vh, 84px) + var(--barra)); max-width: 82rem; margin-inline: auto; color: #fff;
   opacity: var(--s); transform: translate3d(0, calc((1 - var(--s)) * 40px), 0); }
 .hero__say p { max-width: 17em; font-size: clamp(1.8rem, 1rem + 2.8vw, 3.9rem); font-weight: 800; font-stretch: 116%; letter-spacing: -.025em; line-height: 1.04; }
 .hero__routes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; opacity: clamp(0, calc((var(--sc-p, 0) - .7) / .12), 1); }
 .hero__routes a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-weight: 650; text-decoration: none; transition: background-color 200ms var(--ease), color 200ms var(--ease); }
-.hero__routes a:hover { background: var(--sc-accent); border-color: var(--sc-accent); color: var(--sc-ink); }
-.hero__tag { position: absolute; z-index: 5; right: var(--sc-gutter); bottom: 16px; padding: 4px 10px; border-radius: 999px; background: var(--sc-accent); font-size: .74rem; font-weight: 700; opacity: clamp(0, calc((var(--sc-p, 0) - .4) / .1), 1); }
+@media (hover: hover) { .hero__routes a:hover { background: var(--sc-accent); border-color: var(--sc-accent); color: var(--sc-ink); } }
+.hero__tag { position: absolute; z-index: 5; right: var(--sc-gutter); bottom: calc(16px + var(--barra)); padding: 4px 10px; border-radius: 999px; background: var(--sc-accent); font-size: .74rem; font-weight: 700; opacity: clamp(0, calc((var(--sc-p, 0) - .4) / .1), 1); }
 @media (prefers-reduced-motion: no-preference) {
   .hero__intro > * { animation: sube .9s var(--ease) both; }
   .hero__intro > :nth-child(1) { animation-delay: 1.15s; }
@@ -124,7 +125,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .ticker__row { display: flex; width: max-content; animation: corre 42s linear infinite; }
 .ticker__row span { display: inline-flex; align-items: center; gap: 14px; padding: 18px 28px; font-weight: 700; font-stretch: 110%; white-space: nowrap; }
 .ticker__row span::before { content: ""; width: 10px; height: 10px; background: var(--sc-accent); transform: rotate(45deg); }
-.ticker:hover .ticker__row { animation-play-state: paused; }
+@media (hover: hover) { .ticker:hover .ticker__row { animation-play-state: paused; } }
 @keyframes corre { to { transform: translateX(-50%); } }
 
 /* 2. Servicios: riel lateral (fx/riel.js lo hace arrastrable y le da giro y luz) */
@@ -145,7 +146,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .svc__note { flex: 0 0 min(82vw, 24rem); display: grid; justify-items: start; gap: 20px; align-self: center; padding-right: 4vw; }
 
 /* 3. De polvo a nave (video real) */
-.anat__stage { background: #0b1218; }
+.anat__stage { background: #3a3532; }
 .anat__still { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .anat__shade { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .anat__shade--top { background: linear-gradient(180deg, rgba(10, 14, 18, .35) 0%, rgba(10, 14, 18, 0) 16%); }
@@ -165,13 +166,13 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .anat__tag--left .anat__lbl::before { right: auto; left: 100%; }
 .anat__lbl b { font-size: .86rem; font-weight: 800; }
 .anat__lbl i { font-style: normal; font-size: .78rem; color: var(--sc-ink-soft); font-variant-numeric: tabular-nums; }
-.anat__copy { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); bottom: var(--sc-gutter); width: min(30rem, 42vw); display: grid; overflow: hidden; padding: clamp(18px, 1.8vw, 26px); border-radius: 22px; background: var(--paper); color: var(--sc-ink); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .6); }
+.anat__copy { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); bottom: calc(var(--sc-gutter) + var(--barra)); width: min(30rem, 42vw); display: grid; overflow: hidden; padding: clamp(18px, 1.8vw, 26px); border-radius: 22px; background: var(--paper); color: var(--sc-ink); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .6); }
 .anat__copy::after { content: ""; position: absolute; left: clamp(18px, 1.8vw, 26px); right: clamp(18px, 1.8vw, 26px); bottom: 14px; height: 5px; border-radius: 5px; background: linear-gradient(90deg, var(--sc-accent) calc(var(--sc-p, 0) * 100%), var(--concrete) 0); }
 .anat__beat { grid-area: 1 / 1; align-self: start; display: grid; gap: 8px; padding-bottom: 18px; }
 .anat__beat h2 { font-size: clamp(1.7rem, 1.2rem + 1.6vw, 2.5rem); }
 .anat__beat h3 { font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem); }
 .anat__beat .lede { font-size: .98rem; line-height: 1.5; }
-.anat__rail { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: var(--sc-gutter); width: min(30rem, 36vw); margin: 0; padding: 14px 18px 16px; display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 8px; border-radius: 18px; background: rgba(17, 20, 22, .55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #fff; }
+.anat__rail { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: calc(var(--sc-gutter) + var(--barra)); width: min(30rem, 36vw); margin: 0; padding: 14px 18px 16px; display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 8px; border-radius: 18px; background: rgba(17, 20, 22, .55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #fff; }
 .anat__rail li { --on: clamp(0, calc((var(--sc-p, 0) - var(--s)) / .06), 1); position: relative; padding: 10px 10px 0 0; font-weight: 700; font-size: clamp(.84rem, .8rem + .25vw, .98rem); opacity: calc(.45 + .55 * var(--on)); }
 .anat__rail li::before { content: ""; position: absolute; left: 0; right: 8px; top: 0; height: 3px; border-radius: 3px; background: var(--sc-accent); transform: scaleX(var(--on)); transform-origin: left; }
 .anat__note { position: absolute; right: var(--sc-gutter); top: 80px; z-index: 5; padding: 4px 10px; border-radius: 999px; background: var(--sc-accent); color: var(--sc-ink); font-weight: 700; }
@@ -211,6 +212,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 /* El video termina en .8 del avance del acto. Todo lo que pasa mientras corre se mide con --q,
    que va de 0 a 1 en ese tramo; el tramo final (.8 a 1) es del comparador. */
 .build { --q: calc(var(--sc-p, 0) / .8); }
+.build__stage { background-color: #121e29; }
 .build__lot, .build__steel, .build__then, .build__final { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 /* La foto nítida de la nave releva al último cuadro del video cuando este termina */
 .build__final { opacity: clamp(0, calc((var(--sc-p, 0) - .785) / .02), 1); }
@@ -234,10 +236,11 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .plan__labels text { fill: var(--sc-accent); font-size: 34px; font-weight: 600; paint-order: stroke; stroke: rgba(13, 26, 38, .7); stroke-width: 7px; }
 
 .build__steps .sc-copy { max-width: min(40rem, 74vw); display: grid; gap: 14px; }
-.meter { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: clamp(56px, 9vh, 96px); display: grid; gap: 12px; text-align: right; font-size: .9rem; font-weight: 600; opacity: calc(1 - clamp(0, calc((var(--sc-p, 0) - .8) / .05), 1)); }
+.meter { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: calc(clamp(56px, 9vh, 96px) + var(--barra)); display: grid; gap: 12px; text-align: right; font-size: .9rem; font-weight: 600; opacity: calc(1 - clamp(0, calc((var(--sc-p, 0) - .8) / .05), 1)); }
 .meter li { --on: clamp(0, calc((var(--q) - var(--s)) * 60), 1); --off: clamp(0, calc((var(--q) - var(--e)) * 60), 1); position: relative; padding-right: 22px; opacity: calc(.42 + .58 * (var(--on) - var(--off))); }
 .meter li::after { content: ""; position: absolute; right: 0; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; border: 1.5px solid var(--sc-ink); background: rgb(246 185 59 / var(--on)); }
-.build__note { position: absolute; right: var(--sc-gutter); bottom: 18px; z-index: 5; }
+.build__note { position: absolute; right: var(--sc-gutter); bottom: calc(18px + var(--barra)); z-index: 5; }
+.build .sc-copy--lead { bottom: calc(clamp(3rem, 12vh, 9rem) + var(--barra)); }
 
 /* Ficha técnica (fx/lamina.js convierte los dibujos en una sola lámina) */
 .spec { padding-block: clamp(80px, 10vw, 140px); background: var(--paper); }
@@ -341,7 +344,20 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .foot__claim { max-width: 22em; color: #fff; font-weight: 760; font-stretch: 112%; font-size: clamp(1.3rem, 1.1rem + .8vw, 1.8rem); line-height: 1.15; }
 .foot__nav { display: flex; flex-wrap: wrap; gap: 8px 28px; }
 .foot__nav a { text-decoration: none; }
-.foot__nav a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--sc-accent); text-underline-offset: 6px; }
+@media (hover: hover) { .foot__nav a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--sc-accent); text-underline-offset: 6px; } }
+
+/* En el celular, Safari y Chrome esconden su barra al bajar y la pantalla crece. Las escenas fijas miden
+   la pantalla grande (100lvh) para llegar siempre al borde de abajo; mientras la barra se ve, lo anclado
+   abajo sube lo que ella ocupa (--barra) para no quedar detrás. En escritorio --barra vale 0.
+   Safari (iOS 26 en adelante) pinta la franja bajo su barra con el color de fondo de la escena que toca
+   el borde: por eso cada escena lleva de fondo el color de su orilla de abajo. */
+:root { --barra: 0px; }
+@supports (height: 100lvh) {
+  :root { --barra: calc(100lvh - 100dvh); }
+  .sc-stage { height: 100lvh; }
+  .anat__world { width: max(100vw, calc(100lvh * var(--anat-ar, 1.798))); }
+  .tour__world { width: max(100vw, calc(100lvh * 1.7917)); }
+}
 
 /* Responsivo */
 @media (max-width: 980px) {
@@ -361,7 +377,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .svc__item { flex-basis: 76vw; }
   .svc__item figure { max-height: 34svh; }
 
-  .anat__copy { left: 12px; right: 12px; bottom: 12px; width: auto; padding: 16px 16px 12px; }
+  .anat__copy { left: 12px; right: 12px; bottom: calc(12px + var(--barra)); width: auto; padding: 16px 16px 12px; }
   .anat__tag { display: none; left: var(--xm, var(--x)); top: var(--ym, var(--y)); translate: -4px -50%; }
   .anat__tag--m { display: flex; }
   .anat__tag::before { width: 9px; height: 9px; box-shadow: 0 0 0 3px rgba(255, 194, 14, .35); }
@@ -371,7 +387,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .anat__lbl i { display: none; }
   .anat__rail { display: none; }
 
-  .tour__panel { top: auto; bottom: 0; left: 0; right: 0; width: auto; translate: none; padding: 20px var(--sc-gutter) 40px; border-radius: 22px 22px 0 0; }
+  .tour__stage { background-color: var(--paper); }
+  .tour__panel { top: auto; bottom: 0; left: 0; right: 0; width: auto; translate: none; padding: 20px var(--sc-gutter) calc(40px + var(--barra)); border-radius: 22px 22px 0 0; }
   .tour__stops { margin-top: 12px; padding-top: 14px; }
 
   .meter { display: none; }
@@ -392,6 +409,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   .build__lot, .plan { display: none; }
   .hero__plate, .hero__edge { display: none; }
+  .hero__stage { background-color: #0d1923; }
   .hero__scene { transform: none; }
   .hero__scrim { opacity: 1; }
   .hero__intro { top: 96px; opacity: 1; color: #fff; }

@@ -9,7 +9,7 @@
   const canvas = act.querySelector(".hero__plate");
   const ctx = canvas.getContext("2d");
   const PLATE = "#e9ebe8", EDGE = "255,194,14";
-  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, metrics = null, lastKey = "";
+  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, dive = 1, cover = 1, metrics = null, lastKey = "";
   let open = FX.reduce ? null : [0, 0, 0, 0];
 
   // Video: archivo según el ancho; solo corre con la portada en pantalla
@@ -36,6 +36,12 @@
     // Asta derecha de la M: por ahí entra la cámara
     ox = left + (metrics.stops[2] / 100) * size - 0.17 * size;
     oy = cy;
+    // Cuánto hay que acercar para que el asta cubra la escena de arriba abajo. En pantalla horizontal
+    // basta con ~4.4; en el celular, vertical, la palabra es chica frente al alto y hacen falta ~15.
+    // Si no se compensa, la placa se desvanece con franjas de concreto arriba y abajo de la letra.
+    // Con la curva elevada a «dive», la cámara entra a la M en el mismo momento que en escritorio.
+    cover = (2 * Math.max(cy, h - cy)) / cap;
+    dive = Math.max(1, Math.log(cover) / Math.log(4.6));
     stage.style.setProperty("--wm-bottom", Math.round(baseline + size * 0.14) + "px");
     lastKey = "";
     draw();
@@ -45,8 +51,11 @@
     if (!w) return;
     const p = FX.actP(act);
     const t = FX.clamp01((p - 0.03) / 0.5);
-    const scale = 1 + Math.pow(t, 2.6) * 26;
-    const alpha = 1 - FX.smooth((t - 0.5) / 0.42);
+    const scale = Math.pow(1 + Math.pow(t, 2.6) * 26, dive);
+    // Pasado ~40x el asta ya tapa toda la escena en cualquier pantalla: no hay placa que pintar
+    const alpha = scale > 40 ? 0 : 1 - FX.smooth((t - 0.5) / 0.42);
+    // Ya dentro de la M, la orilla de abajo es la nave: Safari toma ese color para la franja bajo su barra
+    stage.classList.toggle("is-dentro", scale >= cover);
     const key = scale.toFixed(3) + "|" + alpha.toFixed(3) + "|" + (open ? open.map((o) => o.toFixed(3)).join(",") : "");
     if (key === lastKey) return;
     lastKey = key;

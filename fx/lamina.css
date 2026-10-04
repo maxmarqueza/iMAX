@@ -18,7 +18,7 @@
 .spec__sheet.is-ret .ret { opacity: 1; }
 .spec__sheet .dim.hot { stroke-width: 3.5; }
 .spec__all { position: absolute; right: 12px; bottom: 12px; min-height: 38px; padding: 0 16px; border: 1.5px solid var(--sc-ink); border-radius: 999px; background: var(--paper); font-weight: 700; font-size: .86rem; cursor: pointer; }
-.spec__all:hover { background: var(--sc-ink); color: #fff; }
+@media (hover: hover) { .spec__all:hover { background: var(--sc-ink); color: #fff; } }
 @media (prefers-reduced-motion: no-preference) {
   .spec__sheet .det.draw .ink { stroke-dasharray: 1; stroke-dashoffset: 1; animation: traza 1.1s var(--ease) forwards; }
   .spec__sheet .det.draw .dim { animation-delay: .5s; }
