@@ -69,6 +69,7 @@
     //   size      tamaño de fuente en px; left y baseline, dónde va la palabra
     //   ox, oy    punto desde el que crece la palabra; scale, cuánto (1 = tamaño normal)
     //   open      opcional: cuatro valores de 0 a 1, cuánto está abierta cada letra de abajo hacia arriba (cortina)
+    //   sy        opcional: escala vertical de las letras sobre la línea base (menos de 1 = más bajas y anchas)
     draw(ctx, g) {
       const scale = g.scale || 1;
       ctx.setTransform(g.dpr, 0, 0, g.dpr, 0, 0);
@@ -81,6 +82,7 @@
       ctx.translate(g.ox, g.oy);
       ctx.scale(scale, scale);
       ctx.translate(-g.ox, -g.oy);
+      if (g.sy && g.sy !== 1) { ctx.translate(0, g.baseline); ctx.scale(1, g.sy); ctx.translate(0, -g.baseline); }
       plate.setFont(ctx, g.size);
       if (g.open) {
         const k = g.size / 100, m = g.metrics || plate.measure(ctx);

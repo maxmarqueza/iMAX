@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>IMAX · Opciones de portada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #e9ebe8; color: #111416; font: 400 17px/1.55 Archivo, system-ui, sans-serif; }
+main { width: min(100% - 40px, 1320px); margin: 0 auto; padding: 48px 0 80px; }
+h1 { margin: 0 0 8px; font-size: clamp(2rem, 3.6vw, 3.2rem); font-weight: 860; font-stretch: 120%; letter-spacing: -.03em; line-height: 1; }
+.lead { color: #545c63; max-width: 46em; margin: 0 0 36px; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.op { display: grid; border-radius: 20px; overflow: hidden; background: #f7f8f6; box-shadow: 0 0 0 1.5px #111416; }
+.op img { width: 100%; aspect-ratio: 1760 / 980; object-fit: cover; display: block; border-bottom: 1.5px solid #111416; }
+.op div { display: grid; gap: 6px; padding: 18px 22px 22px; }
+.op b { font-size: 1.4rem; font-weight: 820; font-stretch: 115%; }
+.op span { color: #545c63; }
+.op a { justify-self: start; margin-top: 8px; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #111416; color: #fff; font-weight: 700; text-decoration: none; }
+.op a:hover { background: #ffc20e; color: #111416; }
+.op--actual { opacity: .8; }
+.op--actual a { background: transparent; color: #111416; box-shadow: inset 0 0 0 1.5px #111416; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>¿Qué tamaño de IMAX en la portada?</h1>
+  <p class="lead">Cuatro ajustes de la palabra para pantallas de computadora; en el celular no cambia. Abre cada opción en vivo y baja con el scroll: todas mantienen las cortinas al cargar y la entrada por la M.</p>
+  <div class="grid">
+    <article class="op"><img src="img/media.webp" alt="Opción A: IMAX a tamaño medio"><div><b>A. Media</b><span>La misma composición, una cuarta parte más chica. Queda aire arriba y abajo de la palabra.</span><a href="/?portada=media">Ver en vivo</a></div></article>
+    <article class="op"><img src="img/compacta.webp" alt="Opción B: IMAX compacta"><div><b>B. Compacta</b><span>Casi la mitad del tamaño actual. Más espacio libre y la frase cerca de la palabra.</span><a href="/?portada=compacta">Ver en vivo</a></div></article>
+    <article class="op"><img src="img/horizontal.webp" alt="Opción C: IMAX a la izquierda y la frase a la derecha"><div><b>C. Horizontal</b><span>IMAX a la izquierda y la frase a la derecha, a la misma altura. Más editorial.</span><a href="/?portada=horizontal">Ver en vivo</a></div></article>
+    <article class="op"><img src="img/panoramica.webp" alt="Opción D: IMAX ancha y baja"><div><b>D. Panorámica</b><span>Ocupa todo el ancho pero con letras más bajas, como una franja de cine. Las letras se ven más anchas que su forma original.</span><a href="/?portada=panoramica">Ver en vivo</a></div></article>
+    <article class="op op--actual"><img src="img/actual.webp" alt="Portada actual"><div><b>Actual</b><span>La que está publicada hoy, para comparar.</span><a href="/">Ver en vivo</a></div></article>
+  </div>
+</main>
+</body>
+</html>
