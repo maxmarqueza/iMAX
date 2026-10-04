@@ -174,6 +174,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   display: flex; align-items: center; white-space: nowrap;
   opacity: calc(clamp(0, calc((var(--sc-p, 0) - var(--in)) / .02), 1) * (1 - clamp(0, calc((var(--sc-p, 0) - var(--out, .535)) / .04), 1)));
 }
+/* Sin el video cargado no hay piezas que señalar */
+.anat:not(.sc-has-clip) .anat__tag { visibility: hidden; }
 .anat__tag--left { flex-direction: row-reverse; translate: calc(-100% + 6px) -50%; }
 .anat__tag::before { content: ""; flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--sc-accent); box-shadow: 0 0 0 5px rgba(246, 185, 59, .28); }
 .anat__lbl { position: relative; display: grid; gap: 1px; margin-left: 30px; padding: 7px 13px 8px; border: 1px solid rgba(255, 255, 255, .26); border-radius: 12px; background: rgba(10, 20, 29, .74); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
@@ -370,7 +372,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .hero__scrim { opacity: 1; }
   .hero__intro { top: 13%; }
   .build__final, .anat__still { display: block; }
-  .anat__tag { opacity: 1; }
+  .anat:not(.sc-has-clip) .anat__tag { visibility: visible; opacity: 1; }
   .pin::after, .tour__route path { animation: none; }
   .svc__item img { transform: none; }
 }
