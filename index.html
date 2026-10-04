@@ -6,6 +6,17 @@
   <title>IMAX | Naves y parques industriales en renta, venta y construcción</title>
   <meta name="description" content="IMAX desarrolla, construye, renta y vende naves y parques industriales. Cotiza una nave disponible o un proyecto a la medida.">
   <meta name="theme-color" content="#0d1a26">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="IMAX">
+  <meta property="og:title" content="IMAX | Naves y parques industriales en renta, venta y construcción">
+  <meta property="og:description" content="Inmobiliaria, desarrolladora y constructora de naves y parques industriales. Cotiza una nave disponible o un proyecto a la medida.">
+  <meta property="og:url" content="https://grupoimax.mx/">
+  <meta property="og:image" content="https://grupoimax.mx/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"IMAX","url":"https://grupoimax.mx/","description":"Inmobiliaria, desarrolladora y constructora de naves y parques industriales: renta, venta y construcción a la medida.","areaServed":"MX","knowsAbout":["Naves industriales","Parques industriales","Construcción industrial","Build-to-suit"]}</script>
   <link rel="canonical" href="https://grupoimax.mx/">
   <script>if (location.protocol === "http:" && location.hostname.endsWith("grupoimax.mx")) location.replace("https://grupoimax.mx" + location.pathname + location.hash);</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +39,7 @@
       <nav class="nav" aria-label="Principal">
         <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="mega">Qué hacemos</button>
         <a class="nav__link" href="#anatomia">La nave</a>
+        <a class="nav__link" href="#ficha">Ficha técnica</a>
         <a class="nav__link" href="#parque">Parques</a>
         <a class="nav__link" href="#proceso">Proceso</a>
       </nav>
@@ -126,7 +138,7 @@
             <a href="#proceso">
               <figure><img src="img/obra.webp" width="886" height="1100" alt="Estructura metálica de una nave industrial en construcción"></figure>
               <h3>A la medida</h3>
-              <p>Diseñamos y construimos tu nave en tu terreno o en uno de los nuestros: claros, altura y andenes definidos por tu operación.</p>
+              <p>Diseñamos y construimos tu nave (build-to-suit) en tu terreno o en uno de los nuestros: claros, altura libre y andenes definidos por tu operación.</p>
               <span class="go">Ver el proceso de obra</span>
             </a>
           </article>
@@ -147,36 +159,212 @@
       </div>
     </section>
 
-    <!-- 3. La nave desarmada que se arma con el scroll -->
-    <section class="anat" id="anatomia" data-sc-act="pin" data-sc-span="4.2" data-sc-drift="#0a141d">
+    <!-- 3. La nave desarmada que se arma con el scroll (video real) -->
+    <section class="anat" id="anatomia" data-sc-act="scrub" data-sc-span="4.2" data-sc-clip-map="travel" data-sc-drift="#0a141d">
       <div data-sc-stage class="anat__stage">
-        <img class="anat__poster" src="img/nave3d.webp" alt="Modelo de una nave industrial armada: piso, estructura metálica, cubierta, muros, andenes y oficinas" loading="lazy">
-        <div class="anat__canvas" aria-hidden="true"></div>
+        <img class="sc-stage__poster" src="img/despiece-poster.webp" alt="Nave industrial desarmada: cubierta, armaduras, estructura, muros, andenes y oficinas flotando por separado">
+        <video data-sc-scrub data-sc-src="media/despiece.mp4" data-sc-src-mobile="media/despiece-m.mp4" muted playsinline></video>
+        <div class="anat__shade anat__shade--top" aria-hidden="true"></div>
+        <div class="anat__shade anat__shade--bottom" aria-hidden="true"></div>
+
+        <div class="anat__world" aria-hidden="true">
+          <span class="anat__tag" style="--x:50%;--y:19%;--in:.02">Cubierta</span>
+          <span class="anat__tag anat__tag--m" style="--x:46%;--y:38%;--in:.045">Armaduras y largueros</span>
+          <span class="anat__tag" style="--x:37%;--y:51%;--in:.07">Estructura metálica</span>
+          <span class="anat__tag anat__tag--m" style="--x:50%;--y:62%;--in:.095">Piso industrial</span>
+          <span class="anat__tag" style="--x:62%;--y:56%;--in:.12">Muros de fachada</span>
+          <span class="anat__tag" style="--x:71%;--y:66%;--in:.145">Andenes de carga</span>
+          <span class="anat__tag" style="--x:36%;--y:69%;--in:.17">Oficinas</span>
+        </div>
 
         <div class="anat__copy">
-          <h2 class="hd-md" data-sc-cue="0 0.985 0 0.03">Una nave, pieza por pieza</h2>
-          <p class="soft anat__sub" data-sc-cue="0 0.985 0 0.03">Sigue bajando y se arma. Cada parte la diseñamos y la construimos nosotros.</p>
-          <ol class="anat__list" data-sc-cue="0 0.985 0 0.03">
-            <li data-part="0"><h3>Piso industrial</h3><p>Losa de concreto calculada para la carga de tu operación.</p></li>
-            <li data-part="1"><h3>Estructura metálica</h3><p>Marcos de acero de claro libre, sin columnas intermedias que estorben.</p></li>
-            <li data-part="2"><h3>Cubierta</h3><p>Lámina metálica con tragaluces para aprovechar la luz natural.</p></li>
-            <li data-part="3"><h3>Muros y fachada</h3><p>Paneles metálicos que cierran la nave y la protegen del clima.</p></li>
-            <li data-part="4"><h3>Andenes de carga</h3><p>Puertas seccionales con rampa niveladora a la altura del tráiler.</p></li>
-            <li data-part="5"><h3>Oficinas</h3><p>Área administrativa integrada a la nave, con acceso propio.</p></li>
-          </ol>
+          <div class="anat__beat" data-sc-cue="0 0.27 0">
+            <h2 class="hd-lg">Una nave, pieza por pieza</h2>
+            <p class="lede">Así se ve una nave antes de armarse. Sigue bajando: cada componente lo diseñamos y lo montamos nosotros.</p>
+          </div>
+          <div class="anat__beat" data-sc-cue="0.25 0.48">
+            <h3 class="hd-md">Estructura y armaduras</h3>
+            <p class="lede">Sobre el piso de concreto se montan las columnas y los marcos de acero. Encima bajan las armaduras y los largueros. Aquí quedan fijados el claro entre columnas y la altura libre.</p>
+          </div>
+          <div class="anat__beat" data-sc-cue="0.45 0.72">
+            <h3 class="hd-md">Muros y andenes</h3>
+            <p class="lede">Los paneles de fachada cierran la nave. Las puertas de andén quedan a la altura de la caja del tráiler, cada una con su rampa niveladora, sello y topes.</p>
+          </div>
+          <div class="anat__beat" data-sc-cue="0.69 0.9">
+            <h3 class="hd-md">Cubierta</h3>
+            <p class="lede">Al final baja la lámina engargolada, con su aislamiento y sus franjas translúcidas, y la nave queda cerrada y protegida del clima.</p>
+          </div>
+          <div class="anat__beat" data-sc-cue="0.87 1 0.3 0">
+            <h3 class="hd-md">Lista para operar</h3>
+            <p class="lede">Así la entregamos: completa, probada y con su patio de maniobras. Abajo está la ficha con lo que se especifica en cada sistema.</p>
+          </div>
         </div>
 
-        <div class="anat__tags" aria-hidden="true">
-          <span class="anat__tag" data-tag="0">Piso industrial</span>
-          <span class="anat__tag" data-tag="1">Estructura metálica</span>
-          <span class="anat__tag" data-tag="2">Cubierta</span>
-          <span class="anat__tag" data-tag="3">Muros</span>
-          <span class="anat__tag" data-tag="4">Andenes</span>
-          <span class="anat__tag" data-tag="5">Oficinas</span>
+        <ol class="anat__rail" aria-hidden="true">
+          <li style="--s:.02">Piso</li>
+          <li style="--s:.3">Estructura</li>
+          <li style="--s:.42">Muros</li>
+          <li style="--s:.5">Andenes</li>
+          <li style="--s:.76">Cubierta</li>
+          <li style="--s:.88">Entrega</li>
+        </ol>
+        <p class="note anat__note">Imagen ilustrativa</p>
+      </div>
+    </section>
+
+    <!-- Ficha técnica -->
+    <section class="spec" id="ficha" data-sc-act="flow" data-sc-drift="#0f1c28">
+      <div class="sc-wrap">
+        <div class="spec__head" data-sc-in>
+          <h2 class="hd-lg">Lo que se especifica en una nave y en un parque</h2>
+          <p class="lede">Estos son los puntos que definimos contigo en el proyecto. Cada uno cambia según lo que vayas a almacenar, mover o fabricar; a la derecha va una referencia de mercado.</p>
         </div>
 
-        <p class="anat__done hd-md" data-sc-cue="0.9 1 0.3 0.1">Y la entregamos lista para operar.</p>
-        <p class="note anat__note">Modelo ilustrativo</p>
+        <div class="spec__body">
+          <div class="spec__tabs" role="tablist" aria-label="Sistemas de la nave y del parque" aria-orientation="vertical">
+            <button type="button" role="tab" id="spec-tab-0" aria-controls="spec-0" aria-selected="true">Estructura</button>
+            <button type="button" role="tab" id="spec-tab-1" aria-controls="spec-1" aria-selected="false">Piso industrial</button>
+            <button type="button" role="tab" id="spec-tab-2" aria-controls="spec-2" aria-selected="false">Cubierta y muros</button>
+            <button type="button" role="tab" id="spec-tab-3" aria-controls="spec-3" aria-selected="false">Andenes y patio</button>
+            <button type="button" role="tab" id="spec-tab-4" aria-controls="spec-4" aria-selected="false">Instalaciones</button>
+            <button type="button" role="tab" id="spec-tab-5" aria-controls="spec-5" aria-selected="false">Contra incendio</button>
+            <button type="button" role="tab" id="spec-tab-6" aria-controls="spec-6" aria-selected="false">Parque industrial</button>
+          </div>
+
+          <div class="spec__panels">
+            <div class="spec__panel is-on" role="tabpanel" id="spec-0" aria-labelledby="spec-tab-0">
+              <svg class="spec__draw" viewBox="0 0 320 180" aria-hidden="true">
+                <path pathLength="1" d="M20 150 H300"/>
+                <path pathLength="1" d="M70 150 V72 L160 50 L250 72 V150"/>
+                <path pathLength="1" d="M70 72 H250"/>
+                <path class="dim" pathLength="1" d="M48 72 V150 M42 72 H54 M42 150 H54"/>
+                <path class="dim" pathLength="1" d="M70 164 H250 M70 158 V170 M250 158 V170"/>
+                <text x="84" y="116">Altura libre</text><text x="146" y="177">Claro</text>
+              </svg>
+              <dl class="spec__rows">
+                <div><dt>Altura libre</dt><dd><span>Del piso terminado al lecho bajo de la armadura. Define cuántos niveles de rack caben; en manufactura suele bastar con 8.5 a 9 m.</span><b>9.75 a 11 m<small>32 a 36 pies</small></b></dd></div>
+                <div><dt>Claro entre columnas</dt><dd><span>Separación entre ejes de columnas. De ella depende cómo se acomodan racks, pasillos y líneas de producción.</span><b>12 × 15 a 15 × 15 m<small>40 × 50 a 50 × 50 pies</small></b></dd></div>
+                <div><dt>Marcos y armaduras</dt><dd><span>Marcos rígidos de acero o columnas con armaduras tipo joist, según el claro y la carga.</span><b></b></dd></div>
+                <div><dt>Preparaciones</dt><dd><span>Cargas previstas para racks, grúas viajeras o equipos sobre la cubierta, si tu operación las pide.</span><b></b></dd></div>
+              </dl>
+            </div>
+
+            <div class="spec__panel" role="tabpanel" id="spec-1" aria-labelledby="spec-tab-1">
+              <svg class="spec__draw" viewBox="0 0 320 180" aria-hidden="true">
+                <path pathLength="1" d="M20 100 H300 M20 124 H300"/>
+                <path pathLength="1" d="M110 100 V110 M210 100 V110"/>
+                <path pathLength="1" d="M60 100 V44 M52 44 H68 M250 100 V44 M242 44 H258 M60 62 H250"/>
+                <path class="dim" pathLength="1" d="M160 30 V94 M152 84 L160 96 L168 84"/>
+                <path class="dim" pathLength="1" d="M308 100 V124 M302 100 H314 M302 124 H314"/>
+                <text x="170" y="40">Carga</text><text x="236" y="146">Espesor</text>
+              </svg>
+              <dl class="spec__rows">
+                <div><dt>Espesor de losa</dt><dd><span>Losa de concreto sobre terracerías compactadas. Se calcula con la carga de racks y montacargas, y crece si la operación lo pide.</span><b>15 cm<small>6 pulgadas</small></b></dd></div>
+                <div><dt>Resistencia</dt><dd><span>Se especifica por módulo de ruptura (MR) del concreto, no solo por su resistencia a compresión.</span><b></b></dd></div>
+                <div><dt>Capacidad de carga</dt><dd><span>Lo que soporta el piso por metro cuadrado, uniformemente repartido.</span><b>Desde 5 ton/m²</b></dd></div>
+                <div><dt>Planicidad y nivelación</dt><dd><span>Se miden con los números FF y FL (ACI 117). Con racks altos y montacargas de pasillo angosto se pide un piso muy plano: FF 45 / FL 35.</span><b>FF 35 / FL 25<small>piso plano</small></b></dd></div>
+                <div><dt>Juntas y acabado</dt><dd><span>Juntas de control cortadas y selladas, y superficie pulida con endurecedor para resistir el tránsito.</span><b></b></dd></div>
+              </dl>
+            </div>
+
+            <div class="spec__panel" role="tabpanel" id="spec-2" aria-labelledby="spec-tab-2">
+              <svg class="spec__draw" viewBox="0 0 320 180" aria-hidden="true">
+                <path pathLength="1" d="M20 150 H300"/>
+                <path pathLength="1" d="M50 150 V78 L160 52 L270 78 V150"/>
+                <path pathLength="1" d="M72 73 V63 M94 68 V58 M116 62 V52 M138 57 V47 M182 57 V47 M248 73 V63"/>
+                <path class="dim" pathLength="1" d="M196 60 L236 70"/>
+                <path pathLength="1" d="M50 100 H42 M50 124 H42 M270 100 H278 M270 124 H278"/>
+                <text x="200" y="50">Lámina translúcida</text>
+              </svg>
+              <dl class="spec__rows">
+                <div><dt>Lámina de cubierta</dt><dd><span>Lámina engargolada de junta alzada (tipo KR-18 o SSR), sin perforaciones a la vista.</span><b>Calibre 24</b></dd></div>
+                <div><dt>Aislamiento</dt><dd><span>Colchoneta de fibra de vidrio bajo la lámina para bajar la temperatura interior y el ruido de lluvia.</span><b>Desde 3 pulgadas<small>7.5 cm</small></b></dd></div>
+                <div><dt>Luz natural</dt><dd><span>Franjas de lámina translúcida o domos de policarbonato repartidos en la cubierta.</span><b>2 a 5 %<small>de la cubierta</small></b></dd></div>
+                <div><dt>Muros</dt><dd><span>Concreto tilt-up o precolado, panel aislado o lámina sobre muro de block, según uso y presupuesto.</span><b></b></dd></div>
+                <div><dt>Ventilación</dt><dd><span>Louvers en muros y extractores en cubierta, calculados en cambios de aire por hora.</span><b>3 cambios<small>de aire por hora</small></b></dd></div>
+              </dl>
+            </div>
+
+            <div class="spec__panel" role="tabpanel" id="spec-3" aria-labelledby="spec-tab-3">
+              <svg class="spec__draw" viewBox="0 0 320 180" aria-hidden="true">
+                <path pathLength="1" d="M20 118 H140 V150 H300"/>
+                <path pathLength="1" d="M140 24 V118 M130 46 H150"/>
+                <path pathLength="1" d="M140 118 L176 122"/>
+                <path pathLength="1" d="M178 58 H296 V122 H178 Z"/>
+                <circle pathLength="1" cx="270" cy="137" r="12"/><circle pathLength="1" cx="240" cy="137" r="12"/>
+                <path pathLength="1" d="M140 124 H150 V142 H140"/>
+                <path class="dim" pathLength="1" d="M112 118 V150 M106 118 H118 M106 150 H118"/>
+                <text x="22" y="140">Altura de andén</text>
+              </svg>
+              <dl class="spec__rows">
+                <div><dt>Número de andenes</dt><dd><span>Depende del giro: un cross-dock pide muchos más que una nave de manufactura.</span><b>1 cada 800 a 1,200 m²</b></dd></div>
+                <div><dt>Puerta de andén</dt><dd><span>Puerta seccional o de cortina a la altura de la caja del tráiler (dock-high).</span><b>2.74 × 3.05 m<small>9 × 10 pies</small></b></dd></div>
+                <div><dt>Altura de andén</dt><dd><span>Desnivel entre el patio y el piso de la nave. Va de 1.17 a 1.32 m según los camiones que lleguen.</span><b>1.22 m<small>48 pulgadas</small></b></dd></div>
+                <div><dt>Rampa niveladora</dt><dd><span>Mecánica o hidráulica. Salva la diferencia entre el andén y la caja; su capacidad se elige con el peso del montacargas cargado.</span><b>1.83 × 2.44 m<small>6 × 8 pies</small></b></dd></div>
+                <div><dt>Sello, topes y retenedor</dt><dd><span>El sello o abrigo cierra el hueco contra la caja, los topes protegen el muro y el retenedor sujeta el tráiler mientras se carga.</span><b></b></dd></div>
+                <div><dt>Puerta a nivel de piso</dt><dd><span>Con rampa de acceso (drive-in) para que entren vehículos y montacargas.</span><b>3.66 × 4.27 m<small>12 × 14 pies</small></b></dd></div>
+                <div><dt>Patio de maniobras</dt><dd><span>Fondo libre frente a los andenes para maniobrar un tractocamión con caja de 53 pies (16.15 m).</span><b>33 a 40 m<small>de fondo</small></b></dd></div>
+                <div><dt>Andenes futuros</dt><dd><span>Preparaciones en el muro (knock-outs) para abrir más puertas cuando la operación crezca.</span><b></b></dd></div>
+              </dl>
+            </div>
+
+            <div class="spec__panel" role="tabpanel" id="spec-4" aria-labelledby="spec-tab-4">
+              <svg class="spec__draw" viewBox="0 0 320 180" aria-hidden="true">
+                <path pathLength="1" d="M20 150 H300"/>
+                <path pathLength="1" d="M40 150 V86 H104 V150 M54 86 V68 M72 86 V68 M90 86 V68"/>
+                <path pathLength="1" d="M104 118 H150 M150 150 V40 H296"/>
+                <path pathLength="1" d="M190 40 V54 M240 40 V54 M284 40 V54"/>
+                <path class="dim" pathLength="1" d="M182 60 H198 L208 96 H172 Z M232 60 H248 L258 96 H222 Z"/>
+                <text x="36" y="60">Subestación</text>
+              </svg>
+              <dl class="spec__rows">
+                <div><dt>Energía eléctrica</dt><dd><span>Acometida en media tensión, subestación y transformador. Una nave logística puede operar con unos 300 kVA; una de manufactura pide 1,000 o más.</span><b>300 a 2,000 kVA</b></dd></div>
+                <div><dt>Iluminación</dt><dd><span>Luminarias LED de gran altura. La NOM-025-STPS fija el mínimo según la tarea: 200 luxes en recepción y despacho, 300 en empaque, ensamble y oficinas.</span><b>200 a 300 luxes<small>mínimo por norma</small></b></dd></div>
+                <div><dt>Oficinas</dt><dd><span>Área administrativa en planta baja o mezzanine, con baños, comedor y vestidores si hacen falta. No hay un porcentaje fijo.</span><b>Cerca de 8 %<small>de la nave</small></b></dd></div>
+                <div><dt>Agua y drenaje</dt><dd><span>Tomas de agua, descarga sanitaria y bajadas pluviales conectadas a las redes del parque.</span><b></b></dd></div>
+                <div><dt>Voz y datos</dt><dd><span>Ductos y registros para fibra óptica y telecomunicaciones.</span><b></b></dd></div>
+              </dl>
+            </div>
+
+            <div class="spec__panel" role="tabpanel" id="spec-5" aria-labelledby="spec-tab-5">
+              <svg class="spec__draw" viewBox="0 0 320 180" aria-hidden="true">
+                <path pathLength="1" d="M20 150 H300"/>
+                <path pathLength="1" d="M30 46 H250 M80 46 V62 M150 46 V62 M220 46 V62"/>
+                <circle pathLength="1" cx="80" cy="67" r="5"/><circle pathLength="1" cx="150" cy="67" r="5"/><circle pathLength="1" cx="220" cy="67" r="5"/>
+                <path class="dim" pathLength="1" d="M66 92 L80 76 L94 92 M136 92 L150 76 L164 92 M206 92 L220 76 L234 92"/>
+                <path pathLength="1" d="M250 46 V150 M262 150 V104 H300 V150"/>
+                <text x="100" y="116">Rociadores ESFR</text>
+              </svg>
+              <dl class="spec__rows">
+                <div><dt>Rociadores ESFR</dt><dd><span>De supresión temprana y respuesta rápida. Con ciertos modelos se protegen estibas de hasta 12.2 m bajo techos de 13.7 m sin rociadores dentro del rack, según la mercancía.</span><b>NFPA 13</b></dd></div>
+                <div><dt>Cuarto de bombas</dt><dd><span>Bomba contra incendio con su tanque o cisterna de reserva.</span><b>NFPA 20 y 22</b></dd></div>
+                <div><dt>Hidrantes y gabinetes</dt><dd><span>Red exterior de hidrantes y gabinetes con manguera en el interior.</span><b>NFPA 24 y 14</b></dd></div>
+                <div><dt>Requisitos del seguro</dt><dd><span>La aseguradora del inquilino puede pedir además las hojas técnicas de FM Global, como la 2-0 y la 8-9.</span><b></b></dd></div>
+              </dl>
+            </div>
+            <div class="spec__panel" role="tabpanel" id="spec-6" aria-labelledby="spec-tab-6">
+              <svg class="spec__draw" viewBox="0 0 320 180" aria-hidden="true">
+                <path pathLength="1" d="M20 78 H300 M20 104 H300"/>
+                <path pathLength="1" d="M36 78 V20 H292 V78 M128 20 V78 M240 20 V78"/>
+                <path pathLength="1" d="M48 30 H116 V64 H48 Z M140 30 H228 V64 H140 Z M250 30 H282 V64 H250 Z"/>
+                <path pathLength="1" d="M36 104 V162 H292 V104 M164 104 V162"/>
+                <path pathLength="1" d="M48 118 H152 V152 H48 Z M176 118 H280 V152 H176 Z"/>
+                <path class="dim" pathLength="1" d="M122 64 V78 M117 64 H127 M117 78 H127"/>
+                <text x="134" y="75">Restricción al frente</text><text x="40" y="95">Vialidad</text>
+              </svg>
+              <dl class="spec__rows">
+                <div><dt>Agua</dt><dd><span>Infraestructura para el gasto máximo horario de los lotes.</span><b>0.5 l/s por hectárea<small>1.0 recomendable</small></b></dd></div>
+                <div><dt>Energía eléctrica</dt><dd><span>En media tensión, contratada o con factibilidad de contratación.</span><b>150 kVA por hectárea<small>250 recomendable</small></b></dd></div>
+                <div><dt>Descarga sanitaria</dt><dd><span>Red de drenaje con descarga a la red municipal, reúso o cuerpo receptor.</span><b>0.5 l/s por hectárea<small>0.8 recomendable</small></b></dd></div>
+                <div><dt>Drenaje pluvial</dt><dd><span>Se diseña con un estudio hidrológico del sitio.</span><b>Retorno de 10 años<small>o más</small></b></dd></div>
+                <div><dt>Urbanización</dt><dd><span>Carriles de aceleración y desaceleración o camino de acceso en buen estado, vialidades pavimentadas, guarniciones, alumbrado, señalización y nomenclatura.</span><b>3 % de áreas verdes</b></dd></div>
+                <div><dt>Lotes</dt><dd><span>Restricción de 7 m al frente y 2.5 m a colindancias, 5 % de área verde y estacionamiento dentro del lote.</span><b>Desplante máximo de 70 %</b></dd></div>
+                <div><dt>Operación</dt><dd><span>Reglamento interno obligatorio y administración permanente.</span><b></b></dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <p class="note spec__foot">Los valores de la nave son referencias tomadas de fichas técnicas publicadas por desarrolladores en México y de normas (NOM-025-STPS, NFPA, ACI 117). Los del parque son los mínimos de la norma mexicana NMX-R-046-SCFI-2015. Los de tu proyecto se definen contigo.</p>
       </div>
     </section>
 
@@ -202,27 +390,27 @@
           <h2 class="hd-md">Así se arma un parque industrial</h2>
           <div class="tour__stops">
             <div class="tour__stop" data-sc-cue="0 0.13 0">
-              <p>Desarrollamos parques completos: urbanización, vialidades, redes y naves. Recórrelo de la caseta a las oficinas.</p>
+              <p>Desarrollamos parques completos: terreno con uso de suelo industrial, urbanización, redes de servicios y naves. Recórrelo de la caseta a las oficinas.</p>
             </div>
             <div class="tour__stop" data-sc-cue="0.11 0.3 0.22 0.22">
               <h3>Acceso controlado</h3>
-              <p>Caseta de vigilancia, barda perimetral y un solo punto de entrada y salida para transporte de carga y personal.</p>
+              <p>Caseta de vigilancia, barda perimetral y un solo punto de entrada y salida, con carriles separados para carga y para personal. Sobre la carretera, carriles de aceleración y desaceleración.</p>
             </div>
             <div class="tour__stop" data-sc-cue="0.27 0.46 0.22 0.22">
               <h3>Vialidad interna</h3>
-              <p>Calles de concreto dimensionadas para tráileres, con camellón, alumbrado y las redes de agua, drenaje y energía bajo tierra.</p>
+              <p>Vialidades de concreto para tractocamiones con caja de 53 pies, con guarniciones, banquetas y alumbrado. Debajo van las redes de agua, drenaje, energía en media tensión y telecomunicaciones.</p>
             </div>
             <div class="tour__stop" data-sc-cue="0.43 0.62 0.22 0.22">
               <h3>Patios de maniobras y andenes</h3>
-              <p>Cada nave tiene su patio para maniobrar y estacionar cajas, y andenes con rampa niveladora a la altura del tráiler.</p>
+              <p>Cada nave tiene su patio de concreto para maniobrar cajas de 53 pies y andenes con rampa niveladora, sello, topes y retenedor.</p>
             </div>
             <div class="tour__stop" data-sc-cue="0.59 0.78 0.22 0.22">
               <h3>Naves</h3>
-              <p>Estructura metálica de grandes claros, piso de concreto industrial y cubierta con lámina translúcida para aprovechar la luz natural.</p>
+              <p>Naves de inventario listas para ocupar y lotes para naves a la medida. Cada lote deja libres sus restricciones al frente y a los lados, su área verde y su estacionamiento.</p>
             </div>
             <div class="tour__stop" data-sc-cue="0.75 1 0.22 0.1">
               <h3>Oficinas</h3>
-              <p>Área de oficinas y servicios integrada a la nave, con acceso y estacionamiento separados del tránsito de carga.</p>
+              <p>Oficinas integradas a cada nave, con acceso y estacionamiento separados del tránsito de carga. El parque tiene reglamento interno y administración para las áreas comunes.</p>
             </div>
           </div>
           <div class="tour__dots" role="group" aria-label="Partes del parque">
@@ -244,6 +432,7 @@
         <video data-sc-scrub data-sc-src="media/build.mp4" data-sc-src-mobile="media/build-m.mp4" muted playsinline></video>
         <img class="build__final" src="img/nave.webp" alt="Nave industrial terminada al anochecer, con los andenes iluminados" loading="lazy">
         <img class="build__lot" src="img/terreno.webp" alt="" loading="lazy">
+        <img class="build__xray" src="img/estructura.webp" alt="" loading="lazy">
 
         <svg class="plan" viewBox="0 0 2752 1536" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g class="plan__g plan__g--1">
@@ -286,23 +475,24 @@
         <ol class="build__steps">
           <li class="sc-copy sc-copy--lead" data-sc-cue="0 0.13 0">
             <h2 class="hd-lg">De un terreno vacío a una nave operando</h2>
-            <p class="lede"><strong>Terreno y factibilidad.</strong> Revisamos uso de suelo, accesos y servicios, y estimamos inversión y plazo antes de comprometer el proyecto.</p>
+            <p class="lede"><strong>Terreno y factibilidad.</strong> Revisamos uso de suelo, mecánica de suelos, topografía y factibilidades de agua, drenaje y energía antes de comprometer el proyecto.</p>
           </li>
           <li class="sc-copy sc-copy--lead" data-sc-cue="0.1 0.25">
             <h3 class="hd-md">Proyecto e ingeniería</h3>
-            <p class="lede">Definimos claros, altura libre, andenes y cargas de piso a partir de cómo va a trabajar tu operación.</p>
+            <p class="lede">Proyecto arquitectónico, estructural y de instalaciones: claros, altura libre, andenes, cargas de piso y energía, a partir de cómo va a trabajar tu operación.</p>
           </li>
           <li class="sc-copy sc-copy--lead" data-sc-cue="0.22 0.36">
             <h3 class="hd-md">Permisos</h3>
-            <p class="lede">Gestionamos licencias y trámites ante las autoridades para que la obra arranque en regla.</p>
+            <p class="lede">Uso de suelo, impacto ambiental, impacto vial, Protección Civil y licencia de construcción con Director Responsable de Obra: gestionamos lo que pida cada municipio antes de arrancar.</p>
           </li>
           <li class="sc-copy sc-copy--lead" data-sc-cue="0.33 0.86">
             <h3 class="hd-md">Obra</h3>
-            <p class="lede">Cimentación, estructura metálica, pisos, cubiertas e instalaciones, con supervisión propia y reportes de avance.</p>
+            <p class="lede">Terracerías y plataformas, cimentación, montaje de la estructura, cubierta engargolada, muros, piso industrial, instalaciones, red contra incendio y urbanización.</p>
           </li>
           <li class="sc-copy sc-copy--lead" data-sc-cue="0.83 1 0.3 0.1">
             <h3 class="hd-md">Entrega</h3>
-            <p class="lede">Recibes la nave probada y lista para instalar equipo y empezar a operar.</p>
+            <p class="lede">Pruebas de instalaciones, terminación de obra y entrega de la nave lista para instalar equipo y empezar a operar.</p>
+            <p class="hint">Pasa el cursor sobre la nave: así es la estructura que la sostiene.</p>
           </li>
         </ol>
 
@@ -320,6 +510,47 @@
     <!-- 6. Contacto -->
     <section class="contact" id="contacto" data-sc-act="flow" data-sc-drift="#0d1a26">
       <div class="contact__media" aria-hidden="true"><img src="img/interior.webp" alt="" loading="lazy"></div>
+      <div class="sc-wrap faq">
+        <div class="faq__head" data-sc-in>
+          <h2 class="hd-lg">Preguntas que nos hacen antes de cotizar</h2>
+          <p class="lede">Si la tuya no está aquí, escríbenos y la resolvemos.</p>
+        </div>
+        <div class="faq__list" data-sc-in>
+          <details open>
+            <summary>¿Qué es una nave a la medida o build-to-suit?</summary>
+            <p>Es una nave que se proyecta y se construye para una empresa en particular. La superficie, la altura libre, los andenes, la energía y las oficinas salen de su operación. A cambio suele firmarse un contrato de mayor plazo que en una nave ya construida.</p>
+          </details>
+          <details>
+            <summary>¿Y una nave de inventario o especulativa?</summary>
+            <p>Es la que se construye antes de tener inquilino, con especificaciones estándar de mercado, para entregarla en poco tiempo. Las adecuaciones que necesite cada inquilino se acuerdan aparte.</p>
+          </details>
+          <details>
+            <summary>¿Cómo se cotiza la renta de una nave industrial?</summary>
+            <p>En México la renta industrial se cotiza en dólares por metro cuadrado al mes; en la frontera, por pie cuadrado. Lo usual es el esquema triple neto (NNN): además de la renta, el inquilino paga predial, seguro y mantenimiento, y el IVA va aparte. Los contratos suelen ser de 5 a 10 años, con un incremento anual ligado a la inflación. Las condiciones de cada nave te las confirmamos al cotizar.</p>
+          </details>
+          <details>
+            <summary>¿Qué datos necesito para pedir una cotización?</summary>
+            <p>El giro de tu operación, superficie, altura libre, número de andenes y rampas, energía eléctrica en kVA, ciudad o zona, fecha de ocupación y plazo. Con eso sabemos si te sirve una nave disponible o conviene construir.</p>
+          </details>
+          <details>
+            <summary>¿Cuántos andenes necesita mi nave?</summary>
+            <p>Depende de cuántos camiones recibes y despachas por turno. Como referencia, las guías del mercado hablan de un andén por cada 800 a 1,200 m² en naves logísticas; un cross-dock necesita muchos más y una nave de manufactura, menos. Conviene dejar preparaciones en el muro para abrir más puertas después.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto tarda en construirse una nave a la medida?</summary>
+            <p>Depende del tamaño, del terreno y, sobre todo, de los permisos y de la energía eléctrica. Como referencia del mercado, entre 6 y 18 meses desde la firma; donde todavía no hay factibilidad de energía puede ser más. El plazo de tu proyecto se fija en el programa de obra.</p>
+          </details>
+          <details>
+            <summary>¿Qué trámites lleva construir una nave?</summary>
+            <p>Cambian en cada municipio. Lo habitual: dictamen de uso de suelo, factibilidades de agua, drenaje y energía, autorización de impacto ambiental, dictamen de impacto vial, visto bueno de Protección Civil y licencia de construcción con un Director Responsable de Obra. Antes del proyecto se hacen los estudios de mecánica de suelos, topografía e hidrología; al final se tramita la terminación de obra.</p>
+          </details>
+          <details>
+            <summary>¿Qué debe tener un parque industrial?</summary>
+            <p>La norma mexicana NMX-R-046-SCFI-2015 lo define: título de propiedad, autorización de impacto ambiental, proyecto ejecutivo, reglamento interno y administración permanente; vialidades pavimentadas, alumbrado y señalización; y redes de agua, drenaje, energía en media tensión y telecomunicaciones con dotaciones mínimas por hectárea. Las cifras están en la <a href="#ficha" data-spec="6">ficha técnica del parque</a>.</p>
+          </details>
+        </div>
+      </div>
+
       <div class="sc-wrap contact__grid">
         <div class="contact__intro" data-sc-in>
           <h2 class="hd-lg">Cuéntanos qué nave necesitas</h2>
@@ -353,9 +584,29 @@
               <option>Desarrollar un parque industrial</option>
             </select>
           </div>
-          <div class="field field--wide">
-            <label for="f-superficie">Superficie aproximada en m² <span class="opt">(opcional)</span></label>
+          <div class="field">
+            <label for="f-superficie">Superficie en m² <span class="opt">(opcional)</span></label>
             <input id="f-superficie" name="superficie" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="f-zona">Ciudad o zona <span class="opt">(opcional)</span></label>
+            <input id="f-zona" name="zona">
+          </div>
+          <div class="field">
+            <label for="f-altura">Altura libre en m <span class="opt">(opcional)</span></label>
+            <input id="f-altura" name="altura" inputmode="decimal">
+          </div>
+          <div class="field">
+            <label for="f-andenes">Andenes <span class="opt">(opcional)</span></label>
+            <input id="f-andenes" name="andenes" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="f-energia">Energía en kVA <span class="opt">(opcional)</span></label>
+            <input id="f-energia" name="energia" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="f-fecha">Fecha de ocupación <span class="opt">(opcional)</span></label>
+            <input id="f-fecha" name="fecha" placeholder="Mes y año">
           </div>
           <div class="field field--wide">
             <label for="f-mensaje">Detalles <span class="opt">(opcional)</span></label>
@@ -374,6 +625,7 @@
           <nav class="foot__nav" aria-label="Pie de página">
             <a href="#servicios">Qué hacemos</a>
             <a href="#anatomia">La nave</a>
+            <a href="#ficha">Ficha técnica</a>
             <a href="#parque">Parques</a>
             <a href="#proceso">Proceso</a>
           </nav>
@@ -398,6 +650,5 @@
 
   <script src="scrollcraft.js"></script>
   <script src="script.js"></script>
-  <script type="module" src="nave3d.js"></script>
 </body>
 </html>

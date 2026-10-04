@@ -248,6 +248,17 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   kick();
 })();
 
+// Rayos X: con la nave ya terminada, el cursor deja ver la estructura que la sostiene
+(function xray() {
+  const stage = document.querySelector(".build__stage");
+  if (!stage || !finePointer || reduce) return;
+  stage.addEventListener("pointermove", (e) => {
+    const r = stage.getBoundingClientRect();
+    stage.style.setProperty("--lx", (e.clientX - r.left).toFixed(0) + "px");
+    stage.style.setProperty("--ly", (e.clientY - r.top).toFixed(0) + "px");
+  });
+})();
+
 // El formulario abre WhatsApp con el mensaje armado
 const form = document.getElementById("form-contacto");
 const status = form.querySelector(".form__status");
@@ -274,9 +285,41 @@ form.addEventListener("submit", (event) => {
     "Hola, soy " + form.nombre.value.trim() + (form.empresa.value.trim() ? " de " + form.empresa.value.trim() : "") + ".",
     "Me interesa: " + form.interes.value + ".",
     form.superficie.value.trim() && "Superficie aproximada: " + form.superficie.value.trim() + " m².",
+    form.zona.value.trim() && "Zona: " + form.zona.value.trim() + ".",
+    form.altura.value.trim() && "Altura libre: " + form.altura.value.trim() + " m.",
+    form.andenes.value.trim() && "Andenes: " + form.andenes.value.trim() + ".",
+    form.energia.value.trim() && "Energía: " + form.energia.value.trim() + " kVA.",
+    form.fecha.value.trim() && "Fecha de ocupación: " + form.fecha.value.trim() + ".",
     form.mensaje.value.trim(),
     "Mi teléfono: " + form.telefono.value.trim(),
   ].filter(Boolean);
 
   window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(lines.join("\n")), "_blank", "noopener");
 });
+
+// Ficha técnica: pestañas por sistema (clic, flechas, inicio y fin)
+(function spec() {
+  const tabs = [...document.querySelectorAll(".spec__tabs [role='tab']")];
+  const panels = [...document.querySelectorAll(".spec__panel")];
+  if (!tabs.length) return;
+  function select(index, focus) {
+    tabs.forEach((tab, i) => {
+      tab.setAttribute("aria-selected", String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+    });
+    panels.forEach((panel, i) => panel.classList.toggle("is-on", i === index));
+    if (focus) tabs[index].focus();
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => select(i));
+    tab.addEventListener("keydown", (e) => {
+      const move = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+      if (move) { e.preventDefault(); select((i + move + tabs.length) % tabs.length, true); }
+      if (e.key === "Home") { e.preventDefault(); select(0, true); }
+      if (e.key === "End") { e.preventDefault(); select(tabs.length - 1, true); }
+    });
+  });
+  // Enlaces que abren una pestaña concreta, como el de las preguntas frecuentes
+  document.querySelectorAll("a[data-spec]").forEach((a) => a.addEventListener("click", () => select(Number(a.dataset.spec))));
+  select(0);
+})();
