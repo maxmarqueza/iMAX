@@ -77,7 +77,7 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   const PLATE = "#0d1a26";
   let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, lastKey = "", metrics = null;
   // Estado que comparten los efectos de fx/: geometría de la placa, apertura por letra y redibujo
-  const shared = (FX.hero = { act, stage, video, canvas, open: null, scale: 1, alpha: 1, geom: () => ({ w, h, dpr, size, left, baseline, ox, oy, metrics }), redraw() { lastKey = ""; draw(); } });
+  const shared = (FX.hero = { act, stage, video, canvas, open: reduce ? null : [0, 0, 0, 0], scale: 1, alpha: 1, geom: () => ({ w, h, dpr, size, left, baseline, ox, oy, metrics }), redraw() { lastKey = ""; draw(); } });
 
   // Video de ambiente: se elige el archivo según el ancho y se pausa fuera de pantalla
   if (!reduce) {
@@ -130,6 +130,7 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   }
 
   if (!reduce) {
+    setTimeout(() => { if (shared.open && !act.classList.contains("has-curtain")) { shared.open = null; shared.redraw(); } }, 2500);
     addEventListener("scroll", draw, { passive: true });
     addEventListener("resize", layout);
     layout();
