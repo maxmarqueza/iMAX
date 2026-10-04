@@ -65,96 +65,6 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   })
 );
 
-// ---------------------------------------------------------------- Portada
-// El nombre IMAX es una placa oscura con las letras recortadas: adentro se ve
-// la nave en video. Al bajar, la cámara atraviesa una letra y la placa se disuelve.
-(function hero() {
-  const act = document.querySelector(".hero");
-  const stage = act.querySelector(".hero__stage");
-  const video = act.querySelector(".hero__video");
-  const canvas = act.querySelector(".hero__plate");
-  const ctx = canvas.getContext("2d");
-  const PLATE = "#0d1a26";
-  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, lastKey = "", metrics = null;
-  // Estado que comparten los efectos de fx/: geometría de la placa, apertura por letra y redibujo
-  const shared = (FX.hero = { act, stage, video, canvas, open: reduce ? null : [0, 0, 0, 0], scale: 1, alpha: 1, geom: () => ({ w, h, dpr, size, left, baseline, ox, oy, metrics }), redraw() { lastKey = ""; draw(); } });
-
-  // Video de ambiente: se elige el archivo según el ancho y se pausa fuera de pantalla
-  if (!reduce) {
-    video.autoplay = true;
-    video.src = innerWidth <= 860 ? video.dataset.srcMobile : video.dataset.src;
-    video.play().catch(() => {});
-    new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) video.play().catch(() => {});
-      else video.pause();
-    }).observe(stage);
-  }
-
-  const font = FX.plate.font;
-
-  function layout() {
-    const r = stage.getBoundingClientRect();
-    w = r.width; h = r.height;
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    canvas.width = Math.round(w * dpr);
-    canvas.height = Math.round(h * dpr);
-    metrics = FX.plate.measure(ctx);
-    const narrow = w < 700;
-    const target = Math.min(w * (narrow ? 0.9 : 0.84), 1400, h * (narrow ? 1.2 : 1.9));
-    size = (100 * target) / metrics.width;
-    const cap = (metrics.cap / 100) * size;
-    const cy = h * (narrow ? 0.29 : 0.34);
-    baseline = cy + cap / 2;
-    left = (w - target) / 2;
-    // Centro del asta derecha de la M: por ahí entra la cámara
-    ox = left + (metrics.stops[2] / 100) * size - 0.17 * size;
-    oy = cy;
-    stage.style.setProperty("--wm-bottom", Math.round(baseline + size * 0.1) + "px");
-    lastKey = "";
-    draw();
-  }
-
-  function draw() {
-    if (reduce || !w) return;
-    const p = actP(act);
-    const t = clamp01((p - 0.03) / 0.5);
-    const scale = 1 + Math.pow(t, 2.6) * 26;
-    const alpha = 1 - smooth((t - 0.5) / 0.42);
-    const key = scale.toFixed(3) + "|" + alpha.toFixed(3) + "|" + (shared.open ? shared.open.map((o) => o.toFixed(3)).join(",") : "");
-    if (key === lastKey) return;
-    lastKey = key;
-    shared.scale = scale; shared.alpha = alpha;
-    canvas.style.opacity = alpha.toFixed(3);
-    if (alpha <= 0) return;
-    FX.plate.draw(ctx, { w, h, dpr, color: PLATE, size, left, baseline, ox, oy, scale, open: shared.open, metrics });
-  }
-
-  if (!reduce) {
-    setTimeout(() => { if (shared.open && !act.classList.contains("has-curtain")) { shared.open = null; shared.redraw(); } }, 2500);
-    addEventListener("scroll", draw, { passive: true });
-    addEventListener("resize", layout);
-    layout();
-    if (document.fonts) {
-      document.fonts.load(font(100), "IMAX").then(layout).catch(() => {});
-      document.fonts.ready.then(layout);
-    }
-    // La escena se desplaza un poco con el cursor, detrás de la placa
-    if (finePointer) {
-      let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
-      const step = () => {
-        cx = lerp(cx, tx, 0.08); cy = lerp(cy, ty, 0.08);
-        stage.style.setProperty("--px", cx.toFixed(4));
-        stage.style.setProperty("--py", cy.toFixed(4));
-        raf = Math.abs(cx - tx) + Math.abs(cy - ty) > 0.002 ? requestAnimationFrame(step) : 0;
-      };
-      stage.addEventListener("pointermove", (e) => {
-        tx = e.clientX / innerWidth - 0.5; ty = e.clientY / innerHeight - 0.5;
-        if (!raf) raf = requestAnimationFrame(step);
-      });
-    }
-  }
-})();
-
 // ------------------------------------------------------- Recorrido del parque
 // La cámara viaja de punto a punto sobre la vista aérea, guiada por el scroll.
 (function tour() {
@@ -302,40 +212,47 @@ form.addEventListener("submit", (event) => {
 })();
 
 // ------------------------------------------------------------------- Pie
-// La página termina como empezó: el nombre es una ventana hacia la nave.
+// La página cierra con el nombre como ventana: por las letras se ve la nave terminada a la hora dorada.
+// Al llegar, cada letra se abre de abajo hacia arriba, como una cortina de andén.
 (function footWord() {
   const box = document.querySelector(".foot__word");
   if (!box) return;
-  const video = box.querySelector("video");
   const canvas = box.querySelector("canvas");
   const ctx = canvas.getContext("2d");
-  const font = FX.plate.font;
-  const shared = (FX.foot = { box, video, canvas, open: null, redraw: draw });
+  const shared = (FX.foot = { box, canvas, open: reduce ? null : [0, 0, 0, 0], redraw: draw });
+  let lastKey = "";
   function draw() {
     const r = box.getBoundingClientRect();
     if (!r.width) return;
+    const key = Math.round(r.width) + "x" + Math.round(r.height) + "|" + (shared.open ? shared.open.map((o) => o.toFixed(3)).join(",") : "");
+    if (key === lastKey) return;
+    lastKey = key;
     const dpr = Math.min(devicePixelRatio || 1, 2);
-    canvas.width = Math.round(r.width * dpr);
-    canvas.height = Math.round(r.height * dpr);
+    const w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
     const metrics = FX.plate.measure(ctx);
-    const target = r.width * 0.95;
+    // La palabra ocupa el ancho, sin pasarse del alto de la franja
+    const target = Math.min(r.width * 0.96, (r.height * 0.9 * metrics.width) / metrics.cap);
     const size = (100 * target) / metrics.width;
     const cap = (metrics.cap / 100) * size;
     const left = (r.width - target) / 2, baseline = (r.height + cap) / 2;
-    const color = getComputedStyle(document.documentElement).getPropertyValue("--sc-canvas").trim() || "#0d1a26";
+    const color = getComputedStyle(box).getPropertyValue("--plate").trim() || "#ffffff";
     FX.plate.draw(ctx, { w: r.width, h: r.height, dpr, color, size, left, baseline, ox: r.width / 2, oy: r.height / 2, scale: 1, open: shared.open, metrics });
   }
-  draw();
-  addEventListener("resize", draw);
-  if (document.fonts) {
-    document.fonts.load(font(100), "IMAX").then(draw).catch(() => {});
-    document.fonts.ready.then(draw);
+  // Apertura ligada al scroll: empieza cuando la palabra asoma y termina cuando está completa en pantalla
+  function onScroll() {
+    if (reduce) return;
+    const r = box.getBoundingClientRect();
+    const t = clamp01((innerHeight - r.top) / (r.height + 60));
+    shared.open = [0, 1, 2, 3].map((i) => smooth((t - i * 0.08) / 0.6));
+    draw();
   }
-  if (reduce) return;
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      if (!video.src) video.src = innerWidth <= 860 ? video.dataset.srcMobile : video.dataset.src;
-      video.play().catch(() => {});
-    } else video.pause();
-  }, { rootMargin: "300px 0px" }).observe(box);
+  addEventListener("resize", () => { lastKey = ""; draw(); });
+  addEventListener("scroll", onScroll, { passive: true });
+  if (document.fonts) {
+    document.fonts.load(FX.plate.font(100), "IMAX").then(() => { lastKey = ""; onScroll(); draw(); }).catch(() => {});
+    document.fonts.ready.then(() => { lastKey = ""; draw(); });
+  }
+  onScroll();
+  draw();
 })();
