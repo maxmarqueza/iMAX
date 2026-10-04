@@ -11,6 +11,11 @@
   const PLATE = "#e9ebe8", EDGE = "255,194,14";
   let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, dive = 1, cover = 1, metrics = null, lastKey = "";
   let open = FX.reduce ? null : [0, 0, 0, 0];
+  // Con el dedo, la entrada por la M no va pegada al scroll: lo sigue con un resorte (~1 s), así un
+  // deslizón rápido igual se ve como una toma completa. La escena, la frase y las rutas leen --hp.
+  const SPRING = FX.coarse && !FX.reduce;
+  let hp = FX.actP(act), hv = 0, springRaf = 0, lastT = 0;
+  const progress = () => (SPRING ? hp : FX.actP(act));
 
   // Video: archivo según el ancho; solo corre con la portada en pantalla
   if (!FX.reduce && video) {
@@ -30,7 +35,7 @@
     const target = Math.min(w * (narrow ? 0.9 : 0.84), 1440, h * (narrow ? 1.2 : 1.9));
     size = (100 * target) / metrics.width;
     const cap = (metrics.cap / 100) * size;
-    const cy = h * (narrow ? 0.36 : 0.42);
+    const cy = h * 0.42;
     baseline = cy + cap / 2;
     left = (w - target) / 2;
     // Asta derecha de la M: por ahí entra la cámara
@@ -49,7 +54,7 @@
 
   function draw() {
     if (!w) return;
-    const p = FX.actP(act);
+    const p = progress();
     const t = FX.clamp01((p - 0.03) / 0.5);
     const scale = Math.pow(1 + Math.pow(t, 2.6) * 26, dive);
     // Pasado ~40x el asta ya tapa toda la escena en cualquier pantalla: no hay placa que pintar
@@ -111,7 +116,26 @@
     requestAnimationFrame(step);
   }
 
-  addEventListener("scroll", draw, { passive: true });
+  function spring(t) {
+    springRaf = 0;
+    const dt = lastT ? Math.min(0.05, (t - lastT) / 1000) : 1 / 60;
+    lastT = t;
+    const goal = FX.actP(act), k = 4.5;
+    hv += (k * k * (goal - hp) - 2 * k * hv) * dt;
+    hp = FX.clamp01(hp + hv * dt);
+    if (Math.abs(goal - hp) < 0.0006 && Math.abs(hv) < 0.002) { hp = goal; hv = 0; }
+    stage.style.setProperty("--hp", hp.toFixed(4));
+    act.__p = hp;
+    draw();
+    if (hp !== goal) springRaf = requestAnimationFrame(spring);
+    else lastT = 0;
+  }
+  if (SPRING) {
+    stage.classList.add("con-resorte");
+    stage.style.setProperty("--hp", hp.toFixed(4));
+    act.__p = hp;
+    addEventListener("scroll", () => { if (!springRaf) springRaf = requestAnimationFrame(spring); }, { passive: true });
+  } else addEventListener("scroll", draw, { passive: true });
   addEventListener("resize", layout);
   layout();
   const fontReady = document.fonts ? Promise.race([document.fonts.load(FX.plate.font(100), "IMAX"), new Promise((r) => setTimeout(r, 1200))]) : Promise.resolve();

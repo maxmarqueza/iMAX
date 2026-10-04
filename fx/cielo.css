@@ -26,7 +26,8 @@
 .anat.is-medida .anat__cotas .lbl.d3 { transition-delay: 1.1s; }
 @media (max-width: 860px) {
   .anat__cotas .lbl text { font-size: 34px; } .anat__cotas .lbl text.v { font-size: 40px; }
-  /* En vertical solo se ve el centro de la escena: la palabra va más arriba para que asome entera sobre la sierra */
-  .anat__cielo span { top: 32%; }
+  /* En vertical solo se ve el centro de la escena y ahí el pico de la derecha sube: la palabra va más arriba
+     para asomar completa sobre la sierra */
+  .anat__cielo span { top: 27%; }
 }
 @media (prefers-reduced-motion: reduce) { .anat__cielo, .anat__cotas { display: none; } }

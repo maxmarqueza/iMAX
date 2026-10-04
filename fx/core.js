@@ -2,6 +2,10 @@
 (function () {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const coarse = matchMedia("(pointer: coarse)").matches;
+  // Con el dedo, el video de cada escena sigue al scroll con más calma: un deslizón se ve como una toma
+  // y no como un salto. El motor lee data-sc-lerp al montar (script.js), por eso va aquí.
+  if (coarse && !reduce) document.documentElement.setAttribute("data-sc-lerp", "0.05");
   const clamp01 = (n) => Math.min(1, Math.max(0, n));
   const lerp = (a, b, t) => a + (b - a) * t;
   const smooth = (n) => { n = clamp01(n); return n * n * (3 - 2 * n); };
@@ -104,5 +108,5 @@
     },
   };
 
-  window.FX = { reduce, fine, clamp01, lerp, smooth, actP, watch, loop, fit, plate, narrow: () => innerWidth <= 860 };
+  window.FX = { reduce, fine, coarse, clamp01, lerp, smooth, actP, watch, loop, fit, plate, narrow: () => innerWidth <= 860 };
 })();

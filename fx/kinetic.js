@@ -43,7 +43,7 @@
     if (Math.abs(vel) > 0.5) dir = vel > 0 ? -1 : 1;
 
     if (say && words.length) {
-      const p = FX.actP(hero);
+      const p = hero.__p != null ? hero.__p : FX.actP(hero);
       const n = R ? words.length : Math.round(FX.clamp01((p - 0.58) / 0.16) * words.length);
       if (n !== lastN) { words.forEach((w, i) => w.classList.toggle("on", i < n)); lastN = n; }
     }

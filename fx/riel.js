@@ -43,7 +43,8 @@
   // Arrastre con inercia
   let drag = null, vel = 0, glide = 0, moved = false;
   stage.addEventListener("pointerdown", (e) => {
-    if (e.button !== 0) return;
+    // Con el dedo el riel ya avanza con el scroll vertical; arrastrarlo aparte peleaba con el scroll nativo
+    if (e.button !== 0 || e.pointerType === "touch") return;
     cancelAnimationFrame(glide);
     drag = { id: e.pointerId, x: e.clientX, y: e.clientY, sy: scrollY, lx: e.clientX, lt: performance.now(), on: false, type: e.pointerType };
     vel = 0; moved = false;

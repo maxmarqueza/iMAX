@@ -26,6 +26,16 @@ main > [data-acto]::after {
     opacity: min(1, calc(var(--ex, 0) * 4));
   }
 }
+/* Con el dedo, el sistema mueve la página y el código llega un cuadro tarde: una escena que el código
+   empuja mientras la página corre se ve temblar. Ahí las escenas solo se deslizan con la página; el relevo
+   queda en la línea de nivel, el nombre del acto y una sombra en la orilla de la escena que se va. */
+@media (pointer: coarse) {
+  main > [data-acto], main > .hero { clip-path: none; }
+  main > [data-acto] > [data-sc-stage], main > .hero > [data-sc-stage] { transform: none; border-radius: 0; }
+  main > [data-acto] > [data-sc-stage]::after, main > .hero > [data-sc-stage]::after {
+    background: linear-gradient(180deg, rgba(17, 20, 22, 0) 55%, rgba(17, 20, 22, .42) 100%); opacity: min(1, calc(var(--ex, 0) * 3));
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   main > [data-acto], main > .hero { clip-path: none; }
   main > [data-acto] > [data-sc-stage], main > .hero > [data-sc-stage] { transform: none; border-radius: 0; }

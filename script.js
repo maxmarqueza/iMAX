@@ -76,7 +76,7 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   const dots = [...act.querySelectorAll(".tour__dots button")];
   // Punto de interés (fracción de la imagen) y acercamiento de cada parada
   const STOPS = [
-    { fx: 0.504, fy: 0.80, s: 1.9, at: 0.2 },
+    { fx: 0.504, fy: 0.80, s: 1.9, sm: 2.5, at: 0.2 },
     { fx: 0.505, fy: 0.56, s: 1.7, at: 0.365 },
     { fx: 0.655, fy: 0.57, s: 2.0, at: 0.525 },
     { fx: 0.79, fy: 0.53, s: 1.75, at: 0.685 },
@@ -88,7 +88,8 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   function target(p) {
     const narrow = innerWidth <= 860;
     const keys = [{ fx: 0.5, fy: 0.5, s: 1, at: 0, wide: true }];
-    STOPS.forEach((st) => { keys.push({ ...st, at: st.at - HOLD }); keys.push({ ...st, at: st.at + HOLD }); });
+    // En vertical el panel tapa la parte baja: la caseta, que está al fondo de la imagen, se acerca más (sm)
+    STOPS.forEach((st) => { const k = { ...st, s: narrow && st.sm ? st.sm : st.s }; keys.push({ ...k, at: st.at - HOLD }); keys.push({ ...k, at: st.at + HOLD }); });
     keys.push({ fx: 0.6, fy: 0.6, s: 1.25, at: 1.02, wide: true });
     let a = keys[0], b = keys[keys.length - 1];
     for (let i = 0; i < keys.length - 1; i++) {
@@ -126,7 +127,7 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
     const p = actP(act);
     const goal = target(p);
     if (!cur || reduce) cur = goal;
-    else for (const k in goal) cur[k] = lerp(cur[k], goal[k], 0.12);
+    else for (const k in goal) cur[k] = lerp(cur[k], goal[k], FX.coarse ? 0.06 : 0.12);
     apply(cur);
     setActive(p);
     const moving = Object.keys(goal).some((k) => Math.abs(cur[k] - goal[k]) > 0.0005);
