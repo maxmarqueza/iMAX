@@ -29,10 +29,12 @@
   <link rel="stylesheet" href="fx/portada.css">
   <link rel="stylesheet" href="fx/riel.css">
   <link rel="stylesheet" href="fx/replanteo.css">
+  <link rel="stylesheet" href="fx/cielo.css">
   <link rel="stylesheet" href="fx/lamina.css">
   <link rel="stylesheet" href="fx/anochece.css">
   <link rel="stylesheet" href="fx/tiempos.css">
   <link rel="stylesheet" href="fx/relevo.css">
+  <link rel="stylesheet" href="fx/kinetic.css">
   <link rel="stylesheet" href="fx/salida.css">
   <noscript><style>[data-sc-cue],[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}.hero__plate{display:none}</style></noscript>
 </head>
@@ -183,7 +185,16 @@
         <div class="anat__shade anat__shade--bottom" aria-hidden="true"></div>
 
         <div class="anat__world" aria-hidden="true">
+          <div class="anat__cielo">
+            <span data-a="-1" data-b="0.085">Terreno</span>
+            <span data-a="0.085" data-b="0.205">Terracerías</span>
+            <span data-a="0.205" data-b="0.33">Estructura</span>
+            <span data-a="0.33" data-b="0.56" data-dim>Piezas</span>
+            <span data-a="0.56" data-b="0.9">Montaje</span>
+            <span data-a="0.9" data-b="2">Entrega</span>
+          </div>
           <svg class="anat__trazo" viewBox="0 0 1942 1080" preserveAspectRatio="none"></svg>
+          <svg class="anat__cotas" viewBox="0 0 1942 1080" preserveAspectRatio="none"></svg>
           <span class="anat__tag anat__tag--m" style="--x:46%;--y:23.4%;--in:.445"><span class="anat__lbl"><b>Lámina de cubierta</b><i>KR-18 engargolada, calibre 24</i></span></span>
           <span class="anat__tag anat__tag--m" style="--x:66.7%;--y:29.4%;--xm:44%;--ym:30%;--in:.45"><span class="anat__lbl"><b>Largueros</b><i>Reciben lámina y aislamiento</i></span></span>
           <span class="anat__tag anat__tag--m" style="--x:28%;--y:41.4%;--xm:46.7%;--ym:39.6%;--in:.455"><span class="anat__lbl"><b>Armaduras</b><i>Claros de 12 a 15 m</i></span></span>
@@ -651,6 +662,7 @@
       </div>
 
       <div class="contact__band">
+      <div class="contact__marquee" aria-hidden="true"><div class="contact__track"><span>Renta</span><span>Venta</span><span>Construcción a la medida</span><span>Parques industriales</span><span>Renta</span><span>Venta</span><span>Construcción a la medida</span><span>Parques industriales</span></div></div>
       <div class="sc-wrap contact__grid">
         <div class="contact__intro" data-sc-in>
           <h2 class="hd-lg">Cuéntanos qué nave necesitas</h2>
@@ -768,11 +780,13 @@
   <script src="fx/portada.js"></script>
   <script src="fx/riel.js"></script>
   <script src="fx/replanteo.js"></script>
+  <script src="fx/cielo.js"></script>
   <script src="fx/lamina.js"></script>
   <script src="fx/anochece.js"></script>
   <script src="fx/tiempos.js"></script>
   <script src="fx/escala.js"></script>
   <script src="fx/relevo.js"></script>
+  <script src="fx/kinetic.js"></script>
   <script src="fx/salida.js"></script>
 </body>
 </html>
