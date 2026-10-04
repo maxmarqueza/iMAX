@@ -5,186 +5,189 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IMAX | Naves y parques industriales en renta, venta y construcción</title>
   <meta name="description" content="IMAX desarrolla, construye, renta y vende naves y parques industriales. Cotiza una nave disponible o un proyecto a la medida.">
-  <meta name="theme-color" content="#1d2f3a">
+  <meta name="theme-color" content="#0d1a26">
   <link rel="canonical" href="https://grupoimax.mx/">
   <script>if (location.protocol === "http:" && location.hostname.endsWith("grupoimax.mx")) location.replace("https://grupoimax.mx" + location.pathname + location.hash);</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/hero.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
 
-  <header class="top">
-    <div class="wrap top__row">
+  <header class="top" id="top">
+    <div class="top__bar">
       <a class="brand" href="#" aria-label="IMAX, inicio">IMAX</a>
       <nav class="nav" aria-label="Principal">
-        <a href="#servicios">Qué hacemos</a>
-        <a href="#construccion">Construcción</a>
+        <div class="nav__item">
+          <button class="nav__link nav__trigger" type="button" aria-expanded="false" aria-controls="mega">Qué hacemos</button>
+        </div>
+        <a class="nav__link" href="#parque">Parques</a>
+        <a class="nav__link" href="#construccion">Construcción</a>
       </nav>
-      <a class="btn btn--accent btn--small" href="#contacto">Cotizar</a>
+      <a class="btn btn--accent btn--small top__cta" href="#contacto">Cotizar</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mega" aria-label="Abrir menú"><span></span><span></span></button>
+    </div>
+
+    <div class="mega" id="mega" hidden>
+      <a class="mega__item" href="#contacto" data-interes="Rentar una nave">
+        <img src="img/andenes.jpg" alt="" loading="lazy">
+        <span><strong>Renta de naves</strong>Naves terminadas dentro de nuestros parques, listas para operar.</span>
+      </a>
+      <a class="mega__item" href="#contacto" data-interes="Comprar una nave">
+        <img src="img/oficinas.jpg" alt="" loading="lazy">
+        <span><strong>Venta de naves</strong>Naves y lotes industriales para patrimonio propio o inversión.</span>
+      </a>
+      <a class="mega__item" href="#construccion">
+        <img src="img/obra.jpg" alt="" loading="lazy">
+        <span><strong>Construcción a la medida</strong>Proyecto y obra de tu nave, en tu terreno o en el nuestro.</span>
+      </a>
+      <a class="mega__item" href="#parque">
+        <img src="img/parque.jpg" alt="" loading="lazy">
+        <span><strong>Parques industriales</strong>Desarrollo completo: urbanización, vialidades, redes y naves.</span>
+      </a>
+      <a class="mega__item mega__item--mobile" href="#contacto"><span><strong>Cotizar</strong>Cuéntanos qué nave necesitas.</span></a>
     </div>
   </header>
 
   <main id="contenido">
     <section class="hero">
-      <div class="wrap hero__grid">
-        <div class="hero__text">
-          <h1>Naves y parques industriales, del terreno a la llave.</h1>
-          <p class="hero__lead">IMAX desarrolla, construye, renta y vende naves industriales y parques industriales completos. Una sola empresa responde por el proyecto, la obra y el inmueble.</p>
-          <div class="hero__actions">
-            <a class="btn btn--accent" href="#contacto">Cotizar una nave</a>
-            <a class="btn btn--line" href="#construccion">Cómo construimos</a>
-          </div>
-        </div>
+      <div class="hero__media" aria-hidden="true"><img src="img/hero.jpg" alt=""></div>
+      <div class="hero__shade" aria-hidden="true"></div>
 
-        <figure class="hero__drawing">
-          <svg viewBox="0 0 720 420" role="img" aria-labelledby="dibujo-titulo">
-            <title id="dibujo-titulo">Alzado de una nave industrial con andenes de carga, acotado con altura libre y frente</title>
-            <g class="draw draw--soft">
-              <path pathLength="1" d="M20 340 H700"/>
-              <path pathLength="1" d="M270 150 V340 M450 150 V340"/>
-            </g>
-            <g class="draw draw--main">
-              <path pathLength="1" d="M90 340 V170 L360 140 L630 170 V340"/>
-              <path pathLength="1" d="M90 186 L360 156 L630 186"/>
-              <path pathLength="1" d="M130 318 H500"/>
-              <path pathLength="1" d="M150 318 V262 H210 V318 M240 318 V262 H300 V318 M330 318 V262 H390 V318 M420 318 V262 H480 V318"/>
-              <path pathLength="1" d="M160 276 H200 M160 290 H200 M160 304 H200 M250 276 H290 M250 290 H290 M250 304 H290 M340 276 H380 M340 290 H380 M340 304 H380 M430 276 H470 M430 290 H470 M430 304 H470"/>
-              <path pathLength="1" d="M545 340 V288 H577 V340"/>
-            </g>
-            <g class="draw draw--dim">
-              <path pathLength="1" d="M56 170 V340 M48 170 H64 M48 340 H64"/>
-              <path pathLength="1" d="M90 378 H630 M90 370 V386 M630 370 V386"/>
-              <path pathLength="1" d="M315 262 V232 H330"/>
-            </g>
-            <g class="dim-text">
-              <text x="40" y="255" transform="rotate(-90 40 255)" text-anchor="middle">Altura libre 10 m</text>
-              <text x="360" y="402" text-anchor="middle">Frente 60 m</text>
-              <text x="336" y="237">Andenes con rampa niveladora</text>
-            </g>
-          </svg>
-          <figcaption>Medidas ilustrativas. Cada nave se diseña según la operación que va a alojar.</figcaption>
-        </figure>
+      <div class="hero__body">
+        <h1><span class="line"><span>Naves y parques</span></span> <span class="line"><span>industriales,</span></span> <span class="line"><span>del terreno a la llave.</span></span></h1>
+        <p class="hero__lead">IMAX desarrolla, construye, renta y vende naves industriales y parques industriales completos. Una sola empresa responde por el proyecto, la obra y el inmueble.</p>
+        <div class="hero__actions">
+          <a class="btn btn--accent" href="#contacto">Cotizar una nave</a>
+          <a class="btn btn--glass" href="#servicios">Ver qué hacemos</a>
+        </div>
+      </div>
+
+      <div class="hero__rail">
+        <a href="#contacto" data-interes="Rentar una nave"><strong>Renta</strong><span>Naves listas para operar</span></a>
+        <a href="#contacto" data-interes="Comprar una nave"><strong>Venta</strong><span>Naves y lotes industriales</span></a>
+        <a href="#construccion"><strong>Construcción</strong><span>Naves y parques a la medida</span></a>
+        <p class="hero__note">Imagen ilustrativa</p>
       </div>
     </section>
 
-    <section class="section" id="servicios">
+    <section class="section section--night" id="servicios">
       <div class="wrap">
-        <h2>Tres formas de trabajar con IMAX</h2>
-        <div class="services">
-          <article class="service">
-            <h3>Rentar una nave</h3>
+        <div class="head">
+          <h2>Cuatro formas de trabajar con IMAX</h2>
+          <p>Somos inmobiliaria, desarrolladora y constructora. Puedes ocupar una nave nuestra, comprarla, o encargarnos la tuya.</p>
+        </div>
+      </div>
+      <div class="panels">
+        <a class="panel is-open" href="#contacto" data-interes="Rentar una nave">
+          <img src="img/andenes.jpg" alt="Andenes de carga de una nave industrial al atardecer" loading="lazy">
+          <div class="panel__text">
+            <h3>Renta de naves</h3>
             <p>Naves terminadas o en obra dentro de nuestros parques, con contrato de arrendamiento y entrega lista para instalar tu operación.</p>
-            <a class="link" href="#contacto" data-interes="Rentar una nave">Preguntar por naves en renta</a>
-          </article>
-          <article class="service">
-            <h3>Comprar una nave</h3>
+            <span class="panel__go">Preguntar por naves en renta</span>
+          </div>
+        </a>
+        <a class="panel" href="#contacto" data-interes="Comprar una nave">
+          <img src="img/oficinas.jpg" alt="Acceso de oficinas de una nave industrial moderna" loading="lazy">
+          <div class="panel__text">
+            <h3>Venta de naves</h3>
             <p>Naves y lotes industriales en venta para empresas que quieren patrimonio propio y para inversionistas que buscan renta industrial.</p>
-            <a class="link" href="#contacto" data-interes="Comprar una nave">Preguntar por naves en venta</a>
-          </article>
-          <article class="service">
-            <h3>Construir a la medida</h3>
-            <p>Diseñamos y construimos tu nave, o un parque industrial completo, en tu terreno o en uno de los nuestros: urbanización, estructura, pisos e instalaciones.</p>
-            <a class="link" href="#construccion">Cómo es el proceso</a>
-          </article>
+            <span class="panel__go">Preguntar por naves en venta</span>
+          </div>
+        </a>
+        <a class="panel" href="#construccion">
+          <img src="img/obra.jpg" alt="Estructura metálica de una nave industrial en construcción" loading="lazy">
+          <div class="panel__text">
+            <h3>Construcción a la medida</h3>
+            <p>Diseñamos y construimos tu nave en tu terreno o en uno de los nuestros: claros, altura y andenes definidos por tu operación.</p>
+            <span class="panel__go">Ver cómo construimos</span>
+          </div>
+        </a>
+        <a class="panel" href="#parque">
+          <img src="img/interior.jpg" alt="Interior de una nave industrial nueva con piso de concreto pulido" loading="lazy">
+          <div class="panel__text">
+            <h3>Parques industriales</h3>
+            <p>Desarrollamos parques completos, desde la urbanización del terreno hasta la última nave, para operarlos o para terceros.</p>
+            <span class="panel__go">Ver cómo se arma un parque</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="park" id="parque">
+      <div class="park__stage">
+        <img class="park__img" src="img/parque.jpg" alt="Vista aérea de un parque industrial con seis naves, vialidad central y caseta de acceso" loading="lazy">
+        <button class="pin" type="button" style="--x:50.4%;--y:81%" data-spot="0" aria-pressed="true"><span class="sr">Acceso controlado</span></button>
+        <button class="pin" type="button" style="--x:51%;--y:52%" data-spot="1" aria-pressed="false"><span class="sr">Vialidad interna</span></button>
+        <button class="pin" type="button" style="--x:61%;--y:58%" data-spot="2" aria-pressed="false"><span class="sr">Patios de maniobras y andenes</span></button>
+        <button class="pin" type="button" style="--x:73%;--y:42%" data-spot="3" aria-pressed="false"><span class="sr">Naves</span></button>
+        <button class="pin" type="button" style="--x:79%;--y:71%" data-spot="4" aria-pressed="false"><span class="sr">Oficinas</span></button>
+        <p class="park__note">Imagen ilustrativa</p>
+      </div>
+
+      <div class="park__card">
+        <h2>Así se arma un parque industrial</h2>
+        <p class="park__intro">Toca los puntos de la imagen para ver qué desarrollamos y construimos en cada parte.</p>
+        <div class="spot" aria-live="polite">
+          <h3 id="spot-title">Acceso controlado</h3>
+          <p id="spot-text">Caseta de vigilancia, barda perimetral y un solo punto de entrada y salida para transporte de carga y personal.</p>
+        </div>
+        <div class="park__dots" role="group" aria-label="Partes del parque">
+          <button type="button" data-spot="0" aria-pressed="true">Acceso</button>
+          <button type="button" data-spot="1" aria-pressed="false">Vialidad</button>
+          <button type="button" data-spot="2" aria-pressed="false">Patios</button>
+          <button type="button" data-spot="3" aria-pressed="false">Naves</button>
+          <button type="button" data-spot="4" aria-pressed="false">Oficinas</button>
         </div>
       </div>
     </section>
 
-    <!-- Oculta hasta tener el inventario real: quitar "hidden" para mostrarla -->
-    <section class="section section--tint" id="disponibilidad" hidden>
-      <div class="wrap">
-        <div class="section__head">
-          <h2>Naves disponibles</h2>
-          <div class="filters" role="group" aria-label="Filtrar por modalidad">
-            <button type="button" class="chip" data-filter="todas" aria-pressed="true">Todas</button>
-            <button type="button" class="chip" data-filter="renta" aria-pressed="false">Renta</button>
-            <button type="button" class="chip" data-filter="venta" aria-pressed="false">Venta</button>
-          </div>
-        </div>
-        <p class="notice">Inventario de ejemplo: sustituir por las naves reales antes de publicar.</p>
-
-        <div class="stock" role="table" aria-label="Naves disponibles">
-          <div class="stock__row stock__row--head" role="row">
-            <span role="columnheader">Nave</span>
-            <span role="columnheader">Superficie</span>
-            <span role="columnheader">Altura libre</span>
-            <span role="columnheader">Andenes</span>
-            <span role="columnheader">Modalidad</span>
-            <span role="columnheader"><span class="sr">Acción</span></span>
-          </div>
-          <div class="stock__row" role="row" data-mode="renta">
-            <span role="cell" data-label="Nave"><strong>Nave A-1</strong> Parque Norte</span>
-            <span role="cell" data-label="Superficie">2,500 m²</span>
-            <span role="cell" data-label="Altura libre">9 m</span>
-            <span role="cell" data-label="Andenes">2</span>
-            <span role="cell" data-label="Modalidad"><span class="tag">Renta</span></span>
-            <span role="cell"><a class="link" href="#contacto" data-nave="Nave A-1">Pedir informes</a></span>
-          </div>
-          <div class="stock__row" role="row" data-mode="renta venta">
-            <span role="cell" data-label="Nave"><strong>Nave A-4</strong> Parque Norte</span>
-            <span role="cell" data-label="Superficie">5,200 m²</span>
-            <span role="cell" data-label="Altura libre">10 m</span>
-            <span role="cell" data-label="Andenes">4</span>
-            <span role="cell" data-label="Modalidad"><span class="tag">Renta</span> <span class="tag">Venta</span></span>
-            <span role="cell"><a class="link" href="#contacto" data-nave="Nave A-4">Pedir informes</a></span>
-          </div>
-          <div class="stock__row" role="row" data-mode="venta">
-            <span role="cell" data-label="Nave"><strong>Nave B-2</strong> Parque Sur</span>
-            <span role="cell" data-label="Superficie">8,000 m²</span>
-            <span role="cell" data-label="Altura libre">12 m</span>
-            <span role="cell" data-label="Andenes">8</span>
-            <span role="cell" data-label="Modalidad"><span class="tag">Venta</span></span>
-            <span role="cell"><a class="link" href="#contacto" data-nave="Nave B-2">Pedir informes</a></span>
-          </div>
-          <div class="stock__row" role="row" data-mode="renta">
-            <span role="cell" data-label="Nave"><strong>Nave B-5</strong> Parque Sur</span>
-            <span role="cell" data-label="Superficie">12,400 m²</span>
-            <span role="cell" data-label="Altura libre">12 m</span>
-            <span role="cell" data-label="Andenes">12</span>
-            <span role="cell" data-label="Modalidad"><span class="tag">Renta</span></span>
-            <span role="cell"><a class="link" href="#contacto" data-nave="Nave B-5">Pedir informes</a></span>
-          </div>
-        </div>
-        <p class="stock__empty" hidden>No hay naves en esta modalidad por ahora. Cuéntanos qué necesitas y te avisamos.</p>
-        <p class="stock__after">¿Ninguna se ajusta a tu operación? <a class="link" href="#contacto">Cotiza una nave a la medida</a></p>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="construccion">
+    <section class="section section--light" id="construccion">
       <div class="wrap build">
-        <div class="build__intro">
+        <div class="build__sticky">
           <h2>Construimos naves y parques industriales completos</h2>
-          <p>El mismo equipo que desarrolla nuestros parques construye para terceros. Eso significa un solo contrato y un solo responsable desde el estudio del terreno hasta la entrega.</p>
-          <ul class="scope">
-            <li>Urbanización, vialidades y redes del parque</li>
-            <li>Cimentación y estructura metálica</li>
-            <li>Pisos industriales de concreto</li>
-            <li>Cubiertas, muros y andenes de carga</li>
-            <li>Instalación eléctrica, hidráulica y contra incendio</li>
-            <li>Oficinas y áreas de servicio dentro de la nave</li>
-          </ul>
+          <p>El mismo equipo que desarrolla nuestros parques construye para terceros. Un solo contrato y un solo responsable, desde el estudio del terreno hasta la entrega.</p>
+          <figure class="build__photo">
+            <img src="img/obra.jpg" alt="Grúa montando la estructura metálica de una nave industrial" loading="lazy">
+            <figcaption>Imagen ilustrativa</figcaption>
+          </figure>
         </div>
-        <ol class="steps">
-          <li><h3>Terreno y factibilidad</h3><p>Revisamos uso de suelo, accesos y servicios, y estimamos inversión y plazo.</p></li>
-          <li><h3>Proyecto e ingeniería</h3><p>Definimos claros, altura, andenes y cargas según tu operación.</p></li>
-          <li><h3>Permisos</h3><p>Gestionamos licencias y trámites ante las autoridades.</p></li>
-          <li><h3>Obra</h3><p>Construimos con supervisión propia y reportes de avance.</p></li>
-          <li><h3>Entrega</h3><p>Recibes la nave probada y lista para instalar equipo.</p></li>
+
+        <ol class="steps" id="steps">
+          <li class="rail" aria-hidden="true"><i id="rail-fill"></i></li>
+          <li class="step"><h3>Terreno y factibilidad</h3><p>Revisamos uso de suelo, accesos y servicios disponibles, y estimamos inversión y plazo antes de comprometer el proyecto.</p></li>
+          <li class="step"><h3>Proyecto e ingeniería</h3><p>Definimos claros, altura libre, andenes y cargas de piso a partir de cómo va a trabajar tu operación.</p></li>
+          <li class="step"><h3>Permisos</h3><p>Gestionamos licencias y trámites ante las autoridades para que la obra arranque en regla.</p></li>
+          <li class="step"><h3>Obra</h3><p>Cimentación, estructura metálica, pisos, cubiertas e instalaciones, con supervisión propia y reportes de avance.</p></li>
+          <li class="step"><h3>Entrega</h3><p>Recibes la nave probada y lista para instalar equipo y empezar a operar.</p></li>
         </ol>
       </div>
+
+      <div class="wrap">
+        <h3 class="scope__title">Qué incluye la obra</h3>
+        <ul class="scope">
+          <li>Urbanización, vialidades y redes del parque</li>
+          <li>Cimentación y estructura metálica</li>
+          <li>Pisos industriales de concreto</li>
+          <li>Cubiertas, muros y andenes de carga</li>
+          <li>Instalación eléctrica, hidráulica y contra incendio</li>
+          <li>Oficinas y áreas de servicio dentro de la nave</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="section section--dark" id="contacto">
-      <div class="wrap contact">
+    <section class="contact" id="contacto">
+      <div class="contact__media" aria-hidden="true"><img src="img/interior.jpg" alt="" loading="lazy"></div>
+      <div class="wrap contact__grid">
         <div class="contact__intro">
           <h2>Cuéntanos qué nave necesitas</h2>
           <p>Con la superficie aproximada y el uso que le darás podemos decirte qué hay disponible o preparar una cotización de construcción.</p>
           <dl class="contact__data">
-            <div><dt>Teléfono</dt><dd><a data-cfg="phone" href="#">Por definir</a></dd></div>
-            <div><dt>Correo</dt><dd><a data-cfg="email" href="#">Por definir</a></dd></div>
+            <div><dt>Teléfono</dt><dd><a data-cfg="phone" href="#contacto">Por definir</a></dd></div>
+            <div><dt>Correo</dt><dd><a data-cfg="email" href="#contacto">Por definir</a></dd></div>
             <div><dt>Oficina</dt><dd data-cfg="address">Por definir</dd></div>
           </dl>
         </div>
@@ -211,7 +214,7 @@
               <option>Desarrollar un parque industrial</option>
             </select>
           </div>
-          <div class="field">
+          <div class="field field--wide">
             <label for="f-superficie">Superficie aproximada en m² <span class="opt">(opcional)</span></label>
             <input id="f-superficie" name="superficie" inputmode="numeric">
           </div>
@@ -229,10 +232,25 @@
   </main>
 
   <footer class="foot">
-    <div class="wrap foot__row">
-      <span class="brand brand--foot">IMAX</span>
-      <span>Inmobiliaria, desarrolladora y constructora de naves y parques industriales.</span>
+    <div class="wrap foot__top">
+      <p class="foot__claim">Inmobiliaria, desarrolladora y constructora de naves y parques industriales.</p>
+      <nav class="foot__nav" aria-label="Pie de página">
+        <a href="#servicios">Qué hacemos</a>
+        <a href="#parque">Parques</a>
+        <a href="#construccion">Construcción</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <svg class="foot__line" viewBox="0 0 1440 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0 140 H1440"/>
+      <path d="M40 140 V70 L220 50 L400 70 V140 M80 140 V104 H120 V140 M140 140 V104 H180 V140 M200 140 V104 H240 V140 M260 140 V104 H300 V140 M340 140 V112 H362 V140"/>
+      <path d="M470 140 V58 L690 34 L910 58 V140 M510 140 V100 H556 V140 M576 140 V100 H622 V140 M642 140 V100 H688 V140 M708 140 V100 H754 V140 M774 140 V100 H820 V140 M852 140 V110 H876 V140"/>
+      <path d="M980 140 V70 L1160 50 L1340 70 V140 M1020 140 V104 H1060 V140 M1080 140 V104 H1120 V140 M1140 140 V104 H1180 V140 M1200 140 V104 H1240 V140 M1282 140 V112 H1304 V140"/>
+    </svg>
+    <div class="foot__word" aria-hidden="true">IMAX</div>
+    <div class="wrap foot__end">
       <span>© <span id="anio">2026</span> IMAX</span>
+      <span>grupoimax.mx</span>
     </div>
   </footer>
 

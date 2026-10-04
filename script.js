@@ -6,6 +6,8 @@ const CONFIG = {
   address: "",
 };
 
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Datos de contacto visibles
 document.querySelectorAll("[data-cfg]").forEach((el) => {
   const value = CONFIG[el.dataset.cfg];
@@ -17,26 +19,40 @@ document.querySelectorAll("[data-cfg]").forEach((el) => {
 
 document.getElementById("anio").textContent = new Date().getFullYear();
 
-// Filtro de naves por modalidad
-const chips = document.querySelectorAll(".chip");
-const rows = document.querySelectorAll(".stock__row[data-mode]");
-const empty = document.querySelector(".stock__empty");
+// Barra de navegación y menú desplegable
+const topBar = document.getElementById("top");
+const mega = document.getElementById("mega");
+const triggers = topBar.querySelectorAll("[aria-controls='mega']");
 
-function applyFilter(mode) {
-  let visible = 0;
-  rows.forEach((row) => {
-    const show = mode === "todas" || row.dataset.mode.split(" ").includes(mode);
-    row.hidden = !show;
-    if (show) visible++;
-  });
-  chips.forEach((chip) => chip.setAttribute("aria-pressed", String(chip.dataset.filter === mode)));
-  empty.hidden = visible > 0;
+function setMenu(open) {
+  mega.hidden = !open;
+  topBar.classList.toggle("is-open", open);
+  triggers.forEach((t) => t.setAttribute("aria-expanded", String(open)));
 }
 
-chips.forEach((chip) => chip.addEventListener("click", () => applyFilter(chip.dataset.filter)));
-document.querySelectorAll("[data-filter-link]").forEach((link) =>
-  link.addEventListener("click", () => applyFilter(link.dataset.filterLink))
-);
+triggers.forEach((t) => t.addEventListener("click", () => setMenu(mega.hidden)));
+mega.addEventListener("click", (e) => e.target.closest("a") && setMenu(false));
+document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
+document.addEventListener("click", (e) => !topBar.contains(e.target) && setMenu(false));
+
+// Portada: la barra se vuelve sólida y la imagen se desplaza más lento que la página
+const heroImg = document.querySelector(".hero__media img");
+const hero = document.querySelector(".hero");
+
+function onScroll() {
+  const y = window.scrollY;
+  topBar.classList.toggle("is-solid", y > 40);
+  if (!reducedMotion && y < hero.offsetHeight) heroImg.style.translate = "0 " + y * 0.18 + "px";
+  updateRail();
+}
+
+// Paneles de servicios: se abre el que está bajo el cursor o con foco
+const panels = document.querySelectorAll(".panel");
+panels.forEach((panel) => {
+  const open = () => panels.forEach((p) => p.classList.toggle("is-open", p === panel));
+  panel.addEventListener("mouseenter", open);
+  panel.addEventListener("focus", open);
+});
 
 // Los enlaces de cada servicio preseleccionan el interés en el formulario
 document.querySelectorAll("[data-interes]").forEach((link) =>
@@ -45,17 +61,49 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   })
 );
 
-// "Pedir informes" de una nave llena el campo de detalles
+// Parque: puntos sobre la imagen
+const SPOTS = [
+  ["Acceso controlado", "Caseta de vigilancia, barda perimetral y un solo punto de entrada y salida para transporte de carga y personal."],
+  ["Vialidad interna", "Calles de concreto dimensionadas para tráileres, con camellón, alumbrado y las redes de agua, drenaje y energía bajo tierra."],
+  ["Patios de maniobras y andenes", "Cada nave tiene su patio para maniobrar y estacionar cajas, y andenes con rampa niveladora a la altura del tráiler."],
+  ["Naves", "Estructura metálica de grandes claros, piso de concreto industrial y cubierta con lámina translúcida para aprovechar la luz natural."],
+  ["Oficinas", "Área de oficinas y servicios integrada a la nave, con acceso y estacionamiento separados del tránsito de carga."],
+];
+const spot = document.querySelector(".spot");
+const spotButtons = document.querySelectorAll("[data-spot]");
+
+function showSpot(index) {
+  document.getElementById("spot-title").textContent = SPOTS[index][0];
+  document.getElementById("spot-text").textContent = SPOTS[index][1];
+  spotButtons.forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.spot) === index)));
+  spot.classList.remove("is-swap");
+  void spot.offsetWidth;
+  spot.classList.add("is-swap");
+}
+
+spotButtons.forEach((b) => b.addEventListener("click", () => showSpot(Number(b.dataset.spot))));
+
+// Proceso: la línea avanza con el scroll y se enciende el paso alcanzado
+const steps = document.getElementById("steps");
+const railFill = document.getElementById("rail-fill");
+const stepItems = steps.querySelectorAll(".step");
+
+function updateRail() {
+  const rect = steps.getBoundingClientRect();
+  const mark = window.innerHeight * 0.6;
+  const progress = Math.min(1, Math.max(0, (mark - rect.top) / rect.height));
+  railFill.style.height = progress * 100 + "%";
+  stepItems.forEach((item) => item.classList.toggle("is-on", item.getBoundingClientRect().top < mark));
+}
+
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", updateRail);
+onScroll();
+
+// El formulario abre WhatsApp con el mensaje armado
 const form = document.getElementById("form-contacto");
 const status = form.querySelector(".form__status");
 
-document.querySelectorAll("[data-nave]").forEach((link) =>
-  link.addEventListener("click", () => {
-    form.mensaje.value = "Quiero informes de la " + link.dataset.nave + ".";
-  })
-);
-
-// El formulario abre WhatsApp con el mensaje armado
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   status.textContent = "";
