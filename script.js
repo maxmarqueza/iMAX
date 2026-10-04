@@ -17,14 +17,6 @@ const actP = (el) => {
   return clamp01(-r.top / Math.max(r.height - innerHeight, 1));
 };
 
-// Variantes para comparar la altura de la portada (?portada=corta|losa|baja). El tamaño de IMAX no cambia:
-// la portada dura menos scroll y, en "losa" y "baja", la placa de concreto deja ver la nave debajo.
-const PORTADA = (new URLSearchParams(location.search).get("portada") || "").toLowerCase();
-if (["corta", "losa", "baja"].includes(PORTADA)) {
-  document.getElementById("inicio").setAttribute("data-sc-span", "1.6");
-  document.documentElement.dataset.portada = PORTADA;
-}
-
 ScrollCraft.mount(document.body);
 
 // Datos de contacto visibles

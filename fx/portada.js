@@ -12,13 +12,6 @@
   let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, metrics = null, lastKey = "";
   let open = FX.reduce ? null : [0, 0, 0, 0];
 
-  // Variantes para comparar la altura de la portada (?portada=corta|losa|baja; ver script.js).
-  // "losa": la placa de concreto cubre la palabra y la frase; debajo ya se ve la nave.
-  // "baja": la placa solo cubre la palabra; la frase va sobre la nave.
-  const MODE = document.documentElement.dataset.portada || "";
-  const BAJA = MODE === "baja", LOSA = MODE === "losa" || BAJA;
-  let slab = 0;
-
   // Video: archivo según el ancho; solo corre con la portada en pantalla
   if (!FX.reduce && video) {
     video.src = FX.narrow() ? video.dataset.srcMobile : video.dataset.src;
@@ -37,12 +30,9 @@
     const target = Math.min(w * (narrow ? 0.9 : 0.84), 1440, h * (narrow ? 1.2 : 1.9));
     size = (100 * target) / metrics.width;
     const cap = (metrics.cap / 100) * size;
-    const cy = h * (LOSA ? (narrow ? 0.3 : 0.31) : narrow ? 0.36 : 0.42);
+    const cy = h * (narrow ? 0.36 : 0.42);
     baseline = cy + cap / 2;
     left = (w - target) / 2;
-    // Dónde termina la losa: abajo de la frase ("losa") o justo abajo de la palabra ("baja")
-    slab = !LOSA ? 0 : BAJA ? baseline + size * 0.1 : Math.min(h * 0.72, baseline + size * 0.14 + (narrow ? 96 : 74));
-    stage.style.setProperty("--slab", Math.round(slab) + "px");
     // Asta derecha de la M: por ahí entra la cámara
     ox = left + (metrics.stops[2] / 100) * size - 0.17 * size;
     oy = cy;
@@ -63,23 +53,6 @@
     canvas.style.opacity = alpha.toFixed(3);
     if (alpha <= 0) return;
     FX.plate.draw(ctx, { w, h, dpr, color: PLATE, size, left, baseline, ox, oy, scale, open, metrics });
-    if (LOSA) {
-      // Borde de la losa: crece con el mismo zoom; debajo, la escena con una sombra corta y un canto amarillo
-      const e = oy + (slab - oy) * scale;
-      if (e < h) {
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        ctx.globalCompositeOperation = "destination-out";
-        ctx.fillRect(0, e, w, h - e);
-        ctx.globalCompositeOperation = "source-over";
-        const g = ctx.createLinearGradient(0, e, 0, e + 28);
-        g.addColorStop(0, "rgba(17,20,22,.4)");
-        g.addColorStop(1, "rgba(17,20,22,0)");
-        ctx.fillStyle = g;
-        ctx.fillRect(0, e, w, 28);
-        ctx.fillStyle = "#ffc20e";
-        ctx.fillRect(0, e - 4, w, 4);
-      }
-    }
   }
 
   // Cortinas de andén al cargar
