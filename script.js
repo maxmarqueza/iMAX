@@ -75,7 +75,9 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   const canvas = act.querySelector(".hero__plate");
   const ctx = canvas.getContext("2d");
   const PLATE = "#0d1a26";
-  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, lastKey = "";
+  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, lastKey = "", metrics = null;
+  // Estado que comparten los efectos de fx/: geometría de la placa, apertura por letra y redibujo
+  const shared = (FX.hero = { act, stage, video, canvas, open: null, scale: 1, alpha: 1, geom: () => ({ w, h, dpr, size, left, baseline, ox, oy, metrics }), redraw() { lastKey = ""; draw(); } });
 
   // Video de ambiente: se elige el archivo según el ancho y se pausa fuera de pantalla
   if (!reduce) {
@@ -88,11 +90,7 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
     }).observe(stage);
   }
 
-  const font = (px) => "800 " + px + "px Archivo, system-ui, sans-serif";
-  function setFont(px) {
-    ctx.font = font(px);
-    if ("fontStretch" in ctx) ctx.fontStretch = "expanded";
-  }
+  const font = FX.plate.font;
 
   function layout() {
     const r = stage.getBoundingClientRect();
@@ -100,17 +98,16 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
     dpr = Math.min(devicePixelRatio || 1, 2);
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
-    setFont(100);
-    const m = ctx.measureText("IMAX");
+    metrics = FX.plate.measure(ctx);
     const narrow = w < 700;
     const target = Math.min(w * (narrow ? 0.9 : 0.84), 1400, h * (narrow ? 1.2 : 1.9));
-    size = (100 * target) / m.width;
-    const cap = ((m.actualBoundingBoxAscent || 70) / 100) * size;
+    size = (100 * target) / metrics.width;
+    const cap = (metrics.cap / 100) * size;
     const cy = h * (narrow ? 0.29 : 0.34);
     baseline = cy + cap / 2;
     left = (w - target) / 2;
     // Centro del asta derecha de la M: por ahí entra la cámara
-    ox = left + (ctx.measureText("IM").width / 100) * size - 0.17 * size;
+    ox = left + (metrics.stops[2] / 100) * size - 0.17 * size;
     oy = cy;
     stage.style.setProperty("--wm-bottom", Math.round(baseline + size * 0.1) + "px");
     lastKey = "";
@@ -123,25 +120,13 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
     const t = clamp01((p - 0.03) / 0.5);
     const scale = 1 + Math.pow(t, 2.6) * 26;
     const alpha = 1 - smooth((t - 0.5) / 0.42);
-    const key = scale.toFixed(3) + "|" + alpha.toFixed(3);
+    const key = scale.toFixed(3) + "|" + alpha.toFixed(3) + "|" + (shared.open ? shared.open.map((o) => o.toFixed(3)).join(",") : "");
     if (key === lastKey) return;
     lastKey = key;
+    shared.scale = scale; shared.alpha = alpha;
     canvas.style.opacity = alpha.toFixed(3);
     if (alpha <= 0) return;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.globalCompositeOperation = "source-over";
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = PLATE;
-    ctx.fillRect(0, 0, w, h);
-    ctx.globalCompositeOperation = "destination-out";
-    ctx.translate(ox, oy);
-    ctx.scale(scale, scale);
-    ctx.translate(-ox, -oy);
-    setFont(size);
-    ctx.textAlign = "left";
-    ctx.textBaseline = "alphabetic";
-    ctx.fillStyle = "#000";
-    ctx.fillText("IMAX", left, baseline);
+    FX.plate.draw(ctx, { w, h, dpr, color: PLATE, size, left, baseline, ox, oy, scale, open: shared.open, metrics });
   }
 
   if (!reduce) {
@@ -347,30 +332,21 @@ form.addEventListener("submit", (event) => {
   const video = box.querySelector("video");
   const canvas = box.querySelector("canvas");
   const ctx = canvas.getContext("2d");
-  const font = (px) => "800 " + px + "px Archivo, system-ui, sans-serif";
-  function setFont(px) {
-    ctx.font = font(px);
-    if ("fontStretch" in ctx) ctx.fontStretch = "expanded";
-  }
+  const font = FX.plate.font;
+  const shared = (FX.foot = { box, video, canvas, open: null, redraw: draw });
   function draw() {
     const r = box.getBoundingClientRect();
     if (!r.width) return;
     const dpr = Math.min(devicePixelRatio || 1, 2);
     canvas.width = Math.round(r.width * dpr);
     canvas.height = Math.round(r.height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--sc-canvas").trim() || "#0d1a26";
-    ctx.fillRect(0, 0, r.width, r.height);
-    setFont(100);
-    const size = (100 * r.width * 0.95) / ctx.measureText("IMAX").width;
-    setFont(size);
-    const cap = ctx.measureText("IMAX").actualBoundingBoxAscent || size * 0.7;
-    ctx.globalCompositeOperation = "destination-out";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "alphabetic";
-    ctx.fillStyle = "#000";
-    ctx.fillText("IMAX", r.width / 2, (r.height + cap) / 2);
+    const metrics = FX.plate.measure(ctx);
+    const target = r.width * 0.95;
+    const size = (100 * target) / metrics.width;
+    const cap = (metrics.cap / 100) * size;
+    const left = (r.width - target) / 2, baseline = (r.height + cap) / 2;
+    const color = getComputedStyle(document.documentElement).getPropertyValue("--sc-canvas").trim() || "#0d1a26";
+    FX.plate.draw(ctx, { w: r.width, h: r.height, dpr, color, size, left, baseline, ox: r.width / 2, oy: r.height / 2, scale: 1, open: shared.open, metrics });
   }
   draw();
   addEventListener("resize", draw);

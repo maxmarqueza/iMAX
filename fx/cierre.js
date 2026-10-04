@@ -1,0 +1,1 @@
+// Cierre: el formulario dibuja la nave y se sale por la M

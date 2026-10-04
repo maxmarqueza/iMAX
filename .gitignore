@@ -8,3 +8,5 @@ dist/
 .claude/
 scrollcraft/
 node_modules/
+.worktrees/
+_fx-*.html
