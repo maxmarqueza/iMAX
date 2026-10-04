@@ -1,4 +1,0 @@
-/* Arranque de cada escena en pantallas táctiles (fx/pasos.js): el scroll es libre; si el dedo suelta cerca
-   del inicio de una escena, el navegador la acomoda completa. Sin margen arriba, como las escenas. */
-html.con-pasos { scroll-snap-type: y proximity; scroll-padding-top: 0; }
-.paso { position: absolute; left: 0; width: 1px; height: 1px; pointer-events: none; scroll-snap-align: start; }
