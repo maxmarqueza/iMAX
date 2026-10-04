@@ -158,7 +158,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .svc__item:first-of-type { opacity: 1; transform: none; }
 }
 
-/* 3. La nave que se arma (video real) */
+/* 3. De polvo a nave (video real) */
+.anat__still { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .anat__shade { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .anat__shade--top { background: linear-gradient(180deg, color-mix(in oklab, var(--sc-canvas) 66%, transparent) 0%, transparent 15%); }
 .anat__shade--bottom { background: linear-gradient(0deg, color-mix(in oklab, var(--sc-canvas) 90%, transparent) 0%, color-mix(in oklab, var(--sc-canvas) 52%, transparent) 14%, transparent 30%); }
@@ -168,14 +169,16 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   padding: 6px 13px 6px 24px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .28);
   background: rgba(13, 26, 38, .66); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   font-size: .86rem; font-weight: 600; white-space: nowrap;
-  opacity: calc(clamp(0, calc((var(--sc-p, 0) - var(--in)) / .05), 1) * (1 - clamp(0, calc((var(--sc-p, 0) - var(--out, .25)) / .06), 1)));
+  opacity: calc(clamp(0, calc((var(--sc-p, 0) - var(--in)) / .02), 1) * (1 - clamp(0, calc((var(--sc-p, 0) - var(--out, .535)) / .04), 1)));
 }
 .anat__tag::before { content: ""; position: absolute; left: 9px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; background: var(--sc-accent); box-shadow: 0 0 0 4px rgba(246, 185, 59, .28); }
-/* El texto va sobre una placa propia: el video es claro y la cubierta flota justo detrás */
-.anat__copy { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); top: clamp(96px, 13vh, 132px); width: min(30rem, 42vw); display: grid; padding: clamp(18px, 2vw, 28px); border: 1px solid rgba(255, 255, 255, .18); border-radius: 22px; background: rgba(10, 20, 29, .78); backdrop-filter: blur(16px) saturate(1.1); -webkit-backdrop-filter: blur(16px) saturate(1.1); box-shadow: var(--sc-e2), var(--sc-edge); }
-.anat__beat { grid-area: 1 / 1; align-self: start; display: grid; gap: 12px; }
-.anat__beat h2 { font-size: clamp(1.6rem, 1.15rem + 1.9vw, 2.6rem); }
-.anat__rail { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(44px, 6vh, 64px); max-width: 78rem; margin-inline: auto; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid rgba(255, 255, 255, .3); }
+/* El texto va abajo, sobre el patio: arriba flotan las piezas y tienen que verse todas */
+.anat__copy { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); bottom: clamp(28px, 5vh, 48px); width: min(40rem, 46vw); display: grid; overflow: hidden; padding: clamp(16px, 1.6vw, 24px) clamp(18px, 1.8vw, 26px); border: 1px solid rgba(255, 255, 255, .18); border-radius: 22px; background: rgba(10, 20, 29, .78); backdrop-filter: blur(16px) saturate(1.1); -webkit-backdrop-filter: blur(16px) saturate(1.1); box-shadow: var(--sc-e2), var(--sc-edge); }
+.anat__beat { grid-area: 1 / 1; align-self: start; display: grid; gap: 8px; }
+.anat__beat h2 { font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); }
+.anat__beat h3 { font-size: clamp(1.25rem, 1.05rem + .8vw, 1.7rem); }
+.anat__beat .lede { font-size: 1rem; line-height: 1.5; }
+.anat__rail { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: clamp(52px, 7vh, 72px); width: min(30rem, 36vw); margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 8px; border-top: 1px solid rgba(255, 255, 255, .3); }
 .anat__rail li { --on: clamp(0, calc((var(--sc-p, 0) - var(--s)) / .06), 1); position: relative; padding: 14px 10px 0 0; font-family: var(--sc-font-display); font-stretch: 112%; font-weight: 650; font-size: clamp(.9rem, .8rem + .4vw, 1.1rem); opacity: calc(.5 + .5 * var(--on)); }
 .anat__rail li::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--sc-accent); transform: scaleX(var(--on)); transform-origin: left; }
 .anat__note { position: absolute; right: var(--sc-gutter); bottom: 16px; z-index: 5; }
@@ -319,12 +322,13 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .svc__item { flex-basis: 72vw; }
   .svc__item figure { max-height: 42svh; }
 
-  .anat__copy { top: 88px; width: auto; right: var(--sc-gutter); padding: 16px 18px; }
-  .anat__tag { display: none; font-size: .74rem; padding: 4px 9px 4px 19px; }
+  .anat__copy { bottom: 20px; width: auto; right: var(--sc-gutter); padding: 18px 18px 16px; }
+  .anat__copy::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--sc-accent); transform: scaleX(var(--sc-p, 0)); transform-origin: left; }
+  .anat__note { bottom: auto; top: 84px; padding: 3px 9px; border-radius: 999px; background: rgba(10, 20, 29, .55); }
+  .anat__tag { display: none; left: var(--xm, var(--x)); top: var(--ym, var(--y)); font-size: .74rem; padding: 4px 9px 4px 19px; }
   .anat__tag--m { display: block; }
   .anat__tag::before { left: 7px; width: 6px; height: 6px; margin-top: -3px; box-shadow: none; }
-  .anat__rail { grid-template-columns: repeat(3, 1fr); row-gap: 4px; bottom: 34px; }
-  .anat__rail li { padding-top: 9px; font-size: .86rem; }
+  .anat__rail { display: none; }
 
   .tour__panel { top: auto; bottom: 0; left: 0; right: 0; width: auto; translate: none; padding: 22px var(--sc-gutter) 44px; border: 0; border-top: 1px solid rgba(255, 255, 255, .2); border-radius: 22px 22px 0 0; background: rgba(11, 22, 32, .86); }
   .tour__stops { margin-top: 12px; padding-top: 14px; }
@@ -346,7 +350,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .hero__scene { transform: none; }
   .hero__scrim { opacity: 1; }
   .hero__intro { top: 13%; }
-  .build__final { display: block; }
+  .build__final, .anat__still { display: block; }
+  .anat__tag { opacity: 1; }
   .pin::after, .tour__route path { animation: none; }
   .svc__item img { transform: none; }
 }
