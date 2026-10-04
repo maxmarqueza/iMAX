@@ -1,0 +1,21 @@
+/* De polvo a nave: la planta se traza sobre el terreno y el polvo del video le pasa por encima (fx/replanteo.js) */
+.anat__trazo { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none;
+  --fade: calc(1 - clamp(0, calc((var(--sc-p, 0) - .2) / .1), 1));
+  opacity: var(--fade);
+  -webkit-mask-image: url("../media/polvo-mate.webp"); mask-image: url("../media/polvo-mate.webp");
+  -webkit-mask-size: 900% 900%; mask-size: 900% 900%;
+  -webkit-mask-position: var(--mx, 0%) var(--my, 0%); mask-position: var(--mx, 0%) var(--my, 0%);
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.anat__trazo .t { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
+.anat__trazo .poli { stroke: #fff; stroke-width: 3; stroke-dashoffset: calc(1 - clamp(0, calc((var(--e, 0) - .25) / .6), 1)); filter: drop-shadow(0 0 3px rgba(0, 0, 0, .45)); }
+.anat__trazo .huella { stroke: var(--sc-accent); stroke-width: 5; stroke-dashoffset: calc(1 - clamp(0, calc((var(--e, 0) - .7) / .3), 1)); filter: drop-shadow(0 0 6px rgba(255, 194, 14, .7)); }
+.anat__trazo .eje { stroke: rgba(255, 255, 255, .9); stroke-width: 2; stroke-dashoffset: calc(1 - clamp(0, calc((var(--sc-p, 0) - var(--a)) / .02), 1)); }
+.anat__trazo .bur circle { fill: rgba(17, 20, 22, .72); stroke: #fff; stroke-width: 2; }
+.anat__trazo .bur text { fill: #fff; font: 800 22px Archivo, sans-serif; text-anchor: middle; dominant-baseline: central; }
+.anat__trazo .bur { opacity: clamp(0, calc((var(--sc-p, 0) - var(--a)) / .015), 1); }
+.anat__trazo .zap { fill: var(--sc-accent); stroke: #111416; stroke-width: 1.5; opacity: clamp(0, calc((var(--sc-p, 0) - var(--a)) / .01), 1); }
+.anat__trazo .estaca { fill: #ff6a00; stroke: #fff; stroke-width: 2; opacity: clamp(0, calc((var(--e, 0) - var(--a)) / .08), 1); }
+.anat__trazo .rot { opacity: clamp(0, calc((var(--e, 0) - .85) / .15), 1); }
+.anat__trazo .rot rect { fill: var(--sc-accent); }
+.anat__trazo .rot text { fill: #111416; font: 800 24px Archivo, sans-serif; }
+@media (prefers-reduced-motion: reduce) { .anat__trazo { display: none; } }

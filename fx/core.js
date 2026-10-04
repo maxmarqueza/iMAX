@@ -52,9 +52,10 @@
   const WORD = "IMAX";
   const plate = {
     word: WORD,
-    font: (px) => "800 " + px + "px Manrope, system-ui, sans-serif",
+    font: (px) => "900 " + px + "px Archivo, system-ui, sans-serif",
     setFont(ctx, px) {
       ctx.font = plate.font(px);
+      if ("fontStretch" in ctx) ctx.fontStretch = "expanded";
     },
     // Medidas de la palabra a 100 px: ancho, alto de mayúscula y dónde empieza cada letra (5 valores, el último es el final)
     measure(ctx) {

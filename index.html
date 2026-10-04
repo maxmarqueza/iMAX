@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>IMAX | Naves y parques industriales en renta, venta y construcción</title>
   <meta name="description" content="IMAX desarrolla, construye, renta y vende naves y parques industriales. Cotiza una nave disponible o un proyecto a la medida.">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#e9ebe8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="IMAX">
@@ -21,14 +21,20 @@
   <script>if (location.protocol === "http:" && location.hostname.endsWith("grupoimax.mx")) location.replace("https://grupoimax.mx" + location.pathname + location.hash);</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230f1c2b'/><path d='M5 23V13l11-5 11 5v10' fill='none' stroke='%23d8932c' stroke-width='2.4' stroke-linejoin='round'/><path d='M11 23v-6h4v6M18 23v-6h4v6' fill='none' stroke='%23f3f6f8' stroke-width='2'/></svg>">
-  <link rel="preload" as="image" href="img/parque.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23111416'/><path d='M5 23V13l11-5 11 5v10' fill='none' stroke='%23ffc20e' stroke-width='2.4' stroke-linejoin='round'/><path d='M11 23v-6h4v6M18 23v-6h4v6' fill='none' stroke='%23f3f6f8' stroke-width='2'/></svg>">
+  <link rel="preload" as="image" href="img/hero-poster.webp">
   <link rel="stylesheet" href="scrollcraft.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fx/portada.css">
+  <link rel="stylesheet" href="fx/riel.css">
+  <link rel="stylesheet" href="fx/replanteo.css">
+  <link rel="stylesheet" href="fx/lamina.css">
   <link rel="stylesheet" href="fx/anochece.css">
   <link rel="stylesheet" href="fx/tiempos.css">
-  <noscript><style>[data-sc-cue],[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}.hero__line>span{transform:none!important}</style></noscript>
+  <link rel="stylesheet" href="fx/relevo.css">
+  <link rel="stylesheet" href="fx/salida.css">
+  <noscript><style>[data-sc-cue],[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}.hero__plate{display:none}</style></noscript>
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -75,89 +81,100 @@
 
   <main id="contenido">
 
-    <!-- 1. Portada: el parque a la hora dorada; al bajar, la cámara desciende hacia él -->
-    <section class="hero" id="inicio" data-sc-act="pin" data-sc-span="1.5" data-sc-drift="#ffffff">
+    <!-- 1. Portada: el nombre es una ventana hacia la nave; al bajar, la cámara entra por la M -->
+    <section class="hero" id="inicio" data-sc-act="pin" data-sc-span="2.3" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="hero__stage">
-        <div class="hero__media" aria-hidden="true"><img src="img/parque.webp" alt="" fetchpriority="high"></div>
-        <div class="hero__veil" aria-hidden="true"></div>
-        <div class="hero__copy">
-          <h1 class="hero__title"><span class="hero__line"><span>Naves y parques</span></span> <span class="hero__line"><span>industriales,</span></span> <span class="hero__line"><span>del terreno a la llave.</span></span></h1>
-          <div class="hero__aside">
-            <p class="lede">IMAX desarrolla, construye, renta y vende naves industriales y parques industriales completos.</p>
-            <div class="hero__actions">
-              <a class="btn btn--accent" href="#contacto">Cotizar</a>
-              <a class="btn btn--light" href="#anatomia">Ver cómo se arma una nave</a>
-            </div>
+        <div class="hero__scene" aria-hidden="true">
+          <img src="img/hero-poster.webp" alt="">
+          <video class="hero__video" muted loop playsinline preload="none" data-src="media/hero-loop.mp4" data-src-mobile="media/hero-loop-m.mp4"></video>
+        </div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+        <canvas class="hero__plate" aria-hidden="true"></canvas>
+        <div class="hero__intro">
+          <h1 class="hero__h1">Naves y parques industriales, del terreno a la llave.</h1>
+          <a class="hero__down" href="#servicios"><span>Desliza</span></a>
+        </div>
+        <div class="hero__say">
+          <p>Una sola empresa responde por el terreno, el proyecto, la obra y el inmueble.</p>
+          <ul class="hero__routes">
+            <li><a href="#contacto" data-interes="Rentar una nave">Renta</a></li>
+            <li><a href="#contacto" data-interes="Comprar una nave">Venta</a></li>
+            <li><a href="#proceso">Construcción a la medida</a></li>
+            <li><a href="#parque">Parques industriales</a></li>
+          </ul>
+        </div>
+        <span class="hero__tag">Imagen ilustrativa</span>
+      </div>
+    </section>
+
+    <!-- Cifras de referencia que corren -->
+    <div class="ticker" aria-label="Especificaciones de referencia del mercado">
+      <div class="ticker__row">
+        <span>Altura libre de 9.75 a 11 m</span><span>Claros de 12 × 15 a 15 × 15 m</span><span>Piso de 15 cm, desde 5 ton/m²</span><span>Andenes con rampa niveladora</span><span>Patio de maniobras de 33 a 40 m</span><span>Rociadores ESFR según NFPA 13</span><span>Cubierta KR-18 engargolada</span>
+        <span aria-hidden="true">Altura libre de 9.75 a 11 m</span><span aria-hidden="true">Claros de 12 × 15 a 15 × 15 m</span><span aria-hidden="true">Piso de 15 cm, desde 5 ton/m²</span><span aria-hidden="true">Andenes con rampa niveladora</span><span aria-hidden="true">Patio de maniobras de 33 a 40 m</span><span aria-hidden="true">Rociadores ESFR según NFPA 13</span><span aria-hidden="true">Cubierta KR-18 engargolada</span>
+      </div>
+    </div>
+
+    <!-- 2. Cuatro formas de trabajar: riel lateral que se mueve con el scroll y se arrastra -->
+    <section class="svc" id="servicios" data-sc-act="pan" data-sc-span="2.6" data-sc-drift="#e9ebe8" data-acto="02 · Qué hacemos">
+      <div data-sc-stage class="svc__stage">
+        <div class="svc__rail" data-sc-pan="0.05">
+          <div class="svc__lead">
+            <h2 class="hd-lg">Cuatro formas de trabajar con IMAX</h2>
+            <p class="lede">Somos inmobiliaria, desarrolladora y constructora. Puedes ocupar una nave nuestra, comprarla o encargarnos la tuya.</p>
+            <p class="svc__hint" aria-hidden="true">Desliza o arrastra</p>
+          </div>
+          <article class="svc__item">
+            <a href="#contacto" data-interes="Rentar una nave" draggable="false">
+              <figure><img src="img/andenes.webp" width="886" height="1100" alt="Andenes de carga de una nave industrial al atardecer" draggable="false"><b class="svc__badge">Renta</b></figure>
+              <div class="svc__body">
+                <h3>Naves listas para operar</h3>
+                <p>Naves terminadas o en obra dentro de nuestros parques, con contrato de arrendamiento y entrega lista para instalar tu operación.</p>
+                <span class="go">Preguntar por naves en renta</span>
+              </div>
+            </a>
+          </article>
+          <article class="svc__item">
+            <a href="#contacto" data-interes="Comprar una nave" draggable="false">
+              <figure><img src="img/oficinas.webp" width="886" height="1100" alt="Acceso de oficinas de una nave industrial moderna" draggable="false"><b class="svc__badge">Venta</b></figure>
+              <div class="svc__body">
+                <h3>Patrimonio industrial</h3>
+                <p>Naves y lotes industriales para empresas que quieren patrimonio propio y para inversionistas que buscan renta industrial.</p>
+                <span class="go">Preguntar por naves en venta</span>
+              </div>
+            </a>
+          </article>
+          <article class="svc__item">
+            <a href="#proceso" draggable="false">
+              <figure><img src="img/obra.webp" width="886" height="1100" alt="Estructura metálica de una nave industrial en construcción" draggable="false"><b class="svc__badge">A la medida</b></figure>
+              <div class="svc__body">
+                <h3>Tu nave, a tu manera</h3>
+                <p>Diseñamos y construimos tu nave (build-to-suit) en tu terreno o en uno de los nuestros: claros, altura libre y andenes definidos por tu operación.</p>
+                <span class="go">Ver el proceso de obra</span>
+              </div>
+            </a>
+          </article>
+          <article class="svc__item">
+            <a href="#parque" draggable="false">
+              <figure><img src="img/interior.webp" width="886" height="1100" alt="Interior de una nave industrial nueva con piso de concreto pulido" draggable="false"><b class="svc__badge">Parques</b></figure>
+              <div class="svc__body">
+                <h3>Un parque completo</h3>
+                <p>Desarrollamos parques industriales completos, desde la urbanización del terreno hasta la última nave.</p>
+                <span class="go">Ver cómo se arma un parque</span>
+              </div>
+            </a>
+          </article>
+          <div class="svc__note">
+            <p class="lede">¿No sabes cuál te conviene? Cuéntanos tu operación y te decimos qué opción encaja.</p>
+            <a class="btn btn--accent" href="#contacto">Cotizar</a>
+            <p class="note">Imágenes ilustrativas</p>
           </div>
         </div>
-        <a class="hero__down" href="#servicios" aria-label="Bajar a lo que hacemos"><span></span></a>
-        <p class="note hero__note">Imagen ilustrativa</p>
-      </div>
-    </section>
-
-    <!-- Manifiesto: la frase se enciende palabra por palabra con el scroll -->
-    <section class="manif" id="manifiesto" data-sc-act="pin" data-sc-span="1.3" data-sc-drift="#ffffff">
-      <div data-sc-stage class="manif__stage">
-        <p class="manif__text" data-words data-from="0.08" data-to="0.78">Una sola empresa responde por el terreno, el proyecto, la obra y el inmueble. Tú decides si rentas, compras o construyes.</p>
-        <ul class="manif__routes">
-          <li><a href="#contacto" data-interes="Rentar una nave">Renta</a></li>
-          <li><a href="#contacto" data-interes="Comprar una nave">Venta</a></li>
-          <li><a href="#proceso">Construcción a la medida</a></li>
-          <li><a href="#parque">Parques industriales</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 2. Cuatro formas de trabajar: filas editoriales -->
-    <section class="svc" id="servicios" data-sc-act="flow" data-sc-drift="#ffffff">
-      <div class="sc-wrap">
-        <header class="svc__head" data-sc-in>
-          <span class="kicker">Qué hacemos</span>
-          <h2 class="hd-lg">Cuatro formas de trabajar con IMAX</h2>
-          <p class="lede">Somos inmobiliaria, desarrolladora y constructora. Puedes ocupar una nave nuestra, comprarla o encargarnos la tuya.</p>
-        </header>
-        <article class="svc__row" data-sc-in>
-          <figure class="svc__fig"><img src="img/andenes.webp" width="886" height="1100" alt="Andenes de carga de una nave industrial al atardecer" loading="lazy"></figure>
-          <div class="svc__body">
-            <span class="kicker">Renta</span>
-            <h3>Naves listas para operar</h3>
-            <p>Naves terminadas o en obra dentro de nuestros parques, con contrato de arrendamiento y entrega lista para instalar tu operación.</p>
-            <a class="more" href="#contacto" data-interes="Rentar una nave">Preguntar por naves en renta</a>
-          </div>
-        </article>
-        <article class="svc__row" data-sc-in>
-          <figure class="svc__fig"><img src="img/oficinas.webp" width="886" height="1100" alt="Acceso de oficinas de una nave industrial moderna" loading="lazy"></figure>
-          <div class="svc__body">
-            <span class="kicker">Venta</span>
-            <h3>Patrimonio industrial</h3>
-            <p>Naves y lotes industriales para empresas que quieren patrimonio propio y para inversionistas que buscan renta industrial.</p>
-            <a class="more" href="#contacto" data-interes="Comprar una nave">Preguntar por naves en venta</a>
-          </div>
-        </article>
-        <article class="svc__row" data-sc-in>
-          <figure class="svc__fig"><img src="img/obra.webp" width="886" height="1100" alt="Estructura metálica de una nave industrial en construcción" loading="lazy"></figure>
-          <div class="svc__body">
-            <span class="kicker">Construcción a la medida</span>
-            <h3>Tu nave, a tu manera</h3>
-            <p>Diseñamos y construimos tu nave (build-to-suit) en tu terreno o en uno de los nuestros: claros, altura libre y andenes definidos por tu operación.</p>
-            <a class="more" href="#proceso">Ver el proceso de obra</a>
-          </div>
-        </article>
-        <article class="svc__row" data-sc-in>
-          <figure class="svc__fig"><img src="img/interior.webp" width="886" height="1100" alt="Interior de una nave industrial nueva con piso de concreto pulido" loading="lazy"></figure>
-          <div class="svc__body">
-            <span class="kicker">Parques industriales</span>
-            <h3>Un parque completo</h3>
-            <p>Desarrollamos parques industriales completos, desde la urbanización del terreno hasta la última nave: vialidades, redes, acceso controlado y administración.</p>
-            <a class="more" href="#parque">Ver cómo se arma un parque</a>
-          </div>
-        </article>
-        <p class="note">Imágenes ilustrativas</p>
       </div>
     </section>
 
     <!-- 3. De polvo a nave: terreno vacío, tormenta de polvo, la nave entera en piezas y la nave armada (video real) -->
-    <section class="anat" id="anatomia" data-sc-act="scrub" data-sc-span="5.8" data-sc-clip-map="travel" data-sc-drift="#f4f1ec">
+    <section class="anat" id="anatomia" data-sc-act="scrub" data-sc-span="5.8" data-sc-clip-map="travel" data-sc-drift="#e9ebe8" data-acto="03 · De polvo a nave">
       <div data-sc-stage class="anat__stage">
         <img class="sc-stage__poster" src="img/despiece-poster.webp" alt="Terreno nivelado en el altiplano, con el polvo levantado por el viento, antes de construir la nave">
         <video data-sc-scrub data-sc-src="media/despiece.mp4" data-sc-src-mobile="media/despiece-m.mp4" muted playsinline></video>
@@ -166,6 +183,7 @@
         <div class="anat__shade anat__shade--bottom" aria-hidden="true"></div>
 
         <div class="anat__world" aria-hidden="true">
+          <svg class="anat__trazo" viewBox="0 0 1942 1080" preserveAspectRatio="none"></svg>
           <span class="anat__tag anat__tag--m" style="--x:46%;--y:23.4%;--in:.445"><span class="anat__lbl"><b>Lámina de cubierta</b><i>KR-18 engargolada, calibre 24</i></span></span>
           <span class="anat__tag anat__tag--m" style="--x:66.7%;--y:29.4%;--xm:44%;--ym:30%;--in:.45"><span class="anat__lbl"><b>Largueros</b><i>Reciben lámina y aislamiento</i></span></span>
           <span class="anat__tag anat__tag--m" style="--x:28%;--y:41.4%;--xm:46.7%;--ym:39.6%;--in:.455"><span class="anat__lbl"><b>Armaduras</b><i>Claros de 12 a 15 m</i></span></span>
@@ -221,7 +239,7 @@
     </section>
 
     <!-- Ficha técnica -->
-    <section class="spec" id="ficha" data-sc-act="flow" data-sc-drift="#f3f5f7">
+    <section class="spec" id="ficha" data-sc-act="flow" data-sc-drift="#e9ebe8">
       <div class="sc-wrap">
         <div class="spec__head" data-sc-in>
           <h2 class="hd-lg">Lo que se especifica en una nave y en un parque</h2>
@@ -425,7 +443,7 @@
     </section>
 
     <!-- 4. Recorrido por un parque -->
-    <section class="tour" id="parque" data-sc-act="pin" data-sc-span="2.7" data-sc-drift="#e9edf1">
+    <section class="tour" id="parque" data-sc-act="pin" data-sc-span="2.7" data-sc-drift="#e9ebe8" data-acto="05 · Parques">
       <div data-sc-stage class="tour__stage">
         <div class="tour__world">
           <div class="tour__cam">
@@ -484,7 +502,7 @@
     </section>
 
     <!-- 5. Proceso: del terreno a la llave, con el plano que se dibuja y, al final, tres tiempos del mismo predio -->
-    <section class="build" id="proceso" data-sc-act="scrub" data-sc-span="4.6" data-sc-clip-map="travel" data-sc-drift="#e9edf1">
+    <section class="build" id="proceso" data-sc-act="scrub" data-sc-span="4.6" data-sc-clip-map="travel" data-sc-drift="#e9ebe8" data-acto="06 · Proceso">
       <div data-sc-stage class="build__stage">
         <img class="sc-stage__poster" src="img/build-poster.webp" alt="">
         <video data-sc-scrub data-sc-src="media/obra.mp4" data-sc-src-mobile="media/obra-m.mp4" muted playsinline></video>
@@ -590,7 +608,7 @@
     </section>
 
     <!-- 6. Contacto -->
-    <section class="contact" id="contacto" data-sc-act="flow" data-sc-drift="#ffffff">
+    <section class="contact" id="contacto" data-sc-act="flow" data-sc-drift="#e9ebe8">
       <div class="sc-wrap faq">
         <div class="faq__head" data-sc-in>
           <h2 class="hd-lg">Preguntas que nos hacen antes de cotizar</h2>
@@ -633,7 +651,6 @@
       </div>
 
       <div class="contact__band">
-      <div class="contact__media" aria-hidden="true"><img src="img/nave-dorada.webp" alt="" loading="lazy"></div>
       <div class="sc-wrap contact__grid">
         <div class="contact__intro" data-sc-in>
           <h2 class="hd-lg">Cuéntanos qué nave necesitas</h2>
@@ -719,22 +736,27 @@
             <a href="#proceso">Proceso</a>
           </nav>
         </div>
-        <div class="foot__draw" data-sc-in>
-          <svg class="foot__line" viewBox="0 0 1440 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-            <path pathLength="1" d="M0 140 H1440"/>
-            <path pathLength="1" d="M40 140 V70 L220 50 L400 70 V140 M80 140 V104 H120 V140 M140 140 V104 H180 V140 M200 140 V104 H240 V140 M260 140 V104 H300 V140 M340 140 V112 H362 V140"/>
-            <path pathLength="1" d="M470 140 V58 L690 34 L910 58 V140 M510 140 V100 H556 V140 M576 140 V100 H622 V140 M642 140 V100 H688 V140 M708 140 V100 H754 V140 M774 140 V100 H820 V140 M852 140 V110 H876 V140"/>
-            <path pathLength="1" d="M980 140 V70 L1160 50 L1340 70 V140 M1020 140 V104 H1060 V140 M1080 140 V104 H1120 V140 M1140 140 V104 H1180 V140 M1200 140 V104 H1240 V140 M1282 140 V112 H1304 V140"/>
-          </svg>
-          <div class="foot__truck" aria-hidden="true"></div>
-        </div>
-        <div class="foot__word" aria-hidden="true">
-          <img class="foot__img" src="img/nave-dorada.webp" alt="" loading="lazy">
-          <canvas class="foot__plate"></canvas>
-        </div>
-        <div class="sc-wrap foot__end">
-          <span>© <span id="anio">2026</span> IMAX</span>
-          <span>grupoimax.mx</span>
+        <!-- Salida: la cámara regresa por la M y la página termina viendo IMAX con la nave adentro -->
+        <div class="foot__scene">
+          <div class="foot__stage">
+            <img class="foot__poster" src="img/hero-poster.webp" alt="" aria-hidden="true">
+            <video class="foot__video" muted loop playsinline preload="none" data-src="media/hero-loop.mp4" data-src-mobile="media/hero-loop-m.mp4" aria-hidden="true"></video>
+            <canvas class="foot__plate" aria-hidden="true"></canvas>
+            <div class="foot__draw" aria-hidden="true">
+              <svg class="foot__line" viewBox="0 0 1440 150" preserveAspectRatio="xMidYMax slice">
+                <path pathLength="1" d="M0 140 H1440"/>
+                <path pathLength="1" d="M40 140 V70 L220 50 L400 70 V140 M80 140 V104 H120 V140 M140 140 V104 H180 V140 M200 140 V104 H240 V140 M260 140 V104 H300 V140 M340 140 V112 H362 V140"/>
+                <path pathLength="1" d="M470 140 V58 L690 34 L910 58 V140 M510 140 V100 H556 V140 M576 140 V100 H622 V140 M642 140 V100 H688 V140 M708 140 V100 H754 V140 M774 140 V100 H820 V140 M852 140 V110 H876 V140"/>
+                <path pathLength="1" d="M980 140 V70 L1160 50 L1340 70 V140 M1020 140 V104 H1060 V140 M1080 140 V104 H1120 V140 M1140 140 V104 H1180 V140 M1200 140 V104 H1240 V140 M1282 140 V112 H1304 V140"/>
+              </svg>
+              <div class="foot__truck"></div>
+            </div>
+            <div class="sc-wrap foot__end">
+              <span>© <span id="anio">2026</span> IMAX</span>
+              <span>Imagen ilustrativa</span>
+              <span>grupoimax.mx</span>
+            </div>
+          </div>
         </div>
       </footer>
     </section>
@@ -743,9 +765,14 @@
   <script src="scrollcraft.js"></script>
   <script src="fx/core.js"></script>
   <script src="script.js"></script>
+  <script src="fx/portada.js"></script>
+  <script src="fx/riel.js"></script>
+  <script src="fx/replanteo.js"></script>
+  <script src="fx/lamina.js"></script>
   <script src="fx/anochece.js"></script>
   <script src="fx/tiempos.js"></script>
-  <script src="fx/dorada.js"></script>
   <script src="fx/escala.js"></script>
+  <script src="fx/relevo.js"></script>
+  <script src="fx/salida.js"></script>
 </body>
 </html>
