@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>IMAX · Opción B: Plano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --paper: #f6f8fb; --ink: #0b1f3a; --soft: #4a5d76; --blue: #2450ff; --blue2: #8aa3ff; --line: rgba(36, 80, 255, .16); --amber: #ffb000; --ease: cubic-bezier(.22, 1, .36, 1); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); font: 400 17px/1.6 "Public Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+  background: var(--paper) repeating-linear-gradient(0deg, transparent 0 47px, var(--line) 47px 48px), var(--paper) repeating-linear-gradient(90deg, transparent 0 47px, var(--line) 47px 48px);
+  background-color: var(--paper); }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; font-family: "Big Shoulders Display", sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .005em; line-height: .9; }
+p { margin: 0; }
+.wrap { width: min(100% - 48px, 1320px); margin-inline: auto; }
+
+.bar { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; gap: 28px; padding: 14px 24px; background: rgba(246, 248, 251, .9); backdrop-filter: blur(10px); border-bottom: 1.5px solid var(--ink); }
+.brand { font-family: "Big Shoulders Display"; font-weight: 900; font-size: 1.9rem; letter-spacing: .04em; text-decoration: none; }
+.bar nav { display: flex; gap: 0; margin-left: auto; }
+.bar nav a { padding: 8px 18px; border-left: 1.5px solid var(--ink); text-decoration: none; font-weight: 600; font-size: .92rem; }
+.btn { display: inline-flex; align-items: center; min-height: 50px; padding: 0 26px; background: var(--blue); color: #fff; font-weight: 700; text-decoration: none; border: 1.5px solid var(--blue); transition: background-color .2s, color .2s; }
+.btn:hover { background: #fff; color: var(--blue); }
+.btn--line { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--line:hover { background: var(--ink); color: #fff; }
+
+/* Portada: el plano se vuelve foto. La foto sube como agua dentro del dibujo. */
+.hero { height: 300vh; position: relative; }
+.hero .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.sheet { position: absolute; inset: 76px 24px 24px; border: 1.5px solid var(--ink); background: #fff; overflow: hidden; }
+.sheet img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
+.sheet .foto { --r: clamp(0, calc((var(--p, 0) - .15) / .55), 1);
+  -webkit-mask-image: linear-gradient(0deg, #000 calc(var(--r) * 120% - 20%), transparent calc(var(--r) * 120%)); mask-image: linear-gradient(0deg, #000 calc(var(--r) * 120% - 20%), transparent calc(var(--r) * 120%)); }
+.sheet .linea { transform: scale(calc(1 + var(--p, 0) * .04)); }
+.scan { position: absolute; left: 0; right: 0; height: 2px; background: var(--blue); box-shadow: 0 0 18px 2px rgba(36, 80, 255, .6); bottom: calc(clamp(0, calc((var(--p, 0) - .15) / .55), 1) * 120% - 20%); opacity: calc(1 - clamp(0, calc((var(--p, 0) - .66) / .05), 1)); }
+.hero__title { position: absolute; left: 48px; top: 104px; z-index: 3; opacity: calc(1 - clamp(0, calc((var(--p, 0) - .6) / .1), 1)); transform: translate3d(0, calc(clamp(0, calc((var(--p, 0) - .6) / .1), 1) * -30px), 0); }
+.hero h1 { font-size: clamp(3.4rem, 8.4vw, 9.4rem); color: var(--ink); max-width: 6.2em; }
+.hero__title p { margin-top: 18px; font-size: 1.12rem; max-width: 30em; color: var(--soft); background: rgba(255, 255, 255, .86); padding: 10px 14px; border-left: 3px solid var(--blue); }
+.hero__actions { display: flex; gap: 10px; margin-top: 18px; }
+.cota { position: absolute; z-index: 3; font-weight: 700; font-size: .82rem; color: var(--blue); opacity: clamp(0, calc((var(--p, 0) - .05) * 8), 1); }
+.cota::before { content: ""; position: absolute; background: var(--blue); }
+.cota--v { right: 60px; top: 30%; height: 34%; border-left: 1.5px solid var(--blue); padding-left: 10px; display: flex; align-items: center; }
+.cota--h { left: 20%; right: 36%; bottom: 60px; border-top: 1.5px solid var(--blue); padding-top: 6px; text-align: center; }
+.cartela { position: absolute; right: 24px; bottom: 24px; z-index: 3; display: grid; grid-template-columns: auto auto; border: 1.5px solid var(--ink); background: #fff; font-size: .78rem; }
+.cartela span { padding: 6px 12px; border-right: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.cartela span:nth-child(2n) { border-right: 0; }
+.cartela span:nth-last-child(-n+2) { border-bottom: 0; }
+.cartela b { display: block; font-size: .66rem; color: var(--soft); font-weight: 600; }
+.say { position: absolute; left: 48px; bottom: 56px; z-index: 3; color: #fff; max-width: 9em; opacity: clamp(0, calc((var(--p, 0) - .72) / .12), 1); }
+.say h2 { font-size: clamp(2.6rem, 6vw, 6.4rem); text-shadow: 0 2px 30px rgba(0, 0, 0, .35); }
+
+/* Secciones como láminas */
+.lamina { position: relative; margin: 120px auto; width: min(100% - 48px, 1320px); border: 1.5px solid var(--ink); background: #fff; }
+.lamina__head { display: grid; grid-template-columns: auto 1fr auto; border-bottom: 1.5px solid var(--ink); }
+.lamina__head span { padding: 12px 18px; font-weight: 700; font-size: .82rem; border-right: 1.5px solid var(--ink); }
+.lamina__head span:last-child { border-right: 0; color: var(--blue); }
+.lamina__body { padding: 48px; }
+.lamina h2 { font-size: clamp(2.8rem, 6vw, 6rem); max-width: 14ch; }
+.lamina .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 44px; }
+.lamina .intro p { color: var(--soft); font-size: 1.1rem; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1.5px solid var(--ink); }
+.serv { display: grid; gap: 14px; padding: 18px; border-right: 1.5px solid var(--ink); text-decoration: none; }
+.serv:last-child { border-right: 0; }
+.serv figure { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border: 1.5px solid var(--ink); }
+.serv img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: filter .6s var(--ease), transform 1s var(--ease); }
+.serv figure::after { content: ""; position: absolute; inset: 0; background: var(--blue); mix-blend-mode: screen; opacity: .55; transition: opacity .6s var(--ease); }
+.serv:hover img { filter: none; transform: scale(1.04); }
+.serv:hover figure::after { opacity: 0; }
+.serv h3 { font-size: 2.2rem; }
+.serv p { color: var(--soft); font-size: .95rem; }
+.serv i { font-style: normal; font-weight: 700; font-size: .78rem; color: var(--blue); }
+
+/* La nave dentro de un marco con ejes */
+.nave { height: 500vh; position: relative; }
+.nave .stage { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: 1fr 360px; gap: 24px; padding: 92px 24px 24px; }
+.marco { position: relative; border: 1.5px solid var(--ink); background: #fff; overflow: hidden; }
+.marco video, .marco img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ejes { position: absolute; inset: 0; pointer-events: none; }
+.ejes span { position: absolute; top: 10px; width: 30px; height: 30px; margin-left: -15px; border: 1.5px solid #fff; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: .8rem; background: rgba(11, 31, 58, .4); }
+.ejes span::after { content: ""; position: absolute; top: 30px; left: 50%; width: 0; height: 80vh; border-left: 1px dashed rgba(255, 255, 255, .5); }
+.panel { display: grid; align-content: space-between; border: 1.5px solid var(--ink); background: #fff; padding: 28px; }
+.panel h2 { font-size: 3.4rem; }
+.panel ol { margin: 0; padding: 0; list-style: none; border-top: 1.5px solid var(--ink); }
+.panel li { --on: clamp(0, calc((var(--p, 0) - var(--s)) * 40), 1); display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--line); font-weight: 700; color: color-mix(in srgb, var(--blue) calc(var(--on) * 100%), #9aa8bb); }
+.panel li::after { content: ""; width: 12px; height: 12px; align-self: center; border: 1.5px solid currentColor; background: rgb(36 80 255 / var(--on)); }
+
+/* Ficha con cotas */
+.spec { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1.5px solid var(--ink); }
+.spec div { padding: 24px; border-right: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); display: grid; gap: 6px; }
+.spec div:nth-child(3n) { border-right: 0; }
+.spec b { font-family: "Big Shoulders Display"; font-size: 3rem; font-weight: 800; color: var(--blue); line-height: 1; }
+.spec span { font-weight: 700; }
+.spec small { color: var(--soft); }
+
+.cta { background: var(--blue); color: #fff; padding: 110px 0; }
+.cta h2 { font-size: clamp(3rem, 8vw, 8.6rem); max-width: 12ch; }
+.cta .wrap { display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: end; }
+.cta .btn { background: #fff; color: var(--blue); border-color: #fff; }
+.foot { background: var(--ink); color: #b9c6dc; padding: 40px 0; font-size: .9rem; }
+.foot .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+[data-in] { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+[data-in].is-in { opacity: 1; transform: none; }
+
+@media (max-width: 820px) {
+  .bar nav { display: none; }
+  .hero__title { left: 36px; top: 96px; }
+  .lamina__body { padding: 24px; }
+  .lamina .intro, .cta .wrap { grid-template-columns: 1fr; }
+  .grid4 { grid-template-columns: 1fr 1fr; }
+  .serv:nth-child(2) { border-right: 0; }
+  .nave .stage { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+  .panel h2 { font-size: 2.2rem; }
+  .spec { grid-template-columns: 1fr; }
+  .spec div { border-right: 0; }
+  .cota--v, .cartela { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { [data-in] { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<header class="bar" data-bar>
+  <a class="brand" href="#">IMAX</a>
+  <nav><a href="#servicios">Qué hacemos</a><a href="#nave">La nave</a><a href="#ficha">Ficha técnica</a><a href="#cotizar">Contacto</a></nav>
+  <a class="btn" href="#cotizar">Cotizar</a>
+</header>
+
+<section class="hero" data-pin>
+  <div class="stage">
+    <div class="sheet">
+      <img class="linea" src="../img/nave-plano.webp" alt="">
+      <img class="foto" src="../img/nave-dorada.webp" alt="Nave industrial terminada en el desierto a la hora dorada">
+      <i class="scan"></i>
+    </div>
+    <div class="hero__title">
+      <h1>Del plano<br>a la nave</h1>
+      <p>IMAX desarrolla, construye, renta y vende naves industriales y parques industriales completos.</p>
+      <div class="hero__actions"><a class="btn" href="#cotizar">Cotizar</a><a class="btn btn--line" href="#nave">Ver cómo se arma</a></div>
+    </div>
+    <span class="cota cota--v">Altura libre<br>9.75 a 11 m</span>
+    <span class="cota cota--h">Fachada de andenes</span>
+    <div class="cartela"><span><b>Proyecto</b>Nave industrial</span><span><b>Lámina</b>01</span><span><b>Escala</b>Ilustrativa</span><span><b>Empresa</b>IMAX</span></div>
+    <div class="say"><h2>Así la entregamos</h2></div>
+  </div>
+</section>
+
+<section class="lamina" id="servicios" data-in>
+  <div class="lamina__head"><span>Lámina 02</span><span>Servicios</span><span>Inmobiliaria, desarrolladora y constructora</span></div>
+  <div class="lamina__body">
+    <div class="intro"><h2>Cuatro formas de trabajar con IMAX</h2><p>Puedes ocupar una nave nuestra, comprarla o encargarnos la tuya. También desarrollamos parques completos.</p></div>
+  </div>
+  <div class="grid4">
+    <a class="serv" href="#cotizar"><figure><img src="../../img/andenes.webp" alt="Andenes de carga"></figure><i>Renta</i><h3>Renta</h3><p>Naves listas para instalar tu operación.</p></a>
+    <a class="serv" href="#cotizar"><figure><img src="../../img/oficinas.webp" alt="Oficinas de una nave"></figure><i>Venta</i><h3>Venta</h3><p>Naves y lotes para patrimonio o inversión.</p></a>
+    <a class="serv" href="#nave"><figure><img src="../../img/obra.webp" alt="Estructura en obra"></figure><i>Construcción</i><h3>A la medida</h3><p>Tu nave, en tu terreno o en el nuestro.</p></a>
+    <a class="serv" href="#cotizar"><figure><img src="../../img/interior.webp" alt="Interior de una nave"></figure><i>Desarrollo</i><h3>Parques</h3><p>Urbanización, vialidades, redes y naves.</p></a>
+  </div>
+</section>
+
+<section class="nave" id="nave" data-pin>
+  <div class="stage">
+    <div class="marco">
+      <img src="../../img/despiece-poster.webp" alt="">
+      <video data-scrub data-src="../../media/despiece.mp4" data-src-mobile="../../media/despiece-m.mp4" muted playsinline></video>
+      <div class="ejes" aria-hidden="true"><span style="left:18%">A</span><span style="left:34%">B</span><span style="left:50%">C</span><span style="left:66%">D</span><span style="left:82%">E</span></div>
+    </div>
+    <div class="panel">
+      <h2>De polvo a nave</h2>
+      <p style="color:var(--soft)">El terreno se nivela, la estructura sale del polvo, las piezas se separan y la nave se arma.</p>
+      <ol>
+        <li style="--s:0">Terreno</li><li style="--s:.15">Terracerías</li><li style="--s:.3">Estructura</li><li style="--s:.45">Piezas</li><li style="--s:.6">Montaje</li><li style="--s:.9">Entrega</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="lamina" id="ficha" data-in>
+  <div class="lamina__head"><span>Lámina 03</span><span>Ficha técnica</span><span>Referencias del mercado mexicano</span></div>
+  <div class="lamina__body"><h2>Lo que se especifica</h2></div>
+  <div class="spec">
+    <div><b>9.75–11 m</b><span>Altura libre</span><small>Del piso al lecho bajo de la armadura</small></div>
+    <div><b>12 × 15 m</b><span>Claro entre columnas</span><small>Racks, pasillos y líneas</small></div>
+    <div><b>15 cm</b><span>Piso industrial</span><small>Desde 5 ton/m²</small></div>
+    <div><b>1.22 m</b><span>Altura de andén</span><small>Con rampa niveladora</small></div>
+    <div><b>33–40 m</b><span>Patio de maniobras</span><small>Para cajas de 53 pies</small></div>
+    <div><b>NFPA 13</b><span>Contra incendio</span><small>Rociadores ESFR</small></div>
+  </div>
+</section>
+
+<section class="cta" id="cotizar">
+  <div class="wrap"><h2>Dibujemos tu nave</h2><div><p style="margin-bottom:22px">Cuéntanos superficie, altura, andenes y zona. Te decimos qué hay disponible o preparamos el proyecto.</p><a class="btn" href="#">Enviar por WhatsApp</a></div></div>
+</section>
+<footer class="foot"><div class="wrap"><span>IMAX · Inmobiliaria, desarrolladora y constructora de naves y parques industriales</span><span>grupoimax.mx</span></div></footer>
+<script src="../mov.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>IMAX · Opción C: Hora dorada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #ffffff; --mist: #f1f3f5; --ink: #0f1c2b; --soft: #5b6877; --gold: #d8932c; --line: rgba(15, 28, 43, .12); --ease: cubic-bezier(.22, 1, .36, 1); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; font-family: "Instrument Serif", Georgia, serif; font-weight: 400; letter-spacing: -.01em; line-height: 1; text-wrap: balance; }
+p { margin: 0; }
+.wrap { width: min(100% - 48px, 1280px); margin-inline: auto; }
+
+.bar { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; gap: 32px; padding: 20px 32px; color: #fff; transition: background-color .4s, color .4s, box-shadow .4s; }
+.bar.is-solid { background: rgba(255, 255, 255, .92); color: var(--ink); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
+.brand { font-family: Manrope; font-weight: 700; letter-spacing: .32em; font-size: 1.05rem; text-decoration: none; }
+.bar nav { display: flex; gap: 30px; margin-left: auto; font-size: .93rem; font-weight: 500; }
+.bar nav a { text-decoration: none; opacity: .9; }
+.btn { display: inline-flex; align-items: center; min-height: 50px; padding: 0 28px; border-radius: 999px; background: var(--gold); color: #fff; font-weight: 600; text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s; box-shadow: 0 12px 30px -14px rgba(216, 147, 44, .8); }
+.btn:hover { transform: translateY(-2px); }
+.btn--light { background: rgba(255, 255, 255, .16); color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6); backdrop-filter: blur(8px); }
+.bar .btn { min-height: 42px; padding: 0 20px; }
+
+/* Portada: vista aérea del parque a la hora dorada, la cámara baja lentamente */
+.hero { height: 200vh; position: relative; }
+.hero .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1.18 - var(--p, 0) * .12)) translate3d(0, calc(var(--p, 0) * 3%), 0); animation: llega 2.6s var(--ease) both; }
+@keyframes llega { from { transform: scale(1.32); filter: brightness(1.25) saturate(.7); } }
+.hero::after { content: ""; position: sticky; }
+.hero .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 18, 28, .45) 0%, rgba(10, 18, 28, 0) 32%, rgba(10, 18, 28, 0) 48%, rgba(10, 18, 28, .72) 100%); }
+.hero__copy { position: absolute; left: 32px; right: 32px; bottom: 64px; color: #fff; display: grid; grid-template-columns: 1.4fr .6fr; gap: 40px; align-items: end; transform: translate3d(0, calc(var(--p, 0) * -14vh), 0); opacity: calc(1 - var(--p, 0) * 1.8); }
+.hero h1 { font-size: clamp(3.2rem, 7.8vw, 8.6rem); line-height: .95; }
+.hero__copy > div { display: grid; gap: 22px; }
+.hero__copy p { font-size: 1.1rem; color: rgba(255, 255, 255, .88); }
+.hero__copy .row { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero h1 span { display: inline-block; animation: sube 1.2s var(--ease) both; }
+@keyframes sube { from { opacity: 0; transform: translate3d(0, .5em, 0); } }
+
+/* Frase que se enciende palabra por palabra */
+.manifiesto { height: 220vh; position: relative; }
+.manifiesto .stage { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; }
+.manifiesto p { width: min(100% - 48px, 1100px); font-family: "Instrument Serif"; font-size: clamp(2rem, 4.6vw, 4.6rem); line-height: 1.12; text-align: center; }
+.manifiesto .w { color: #d3d8de; transition: color .4s var(--ease); }
+.manifiesto .w.on { color: var(--ink); }
+
+/* Servicios en filas editoriales */
+.svc { padding: 40px 0 120px; }
+.svc__row { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; padding: 48px 0; }
+.svc__row:nth-child(even) { grid-template-columns: .85fr 1.15fr; }
+.svc__row:nth-child(even) figure { order: 2; }
+.svc__row figure { margin: 0; aspect-ratio: 16 / 11; overflow: hidden; border-radius: 26px; }
+.svc__row img { width: 100%; height: 118%; object-fit: cover; transform: translate3d(0, calc(-9% + var(--p, .5) * 0%), 0); transition: transform 1.6s var(--ease); }
+.svc__row.is-in img { transform: translate3d(0, -4%, 0) scale(1.02); }
+.svc__row h3 { font-size: clamp(2.6rem, 4.4vw, 4.4rem); margin-bottom: 18px; }
+.svc__row p { color: var(--soft); font-size: 1.08rem; max-width: 28em; }
+.svc__row a.more { display: inline-block; margin-top: 22px; font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--gold); padding-bottom: 4px; }
+.kicker { display: block; margin-bottom: 14px; color: var(--gold); font-weight: 600; font-size: .95rem; }
+
+/* La nave */
+.nave { height: 520vh; position: relative; }
+.nave .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.nave video, .nave .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.nave .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .7) 26%, rgba(255, 255, 255, 0) 52%); }
+.nave__copy { position: absolute; left: 48px; top: 50%; translate: 0 -50%; width: min(420px, 40vw); display: grid; gap: 18px; }
+.nave__copy h2 { font-size: clamp(2.8rem, 5vw, 5rem); }
+.nave__copy p { color: var(--soft); }
+.etapa { display: grid; }
+.etapa span { grid-area: 1 / 1; font-family: "Instrument Serif"; font-size: 2rem; color: var(--gold); opacity: 0; transition: opacity .5s var(--ease), transform .5s var(--ease); transform: translate3d(0, 10px, 0); }
+.etapa span.on { opacity: 1; transform: none; }
+.linea { height: 1px; background: var(--line); position: relative; }
+.linea i { position: absolute; inset: 0 auto 0 0; width: calc(var(--p, 0) * 100%); background: var(--gold); height: 2px; top: -.5px; }
+
+/* Ficha */
+.ficha { padding: 130px 0; background: var(--mist); }
+.ficha h2 { font-size: clamp(2.8rem, 5vw, 5rem); max-width: 12ch; margin-bottom: 56px; }
+.ficha__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 56px; }
+.ficha__grid div { padding: 26px 0; border-top: 1px solid var(--line); display: grid; gap: 4px; }
+.ficha__grid b { font-family: "Instrument Serif"; font-weight: 400; font-size: 2.8rem; line-height: 1.1; }
+.ficha__grid span { font-weight: 600; }
+.ficha__grid small { color: var(--soft); font-size: .9rem; }
+
+/* Cierre */
+.cta { position: relative; min-height: 100vh; display: grid; align-items: center; overflow: hidden; color: #fff; }
+.cta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cta::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 18, 28, .75), rgba(10, 18, 28, .1)); z-index: 1; }
+.cta .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
+.cta h2 { font-size: clamp(3rem, 6vw, 6.4rem); }
+.form { display: grid; gap: 14px; padding: 30px; border-radius: 24px; background: #fff; color: var(--ink); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .5); }
+.form label { display: grid; gap: 6px; font-size: .88rem; font-weight: 600; }
+.form input, .form select { min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; font: inherit; background: var(--mist); }
+.foot { padding: 50px 0; font-size: .9rem; color: var(--soft); }
+.foot .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.foot strong { letter-spacing: .32em; color: var(--ink); }
+[data-in] { opacity: 0; transform: translate3d(0, 50px, 0); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+[data-in].is-in { opacity: 1; transform: none; }
+
+@media (max-width: 820px) {
+  .bar nav { display: none; }
+  .hero__copy, .svc__row, .svc__row:nth-child(even), .cta .wrap { grid-template-columns: 1fr; gap: 24px; }
+  .svc__row:nth-child(even) figure { order: 0; }
+  .nave .shade { background: linear-gradient(0deg, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .8) 34%, rgba(255, 255, 255, 0) 60%); }
+  .nave__copy { left: 24px; right: 24px; top: auto; bottom: 28px; translate: none; width: auto; }
+  .ficha__grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { [data-in] { opacity: 1; transform: none; } .hero img, .hero h1 span { animation: none; } }
+</style>
+</head>
+<body>
+<header class="bar" data-bar>
+  <a class="brand" href="#">IMAX</a>
+  <nav><a href="#servicios">Qué hacemos</a><a href="#nave">La nave</a><a href="#ficha">Ficha técnica</a><a href="#cotizar">Contacto</a></nav>
+  <a class="btn" href="#cotizar">Cotizar</a>
+</header>
+
+<section class="hero" data-pin>
+  <div class="stage">
+    <img src="../../img/parque.webp" alt="Vista aérea de un parque industrial a la hora dorada">
+    <div class="veil"></div>
+    <div class="hero__copy">
+      <h1><span>Naves y parques</span> <span style="animation-delay:.15s">industriales,</span> <span style="animation-delay:.3s">del terreno a la llave.</span></h1>
+      <div>
+        <p>IMAX desarrolla, construye, renta y vende naves industriales y parques industriales completos.</p>
+        <div class="row"><a class="btn" href="#cotizar">Cotizar</a><a class="btn btn--light" href="#nave">Ver cómo se arma</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="manifiesto" data-pin>
+  <div class="stage"><p data-words data-from=".05" data-to=".75">Una sola empresa responde por el terreno, el proyecto, la obra y el inmueble. Tú decides si rentas, compras o construyes.</p></div>
+</section>
+
+<section class="svc wrap" id="servicios">
+  <div class="svc__row" data-in><figure><img src="../../img/andenes.webp" alt="Andenes de carga"></figure><div><span class="kicker">Renta</span><h3>Naves listas para operar</h3><p>Naves terminadas o en obra dentro de nuestros parques, con contrato de arrendamiento y entrega lista para instalar tu operación.</p><a class="more" href="#cotizar">Preguntar por naves en renta</a></div></div>
+  <div class="svc__row" data-in><figure><img src="../../img/oficinas.webp" alt="Oficinas de una nave"></figure><div><span class="kicker">Venta</span><h3>Patrimonio industrial</h3><p>Naves y lotes industriales para empresas que quieren patrimonio propio y para inversionistas que buscan renta industrial.</p><a class="more" href="#cotizar">Preguntar por naves en venta</a></div></div>
+  <div class="svc__row" data-in><figure><img src="../../img/obra.webp" alt="Estructura en obra"></figure><div><span class="kicker">Construcción a la medida</span><h3>Tu nave, a tu manera</h3><p>Diseñamos y construimos tu nave en tu terreno o en uno de los nuestros: claros, altura libre y andenes definidos por tu operación.</p><a class="more" href="#nave">Ver el proceso</a></div></div>
+</section>
+
+<section class="nave" id="nave" data-pin>
+  <div class="stage">
+    <img class="poster" src="../../img/despiece-poster.webp" alt="">
+    <video data-scrub data-src="../../media/despiece.mp4" data-src-mobile="../../media/despiece-m.mp4" muted playsinline></video>
+    <div class="shade"></div>
+    <div class="nave__copy">
+      <span class="kicker">Del polvo a la llave</span>
+      <h2>Así se levanta una nave</h2>
+      <p>Sigue bajando y mira cómo el terreno se convierte en una nave completa, pieza por pieza.</p>
+      <div class="linea"><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="ficha" id="ficha">
+  <div class="wrap">
+    <h2 data-in>Lo que se especifica en una nave</h2>
+    <div class="ficha__grid" data-in>
+      <div><b>9.75 a 11 m</b><span>Altura libre</span><small>Referencia del mercado mexicano</small></div>
+      <div><b>12 × 15 m</b><span>Claro entre columnas</span><small>Para racks y pasillos</small></div>
+      <div><b>15 cm</b><span>Piso industrial</span><small>Desde 5 ton/m²</small></div>
+      <div><b>2.74 × 3.05 m</b><span>Puerta de andén</span><small>Con rampa niveladora</small></div>
+      <div><b>33 a 40 m</b><span>Patio de maniobras</span><small>Para cajas de 53 pies</small></div>
+      <div><b>NFPA 13</b><span>Contra incendio</span><small>Rociadores ESFR</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cotizar">
+  <img src="../img/nave-dorada.webp" alt="">
+  <div class="wrap">
+    <h2>Cuéntanos qué nave necesitas</h2>
+    <form class="form" onsubmit="return false">
+      <label>Nombre<input></label>
+      <label>Teléfono<input type="tel"></label>
+      <label>Me interesa<select><option>Rentar una nave</option><option>Comprar una nave</option><option>Construir a la medida</option><option>Desarrollar un parque</option></select></label>
+      <button class="btn" type="submit">Enviar por WhatsApp</button>
+    </form>
+  </div>
+</section>
+<footer class="foot"><div class="wrap"><strong>IMAX</strong><span>Inmobiliaria, desarrolladora y constructora de naves y parques industriales</span><span>grupoimax.mx</span></div></footer>
+<script src="../mov.js"></script>
+</body>
+</html>

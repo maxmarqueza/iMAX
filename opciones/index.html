@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>IMAX · Opciones de diseño</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #f2f3f1; color: #111416; font: 400 17px/1.55 Archivo, system-ui, sans-serif; }
+main { width: min(100% - 40px, 1240px); margin: 0 auto; padding: 56px 0 80px; }
+h1 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3.4rem); font-stretch: 118%; letter-spacing: -.02em; }
+.lead { color: #59616a; max-width: 40em; margin: 0 0 40px; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+a.op { display: grid; text-decoration: none; color: inherit; border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 1px 0 rgba(0, 0, 0, .08); transition: transform .3s, box-shadow .3s; }
+a.op:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .35); }
+a.op img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+a.op > div { padding: 18px 22px 22px; display: grid; gap: 6px; }
+a.op b { font-size: 1.35rem; font-stretch: 112%; }
+a.op span { color: #59616a; font-size: .97rem; }
+.sw { display: flex; gap: 6px; margin-top: 6px; }
+.sw i { width: 22px; height: 22px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12); }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Opciones de diseño para IMAX</h1>
+  <p class="lead">Tres direcciones claras, con el mismo contenido y las mismas imágenes, para comparar con el sitio actual. Ábrelas y baja con el scroll: todas tienen la nave que se arma de polvo a nave.</p>
+  <div class="grid">
+    <a class="op" href="concreto/"><img src="img/vista-a.webp" alt=""><div><b>A. Concreto</b><span>Clara e industrial: gris cemento, negro y amarillo de seguridad. El video crece de tarjeta a pantalla completa.</span><div class="sw"><i style="background:#e9ebe8"></i><i style="background:#111416"></i><i style="background:#ffc20e"></i></div></div></a>
+    <a class="op" href="plano/"><img src="img/vista-b.webp" alt=""><div><b>B. Plano</b><span>Blanco y azul de ingeniería, con retícula de plano. La portada empieza como dibujo y se vuelve foto.</span><div class="sw"><i style="background:#f6f8fb"></i><i style="background:#0b1f3a"></i><i style="background:#2450ff"></i></div></div></a>
+    <a class="op" href="dorada/"><img src="img/vista-c.webp" alt=""><div><b>C. Hora dorada</b><span>Blanca y premium, de desarrollador inmobiliario: tipografía con serifa, fotos a la hora dorada y dorado de acento.</span><div class="sw"><i style="background:#ffffff"></i><i style="background:#0f1c2b"></i><i style="background:#d8932c"></i></div></div></a>
+    <a class="op" href="../"><img src="img/vista-actual.webp" alt=""><div><b>Sitio actual</b><span>La versión oscura publicada en grupoimax.mx, para comparar.</span><div class="sw"><i style="background:#0d1a26"></i><i style="background:#f3f6f8"></i><i style="background:#f6b93b"></i></div></div></a>
+  </div>
+</main>
+</body>
+</html>
