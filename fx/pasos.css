@@ -1,7 +1,4 @@
-/* Pasos de la historia en pantallas táctiles (fx/pasos.js): cada deslizón se detiene en el siguiente momento.
-   Ajuste obligatorio para no quedar nunca a medio relevo; la ficha y el contacto son áreas más altas que la
-   pantalla, así que adentro se lee libre (Safari y Chrome aceptan cualquier posición dentro de ellas).
-   Sin margen arriba: cada paso empieza en el borde de la pantalla, como las escenas. */
-html.con-pasos { scroll-snap-type: y mandatory; scroll-padding-top: 0; }
-.con-pasos #ficha, .con-pasos #contacto { scroll-snap-align: start; }
-.paso { position: absolute; left: 0; width: 1px; height: 1px; pointer-events: none; scroll-snap-align: start; scroll-snap-stop: always; }
+/* Arranque de cada escena en pantallas táctiles (fx/pasos.js): el scroll es libre; si el dedo suelta cerca
+   del inicio de una escena, el navegador la acomoda completa. Sin margen arriba, como las escenas. */
+html.con-pasos { scroll-snap-type: y proximity; scroll-padding-top: 0; }
+.paso { position: absolute; left: 0; width: 1px; height: 1px; pointer-events: none; scroll-snap-align: start; }

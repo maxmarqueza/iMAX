@@ -8,7 +8,7 @@
   const video = scene.querySelector(".foot__video");
   const ctx = canvas.getContext("2d");
   const COLOR = "#111416";
-  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, metrics = null, lastKey = "";
+  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, dive = 1, cover = 1, metrics = null, lastKey = "";
 
   function layout() {
     const r = stage.getBoundingClientRect();
@@ -20,12 +20,16 @@
     const target = Math.min(w * (narrow ? 0.9 : 0.84), 1500, ((h * 0.5) * metrics.width) / metrics.cap);
     size = (100 * target) / metrics.width;
     const cap = (metrics.cap / 100) * size;
-    const cy = h * (narrow ? 0.4 : 0.42);
+    // En el teléfono la palabra baja al centro: arriba ya no queda un hueco negro
+    const cy = h * (narrow ? 0.47 : 0.42);
     baseline = cy + cap / 2;
     left = (w - target) / 2;
     // Asta derecha de la M: por ahí sale la cámara, igual que entra en la portada
     ox = left + (metrics.stops[2] / 100) * size - 0.17 * size;
     oy = cy;
+    // Igual que en la portada: en vertical hace falta acercar más para que el asta cubra la escena
+    cover = (2 * Math.max(cy, h - cy)) / cap;
+    dive = Math.max(1, Math.log(cover) / Math.log(4.6));
     lastKey = "";
     draw();
   }
@@ -35,7 +39,9 @@
     const r = scene.getBoundingClientRect();
     const t = FX.reduce ? 1 : FX.clamp01(-r.top / Math.max(r.height - innerHeight, 1));
     const k = FX.smooth(t / 0.72);
-    const scale = 1 + Math.pow(1 - k, 2.6) * 26;
+    // En vertical la cámara se aleja a ritmo parejo desde justo donde el asta cubre la pantalla; con la curva
+    // de la computadora se quedaba casi todo el tramo dentro de la M y la palabra aparecía de golpe
+    const scale = dive > 1 ? Math.exp(Math.log(cover * 1.1) * (1 - k)) : 1 + Math.pow(1 - k, 2.6) * 26;
     const fd = FX.reduce ? 1 : FX.smooth((t - 0.74) / 0.22);
     stage.style.setProperty("--fd", fd.toFixed(3));
     stage.classList.toggle("is-done", fd > 0.98);

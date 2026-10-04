@@ -1,22 +1,16 @@
-// Pasos de la historia en pantallas táctiles. Con el dedo, un solo deslizón con inercia cruzaba varias
-// escenas de golpe y la historia se perdía. Cada escena marca sus momentos y el navegador se detiene en
-// el siguiente (scroll-snap nativo, sin tomar el control del scroll). El texto corrido sigue libre.
+// Inicio de cada escena en pantallas táctiles. El scroll es libre y continuo, como en la web (el recorrido
+// extra de cada escena lo da fx/core.js); solo cuando el dedo suelta cerca del arranque de una escena, el
+// navegador la acomoda completa para no quedar a medio relevo (scroll-snap de cercanía, nativo).
 (function pasos() {
   if (!FX.coarse) return;
   const root = document.documentElement;
   const U = CSS.supports("height: 1lvh") ? "lvh" : "vh";
 
-  // Avance del acto (0 a 1) donde cada paso ya se lee completo; salen de los data-sc-cue de cada escena
-  const MAPA = {
-    inicio: [0, 0.9],
-    anatomia: [0, 0.145, 0.27, 0.4, 0.52, 0.66, 0.825, 0.97],
-    parque: [0, 0.2, 0.365, 0.525, 0.685, 0.86],
-    proceso: [0, 0.14, 0.232, 0.38, 0.58, 0.73, 0.93],
-  };
+  // Arranque de cada escena fija (avance 0)
+  const MAPA = { inicio: [0], servicios: [0], anatomia: [0], parque: [0], proceso: [0] };
 
   // Las marcas van en unidades de pantalla grande para no moverse cuando el navegador esconde su barra
-  // (si se movieran, Safari volvería a ajustar y la página brincaría sola). Se reusan las que ya existen:
-  // si en algún momento faltaran, el ajuste obligatorio mandaría la página al único alto que quedara.
+  // (si se movieran, Safari volvería a ajustar y la página brincaría sola). Se reusan las que ya existen.
   function marcar(box, tops) {
     const old = [...box.querySelectorAll(":scope > .paso")];
     tops.forEach((top, i) => {
@@ -36,39 +30,17 @@
     return ps.map((p) => `${(p * (span - 1) * 100).toFixed(3)}${U}`);
   };
 
-  // Servicios: un paso por tarjeta y otro por la nota final, cada uno al centro de la pantalla
-  // (misma fórmula del motor para el riel)
-  function riel() {
-    const act = document.getElementById("servicios");
-    const rail = act && act.querySelector("[data-sc-pan]");
-    if (!rail) return null;
-    const extra = parseFloat(rail.getAttribute("data-sc-pan")) || 0;
-    const vw = innerWidth, over = rail.scrollWidth - vw;
-    if (over <= 0) return [act, [0]];
-    const travel = over * (1 + extra);
-    const left0 = rail.getBoundingClientRect().left - new DOMMatrix(getComputedStyle(rail).transform).m41;
-    const ps = [0];
-    act.querySelectorAll(".svc__item, .svc__note").forEach((it) => {
-      const c = left0 + it.offsetLeft + it.offsetWidth / 2;
-      ps.push(Math.min(1, Math.max(0, (c - vw / 2) / travel)));
-    });
-    return [act, ps.filter((p, i) => i === 0 || p - ps[i - 1] > 0.04)];
-  }
-
   function todo() {
-    // Primero se mide (el riel) y luego se escribe, sin medir en medio
-    const r = riel();
     for (const [id, ps] of Object.entries(MAPA)) {
       const act = document.getElementById(id);
       if (act) marcar(act, enActo(act, ps));
     }
-    if (r) marcar(r[0], enActo(r[0], r[1]));
-    // Ficha y contacto: un alto al empezar; adentro se lee libre
+    // Ficha y contacto: su inicio
     for (const id of ["ficha", "contacto"]) {
       const s = document.getElementById(id);
       if (s) marcar(s, ["0px"]);
     }
-    // Salida: un alto al entrar a la escena del pie
+    // Salida: la escena del pie
     const pie = document.querySelector(".foot__scene");
     if (pie) marcar(pie, ["0px"]);
   }

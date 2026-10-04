@@ -2,6 +2,7 @@
 .foot__scene { position: relative; height: 230svh; margin-top: clamp(40px, 6vw, 80px); }
 .foot__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; background: #0d1a26; }
 @supports (height: 100lvh) { .foot__stage { height: 100lvh; } }
+@media (pointer: coarse) and (max-width: 860px) { .foot__scene { height: 320lvh; } }
 .foot__poster, .foot__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
 .foot__plate { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
 .foot__draw { position: absolute; z-index: 3; left: 0; right: 0; bottom: calc(64px + var(--barra, 0px)); opacity: var(--fd, 0); }

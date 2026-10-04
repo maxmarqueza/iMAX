@@ -127,7 +127,7 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
     const p = actP(act);
     const goal = target(p);
     if (!cur || reduce) cur = goal;
-    else for (const k in goal) cur[k] = lerp(cur[k], goal[k], FX.coarse ? 0.06 : 0.12);
+    else for (const k in goal) cur[k] = lerp(cur[k], goal[k], 0.12);
     apply(cur);
     setActive(p);
     const moving = Object.keys(goal).some((k) => Math.abs(cur[k] - goal[k]) > 0.0005);
