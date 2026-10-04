@@ -105,8 +105,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .hero__edge { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; z-index: 3; pointer-events: none; }
 .hero__intro { position: absolute; z-index: 4; left: var(--sc-gutter); right: var(--sc-gutter); top: var(--wm-bottom, 62%); display: grid; justify-items: center; gap: 22px; text-align: center; opacity: calc(1 - clamp(0, calc(var(--sc-p, 0) / .1), 1)); }
 .hero__h1 { font-size: clamp(1.05rem, .9rem + .7vw, 1.6rem); font-weight: 760; font-stretch: 112%; letter-spacing: -.01em; line-height: 1.2; }
-.hero__down { display: inline-flex; flex-direction: column; align-items: center; gap: 10px; font-size: .8rem; font-weight: 700; text-decoration: none; color: var(--sc-ink-soft); }
-.hero__down::after { content: ""; width: 2px; height: 38px; background: linear-gradient(var(--sc-ink) 50%, transparent 0) 0 0 / 2px 12px; }
 .hero__say { --s: clamp(0, calc((var(--sc-p, 0) - .56) / .16), 1); position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(40px, 8vh, 84px); max-width: 82rem; margin-inline: auto; color: #fff;
   opacity: var(--s); transform: translate3d(0, calc((1 - var(--s)) * 40px), 0); }
 .hero__say p { max-width: 17em; font-size: clamp(1.8rem, 1rem + 2.8vw, 3.9rem); font-weight: 800; font-stretch: 116%; letter-spacing: -.025em; line-height: 1.04; }
@@ -117,11 +115,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 @media (prefers-reduced-motion: no-preference) {
   .hero__intro > * { animation: sube .9s var(--ease) both; }
   .hero__intro > :nth-child(1) { animation-delay: 1.15s; }
-  .hero__intro > :nth-child(2) { animation-delay: 1.35s; }
-  .hero__down::after { animation: guia 1.6s linear infinite; }
 }
 @keyframes sube { from { opacity: 0; transform: translate3d(0, 18px, 0); } }
-@keyframes guia { to { background-position: 0 12px; } }
 
 /* Cifras de referencia que corren */
 .ticker { overflow: hidden; border-block: 1px solid var(--line); background: var(--paper); }
@@ -396,7 +391,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .hero__scene { transform: none; }
   .hero__scrim { opacity: 1; }
   .hero__intro { top: 96px; opacity: 1; color: #fff; }
-  .hero__down { display: none; }
   .hero__say { opacity: 1; transform: none; }
   .hero__routes { opacity: 1; }
   .ticker__row { animation: none; flex-wrap: wrap; width: auto; }
