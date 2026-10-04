@@ -222,44 +222,35 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .tour__dots button.is-on { background: var(--sc-accent); border-color: var(--sc-accent); color: var(--sc-accent-ink); font-weight: 600; }
 .tour__note { position: absolute; right: var(--sc-gutter); bottom: 18px; z-index: 5; }
 
-/* 5. Proceso: terreno, plano, obra, entrega */
-.build__lot, .build__final { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.build__final { display: none; }
+/* 5. Proceso: terreno, plano, obra, entrega y, al final, tres tiempos del mismo predio (fx/tiempos) */
+/* El video termina en .8 del avance del acto. Todo lo que pasa mientras corre se mide con --q,
+   que va de 0 a 1 en ese tramo; el tramo final (.8 a 1) es del comparador. */
+.build { --q: calc(var(--sc-p, 0) / .8); }
+.build__lot, .build__steel, .build__then, .build__final { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* La foto nítida de la nave releva al último cuadro del video cuando este termina */
+.build__final { opacity: clamp(0, calc((var(--sc-p, 0) - .785) / .02), 1); }
+.build__steel, .build__then { visibility: hidden; }
 .build__lot {
-  -webkit-mask-image: linear-gradient(to top, transparent calc(clamp(0, calc((var(--sc-p, 0) - .335) / .115), 1) * 114% - 12%), #000 calc(clamp(0, calc((var(--sc-p, 0) - .335) / .115), 1) * 114% - 2%));
-          mask-image: linear-gradient(to top, transparent calc(clamp(0, calc((var(--sc-p, 0) - .335) / .115), 1) * 114% - 12%), #000 calc(clamp(0, calc((var(--sc-p, 0) - .335) / .115), 1) * 114% - 2%));
+  -webkit-mask-image: linear-gradient(to top, transparent calc(clamp(0, calc((var(--q) - .335) / .115), 1) * 114% - 12%), #000 calc(clamp(0, calc((var(--q) - .335) / .115), 1) * 114% - 2%));
+          mask-image: linear-gradient(to top, transparent calc(clamp(0, calc((var(--q) - .335) / .115), 1) * 114% - 12%), #000 calc(clamp(0, calc((var(--q) - .335) / .115), 1) * 114% - 2%));
 }
-/* Rayos X: la estructura asoma bajo el cursor cuando la nave ya está terminada */
-.build__xray { --lens: clamp(0, calc((var(--sc-p, 0) - .9) / .05), 1); position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; transition: opacity .5s var(--ease); }
-.build__stage.is-xray .build__xray { opacity: var(--lens); -webkit-mask-image: none; mask-image: none; }
-.xray-toggle { justify-self: start; }
-.xray-toggle[aria-pressed="true"] { background: var(--sc-accent); border-color: var(--sc-accent); color: var(--sc-accent-ink); }
-.hint { display: none; font-size: .92rem; color: var(--sc-accent); font-weight: 600; }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .build__xray {
-    opacity: 1;
-    -webkit-mask-image: radial-gradient(circle calc(var(--lens) * 190px) at var(--lx, 68%) var(--ly, 58%), #000 62%, transparent 100%);
-            mask-image: radial-gradient(circle calc(var(--lens) * 190px) at var(--lx, 68%) var(--ly, 58%), #000 62%, transparent 100%);
-  }
-  .hint { display: block; }
-}
-.plan { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; pointer-events: none; opacity: clamp(0, calc(1 - (var(--sc-p, 0) - .6) / .14), 1); }
+.plan { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; pointer-events: none; opacity: clamp(0, calc(1 - (var(--q) - .6) / .14), 1); }
 .plan path { fill: none; stroke: #e6eff6; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.plan__g path { stroke-dasharray: 1px; stroke-dashoffset: clamp(0px, calc((1 - (var(--sc-p, 0) - var(--a)) / var(--d)) * 1px), 1px); }
+.plan__g path { stroke-dasharray: 1px; stroke-dashoffset: clamp(0px, calc((1 - (var(--q) - var(--a)) / var(--d)) * 1px), 1px); }
 .plan__g--1 { --a: .07; --d: .1; }
 .plan__g--2 { --a: .14; --d: .12; }
 .plan__g--3 { --a: .23; --d: .07; }
 .plan__dim path { stroke: var(--sc-accent); }
-.plan__axes { opacity: clamp(0, calc((var(--sc-p, 0) - .12) / .06), 1); }
+.plan__axes { opacity: clamp(0, calc((var(--q) - .12) / .06), 1); }
 .plan__axes path { stroke: rgba(230, 239, 246, .5); stroke-width: 2; stroke-dasharray: 14 12; }
 .plan__axes circle { fill: rgba(13, 26, 38, .55); stroke: rgba(230, 239, 246, .75); stroke-width: 2.5; }
 .plan__axes text { fill: #e6eff6; font-size: 30px; font-weight: 650; text-anchor: middle; }
-.plan__labels { opacity: clamp(0, calc((var(--sc-p, 0) - .27) / .04), 1); }
+.plan__labels { opacity: clamp(0, calc((var(--q) - .27) / .04), 1); }
 .plan__labels text { fill: var(--sc-accent); font-size: 34px; font-weight: 600; paint-order: stroke; stroke: rgba(13, 26, 38, .7); stroke-width: 7px; }
 
 .build__steps .sc-copy { max-width: min(40rem, 74vw); display: grid; gap: 14px; }
-.meter { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: clamp(56px, 9vh, 96px); display: grid; gap: 12px; text-align: right; font-size: .9rem; font-weight: 600; }
-.meter li { --on: clamp(0, calc((var(--sc-p, 0) - var(--s)) * 60), 1); --off: clamp(0, calc((var(--sc-p, 0) - var(--e)) * 60), 1); position: relative; padding-right: 22px; opacity: calc(.42 + .58 * (var(--on) - var(--off))); }
+.meter { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: clamp(56px, 9vh, 96px); display: grid; gap: 12px; text-align: right; font-size: .9rem; font-weight: 600; opacity: calc(1 - clamp(0, calc((var(--sc-p, 0) - .8) / .05), 1)); }
+.meter li { --on: clamp(0, calc((var(--q) - var(--s)) * 60), 1); --off: clamp(0, calc((var(--q) - var(--e)) * 60), 1); position: relative; padding-right: 22px; opacity: calc(.42 + .58 * (var(--on) - var(--off))); }
 .meter li::after { content: ""; position: absolute; right: 0; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; border: 1.5px solid var(--sc-ink); background: rgb(246 185 59 / var(--on)); }
 .build__note { position: absolute; right: var(--sc-gutter); bottom: 18px; z-index: 5; }
 

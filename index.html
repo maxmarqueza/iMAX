@@ -500,14 +500,16 @@
       </div>
     </section>
 
-    <!-- 5. Proceso: del terreno a la llave, con el plano que se dibuja -->
-    <section class="build" id="proceso" data-sc-act="scrub" data-sc-span="3.6" data-sc-clip-map="travel" data-sc-drift="#0a141d">
+    <!-- 5. Proceso: del terreno a la llave, con el plano que se dibuja y, al final, tres tiempos del mismo predio -->
+    <section class="build" id="proceso" data-sc-act="scrub" data-sc-span="4.6" data-sc-clip-map="travel" data-sc-drift="#0a141d">
       <div data-sc-stage class="build__stage">
         <img class="sc-stage__poster" src="img/build-poster.webp" alt="">
-        <video data-sc-scrub data-sc-src="media/build.mp4" data-sc-src-mobile="media/build-m.mp4" muted playsinline></video>
+        <video data-sc-scrub data-sc-src="media/obra.mp4" data-sc-src-mobile="media/obra-m.mp4" muted playsinline></video>
         <img class="build__final" src="img/nave.webp" alt="Nave industrial terminada al anochecer, con los andenes iluminados" loading="lazy">
         <img class="build__lot" src="img/terreno.webp" alt="" loading="lazy">
-        <img class="build__xray" src="img/estructura.webp" alt="" loading="lazy">
+        <!-- Tres tiempos: terreno y estructura registrados con el último cuadro del video -->
+        <img class="build__steel" src="img/tiempo-estructura.webp" alt="" loading="lazy">
+        <img class="build__then" src="img/tiempo-terreno.webp" alt="" loading="lazy">
 
         <svg class="plan" viewBox="0 0 2752 1536" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g class="plan__g plan__g--1">
@@ -547,30 +549,51 @@
 
         <div class="sc-scrim sc-scrim--lead" aria-hidden="true"></div>
 
+        <!-- Tres tiempos: dos cortes que se arrastran sobre el mismo encuadre -->
+        <div class="tt" role="group" aria-label="Comparador: el mismo predio como terreno, estructura y nave terminada">
+          <div class="tt__shade" aria-hidden="true"></div>
+          <p class="tt__zone tt__zone--1" aria-hidden="true"><i>01</i>Terreno</p>
+          <p class="tt__zone tt__zone--2" aria-hidden="true"><i>02</i>Estructura</p>
+          <p class="tt__zone tt__zone--3" aria-hidden="true"><i>03</i>Nave terminada</p>
+          <div class="tt__line tt__line--1" aria-hidden="true"></div>
+          <div class="tt__line tt__line--2" aria-hidden="true"></div>
+          <button class="tt__grip tt__grip--1" type="button" role="slider" aria-orientation="horizontal" aria-label="Corte entre terreno y estructura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33"><b>1</b></button>
+          <button class="tt__grip tt__grip--2" type="button" role="slider" aria-orientation="horizontal" aria-label="Corte entre estructura y nave terminada" aria-valuemin="0" aria-valuemax="100" aria-valuenow="67"><b>2</b><span class="tt__hint">Arrastra</span></button>
+        </div>
+
         <ol class="build__steps">
-          <li class="sc-copy sc-copy--lead" data-sc-cue="0 0.13 0">
+          <li class="sc-copy sc-copy--lead" data-sc-cue="0 0.104 0">
             <h2 class="hd-lg">De un terreno vacío a una nave operando</h2>
             <p class="lede"><strong>Terreno y factibilidad.</strong> Revisamos uso de suelo, mecánica de suelos, topografía y factibilidades de agua, drenaje y energía antes de comprometer el proyecto.</p>
           </li>
-          <li class="sc-copy sc-copy--lead" data-sc-cue="0.1 0.25">
+          <li class="sc-copy sc-copy--lead" data-sc-cue="0.08 0.2">
             <h3 class="hd-md">Proyecto e ingeniería</h3>
             <p class="lede">Proyecto arquitectónico, estructural y de instalaciones: claros, altura libre, andenes, cargas de piso y energía, a partir de cómo va a trabajar tu operación.</p>
           </li>
-          <li class="sc-copy sc-copy--lead" data-sc-cue="0.22 0.36">
+          <li class="sc-copy sc-copy--lead" data-sc-cue="0.176 0.288">
             <h3 class="hd-md">Permisos</h3>
             <p class="lede">Uso de suelo, impacto ambiental, impacto vial, Protección Civil y licencia de construcción con Director Responsable de Obra: gestionamos lo que pida cada municipio antes de arrancar.</p>
           </li>
-          <li class="sc-copy sc-copy--lead" data-sc-cue="0.33 0.86">
+          <li class="sc-copy sc-copy--lead" data-sc-cue="0.264 0.688">
             <h3 class="hd-md">Obra</h3>
             <p class="lede">Terracerías y plataformas, cimentación, montaje de la estructura, cubierta engargolada, muros, piso industrial, instalaciones, red contra incendio y urbanización.</p>
           </li>
-          <li class="sc-copy sc-copy--lead" data-sc-cue="0.83 1 0.3 0.1">
+          <li class="sc-copy sc-copy--lead" data-sc-cue="0.664 0.8 0.3 0.3">
             <h3 class="hd-md">Entrega</h3>
             <p class="lede">Pruebas de instalaciones, terminación de obra y entrega de la nave lista para instalar equipo y empezar a operar.</p>
-            <p class="hint">Pasa el cursor sobre la nave: así es la estructura que la sostiene.</p>
-            <button class="btn btn--glass btn--small xray-toggle" type="button" aria-pressed="false">Ver la estructura</button>
+          </li>
+          <li class="sc-copy sc-copy--lead tt__copy" data-sc-cue="0.8 1 0.35 0">
+            <h3 class="hd-md">Tres tiempos, un mismo predio</h3>
+            <p class="lede">El terreno, la estructura de acero y la nave terminada, vistos desde el mismo punto. Arrastra los cortes o elige un tiempo.</p>
           </li>
         </ol>
+
+        <div class="tt__modes" role="group" aria-label="Elegir qué tiempo ver">
+          <button type="button" data-tt="terreno" aria-pressed="false">Terreno</button>
+          <button type="button" data-tt="estructura" aria-pressed="false">Estructura</button>
+          <button type="button" data-tt="nave" aria-pressed="false">Nave</button>
+          <button type="button" data-tt="tres" aria-pressed="true">Los tres</button>
+        </div>
 
         <ol class="meter" aria-hidden="true">
           <li style="--s:0;--e:.115">Terreno</li>

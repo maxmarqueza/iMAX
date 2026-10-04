@@ -235,30 +235,6 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   kick();
 })();
 
-// Rayos X: con la nave ya terminada, el cursor deja ver la estructura que la sostiene
-(function xray() {
-  const stage = document.querySelector(".build__stage");
-  if (!stage || !finePointer || reduce) return;
-  stage.addEventListener("pointermove", (e) => {
-    const r = stage.getBoundingClientRect();
-    stage.style.setProperty("--lx", (e.clientX - r.left).toFixed(0) + "px");
-    stage.style.setProperty("--ly", (e.clientY - r.top).toFixed(0) + "px");
-  });
-})();
-
-// Con la nave terminada, el botón deja ver la estructura completa (también en pantallas táctiles)
-(function xrayToggle() {
-  const btn = document.querySelector(".xray-toggle");
-  const stage = document.querySelector(".build__stage");
-  if (!btn || !stage) return;
-  btn.addEventListener("click", () => {
-    const on = btn.getAttribute("aria-pressed") !== "true";
-    btn.setAttribute("aria-pressed", String(on));
-    btn.textContent = on ? "Ver la nave terminada" : "Ver la estructura";
-    stage.classList.toggle("is-xray", on);
-  });
-})();
-
 // El formulario abre WhatsApp con el mensaje armado
 const form = document.getElementById("form-contacto");
 const status = form.querySelector(".form__status");
