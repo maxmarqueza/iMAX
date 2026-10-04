@@ -107,6 +107,7 @@
     if (!act) return;
     const v = act.querySelector("video[data-sc-scrub]");
     const s = scene(act);
+    if (act.querySelector(".anat__trazo")) act.__e = 0;
     v.muted = true; v.playsInline = true; v.preload = "auto";
     v.src = mobile ? v.dataset.scSrcMobile || v.dataset.scSrc : v.dataset.scSrc;
     let rafV = 0;
@@ -124,7 +125,19 @@
       s.set(0);
       v.currentTime = 0;
       v.playbackRate = rate;
-      v.play().catch(() => s.tween(1, 2500));
+      // De polvo a nave: primero se traza la planta sobre el terreno (1 s) y luego corre el video
+      if (act.querySelector(".anat__trazo")) {
+        act.__e = 0;
+        const t0 = performance.now();
+        startPulse();
+        const step = (t) => {
+          const k = clamp01((t - t0) / 1000);
+          act.__e = ease(k);
+          if (k < 1) requestAnimationFrame(step);
+          else { stopPulse(); v.play().catch(() => s.tween(1, 2500)); }
+        };
+        requestAnimationFrame(step);
+      } else v.play().catch(() => s.tween(1, 2500));
     };
     onShow(act, play, 0.55);
     replay(act, play);

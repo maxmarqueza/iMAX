@@ -68,7 +68,8 @@
   function frame() {
     raf = 0;
     const r = act.getBoundingClientRect();
-    const e = FX.clamp01(1 - r.top / innerHeight);
+    // act.__e: entrada por tiempo en la vista previa sin scroll (vista/auto.js)
+    const e = act.__e != null ? act.__e : FX.clamp01(1 - r.top / innerHeight);
     svg.style.setProperty("--e", e.toFixed(3));
     if (video && video.duration) {
       const idx = Math.max(0, Math.min(80, Math.round((video.currentTime * 24) / 2)));

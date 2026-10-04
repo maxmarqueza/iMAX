@@ -34,12 +34,15 @@
   const track = document.querySelector(".contact__track");
   if (ticker && !R) ticker.classList.add("is-js");
 
+  // <html data-sin-scroll> (vista previa): nada sigue la velocidad del scroll
+  const sinScroll = document.documentElement.hasAttribute("data-sin-scroll");
+  let bandX = 0;
   let lastY = scrollY, vel = 0, x = 0, dir = -1, lastT = performance.now(), lastN = -1, hoverPause = false;
   if (ticker) { ticker.addEventListener("pointerenter", () => (hoverPause = true)); ticker.addEventListener("pointerleave", () => (hoverPause = false)); }
   function frame(t) {
     const dt = Math.min(64, t - lastT); lastT = t;
     const dy = scrollY - lastY; lastY = scrollY;
-    vel = FX.lerp(vel, dy, 0.18);
+    vel = sinScroll ? 0 : FX.lerp(vel, dy, 0.18);
     if (Math.abs(vel) > 0.5) dir = vel > 0 ? -1 : 1;
 
     if (say && words.length) {
@@ -62,8 +65,13 @@
     if (band && track && !R) {
       const r = band.getBoundingClientRect();
       if (r.bottom > 0 && r.top < innerHeight) {
-        const k = (innerHeight - r.top) / (innerHeight + r.height);
-        track.style.transform = `translate3d(${(-k * track.scrollWidth * 0.45).toFixed(1)}px,0,0) skewX(${Math.max(-8, Math.min(8, vel * -0.25)).toFixed(2)}deg)`;
+        if (sinScroll) {
+          bandX = (bandX + dt * 0.04) % (track.scrollWidth * 0.45);
+          track.style.transform = `translate3d(${(-bandX).toFixed(1)}px,0,0)`;
+        } else {
+          const k = (innerHeight - r.top) / (innerHeight + r.height);
+          track.style.transform = `translate3d(${(-k * track.scrollWidth * 0.45).toFixed(1)}px,0,0) skewX(${Math.max(-8, Math.min(8, vel * -0.25)).toFixed(2)}deg)`;
+        }
       }
     }
     requestAnimationFrame(frame);
