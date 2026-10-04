@@ -6,7 +6,18 @@ const CONFIG = {
   address: "",
 };
 
-const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+const clamp01 = (n) => Math.min(1, Math.max(0, n));
+const smooth = (n) => { n = clamp01(n); return n * n * (3 - 2 * n); };
+const lerp = (a, b, t) => a + (b - a) * t;
+// Avance de un acto fijo (0 a 1), con la misma fórmula que usa el motor para --sc-p
+const actP = (el) => {
+  const r = el.getBoundingClientRect();
+  return clamp01(-r.top / Math.max(r.height - innerHeight, 1));
+};
+
+ScrollCraft.mount(document.body);
 
 // Datos de contacto visibles
 document.querySelectorAll("[data-cfg]").forEach((el) => {
@@ -16,43 +27,34 @@ document.querySelectorAll("[data-cfg]").forEach((el) => {
   if (el.dataset.cfg === "phone") el.href = "tel:" + value.replace(/\s+/g, "");
   if (el.dataset.cfg === "email") el.href = "mailto:" + value;
 });
-
 document.getElementById("anio").textContent = new Date().getFullYear();
 
-// Barra de navegación y menú desplegable
+// Barra de navegación y menú con vista previa
 const topBar = document.getElementById("top");
 const mega = document.getElementById("mega");
 const triggers = topBar.querySelectorAll("[aria-controls='mega']");
+const megaItems = [...mega.querySelectorAll(".mega__item:not(.mega__item--mobile)")];
+const megaImgs = [...mega.querySelectorAll(".mega__preview img")];
 
 function setMenu(open) {
   mega.hidden = !open;
   topBar.classList.toggle("is-open", open);
   triggers.forEach((t) => t.setAttribute("aria-expanded", String(open)));
 }
-
+function previewItem(index) {
+  megaItems.forEach((item, i) => item.classList.toggle("is-on", i === index));
+  megaImgs.forEach((img, i) => img.classList.toggle("is-on", i === index));
+}
+megaItems.forEach((item, i) => {
+  item.addEventListener("mouseenter", () => previewItem(i));
+  item.addEventListener("focus", () => previewItem(i));
+});
+previewItem(0);
 triggers.forEach((t) => t.addEventListener("click", () => setMenu(mega.hidden)));
 mega.addEventListener("click", (e) => e.target.closest("a") && setMenu(false));
 document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
 document.addEventListener("click", (e) => !topBar.contains(e.target) && setMenu(false));
-
-// Portada: la barra se vuelve sólida y la imagen se desplaza más lento que la página
-const heroImg = document.querySelector(".hero__media img");
-const hero = document.querySelector(".hero");
-
-function onScroll() {
-  const y = window.scrollY;
-  topBar.classList.toggle("is-solid", y > 40);
-  if (!reducedMotion && y < hero.offsetHeight) heroImg.style.translate = "0 " + y * 0.18 + "px";
-  updateRail();
-}
-
-// Paneles de servicios: se abre el que está bajo el cursor o con foco
-const panels = document.querySelectorAll(".panel");
-panels.forEach((panel) => {
-  const open = () => panels.forEach((p) => p.classList.toggle("is-open", p === panel));
-  panel.addEventListener("mouseenter", open);
-  panel.addEventListener("focus", open);
-});
+addEventListener("scroll", () => topBar.classList.toggle("is-solid", scrollY > 40), { passive: true });
 
 // Los enlaces de cada servicio preseleccionan el interés en el formulario
 document.querySelectorAll("[data-interes]").forEach((link) =>
@@ -61,44 +63,190 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   })
 );
 
-// Parque: puntos sobre la imagen
-const SPOTS = [
-  ["Acceso controlado", "Caseta de vigilancia, barda perimetral y un solo punto de entrada y salida para transporte de carga y personal."],
-  ["Vialidad interna", "Calles de concreto dimensionadas para tráileres, con camellón, alumbrado y las redes de agua, drenaje y energía bajo tierra."],
-  ["Patios de maniobras y andenes", "Cada nave tiene su patio para maniobrar y estacionar cajas, y andenes con rampa niveladora a la altura del tráiler."],
-  ["Naves", "Estructura metálica de grandes claros, piso de concreto industrial y cubierta con lámina translúcida para aprovechar la luz natural."],
-  ["Oficinas", "Área de oficinas y servicios integrada a la nave, con acceso y estacionamiento separados del tránsito de carga."],
-];
-const spot = document.querySelector(".spot");
-const spotButtons = document.querySelectorAll("[data-spot]");
+// ---------------------------------------------------------------- Portada
+// El nombre IMAX es una placa oscura con las letras recortadas: adentro se ve
+// la nave en video. Al bajar, la cámara atraviesa una letra y la placa se disuelve.
+(function hero() {
+  const act = document.querySelector(".hero");
+  const stage = act.querySelector(".hero__stage");
+  const video = act.querySelector(".hero__video");
+  const canvas = act.querySelector(".hero__plate");
+  const ctx = canvas.getContext("2d");
+  const PLATE = "#0d1a26";
+  let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, lastKey = "";
 
-function showSpot(index) {
-  document.getElementById("spot-title").textContent = SPOTS[index][0];
-  document.getElementById("spot-text").textContent = SPOTS[index][1];
-  spotButtons.forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.spot) === index)));
-  spot.classList.remove("is-swap");
-  void spot.offsetWidth;
-  spot.classList.add("is-swap");
-}
+  // Video de ambiente: se elige el archivo según el ancho y se pausa fuera de pantalla
+  if (!reduce) {
+    video.autoplay = true;
+    video.src = innerWidth <= 860 ? video.dataset.srcMobile : video.dataset.src;
+    video.play().catch(() => {});
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    }).observe(stage);
+  }
 
-spotButtons.forEach((b) => b.addEventListener("click", () => showSpot(Number(b.dataset.spot))));
+  const font = (px) => "800 " + px + "px Archivo, system-ui, sans-serif";
+  function setFont(px) {
+    ctx.font = font(px);
+    if ("fontStretch" in ctx) ctx.fontStretch = "expanded";
+  }
 
-// Proceso: la línea avanza con el scroll y se enciende el paso alcanzado
-const steps = document.getElementById("steps");
-const railFill = document.getElementById("rail-fill");
-const stepItems = steps.querySelectorAll(".step");
+  function layout() {
+    const r = stage.getBoundingClientRect();
+    w = r.width; h = r.height;
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    setFont(100);
+    const m = ctx.measureText("IMAX");
+    const narrow = w < 700;
+    const target = Math.min(w * (narrow ? 0.9 : 0.84), 1400, h * (narrow ? 1.2 : 1.9));
+    size = (100 * target) / m.width;
+    const cap = ((m.actualBoundingBoxAscent || 70) / 100) * size;
+    const cy = h * (narrow ? 0.29 : 0.34);
+    baseline = cy + cap / 2;
+    left = (w - target) / 2;
+    // Centro del asta derecha de la M: por ahí entra la cámara
+    ox = left + (ctx.measureText("IM").width / 100) * size - 0.17 * size;
+    oy = cy;
+    stage.style.setProperty("--wm-bottom", Math.round(baseline + size * 0.1) + "px");
+    lastKey = "";
+    draw();
+  }
 
-function updateRail() {
-  const rect = steps.getBoundingClientRect();
-  const mark = window.innerHeight * 0.6;
-  const progress = Math.min(1, Math.max(0, (mark - rect.top) / rect.height));
-  railFill.style.height = progress * 100 + "%";
-  stepItems.forEach((item) => item.classList.toggle("is-on", item.getBoundingClientRect().top < mark));
-}
+  function draw() {
+    if (reduce || !w) return;
+    const p = actP(act);
+    const t = clamp01((p - 0.03) / 0.5);
+    const scale = 1 + Math.pow(t, 2.6) * 26;
+    const alpha = 1 - smooth((t - 0.5) / 0.42);
+    const key = scale.toFixed(3) + "|" + alpha.toFixed(3);
+    if (key === lastKey) return;
+    lastKey = key;
+    canvas.style.opacity = alpha.toFixed(3);
+    if (alpha <= 0) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = PLATE;
+    ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.translate(ox, oy);
+    ctx.scale(scale, scale);
+    ctx.translate(-ox, -oy);
+    setFont(size);
+    ctx.textAlign = "left";
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "#000";
+    ctx.fillText("IMAX", left, baseline);
+  }
 
-window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", updateRail);
-onScroll();
+  if (!reduce) {
+    addEventListener("scroll", draw, { passive: true });
+    addEventListener("resize", layout);
+    layout();
+    if (document.fonts) {
+      document.fonts.load(font(100), "IMAX").then(layout).catch(() => {});
+      document.fonts.ready.then(layout);
+    }
+    // La escena se desplaza un poco con el cursor, detrás de la placa
+    if (finePointer) {
+      let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+      const step = () => {
+        cx = lerp(cx, tx, 0.08); cy = lerp(cy, ty, 0.08);
+        stage.style.setProperty("--px", cx.toFixed(4));
+        stage.style.setProperty("--py", cy.toFixed(4));
+        raf = Math.abs(cx - tx) + Math.abs(cy - ty) > 0.002 ? requestAnimationFrame(step) : 0;
+      };
+      stage.addEventListener("pointermove", (e) => {
+        tx = e.clientX / innerWidth - 0.5; ty = e.clientY / innerHeight - 0.5;
+        if (!raf) raf = requestAnimationFrame(step);
+      });
+    }
+  }
+})();
+
+// ------------------------------------------------------- Recorrido del parque
+// La cámara viaja de punto a punto sobre la vista aérea, guiada por el scroll.
+(function tour() {
+  const act = document.querySelector(".tour");
+  const stage = act.querySelector(".tour__stage");
+  const world = act.querySelector(".tour__world");
+  const cam = act.querySelector(".tour__cam");
+  const pins = [...act.querySelectorAll(".pin")];
+  const dots = [...act.querySelectorAll(".tour__dots button")];
+  // Punto de interés (fracción de la imagen) y acercamiento de cada parada
+  const STOPS = [
+    { fx: 0.504, fy: 0.80, s: 1.9, at: 0.2 },
+    { fx: 0.505, fy: 0.56, s: 1.7, at: 0.365 },
+    { fx: 0.655, fy: 0.57, s: 2.0, at: 0.525 },
+    { fx: 0.79, fy: 0.53, s: 1.75, at: 0.685 },
+    { fx: 0.80, fy: 0.71, s: 2.15, at: 0.86 },
+  ];
+  const HOLD = 0.035;
+  let cur = null, active = -2, raf = 0;
+
+  function target(p) {
+    const narrow = innerWidth <= 860;
+    const keys = [{ fx: 0.5, fy: 0.5, s: 1, at: 0, wide: true }];
+    STOPS.forEach((st) => { keys.push({ ...st, at: st.at - HOLD }); keys.push({ ...st, at: st.at + HOLD }); });
+    keys.push({ fx: 0.6, fy: 0.6, s: 1.25, at: 1.02, wide: true });
+    let a = keys[0], b = keys[keys.length - 1];
+    for (let i = 0; i < keys.length - 1; i++) {
+      if (p >= keys[i].at && p <= keys[i + 1].at) { a = keys[i]; b = keys[i + 1]; break; }
+    }
+    const t = smooth((p - a.at) / Math.max(b.at - a.at, 0.0001));
+    const sx = (k) => (k.wide ? 0.5 : narrow ? 0.5 : 0.66);
+    const sy = (k) => (k.wide ? 0.5 : narrow ? 0.34 : 0.5);
+    return { fx: lerp(a.fx, b.fx, t), fy: lerp(a.fy, b.fy, t), s: lerp(a.s, b.s, t), sx: lerp(sx(a), sx(b), t), sy: lerp(sy(a), sy(b), t) };
+  }
+
+  function apply(c) {
+    const vw = stage.clientWidth, vh = stage.clientHeight;
+    const W = world.offsetWidth, H = world.offsetHeight;
+    const x0 = (vw - W) / 2, y0 = (vh - H) / 2;
+    let tx = c.sx * vw - x0 - c.fx * W * c.s;
+    let ty = c.sy * vh - y0 - c.fy * H * c.s;
+    tx = Math.min(-x0, Math.max(vw - x0 - W * c.s, tx));
+    ty = Math.min(-y0, Math.max(vh - y0 - H * c.s, ty));
+    cam.style.transform = "translate3d(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px,0) scale(" + c.s.toFixed(4) + ")";
+    cam.style.setProperty("--cam-s", c.s.toFixed(4));
+  }
+
+  function setActive(p) {
+    let index = -1;
+    STOPS.forEach((st, i) => { if (p >= st.at - 0.085) index = i; });
+    if (index === active) return;
+    active = index;
+    pins.forEach((el, i) => el.classList.toggle("is-on", i === index));
+    dots.forEach((el, i) => el.classList.toggle("is-on", i === index));
+  }
+
+  function frame() {
+    raf = 0;
+    const p = actP(act);
+    const goal = target(p);
+    if (!cur || reduce) cur = goal;
+    else for (const k in goal) cur[k] = lerp(cur[k], goal[k], 0.12);
+    apply(cur);
+    setActive(p);
+    const moving = Object.keys(goal).some((k) => Math.abs(cur[k] - goal[k]) > 0.0005);
+    if (moving) raf = requestAnimationFrame(frame);
+  }
+  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+
+  function goTo(index) {
+    const rect = act.getBoundingClientRect();
+    const travel = act.offsetHeight - innerHeight;
+    scrollTo({ top: scrollY + rect.top + travel * (STOPS[index].at + 0.005), behavior: reduce ? "auto" : "smooth" });
+  }
+  pins.concat(dots).forEach((el) => el.addEventListener("click", () => goTo(Number(el.dataset.stop))));
+
+  addEventListener("scroll", kick, { passive: true });
+  addEventListener("resize", () => { cur = null; kick(); });
+  kick();
+})();
 
 // El formulario abre WhatsApp con el mensaje armado
 const form = document.getElementById("form-contacto");
