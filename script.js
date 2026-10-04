@@ -11,11 +11,8 @@ const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
 const clamp01 = (n) => Math.min(1, Math.max(0, n));
 const smooth = (n) => { n = clamp01(n); return n * n * (3 - 2 * n); };
 const lerp = (a, b, t) => a + (b - a) * t;
-// Avance de un acto fijo (0 a 1), con la misma fórmula que usa el motor para --sc-p
-const actP = (el) => {
-  const r = el.getBoundingClientRect();
-  return clamp01(-r.top / Math.max(r.height - innerHeight, 1));
-};
+// Avance de un acto fijo (0 a 1), el mismo de fx/core.js (la vista previa sin scroll lo reemplaza por tiempo)
+const actP = (el) => FX.actP(el);
 
 ScrollCraft.mount(document.body);
 

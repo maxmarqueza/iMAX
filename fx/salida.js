@@ -37,7 +37,8 @@
   function draw() {
     if (!w) return;
     const r = scene.getBoundingClientRect();
-    const t = FX.reduce ? 1 : FX.clamp01(-r.top / Math.max(r.height - innerHeight, 1));
+    // scene.__auto: avance por tiempo en la vista previa sin scroll (vista/auto.js)
+    const t = FX.reduce ? 1 : scene.__auto != null ? scene.__auto : FX.clamp01(-r.top / Math.max(r.height - innerHeight, 1));
     const k = FX.smooth(t / 0.72);
     // En vertical la cámara se aleja a ritmo parejo desde justo donde el asta cubre la pantalla; con la curva
     // de la computadora se quedaba casi todo el tramo dentro de la M y la palabra aparecía de golpe
