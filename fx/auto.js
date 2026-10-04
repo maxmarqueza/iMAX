@@ -1,4 +1,4 @@
-// Vista previa sin scroll: ninguna escena va amarrada al scroll. Cada una se reproduce sola, en poco
+// Sitio sin efectos de scroll: ninguna escena va amarrada al scroll. Cada una se reproduce sola, en poco
 // tiempo, cuando aparece en pantalla; después la página se recorre como una página normal.
 // Reutiliza los mismos efectos de fx/: aquí solo se cambia de dónde sale el avance (tiempo en vez de scroll).
 (function auto() {

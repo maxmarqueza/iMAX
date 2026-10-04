@@ -1,12 +1,12 @@
 // Proceso: tres tiempos de una nave. El video de obra termina en el 80 % del acto; después,
-// dos cortes movidos por el scroll dejan ver terreno, estructura y nave. El visitante puede tomarlos.
+// dos cortes que entran solos al terminar el video (fx/auto.js) dejan ver terreno, estructura y nave. El visitante puede tomarlos.
 (function tiempos() {
   const act = document.getElementById("proceso");
   const stage = act && act.querySelector(".build__stage");
   if (!stage) return;
   const grips = [...stage.querySelectorAll(".tt__grip")];
   const modes = [...act.querySelectorAll(".tt__modes button")];
-  const START = 0.8, SETTLE = 0.92; // entra con el scroll entre estos dos avances
+  const START = 0.8, SETTLE = 0.92; // entra entre estos dos avances
   const PRESET = { terreno: [100, 100], estructura: [0, 100], nave: [0, 0], tres: [33.3, 66.7] };
   const GAP = 6;
   let c = [0, 0], v = [0, 0], manual = false, on = false, raf = 0, drag = null, tween = null;
@@ -28,7 +28,7 @@
   };
   const setMode = (key) => modes.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tt === key)));
 
-  // Entrada guiada por el scroll: con la nave terminada en pantalla, los cortes entran desde la
+  // Entrada guiada por el avance: con la nave terminada en pantalla, los cortes entran desde la
   // izquierda y el tiempo retrocede; primero aparece la estructura y detrás de ella el terreno
   function fromScroll(p) {
     const t = FX.reduce ? 1 : FX.smooth((p - START) / (SETTLE - START));

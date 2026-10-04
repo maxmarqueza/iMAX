@@ -128,7 +128,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 @media (hover: hover) { .ticker:hover .ticker__row { animation-play-state: paused; } }
 @keyframes corre { to { transform: translateX(-50%); } }
 
-/* 2. Servicios: riel lateral (fx/riel.js lo hace arrastrable y le da giro y luz) */
+/* 2. Servicios: carrusel lateral (fx/sin-scroll.css) */
 .svc__stage { display: flex; align-items: center; background: var(--concrete); }
 .svc__rail { align-items: center; gap: clamp(14px, 1.6vw, 24px); padding-inline: var(--sc-gutter); padding-top: 56px; }
 .svc__lead { flex: 0 0 min(82vw, 30rem); display: grid; gap: 18px; align-self: center; margin-right: clamp(8px, 2vw, 32px); }

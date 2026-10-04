@@ -11,7 +11,7 @@ const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
 const clamp01 = (n) => Math.min(1, Math.max(0, n));
 const smooth = (n) => { n = clamp01(n); return n * n * (3 - 2 * n); };
 const lerp = (a, b, t) => a + (b - a) * t;
-// Avance de un acto fijo (0 a 1), el mismo de fx/core.js (la vista previa sin scroll lo reemplaza por tiempo)
+// Avance de un acto fijo (0 a 1), el mismo de fx/core.js (fx/auto.js lo reemplaza por tiempo)
 const actP = (el) => FX.actP(el);
 
 ScrollCraft.mount(document.body);
@@ -63,7 +63,7 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
 );
 
 // ------------------------------------------------------- Recorrido del parque
-// La cámara viaja de punto a punto sobre la vista aérea, guiada por el scroll.
+// La cámara viaja de punto a punto sobre la vista aérea; fx/auto.js la lleva sola por las paradas.
 (function tour() {
   const act = document.querySelector(".tour");
   const stage = act.querySelector(".tour__stage");

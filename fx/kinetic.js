@@ -34,7 +34,7 @@
   const track = document.querySelector(".contact__track");
   if (ticker && !R) ticker.classList.add("is-js");
 
-  // <html data-sin-scroll> (vista previa): nada sigue la velocidad del scroll
+  // <html data-sin-scroll>: nada sigue la velocidad del scroll
   const sinScroll = document.documentElement.hasAttribute("data-sin-scroll");
   let bandX = 0;
   let lastY = scrollY, vel = 0, x = 0, dir = -1, lastT = performance.now(), lastN = -1, hoverPause = false;

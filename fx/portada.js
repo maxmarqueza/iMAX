@@ -1,6 +1,6 @@
 // Portada: la palabra IMAX es una placa de concreto con las letras recortadas; adentro se ve la nave
 // en video. Al cargar, cada letra se abre de abajo hacia arriba como una cortina de andén, con un filo
-// amarillo. Al bajar, la cámara atraviesa el asta de la M y la placa se disuelve sobre la nave.
+// amarillo. Enseguida la cámara atraviesa sola el asta de la M (fx/auto.js) y la placa se disuelve sobre la nave.
 (function portada() {
   const act = document.getElementById("inicio");
   if (!act) return;

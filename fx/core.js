@@ -3,18 +3,6 @@
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
   const coarse = matchMedia("(pointer: coarse)").matches;
-  // Teléfono: cada escena fija tiene más recorrido que en la computadora. Un deslizón con el dedo avanza
-  // mucho más que una vuelta de rueda; con más recorrido la historia avanza al mismo paso que en la web,
-  // con video, textos y efectos sincronizados. El motor lee data-sc-span al montar (script.js).
-  if (coarse && matchMedia("(max-width: 860px)").matches && !reduce) {
-    document.querySelectorAll("[data-sc-span]").forEach((el) => {
-      el.dataset.scSpanWeb = el.dataset.scSpan;
-      el.dataset.scSpan = String(Math.round(parseFloat(el.dataset.scSpan) * 1.7 * 10) / 10);
-    });
-    // El riel de servicios termina justo en su orilla: con el recorrido extra de la web, la nota final
-    // quedaba cortada por la izquierda en una pantalla angosta
-    document.querySelectorAll("[data-sc-pan]").forEach((el) => el.setAttribute("data-sc-pan", "0"));
-  }
   const clamp01 = (n) => Math.min(1, Math.max(0, n));
   const lerp = (a, b, t) => a + (b - a) * t;
   const smooth = (n) => { n = clamp01(n); return n * n * (3 - 2 * n); };

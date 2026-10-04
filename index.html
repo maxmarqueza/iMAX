@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-sin-scroll>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -29,16 +29,14 @@
   <link rel="stylesheet" href="scrollcraft.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="fx/portada.css">
-  <link rel="stylesheet" href="fx/riel.css">
   <link rel="stylesheet" href="fx/replanteo.css">
   <link rel="stylesheet" href="fx/cielo.css">
   <link rel="stylesheet" href="fx/lamina.css">
   <link rel="stylesheet" href="fx/anochece.css">
   <link rel="stylesheet" href="fx/tiempos.css">
-  <link rel="stylesheet" href="fx/relevo.css">
   <link rel="stylesheet" href="fx/kinetic.css">
   <link rel="stylesheet" href="fx/salida.css">
-  <link rel="stylesheet" href="fx/pasos.css">
+  <link rel="stylesheet" href="fx/sin-scroll.css">
   <noscript><style>[data-sc-cue],[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}.hero__plate{display:none}</style></noscript>
 </head>
 <body>
@@ -86,8 +84,8 @@
 
   <main id="contenido">
 
-    <!-- 1. Portada: el nombre es una ventana hacia la nave; al bajar, la cámara entra por la M -->
-    <section class="hero" id="inicio" data-sc-act="pin" data-sc-span="1.6" data-sc-drift="#e9ebe8">
+    <!-- 1. Portada: el nombre es una ventana hacia la nave; al cargar, la cámara entra sola por la M -->
+    <section class="hero" id="inicio" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="hero__stage">
         <div class="hero__scene" aria-hidden="true">
           <img src="img/hero-poster.webp" alt="">
@@ -119,14 +117,14 @@
       </div>
     </div>
 
-    <!-- 2. Cuatro formas de trabajar: riel lateral que se mueve con el scroll y se arrastra -->
-    <section class="svc" id="servicios" data-sc-act="pan" data-sc-span="2.6" data-sc-drift="#e9ebe8" data-acto="02 · Qué hacemos">
+    <!-- 2. Cuatro formas de trabajar: carrusel que se desliza de lado -->
+    <section class="svc" id="servicios" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="svc__stage">
-        <div class="svc__rail" data-sc-pan="0.05">
+        <div class="svc__rail aparece">
           <div class="svc__lead">
             <h2 class="hd-lg">Cuatro formas de trabajar con IMAX</h2>
             <p class="lede">Somos inmobiliaria, desarrolladora y constructora. Puedes ocupar una nave nuestra, comprarla o encargarnos la tuya.</p>
-            <p class="svc__hint" aria-hidden="true">Desliza o arrastra</p>
+            <p class="svc__hint" aria-hidden="true">Desliza de lado</p>
           </div>
           <article class="svc__item">
             <a href="#contacto" data-interes="Rentar una nave" draggable="false">
@@ -178,7 +176,7 @@
     </section>
 
     <!-- 3. De polvo a nave: terreno vacío, tormenta de polvo, la nave entera en piezas y la nave armada (video real) -->
-    <section class="anat" id="anatomia" data-sc-act="scrub" data-sc-span="5.8" data-sc-clip-map="travel" data-sc-drift="#e9ebe8" data-acto="03 · De polvo a nave">
+    <section class="anat" id="anatomia" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="anat__stage">
         <img class="sc-stage__poster" src="img/despiece-poster.webp" alt="Terreno nivelado en el altiplano, con el polvo levantado por el viento, antes de construir la nave">
         <video data-sc-scrub data-sc-src="media/despiece.mp4" data-sc-src-mobile="media/despiece-m.mp4" muted playsinline></video>
@@ -456,7 +454,7 @@
     </section>
 
     <!-- 4. Recorrido por un parque -->
-    <section class="tour" id="parque" data-sc-act="pin" data-sc-span="2.7" data-sc-drift="#e9ebe8" data-acto="05 · Parques">
+    <section class="tour" id="parque" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="tour__stage">
         <div class="tour__world">
           <div class="tour__cam">
@@ -515,7 +513,7 @@
     </section>
 
     <!-- 5. Proceso: del terreno a la llave, con el plano que se dibuja y, al final, tres tiempos del mismo predio -->
-    <section class="build" id="proceso" data-sc-act="scrub" data-sc-span="4.6" data-sc-clip-map="travel" data-sc-drift="#e9ebe8" data-acto="06 · Proceso">
+    <section class="build" id="proceso" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="build__stage">
         <img class="sc-stage__poster" src="img/build-poster.webp" alt="">
         <video data-sc-scrub data-sc-src="media/obra.mp4" data-sc-src-mobile="media/obra-m.mp4" muted playsinline></video>
@@ -783,16 +781,14 @@
   <script src="fx/core.js"></script>
   <script src="script.js"></script>
   <script src="fx/portada.js"></script>
-  <script src="fx/riel.js"></script>
   <script src="fx/replanteo.js"></script>
   <script src="fx/cielo.js"></script>
   <script src="fx/lamina.js"></script>
   <script src="fx/anochece.js"></script>
   <script src="fx/tiempos.js"></script>
   <script src="fx/escala.js"></script>
-  <script src="fx/relevo.js"></script>
   <script src="fx/kinetic.js"></script>
   <script src="fx/salida.js"></script>
-  <script src="fx/pasos.js"></script>
+  <script src="fx/auto.js"></script>
 </body>
 </html>

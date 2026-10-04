@@ -1,5 +1,5 @@
 // Salida: la página termina como empezó, pero al revés. Al llegar al pie la cámara está dentro de
-// la M, viendo la nave; al bajar retrocede, las letras se encogen y queda la palabra IMAX con la nave adentro.
+// la M, viendo la nave; sola retrocede (fx/auto.js), las letras se encogen y queda la palabra IMAX con la nave adentro.
 (function salida() {
   const scene = document.querySelector(".foot__scene");
   if (!scene) return;
@@ -37,7 +37,7 @@
   function draw() {
     if (!w) return;
     const r = scene.getBoundingClientRect();
-    // scene.__auto: avance por tiempo en la vista previa sin scroll (vista/auto.js)
+    // scene.__auto: avance por tiempo (fx/auto.js)
     const t = FX.reduce ? 1 : scene.__auto != null ? scene.__auto : FX.clamp01(-r.top / Math.max(r.height - innerHeight, 1));
     const k = FX.smooth(t / 0.72);
     // En vertical la cámara se aleja a ritmo parejo desde justo donde el asta cubre la pantalla; con la curva

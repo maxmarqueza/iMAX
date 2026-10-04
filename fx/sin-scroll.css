@@ -1,4 +1,4 @@
-/* Vista previa sin scroll (vista/auto.js): las escenas ya no se fijan; cada una mide una pantalla,
+/* Sitio sin efectos de scroll (fx/auto.js): las escenas ya no se fijan; cada una mide una pantalla,
    se reproduce sola al aparecer y la página se recorre como una página normal. */
 main [data-sc-stage] { position: relative; height: 100svh; overflow: hidden; }
 @supports (height: 100lvh) { main [data-sc-stage] { height: 100svh; } }
@@ -33,7 +33,4 @@ main [data-sc-stage] { position: relative; height: 100svh; overflow: hidden; }
 .tour .repetir { top: auto; bottom: 18px; left: auto; right: var(--sc-gutter); }
 @media (max-width: 860px) { .tour .repetir { top: 80px; bottom: auto; left: var(--sc-gutter); right: auto; } }
 
-/* Aviso de vista previa */
-.aviso-vista { position: fixed; z-index: 90; left: 12px; bottom: 12px; margin: 0; padding: 6px 12px; border-radius: 999px; background: #111416; color: #fff; font: 700 .74rem/1.2 var(--sc-font-text); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .5); }
-.aviso-vista a { color: var(--sc-accent); }
 @media (prefers-reduced-motion: reduce) { .svc .aparece > * { opacity: 1; transform: none; } }
