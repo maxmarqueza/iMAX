@@ -20,13 +20,15 @@ const actP = (el) => {
 ScrollCraft.mount(document.body);
 
 // Datos de contacto visibles
+// Lo que todavía no tiene dato no se muestra
 document.querySelectorAll("[data-cfg]").forEach((el) => {
   const value = CONFIG[el.dataset.cfg];
-  if (!value) return;
+  if (!value) { el.closest("div").hidden = true; return; }
   el.textContent = value;
   if (el.dataset.cfg === "phone") el.href = "tel:" + value.replace(/\s+/g, "");
   if (el.dataset.cfg === "email") el.href = "mailto:" + value;
 });
+document.querySelectorAll(".contact__data").forEach((dl) => { dl.hidden = !dl.querySelector("div:not([hidden])"); });
 document.getElementById("anio").textContent = new Date().getFullYear();
 
 // Barra de navegación y menú con vista previa
@@ -259,6 +261,19 @@ document.querySelectorAll("[data-interes]").forEach((link) =>
   });
 })();
 
+// Con la nave terminada, el botón deja ver la estructura completa (también en pantallas táctiles)
+(function xrayToggle() {
+  const btn = document.querySelector(".xray-toggle");
+  const stage = document.querySelector(".build__stage");
+  if (!btn || !stage) return;
+  btn.addEventListener("click", () => {
+    const on = btn.getAttribute("aria-pressed") !== "true";
+    btn.setAttribute("aria-pressed", String(on));
+    btn.textContent = on ? "Ver la nave terminada" : "Ver la estructura";
+    stage.classList.toggle("is-xray", on);
+  });
+})();
+
 // El formulario abre WhatsApp con el mensaje armado
 const form = document.getElementById("form-contacto");
 const status = form.querySelector(".form__status");
@@ -322,4 +337,52 @@ form.addEventListener("submit", (event) => {
   // Enlaces que abren una pestaña concreta, como el de las preguntas frecuentes
   document.querySelectorAll("a[data-spec]").forEach((a) => a.addEventListener("click", () => select(Number(a.dataset.spec))));
   select(0);
+})();
+
+// ------------------------------------------------------------------- Pie
+// La página termina como empezó: el nombre es una ventana hacia la nave.
+(function footWord() {
+  const box = document.querySelector(".foot__word");
+  if (!box) return;
+  const video = box.querySelector("video");
+  const canvas = box.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const font = (px) => "800 " + px + "px Archivo, system-ui, sans-serif";
+  function setFont(px) {
+    ctx.font = font(px);
+    if ("fontStretch" in ctx) ctx.fontStretch = "expanded";
+  }
+  function draw() {
+    const r = box.getBoundingClientRect();
+    if (!r.width) return;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(r.width * dpr);
+    canvas.height = Math.round(r.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--sc-canvas").trim() || "#0d1a26";
+    ctx.fillRect(0, 0, r.width, r.height);
+    setFont(100);
+    const size = (100 * r.width * 0.95) / ctx.measureText("IMAX").width;
+    setFont(size);
+    const cap = ctx.measureText("IMAX").actualBoundingBoxAscent || size * 0.7;
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "#000";
+    ctx.fillText("IMAX", r.width / 2, (r.height + cap) / 2);
+  }
+  draw();
+  addEventListener("resize", draw);
+  if (document.fonts) {
+    document.fonts.load(font(100), "IMAX").then(draw).catch(() => {});
+    document.fonts.ready.then(draw);
+  }
+  if (reduce) return;
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      if (!video.src) video.src = innerWidth <= 860 ? video.dataset.srcMobile : video.dataset.src;
+      video.play().catch(() => {});
+    } else video.pause();
+  }, { rootMargin: "300px 0px" }).observe(box);
 })();
