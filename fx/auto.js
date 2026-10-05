@@ -6,6 +6,8 @@
   const clamp01 = FX.clamp01;
   const smooth = FX.smooth;
   const mobile = FX.narrow();
+  // Variante de cada sección en la vista previa de opciones (?v=parque-b); sin parámetro, «a»
+  const V = (k) => document.documentElement.getAttribute("data-v-" + k) || "a";
   // Las escenas usan los estilos del motor para su video y su cartel (.sc-stage), aunque ya no se fijen
   document.querySelectorAll("main [data-sc-stage]").forEach((st) => st.classList.add("sc-stage"));
 
@@ -142,12 +144,12 @@
     onShow(act, play, 0.55);
     replay(act, play);
   }
-  videoScene("anatomia", { rate: 2.6, end: 1 });
-  videoScene("proceso", { rate: 2.4, end: 0.8, tail: 600 });
+  if (V("anat") !== "c") videoScene("anatomia", { rate: 2.6, end: 1 });
+  if (V("proceso") !== "c") videoScene("proceso", { rate: 2.4, end: 0.8, tail: 600 });
 
   // 4. Parque: la cámara recorre sola las cinco paradas; los botones llevan a cada una
   const tour = document.getElementById("parque");
-  if (tour) {
+  if (tour && V("parque") === "a") {
     const s = scene(tour);
     const STOPS = [0.2, 0.365, 0.525, 0.685, 0.86];
     let timer = 0, i = -1;
@@ -211,4 +213,5 @@
   // Bloques de texto y tarjetas: aparecen una vez, rápido, al entrar
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -12% 0px" });
   document.querySelectorAll(".aparece").forEach((el) => io.observe(el));
+  FX.auto = { scene, onShow, startPulse, stopPulse };
 })();

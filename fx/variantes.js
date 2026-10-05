@@ -1,0 +1,243 @@
+// Opciones de diseño por sección, solo para la vista previa (grupoimax.mx/opciones/secciones/).
+// Cada sección lee su variante de <html data-v-*>; «a» (o sin atributo) es el sitio tal como está.
+// Reglas: nada ligado al scroll, animación corta y automática al aparecer, todo a la vista y, al pasar
+// el cursor, solo realce (se eleva y marco amarillo).
+(function variantes() {
+  const root = document.documentElement;
+  const V = (k) => root.getAttribute("data-v-" + k) || "a";
+  const A = FX.auto;
+  const R = (a, b) => a + Math.random() * (b - a);
+  const h = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+
+  // Caída de tarjetas, igual que en servicios
+  function caer(slots, d0) {
+    slots.forEach((s, i) => {
+      if (FX.reduce) return;
+      const rot = R(-9, 9), d = (d0 || 120) + i * 110;
+      s.animate([
+        { opacity: 0, transform: `translateY(-70vh) rotate(${rot}deg)` },
+        { opacity: 1, transform: `translateY(0) rotate(${rot * 0.15}deg) scaleY(.96)`, offset: 0.62 },
+        { transform: "translateY(-16px) rotate(0deg) scaleY(1.01)", offset: 0.8 },
+        { opacity: 1, transform: "none" },
+      ], { duration: 950, delay: d, easing: "cubic-bezier(.45,0,.55,1)", fill: "backwards" });
+    });
+  }
+  // Subida escalonada, corta
+  function subir(els, d0, step) {
+    els.forEach((el, i) => {
+      if (FX.reduce) return;
+      el.animate([{ opacity: 0, transform: "translateY(22px)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: (d0 || 0) + i * (step || 70), easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" });
+    });
+  }
+  const alVer = (el, fn, r) => {
+    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { io.disconnect(); fn(); } }, { threshold: r || 0.35 });
+    io.observe(el);
+  };
+  // Cuadrícula de tarjetas con encabezado
+  function rejilla(cls, items, card) {
+    const grid = h("div", "vgrid " + cls);
+    items.forEach((it, i) => { const slot = h("div", "vslot"); slot.appendChild(card(it, i)); grid.appendChild(slot); });
+    return grid;
+  }
+  const cab = (titulo, texto) => h("div", "vhead", `<h2 class="hd-lg">${titulo}</h2>${texto ? `<p class="lede">${texto}</p>` : ""}`);
+
+  // Barra de etapas tocable dentro de una escena con video
+  function barra(act, items, videoEnd) {
+    const v = act.querySelector("video[data-sc-scrub]");
+    const nav = h("div", "vrail");
+    nav.setAttribute("role", "group");
+    nav.setAttribute("aria-label", "Etapas");
+    const bs = items.map((it) => {
+      const b = h("button", "", `<i></i><span>${it.t}</span>`);
+      b.type = "button";
+      b.addEventListener("click", () => {
+        if (!v || !v.duration) return;
+        v.currentTime = Math.min(v.duration - 0.05, (it.s / videoEnd) * v.duration + 0.02);
+        v.play().catch(() => {});
+      });
+      nav.appendChild(b);
+      return b;
+    });
+    (act.querySelector("[data-sc-stage]") || act).appendChild(nav);
+    FX.loop(act, () => {
+      const p = act.__auto || 0;
+      let on = 0;
+      items.forEach((it, i) => { if (p >= it.s - 0.001) on = i; });
+      bs.forEach((b, i) => {
+        const it = items[i], next = items[i + 1] ? items[i + 1].s : (videoEnd || 1);
+        const k = FX.clamp01((p - it.s) / Math.max(next - it.s, 0.001));
+        b.style.setProperty("--k", k.toFixed(3));
+        b.classList.toggle("is-on", i === on);
+      });
+    });
+  }
+
+  // ---------------------------------------------------------------- De polvo a nave
+  const anat = document.getElementById("anatomia");
+  if (anat && V("anat") === "b") {
+    root.classList.add("v-anat-b");
+    barra(anat, [
+      { t: "Terreno", s: 0 }, { t: "Terracerías", s: 0.085 }, { t: "Estructura", s: 0.205 },
+      { t: "Piezas", s: 0.33 }, { t: "Montaje", s: 0.56 }, { t: "Entrega", s: 0.9 },
+    ], 1);
+  }
+  if (anat && V("anat") === "c") {
+    root.classList.add("v-anat-c");
+    const E = [
+      ["Terreno", "Un terreno nivelado y viento: así empieza."],
+      ["Terracerías", "Despalme, cortes y rellenos compactados por capas hasta dejar la plataforma a nivel."],
+      ["Estructura", "Zapatas, losa y patio de maniobras; las columnas de acero reciben las armaduras."],
+      ["Piezas", "Cada pieza se fabrica a medida antes de montarse: lámina, largueros, armaduras y columnas."],
+      ["Montaje", "Armaduras, largueros y muros cierran las cuatro fachadas; baja la cubierta engargolada."],
+      ["Entrega", "Completa, probada y con su patio de maniobras, lista para operar."],
+    ];
+    const wrap = h("div", "vwrap");
+    wrap.appendChild(cab("De polvo a nave", "Así se levanta una nave completa, de un terreno vacío a la entrega."));
+    const grid = rejilla("vgrid--3", E, ([t, p], i) => h("div", "vcard", `<figure><img src="img/etapas/${i + 1}.webp" alt="${t}: etapa ${i + 1} de la construcción de una nave industrial" loading="lazy"><b class="vbadge">${String(i + 1).padStart(2, "0")}</b></figure><div class="vbody"><h3>${t}</h3><p>${p}</p></div>`));
+    wrap.appendChild(grid);
+    wrap.appendChild(h("p", "note", "Imágenes ilustrativas"));
+    anat.appendChild(wrap);
+    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
+  }
+
+  // ---------------------------------------------------------------- Ficha técnica
+  const spec = document.getElementById("ficha");
+  if (spec && V("ficha") === "a") {
+    alVer(spec.querySelector(".spec__body"), () => { subir([...spec.querySelectorAll(".spec__tabs button")], 0, 50); subir([...spec.querySelectorAll(".spec__panel.is-on .spec__rows > div")], 200, 60); });
+  }
+  if (spec && V("ficha") === "b") {
+    root.classList.add("v-ficha-b");
+    const tabs = [...spec.querySelectorAll(".spec__tabs [role='tab']")];
+    const panels = [...spec.querySelectorAll(".spec__panel")];
+    const dets = [...spec.querySelectorAll(".spec__sheet .det")];
+    const items = tabs.map((t, i) => {
+      const b = [...panels[i].querySelectorAll(".spec__rows b")].find((x) => x.firstChild && x.firstChild.textContent.trim());
+      const dt = b ? b.closest("div").querySelector("dt").textContent : "";
+      return { t: t.textContent.trim(), v: b ? b.firstChild.textContent.trim() : "", k: dt, det: dets[i] };
+    });
+    const grid = rejilla("vgrid--4 vfichas", items, (it, i) => {
+      const c = h("button", "vcard vficha");
+      c.type = "button";
+      c.innerHTML = `<b class="vnum">${String(i + 1).padStart(2, "0")}</b><h3>${it.t}</h3>${it.v ? `<p><span>${it.k}</span><strong>${it.v}</strong></p>` : ""}`;
+      if (it.det) {
+        const x = +it.det.getAttribute("transform").match(/translate\(([\d.]+) ([\d.]+)\)/)[1], y = +it.det.getAttribute("transform").match(/translate\(([\d.]+) ([\d.]+)\)/)[2];
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", `${x} ${y} 480 240`);
+        svg.setAttribute("class", "spec__draw vmini");
+        svg.setAttribute("aria-hidden", "true");
+        const g = it.det.cloneNode(true);
+        g.querySelectorAll(".tit, .cell").forEach((n) => n.remove());
+        svg.appendChild(g);
+        c.prepend(svg);
+      }
+      c.addEventListener("click", () => {
+        tabs[i].click();
+        grid.querySelectorAll(".vficha").forEach((x, j) => x.classList.toggle("is-sel", j === i));
+        spec.querySelector(".spec__panels").animate([{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "none" }], { duration: 380, easing: "cubic-bezier(.22,1,.36,1)" });
+      });
+      return c;
+    });
+    grid.querySelector(".vficha").classList.add("is-sel");
+    spec.querySelector(".spec__body").prepend(grid);
+    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
+  }
+  if (spec && V("ficha") === "c") {
+    root.classList.add("v-ficha-c");
+    const C = [
+      [9.75, 2, "a 11 m", "Altura libre"], [15, 0, "× 15 m", "Claro entre columnas"], [15, 0, "cm", "Piso, desde 5 ton/m²"],
+      [40, 0, "m", "Patio de maniobras"], [2.74, 2, "× 3.05 m", "Puerta de andén"], [13, 0, "", "Rociadores ESFR, NFPA"],
+    ];
+    const strip = h("div", "vcifras");
+    C.forEach(([n, dec, u, k]) => strip.appendChild(h("div", "vcifra", `<b data-n="${n}" data-d="${dec}">${(0).toFixed(dec)}</b><span class="u">${u}</span><span class="k">${k}</span>`)));
+    spec.querySelector(".spec__head").after(strip);
+    alVer(strip, () => {
+      subir([...strip.children], 0, 70);
+      const t0 = performance.now();
+      const step = (t) => {
+        const k = FX.reduce ? 1 : FX.clamp01((t - t0) / 1100), e = 1 - Math.pow(1 - k, 3);
+        strip.querySelectorAll("b").forEach((b) => { b.textContent = (+b.dataset.n * e).toFixed(+b.dataset.d); });
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  // ---------------------------------------------------------------- Parque
+  const tour = document.getElementById("parque");
+  const STOPS = [...(tour ? tour.querySelectorAll(".tour__stop") : [])].slice(1).map((st) => ({ t: st.querySelector("h3").textContent, p: st.querySelector("p").textContent }));
+  const FOCO = [[50.4, 80], [50.5, 56], [65.5, 57], [79, 53], [80, 71]];
+  const intro = tour && tour.querySelector(".tour__stop p").textContent;
+  if (tour && V("parque") === "b") {
+    root.classList.add("v-parque-b");
+    const pins = [...tour.querySelectorAll(".pin")];
+    pins.forEach((p, i) => p.setAttribute("data-n", i + 1));
+    const wrap = h("div", "vwrap vwrap--tight");
+    const grid = rejilla("vgrid--5", STOPS, (st, i) => h("div", "vcard vstop", `<div class="vbody"><b class="vnum">${i + 1}</b><h3>${st.t}</h3><p>${st.p}</p></div>`));
+    wrap.appendChild(grid);
+    tour.prepend(cab("Así se arma un parque industrial", intro));
+    tour.appendChild(wrap);
+    [...grid.querySelectorAll(".vstop")].forEach((c, i) => {
+      c.addEventListener("pointerenter", () => pins.forEach((p, j) => p.classList.toggle("is-on", i === j)));
+      c.addEventListener("pointerleave", () => pins.forEach((p) => p.classList.remove("is-on")));
+    });
+    pins.forEach((p, i) => {
+      p.addEventListener("pointerenter", () => grid.children[i].querySelector(".vstop").classList.add("is-sel"));
+      p.addEventListener("pointerleave", () => grid.children[i].querySelector(".vstop").classList.remove("is-sel"));
+    });
+    alVer(tour.querySelector(".tour__stage"), () => {
+      tour.classList.add("cayo");
+      pins.forEach((p, i) => { if (!FX.reduce) p.animate([{ opacity: 0, transform: "scale(0)" }, { opacity: 1, transform: "scale(1.25)", offset: 0.7 }, { opacity: 1, transform: "scale(1)" }], { duration: 450, delay: 150 + i * 160, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" }); });
+      subir([...grid.children], 300, 80);
+    }, 0.4);
+  }
+  if (tour && V("parque") === "c") {
+    root.classList.add("v-parque-c");
+    const wrap = h("div", "vwrap");
+    wrap.appendChild(cab("Así se arma un parque industrial", intro));
+    const grid = rejilla("vgrid--5", STOPS, (st, i) => h("div", "vcard", `<figure class="vzoom" style="--fx:${FOCO[i][0]}%;--fy:${FOCO[i][1]}%"><b class="vbadge">${i + 1}</b></figure><div class="vbody"><h3>${st.t}</h3><p>${st.p}</p></div>`));
+    wrap.appendChild(grid);
+    wrap.appendChild(h("p", "note", "Imagen ilustrativa"));
+    tour.appendChild(wrap);
+    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
+  }
+
+  // ---------------------------------------------------------------- Proceso
+  const build = document.getElementById("proceso");
+  const PASOS = [
+    ["Terreno y factibilidad", "Uso de suelo, mecánica de suelos, topografía y factibilidades de agua, drenaje y energía.", 0],
+    ["Proyecto e ingeniería", "Proyecto arquitectónico, estructural y de instalaciones a partir de tu operación.", 0.115],
+    ["Permisos", "Uso de suelo, impacto ambiental y vial, Protección Civil y licencia de construcción.", 0.235],
+    ["Obra", "Terracerías, cimentación, estructura, cubierta, muros, piso, instalaciones y urbanización.", 0.345],
+    ["Entrega", "Pruebas, terminación de obra y entrega lista para instalar equipo y operar.", 0.845],
+  ];
+  if (build && V("proceso") === "b") {
+    root.classList.add("v-proceso-b");
+    barra(build, PASOS.map(([t, , s]) => ({ t, s })), 0.8);
+  }
+  if (build && V("proceso") === "c") {
+    root.classList.add("v-proceso-c");
+    const s = A.scene(build);
+    s.set(0.8);
+    build.classList.add("sc-has-clip");
+    A.onShow(build, () => s.tween(1, 900), 0.5);
+    const wrap = h("div", "vwrap vwrap--dark");
+    wrap.appendChild(cab("De un terreno vacío a una nave operando", "Cinco pasos, una sola empresa responsable de todos."));
+    const grid = rejilla("vgrid--5", PASOS, ([t, p], i) => h("div", "vcard vcard--dark", `<div class="vbody"><b class="vnum">${String(i + 1).padStart(2, "0")}</b><h3>${t}</h3><p>${p}</p></div>`));
+    wrap.appendChild(grid);
+    build.appendChild(wrap);
+    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
+  }
+
+  // ---------------------------------------------------------------- Preguntas
+  const faq = document.querySelector(".faq__list");
+  if (faq && V("faq") === "a") {
+    root.classList.add("v-faq-a");
+    alVer(faq, () => subir([...faq.querySelectorAll("details")], 0, 60), 0.15);
+  }
+  if (faq && V("faq") === "b") {
+    root.classList.add("v-faq-b");
+    const ds = [...faq.querySelectorAll("details")];
+    ds.forEach((d) => { d.removeAttribute("open"); const s = h("div", "vslot"); d.before(s); s.appendChild(d); });
+    alVer(faq, () => { faq.classList.add("cayo"); caer([...faq.children], 80); }, 0.15);
+  }
+})();

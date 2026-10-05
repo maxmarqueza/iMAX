@@ -1,0 +1,124 @@
+/* Opciones de diseño por sección (fx/variantes.js), solo con ?v= en la dirección */
+
+/* Piezas comunes: encabezado, cuadrícula y tarjeta con realce (se eleva y marco amarillo) */
+.vwrap { position: relative; max-width: var(--sc-maxw); margin: 0 auto; padding: clamp(64px, 8vw, 110px) var(--sc-gutter) clamp(48px, 6vw, 88px); display: grid; gap: clamp(20px, 3vw, 36px); }
+.vwrap--tight { padding-top: clamp(18px, 2.4vw, 28px); }
+.vwrap--dark { background: #0b1218; color: #f3f6f8; max-width: none; }
+.vwrap--dark > * { width: 100%; max-width: calc(var(--sc-maxw) - 2 * var(--sc-gutter)); margin-inline: auto; }
+.vhead { display: grid; grid-template-columns: 1.1fr 1fr; gap: 12px 48px; align-items: end; max-width: var(--sc-maxw); margin: 0 auto; padding-inline: var(--sc-gutter); }
+.vwrap .vhead { padding-inline: 0; }
+.vwrap--dark .vhead .lede { color: #dce6ed; }
+.vgrid { display: grid; gap: clamp(10px, 1.4vw, 20px); }
+.vgrid--3 { grid-template-columns: repeat(3, 1fr); }
+.vgrid--4 { grid-template-columns: repeat(4, 1fr); }
+.vgrid--5 { grid-template-columns: repeat(5, 1fr); }
+.vslot { display: grid; }
+.vgrid:not(.cayo) > .vslot, .faq__list:not(.cayo) > .vslot { opacity: 0; }
+.vcard { position: relative; display: grid; grid-template-rows: auto 1fr; border: 0; border-radius: 22px; overflow: hidden; background: var(--paper); color: var(--sc-ink); text-align: left; font: inherit; box-shadow: 0 1px 0 var(--line);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.vcard::after { content: ""; position: absolute; inset: 0; z-index: 4; border-radius: inherit; box-shadow: inset 0 0 0 0 var(--sc-accent); pointer-events: none; transition: box-shadow .3s var(--ease); }
+.vcard.is-sel::after { box-shadow: inset 0 0 0 4px var(--sc-accent); }
+@media (hover: hover) and (pointer: fine) {
+  .vcard:hover { transform: translateY(-8px); box-shadow: 0 28px 44px -26px rgba(17, 20, 22, .5); }
+  .vcard:hover::after { box-shadow: inset 0 0 0 4px var(--sc-accent); }
+}
+.vcard--dark { background: #16212b; color: #f3f6f8; }
+.vcard figure { position: relative; margin: 0; aspect-ratio: 5 / 4; overflow: hidden; }
+.vcard figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vbadge { position: absolute; top: 12px; left: 12px; padding: 5px 11px; border-radius: 999px; background: rgba(255, 255, 255, .92); color: var(--sc-ink); font-size: .8rem; }
+.vbody { display: grid; align-content: start; gap: 8px; padding: clamp(14px, 1.4vw, 22px); }
+.vbody h3 { font-size: clamp(1.05rem, .95rem + .5vw, 1.35rem); }
+.vbody p { color: var(--sc-ink-soft); font-size: .94rem; }
+.vcard--dark .vbody p { color: #b8c6d1; }
+.vnum { display: inline-grid; place-items: center; justify-self: start; min-width: 34px; height: 34px; padding: 0 8px; border-radius: 999px; background: var(--sc-accent); color: var(--sc-ink); font-size: .85rem; }
+
+/* Barra de etapas tocable (De polvo a nave B y Proceso B) */
+.vrail { position: absolute; z-index: 40; left: var(--sc-gutter); right: var(--sc-gutter); top: 128px; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; padding: 8px; border-radius: 16px; background: rgba(17, 20, 22, .55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.vrail button { position: relative; min-height: 44px; padding: 10px 8px 6px; border: 0; border-radius: 10px; background: transparent; color: rgba(255, 255, 255, .62); font: 700 clamp(.72rem, .66rem + .3vw, .92rem)/1.15 var(--sc-font-text); text-align: left; cursor: pointer; transition: background-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease); }
+.vrail button i { position: absolute; left: 8px; right: 8px; top: 4px; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, .22); overflow: hidden; }
+.vrail button i::after { content: ""; position: absolute; inset: 0; background: var(--sc-accent); transform: scaleX(var(--k, 0)); transform-origin: left; }
+.vrail button.is-on { color: #fff; background: rgba(255, 255, 255, .1); }
+@media (hover: hover) and (pointer: fine) { .vrail button:hover { color: #fff; background: rgba(255, 194, 14, .22); transform: translateY(-2px); } }
+.v-anat-b .anat__rail, .v-anat-b .anat__note { display: none; }
+.v-proceso-b .meter { display: none; }
+.vrail { transition: opacity .3s var(--ease); }
+.v-proceso-b .build__stage.is-tt .vrail { opacity: 0; pointer-events: none; }
+@media (max-width: 860px) {
+  .vrail { top: 116px; gap: 2px; padding: 6px; }
+  .vrail button { padding: 10px 4px 4px; font-size: .66rem; }
+  .vrail button i { left: 4px; right: 4px; }
+}
+
+/* De polvo a nave C: seis tarjetas con fotograma, sin video */
+.v-anat-c .anat__stage { display: none; }
+.v-anat-c .anat { background: var(--sc-canvas); }
+
+/* Ficha B: siete tarjetas con su dibujo; al tocar una, abajo su detalle */
+.v-ficha-b .spec__body { grid-template-columns: 1fr; }
+.v-ficha-b .spec__tabs, .v-ficha-b .spec__sheet { display: none; }
+.vficha { grid-template-rows: auto auto 1fr; gap: 8px; padding: 0 0 18px; cursor: pointer; }
+.vficha .vmini { width: 100%; height: auto; aspect-ratio: 2 / 1; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: #fff repeating-linear-gradient(0deg, transparent 0 23px, rgba(17, 20, 22, .05) 23px 24px), repeating-linear-gradient(90deg, transparent 0 23px, rgba(17, 20, 22, .05) 23px 24px); }
+.vficha .vnum { margin: 6px 18px 0; }
+.vficha h3 { padding: 0 18px; font-size: clamp(1rem, .92rem + .4vw, 1.25rem); }
+.vficha p { display: grid; gap: 2px; padding: 0 18px; }
+.vficha p span { color: var(--sc-ink-soft); font-size: .84rem; }
+.vficha p strong { font-size: 1.05rem; }
+
+/* Ficha C: cifras grandes que cuentan */
+.vcifras { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(8px, 1.2vw, 16px); margin-top: clamp(28px, 4vw, 48px); }
+.vcifra { display: grid; align-content: start; gap: 2px; padding: 18px 16px; border-radius: 18px; background: var(--sc-canvas); border-top: 4px solid var(--sc-accent); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.vcifra b { font-size: clamp(1.8rem, 1.2rem + 2vw, 3rem); font-weight: 900; font-stretch: 122%; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.vcifra .u { font-weight: 750; }
+.vcifra .k { margin-top: 6px; color: var(--sc-ink-soft); font-size: .86rem; }
+@media (hover: hover) and (pointer: fine) { .vcifra:hover { transform: translateY(-6px); box-shadow: 0 22px 36px -24px rgba(17, 20, 22, .45), inset 0 0 0 3px var(--sc-accent); } }
+
+/* Parque B: vista aérea completa, puntos numerados y paradas como tarjetas */
+.v-parque-b .tour .vhead, .v-parque-c .tour .vhead { padding-top: clamp(64px, 8vw, 110px); padding-bottom: clamp(18px, 2.4vw, 28px); }
+.v-parque-b .tour { background: var(--sc-canvas); }
+.v-parque-b .tour__stage { height: auto !important; min-height: 0 !important; aspect-ratio: 2752 / 1536; max-width: calc(var(--sc-maxw) - 2 * var(--sc-gutter)); margin: 0 auto; border-radius: 22px; }
+.v-parque-b .tour__world { width: 100%; left: 0; top: 0; translate: none; }
+.v-parque-b .tour__panel, .v-parque-b .tour .repetir, .v-parque-b .tour__route, .v-parque-b .tour__shade { display: none; }
+.v-parque-b .tour:not(.cayo) .pin { opacity: 0; }
+.v-parque-b .pin::before { inset: 8px; background: var(--sc-accent); }
+.v-parque-b .pin::after { content: attr(data-n); display: grid; place-items: center; inset: 8px; border: 0; animation: none; color: var(--sc-ink); font: 900 .9rem var(--sc-font-text); }
+.v-parque-b .pin.is-on::before { background: #fff; box-shadow: 0 0 0 6px rgba(255, 194, 14, .6), 0 6px 16px rgba(0, 0, 0, .5); }
+.v-parque-b .tour__note { top: 14px; }
+@media (max-width: 860px) { .v-parque-b .tour__stage { border-radius: 0; max-width: none; } .v-parque-b .pin { width: 34px; height: 34px; margin: -17px 0 0 -17px; } .v-parque-b .pin::before, .v-parque-b .pin::after { inset: 4px; } }
+
+/* Parque C: cinco tarjetas con acercamiento a cada parada */
+.v-parque-c .tour__stage { display: none; }
+.v-parque-c .tour { background: var(--sc-canvas); }
+.v-parque-c .tour .vhead { padding: 0; }
+.vzoom { background: url("../img/parque.webp") no-repeat; background-size: 520%; background-position: var(--fx) var(--fy); transition: background-size .6s var(--ease); }
+@media (hover: hover) and (pointer: fine) { .vcard:hover .vzoom { background-size: 580%; } }
+
+/* Proceso C: sin video; el comparador se abre solo y los pasos van en tarjetas */
+.v-proceso-c .build__stage video, .v-proceso-c .build .repetir { display: none; }
+.v-proceso-c .build__steps li:not(.tt__copy) { display: none; }
+
+/* Preguntas A: realce al pasar el cursor */
+@media (hover: hover) and (pointer: fine) {
+  .v-faq-a .faq details { transition: background-color .25s var(--ease), box-shadow .25s var(--ease); border-radius: 10px; }
+  .v-faq-a .faq details:hover { background: rgba(255, 194, 14, .14); box-shadow: inset 4px 0 0 var(--sc-accent); }
+  .v-faq-a .faq summary { padding-inline: 10px; }
+}
+/* Preguntas B: tarjetas en dos columnas que caen */
+.v-faq-b .faq { grid-template-columns: 1fr; }
+.v-faq-b .faq__head { position: static; }
+.v-faq-b .faq__list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border: 0; align-items: start; }
+.v-faq-b .faq details { position: relative; border: 0; border-radius: 18px; background: var(--paper); padding: 0 20px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.v-faq-b .faq details[open] { box-shadow: inset 0 0 0 3px var(--sc-accent); }
+@media (hover: hover) and (pointer: fine) { .v-faq-b .faq details:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -26px rgba(17, 20, 22, .45), inset 0 0 0 4px var(--sc-accent); } }
+
+/* Teléfono */
+@media (max-width: 860px) {
+  .vhead { grid-template-columns: 1fr; }
+  .vgrid--3, .vgrid--4, .vgrid--5 { grid-template-columns: 1fr 1fr; }
+  .vcard { border-radius: 16px; }
+  .vbody { padding: 12px; gap: 6px; }
+  .vbody p { font-size: .84rem; }
+  .vcifras { grid-template-columns: 1fr 1fr; }
+  .v-faq-b .faq__list { grid-template-columns: 1fr; }
+  .v-parque-b .vgrid--5 { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .vgrid:not(.cayo) > .vslot, .faq__list:not(.cayo) > .vslot, .v-parque-b .tour:not(.cayo) .pin { opacity: 1; } }

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Opciones por sección</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #111416; --soft: #59616a; --accent: #ffc20e; --line: rgba(17, 20, 22, .14); --gutter: clamp(14px, 3vw, 40px); }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f2f3f1; color: var(--ink); font: 400 17px/1.5 Archivo, system-ui, sans-serif; }
+header { max-width: 1320px; margin: 0 auto; padding: 40px var(--gutter) 10px; }
+h1 { margin: 0; font-size: clamp(1.7rem, 1.2rem + 2vw, 2.8rem); font-stretch: 118%; font-weight: 850; letter-spacing: -.02em; line-height: 1.05; }
+header p { color: var(--soft); max-width: 50em; margin: 10px 0 0; }
+nav.idx { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+nav.idx a { padding: 8px 14px; border-radius: 999px; background: #fff; color: var(--ink); font-weight: 700; font-size: .9rem; text-decoration: none; box-shadow: 0 1px 0 var(--line); }
+section { max-width: 1320px; margin: 0 auto; padding: 34px var(--gutter) 10px; scroll-margin-top: 10px; }
+h2 { margin: 0 0 12px; font-size: clamp(1.3rem, 1.1rem + 1vw, 1.9rem); font-stretch: 116%; font-weight: 850; }
+.ops { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.ops button { display: grid; gap: 4px; padding: 14px 16px; border: 2px solid transparent; border-radius: 16px; background: #fff; color: var(--ink); text-align: left; font: inherit; cursor: pointer; box-shadow: 0 1px 0 var(--line); transition: transform .25s, box-shadow .25s, border-color .25s; }
+.ops button b { font-size: 1rem; }
+.ops button span { color: var(--soft); font-size: .88rem; line-height: 1.35; }
+.ops button[aria-pressed="true"] { border-color: var(--ink); background: #fffbea; }
+@media (hover: hover) { .ops button:hover { transform: translateY(-4px); box-shadow: 0 18px 30px -20px rgba(0, 0, 0, .4); border-color: var(--accent); } }
+.frame { position: relative; border-radius: 18px; overflow: hidden; background: #ddd; box-shadow: 0 30px 60px -40px rgba(0, 0, 0, .5); }
+.frame iframe { display: block; width: 100%; height: min(86vh, 860px); border: 0; background: #e9ebe8; }
+.tools { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-top: 10px; font-size: .9rem; color: var(--soft); }
+.tools button, .tools a { min-height: 36px; padding: 0 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: 700 .85rem Archivo, sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+footer { max-width: 1320px; margin: 0 auto; padding: 36px var(--gutter) 80px; color: var(--soft); }
+@media (max-width: 760px) { .ops { grid-template-columns: 1fr; } .frame iframe { height: 80vh; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Opciones por sección</h1>
+  <p>Con las mismas reglas de las secciones anteriores: nada se mueve con el scroll, cada sección se anima sola y rápido al aparecer, todo queda a la vista sin deslizar de lado y, al pasar el cursor, solo se resalta (se eleva con marco amarillo). Elige una opción y la ventana de abajo muestra el sitio real con esa variante. La <b>A</b> es como está hoy.</p>
+  <nav class="idx"><a href="#anat">De polvo a nave</a><a href="#ficha">Ficha técnica</a><a href="#parque">Parque</a><a href="#proceso">Proceso</a><a href="#faq">Preguntas</a></nav>
+</header>
+
+<section id="anat" data-k="anat" data-hash="anatomia">
+  <h2>De polvo a nave</h2>
+  <div class="ops">
+    <button type="button" data-v="a"><b>A. Como está</b><span>El video de la obra corre solo (unos 5 s) y la tarjeta cambia con cada etapa.</span></button>
+    <button type="button" data-v="b"><b>B. Video con etapas a la vista</b><span>Además, una barra con las seis etapas que se van marcando; al tocar una, el video salta ahí.</span></button>
+    <button type="button" data-v="c"><b>C. Seis tarjetas</b><span>Sin video: una tarjeta por etapa con su imagen, que caen como en servicios.</span></button>
+  </div>
+  <div class="frame"><iframe title="Vista previa de De polvo a nave" loading="lazy"></iframe></div>
+  <div class="tools"><button type="button" class="again">Repetir</button><a class="open" target="_blank" rel="noopener">Abrir en otra pestaña</a></div>
+</section>
+
+<section id="ficha" data-k="ficha" data-hash="ficha">
+  <h2>Ficha técnica</h2>
+  <div class="ops">
+    <button type="button" data-v="a"><b>A. Como está, con entrada</b><span>Pestañas y lámina actuales; al aparecer, las pestañas y las filas suben escalonadas.</span></button>
+    <button type="button" data-v="b"><b>B. Siete tarjetas</b><span>Un sistema por tarjeta, con su dibujo y su dato principal; al tocar una, abajo aparece su detalle.</span></button>
+    <button type="button" data-v="c"><b>C. Cifras que cuentan</b><span>Seis cifras clave grandes que cuentan hasta su valor, arriba de la ficha actual.</span></button>
+  </div>
+  <div class="frame"><iframe title="Vista previa de la ficha técnica" loading="lazy"></iframe></div>
+  <div class="tools"><button type="button" class="again">Repetir</button><a class="open" target="_blank" rel="noopener">Abrir en otra pestaña</a></div>
+</section>
+
+<section id="parque" data-k="parque" data-hash="parque">
+  <h2>Parque industrial</h2>
+  <div class="ops">
+    <button type="button" data-v="a"><b>A. Como está</b><span>La cámara recorre sola las cinco paradas sobre la vista aérea.</span></button>
+    <button type="button" data-v="b"><b>B. Vista completa y tarjetas</b><span>Todo el parque a la vista; los cinco puntos aparecen numerados y las paradas van en tarjetas. Al pasar por una, se resalta su punto.</span></button>
+    <button type="button" data-v="c"><b>C. Cinco tarjetas con acercamiento</b><span>Una tarjeta por parada con el acercamiento de esa zona, que caen.</span></button>
+  </div>
+  <div class="frame"><iframe title="Vista previa del parque" loading="lazy"></iframe></div>
+  <div class="tools"><button type="button" class="again">Repetir</button><a class="open" target="_blank" rel="noopener">Abrir en otra pestaña</a></div>
+</section>
+
+<section id="proceso" data-k="proceso" data-hash="proceso">
+  <h2>Proceso</h2>
+  <div class="ops">
+    <button type="button" data-v="a"><b>A. Como está</b><span>El video de obra corre solo con los pasos; al final se abren los tres tiempos.</span></button>
+    <button type="button" data-v="b"><b>B. Video con pasos a la vista</b><span>Además, una barra con los cinco pasos que se van marcando; al tocar uno, el video salta ahí.</span></button>
+    <button type="button" data-v="c"><b>C. Tres tiempos y cinco tarjetas</b><span>Sin video: el comparador de tres tiempos se abre solo y abajo caen los cinco pasos.</span></button>
+  </div>
+  <div class="frame"><iframe title="Vista previa del proceso" loading="lazy"></iframe></div>
+  <div class="tools"><button type="button" class="again">Repetir</button><a class="open" target="_blank" rel="noopener">Abrir en otra pestaña</a></div>
+</section>
+
+<section id="faq" data-k="faq" data-hash="contacto">
+  <h2>Preguntas frecuentes</h2>
+  <div class="ops">
+    <button type="button" data-v="a"><b>A. Lista con entrada</b><span>La lista actual; las preguntas suben escalonadas y se resaltan en amarillo al pasar el cursor.</span></button>
+    <button type="button" data-v="b"><b>B. Tarjetas en dos columnas</b><span>Cada pregunta en una tarjeta que cae; al tocarla se abre la respuesta.</span></button>
+    <button type="button" data-v="none" hidden></button>
+  </div>
+  <div class="frame"><iframe title="Vista previa de las preguntas" loading="lazy"></iframe></div>
+  <div class="tools"><button type="button" class="again">Repetir</button><a class="open" target="_blank" rel="noopener">Abrir en otra pestaña</a></div>
+</section>
+
+<footer>Dime la letra que eliges en cada sección (por ejemplo: De polvo a nave B, Ficha C, Parque B, Proceso C, Preguntas A) y la pongo en el sitio. El pie ya sale solo por la M y el formulario se queda como está.</footer>
+
+<script>
+document.querySelectorAll("section[data-k]").forEach((sec) => {
+  const k = sec.dataset.k, hash = sec.dataset.hash;
+  const frame = sec.querySelector("iframe"), open = sec.querySelector(".open");
+  const btns = [...sec.querySelectorAll(".ops button[data-v]:not([hidden])")];
+  let cur = "a";
+  const url = (v) => `../../?v=${k}-${v}&t=${Date.now()}#${hash}`;
+  const go = (v) => {
+    cur = v;
+    btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+    frame.src = url(v);
+    open.href = `../../?v=${k}-${v}#${hash}`;
+  };
+  btns.forEach((b) => b.addEventListener("click", () => go(b.dataset.v)));
+  sec.querySelector(".again").addEventListener("click", () => go(cur));
+  go("a");
+});
+</script>
+</body>
+</html>
