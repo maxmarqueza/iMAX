@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Servicios: efectos al pasar el cursor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root { --concrete: #e9ebe8; --paper: #f7f8f6; --ink: #111416; --soft: #59616a; --accent: #ffc20e; --line: rgba(17, 20, 22, .14); --ease: cubic-bezier(.22, 1, .36, 1); --gutter: clamp(16px, 4vw, 56px); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--concrete); color: var(--ink); font: 400 17px/1.55 Archivo, system-ui, sans-serif; overflow-x: clip; }
+h1, h2, h3, p { margin: 0; }
+
+.intro { padding: 40px var(--gutter) 8px; max-width: 1440px; margin: 0 auto; }
+.intro h1 { font-size: clamp(1.7rem, 1.2rem + 2vw, 2.8rem); font-stretch: 118%; font-weight: 850; letter-spacing: -.02em; line-height: 1.05; }
+.intro p { color: var(--soft); margin-top: 10px; max-width: 46em; }
+
+.op { position: relative; border-top: 1px solid var(--line); }
+.op__tag { max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter) 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.op__tag b { padding: 6px 12px; border-radius: 999px; background: var(--ink); color: #fff; font-size: .85rem; }
+.op__tag span { font-size: .92rem; font-weight: 650; color: var(--soft); }
+.op__again { min-height: 34px; padding: 0 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; font: 700 .82rem Archivo, sans-serif; cursor: pointer; }
+
+.svc { max-width: 1440px; margin: 0 auto; padding: 22px var(--gutter) clamp(44px, 6vw, 80px); display: grid; gap: clamp(20px, 2.6vw, 34px); }
+.svc__head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 12px 48px; align-items: end; }
+.svc__head h2 { font-size: clamp(1.8rem, 1.1rem + 2.6vw, 3.6rem); font-weight: 900; font-stretch: 122%; letter-spacing: -.035em; line-height: .95; }
+.svc__head p { color: var(--soft); font-size: clamp(1rem, .95rem + .3vw, 1.15rem); max-width: 30em; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(10px, 1.4vw, 20px); }
+.slot { display: grid; perspective: 900px; }
+.card { position: relative; display: grid; grid-template-rows: auto 1fr; border-radius: 22px; overflow: hidden; background: var(--paper); color: inherit; text-decoration: none; box-shadow: 0 1px 0 var(--line); isolation: isolate; }
+.card figure { position: relative; margin: 0; aspect-ratio: 4 / 3.6; overflow: hidden; }
+.card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.card .badge { position: absolute; z-index: 3; top: 12px; left: 12px; padding: 5px 11px; border-radius: 999px; background: rgba(255, 255, 255, .92); font-size: .78rem; font-weight: 700; }
+.card .body { display: grid; align-content: start; gap: 8px; padding: clamp(14px, 1.4vw, 22px); }
+.card h3 { font-size: clamp(1.05rem, .9rem + .6vw, 1.4rem); font-weight: 850; font-stretch: 116%; letter-spacing: -.015em; line-height: 1.05; }
+.card .body p { color: var(--soft); font-size: .95rem; line-height: 1.45; }
+.card .go { justify-self: start; margin-top: 4px; font-weight: 750; font-size: .92rem; position: relative; }
+.card .go::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--accent); }
+.card .more { display: none; }
+.card .cur { display: none; }
+
+/* Teléfono: dos columnas, sin texto largo; el efecto es al pasar el cursor, así que aquí solo hay un leve hundido al tocar */
+@media (max-width: 760px) {
+  .svc__head { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .card { border-radius: 16px; }
+  .card figure { aspect-ratio: 1 / 1; }
+  .card .body p { display: none; }
+  .card .body { gap: 6px; padding: 12px 12px 14px; }
+  .card .go { font-size: .8rem; }
+}
+.card { transition: transform .45s var(--ease), box-shadow .45s var(--ease), opacity .4s var(--ease), filter .4s var(--ease); }
+.card:active { transform: scale(.98); }
+.card img { transition: transform .7s var(--ease), filter .5s var(--ease); }
+
+/* Antes de la entrada, todo escondido */
+.js .svc:not(.done) .slot, .js .svc:not(.done) .svc__head > * { opacity: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  /* 1. Inclinación 3D: la tarjeta se inclina hacia el cursor y un brillo la recorre */
+  .h-incl .card { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0); transition: transform .25s var(--ease), box-shadow .4s var(--ease); }
+  .h-incl .card::after { content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; transition: opacity .3s;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .45), rgba(255, 255, 255, 0) 45%); mix-blend-mode: soft-light; }
+  .h-incl .card:hover { box-shadow: 0 34px 60px -30px rgba(17, 20, 22, .55); }
+  .h-incl .card:hover::after { opacity: 1; }
+  .h-incl .card:hover img { transform: scale(1.06); }
+
+  /* 2. Foco: la tarjeta sube y se agranda; las demás retroceden */
+  .h-foco .card:hover { transform: translateY(-14px) scale(1.03); box-shadow: 0 40px 60px -30px rgba(17, 20, 22, .55); }
+  .h-foco .grid:hover .card:not(:hover) { transform: scale(.96); opacity: .55; filter: grayscale(.7); }
+  .h-foco .card:hover img { transform: scale(1.08); }
+  .h-foco .card .go::after { transform: scaleX(.25); transform-origin: left; transition: transform .45s var(--ease); }
+  .h-foco .card:hover .go::after { transform: none; }
+
+  /* 3. Se expande: la tarjeta se ensancha y empuja a las demás */
+  .h-exp .grid { display: flex; }
+  .h-exp .slot { flex: 1 1 0; min-width: 0; transition: flex-grow .55s var(--ease); }
+  .h-exp .slot:hover { flex-grow: 1.9; }
+  .h-exp .card figure { aspect-ratio: auto; height: clamp(190px, 17vw, 270px); }
+  .h-exp .card h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .h-exp .slot:hover .card h3 { white-space: normal; }
+  .h-exp .card:hover { box-shadow: 0 30px 50px -30px rgba(17, 20, 22, .5); }
+  .h-exp .card:hover img { transform: scale(1.04); }
+
+  /* 4. Cortina: un panel amarillo sube sobre la foto con el detalle y el botón */
+  .h-cort .card .more { display: grid; position: absolute; z-index: 2; inset: auto 0 0 0; padding: 16px 16px 18px; gap: 10px; background: var(--accent); color: var(--ink);
+    transform: translateY(101%); transition: transform .5s var(--ease); }
+  .h-cort .card .more p { font-size: .92rem; font-weight: 600; line-height: 1.35; }
+  .h-cort .card .more b { justify-self: start; padding: 8px 14px; border-radius: 999px; background: var(--ink); color: #fff; font-size: .85rem; }
+  .h-cort .card:hover .more { transform: none; }
+  .h-cort .card:hover img { transform: scale(1.1) translateY(-4%); }
+  .h-cort .card:hover { box-shadow: 0 30px 50px -30px rgba(17, 20, 22, .5); }
+
+  /* 5. Plano: la foto se vuelve plano técnico, con retícula y esquinas de cota */
+  .h-plano .card figure::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .45s var(--ease);
+    background: repeating-linear-gradient(0deg, rgba(160, 205, 255, .35) 0 1px, transparent 1px 22px), repeating-linear-gradient(90deg, rgba(160, 205, 255, .35) 0 1px, transparent 1px 22px), rgba(14, 54, 110, .55); }
+  .h-plano .card figure::after { content: ""; position: absolute; inset: 14px; z-index: 2; pointer-events: none; opacity: 0; transform: scale(1.08); transition: opacity .45s var(--ease), transform .45s var(--ease);
+    background: linear-gradient(var(--accent), var(--accent)) top left / 22px 3px, linear-gradient(var(--accent), var(--accent)) top left / 3px 22px,
+      linear-gradient(var(--accent), var(--accent)) top right / 22px 3px, linear-gradient(var(--accent), var(--accent)) top right / 3px 22px,
+      linear-gradient(var(--accent), var(--accent)) bottom left / 22px 3px, linear-gradient(var(--accent), var(--accent)) bottom left / 3px 22px,
+      linear-gradient(var(--accent), var(--accent)) bottom right / 22px 3px, linear-gradient(var(--accent), var(--accent)) bottom right / 3px 22px; background-repeat: no-repeat; }
+  .h-plano .card:hover figure::before, .h-plano .card:hover figure::after { opacity: 1; transform: none; }
+  .h-plano .card:hover img { filter: grayscale(1) contrast(1.3) brightness(1.1); transform: scale(1.04); }
+  .h-plano .card:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -30px rgba(17, 20, 22, .5); }
+
+  /* 6. Cursor botón: el cursor se vuelve un círculo amarillo que dice «Ver» y la foto sigue al cursor */
+  .h-cur .card { cursor: none; }
+  .h-cur .card .cur { display: grid; place-items: center; position: absolute; z-index: 5; left: 0; top: 0; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%;
+    background: var(--accent); color: var(--ink); font-weight: 800; font-size: .95rem; pointer-events: none;
+    transform: translate(var(--cx, 50%), var(--cy, 50%)) scale(0); transition: transform .25s var(--ease); }
+  .h-cur .card:hover .cur { transform: translate(var(--cx), var(--cy)) scale(1); }
+  .h-cur .card img { transform: scale(1.12) translate(var(--px, 0px), var(--py, 0px)); transition: transform .4s var(--ease); }
+  .h-cur .card:hover { box-shadow: 0 30px 50px -30px rgba(17, 20, 22, .5); }
+}
+
+.fin { padding: 30px var(--gutter) 70px; max-width: 1440px; margin: 0 auto; color: var(--soft); }
+.fin a { color: var(--ink); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .js .svc:not(.done) .slot, .js .svc:not(.done) .svc__head > * { opacity: 1; } }
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<header class="intro">
+  <h1>Servicios: efectos al pasar el cursor</h1>
+  <p>Todas entran como la opción A (las tarjetas caen y rebotan). Cambia lo que pasa al poner el cursor encima de una tarjeta: pruébalo en la computadora. En el celular no hay cursor, así que ahí la tarjeta solo se hunde un poco al tocarla.</p>
+</header>
+
+<template id="contenido">
+  <div class="svc__head">
+    <h2>Cuatro formas de trabajar con IMAX</h2>
+    <p>Somos inmobiliaria, desarrolladora y constructora. Puedes ocupar una nave nuestra, comprarla o encargarnos la tuya.</p>
+  </div>
+  <div class="grid">
+    <div class="slot"><a class="card" href="../../../#contacto"><figure><img src="../../../img/andenes.webp" alt="Andenes de carga de una nave industrial al atardecer"><b class="badge">Renta</b>
+      <div class="more"><p>Contrato de arrendamiento y entrega lista para instalar tu operación.</p><b>Preguntar por renta</b></div></figure>
+      <div class="body"><h3>Naves listas para operar</h3><p>Naves terminadas o en obra dentro de nuestros parques, con contrato de arrendamiento y entrega lista para instalar tu operación.</p><span class="go">Preguntar por renta</span></div><span class="cur">Ver</span></a></div>
+    <div class="slot"><a class="card" href="../../../#contacto"><figure><img src="../../../img/oficinas.webp" alt="Acceso de oficinas de una nave industrial moderna"><b class="badge">Venta</b>
+      <div class="more"><p>Patrimonio propio para tu empresa o renta industrial para invertir.</p><b>Preguntar por venta</b></div></figure>
+      <div class="body"><h3>Patrimonio industrial</h3><p>Naves y lotes industriales para empresas que quieren patrimonio propio y para inversionistas que buscan renta industrial.</p><span class="go">Preguntar por venta</span></div><span class="cur">Ver</span></a></div>
+    <div class="slot"><a class="card" href="../../../#proceso"><figure><img src="../../../img/obra.webp" alt="Estructura metálica de una nave industrial en construcción"><b class="badge">A la medida</b>
+      <div class="more"><p>Claros, altura libre y andenes definidos por tu operación.</p><b>Ver el proceso</b></div></figure>
+      <div class="body"><h3>Tu nave, a tu manera</h3><p>Diseñamos y construimos tu nave en tu terreno o en uno de los nuestros: claros, altura libre y andenes definidos por tu operación.</p><span class="go">Ver el proceso</span></div><span class="cur">Ver</span></a></div>
+    <div class="slot"><a class="card" href="../../../#parque"><figure><img src="../../../img/interior.webp" alt="Interior de una nave industrial nueva con piso de concreto pulido"><b class="badge">Parques</b>
+      <div class="more"><p>Desde la urbanización del terreno hasta la última nave.</p><b>Ver un parque</b></div></figure>
+      <div class="body"><h3>Un parque completo</h3><p>Desarrollamos parques industriales completos, desde la urbanización del terreno hasta la última nave.</p><span class="go">Ver un parque</span></div><span class="cur">Ver</span></a></div>
+  </div>
+</template>
+
+<section class="op h-incl"><div class="op__tag"><b>1. Inclinación 3D</b><span>La tarjeta se inclina hacia el cursor y un brillo la recorre</span><button class="op__again" type="button">Repetir entrada</button></div><div class="svc"></div></section>
+<section class="op h-foco"><div class="op__tag"><b>2. Foco</b><span>La tarjeta sube y crece; las otras se apagan y retroceden</span><button class="op__again" type="button">Repetir entrada</button></div><div class="svc"></div></section>
+<section class="op h-exp"><div class="op__tag"><b>3. Se expande</b><span>La tarjeta se ensancha y empuja a las demás</span><button class="op__again" type="button">Repetir entrada</button></div><div class="svc"></div></section>
+<section class="op h-cort"><div class="op__tag"><b>4. Cortina amarilla</b><span>Sube un panel amarillo con el detalle y el botón</span><button class="op__again" type="button">Repetir entrada</button></div><div class="svc"></div></section>
+<section class="op h-plano"><div class="op__tag"><b>5. Plano</b><span>La foto se vuelve plano técnico con retícula y esquinas de cota</span><button class="op__again" type="button">Repetir entrada</button></div><div class="svc"></div></section>
+<section class="op h-cur"><div class="op__tag"><b>6. Cursor botón</b><span>El cursor se vuelve un círculo amarillo «Ver» y la foto lo sigue</span><button class="op__again" type="button">Repetir entrada</button></div><div class="svc"></div></section>
+
+<p class="fin">Dime qué número te gusta (o una mezcla, por ejemplo 2 con 4) y lo pongo en el sitio. <a href="../">Volver a las entradas</a> · <a href="../../../">Ver sitio actual</a></p>
+
+<script>
+(function () {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const tpl = document.getElementById("contenido");
+  const R = (a, b) => a + Math.random() * (b - a);
+  const EASE = "cubic-bezier(.22,1,.36,1)";
+
+  // Entrada A: las tarjetas caen girando y rebotan. Se anima el contenedor (.slot), así el efecto
+  // del cursor sobre la tarjeta no choca con la entrada.
+  function entrada(svc) {
+    [...svc.querySelectorAll(".svc__head > *")].forEach((el, i) =>
+      el.animate([{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }], { duration: 450, delay: i * 90, easing: EASE, fill: "backwards" }));
+    [...svc.querySelectorAll(".slot")].forEach((s, i) => {
+      const rot = R(-9, 9), d = 250 + i * 120;
+      s.animate([
+        { opacity: 0, transform: `translateY(-70vh) rotate(${rot}deg)` },
+        { opacity: 1, transform: `translateY(0) rotate(${rot * 0.15}deg) scaleY(.96)`, offset: 0.62 },
+        { transform: "translateY(-16px) rotate(0deg) scaleY(1.01)", offset: 0.8 },
+        { opacity: 1, transform: "none" },
+      ], { duration: 950, delay: d, easing: "cubic-bezier(.45,0,.55,1)", fill: "backwards" });
+      s.querySelector("figure").animate([{ transform: "scale(1.18)" }, { transform: "scale(1)" }], { duration: 1200, delay: d, easing: EASE, fill: "backwards" });
+    });
+  }
+
+  document.querySelectorAll(".op").forEach((op) => {
+    const svc = op.querySelector(".svc");
+    svc.appendChild(tpl.content.cloneNode(true));
+    const play = () => {
+      svc.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+      svc.classList.add("done");
+      if (!reduce) entrada(svc);
+    };
+    op.querySelector(".op__again").addEventListener("click", play);
+    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: 0.4 });
+    io.observe(svc);
+  });
+
+  if (!fine || reduce) return;
+  // 1. Inclinación: ángulo y brillo según dónde está el cursor
+  document.querySelectorAll(".h-incl .card").forEach((c) => {
+    c.addEventListener("pointermove", (e) => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      c.style.setProperty("--ry", ((x - 0.5) * 16).toFixed(2) + "deg");
+      c.style.setProperty("--rx", ((0.5 - y) * 12).toFixed(2) + "deg");
+      c.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+      c.style.setProperty("--my", (y * 100).toFixed(1) + "%");
+    });
+    c.addEventListener("pointerleave", () => { c.style.setProperty("--rx", "0deg"); c.style.setProperty("--ry", "0deg"); });
+  });
+  // 6. Cursor botón: el círculo va con el cursor y la foto se mueve un poco en sentido contrario
+  document.querySelectorAll(".h-cur .card").forEach((c) => {
+    c.addEventListener("pointermove", (e) => {
+      const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      c.style.setProperty("--cx", x.toFixed(0) + "px");
+      c.style.setProperty("--cy", y.toFixed(0) + "px");
+      c.style.setProperty("--px", ((0.5 - x / r.width) * 18).toFixed(1) + "px");
+      c.style.setProperty("--py", ((0.5 - y / r.height) * 18).toFixed(1) + "px");
+    });
+    c.addEventListener("pointerleave", () => { c.style.setProperty("--px", "0px"); c.style.setProperty("--py", "0px"); });
+  });
+})();
+</script>
+</body>
+</html>
