@@ -188,6 +188,26 @@
     onShow(foot, play, 0.6);
   }
 
+  // 2. Servicios: las cuatro tarjetas caen una tras otra, girando un poco, y rebotan al asentarse.
+  // Se anima el contenedor (.svc__slot) para no chocar con el efecto del cursor sobre la tarjeta.
+  const svc = document.getElementById("servicios");
+  if (svc) {
+    onShow(svc.querySelector(".svc__grid"), () => {
+      svc.classList.add("cayo");
+      if (FX.reduce) return;
+      svc.querySelectorAll(".svc__slot").forEach((s, i) => {
+        const rot = (Math.random() * 2 - 1) * 9, d = 120 + i * 120;
+        s.animate([
+          { opacity: 0, transform: `translateY(-70vh) rotate(${rot}deg)` },
+          { opacity: 1, transform: `translateY(0) rotate(${rot * 0.15}deg) scaleY(.96)`, offset: 0.62 },
+          { transform: "translateY(-16px) rotate(0deg) scaleY(1.01)", offset: 0.8 },
+          { opacity: 1, transform: "none" },
+        ], { duration: 950, delay: d, easing: "cubic-bezier(.45,0,.55,1)", fill: "backwards" });
+        s.querySelector("figure").animate([{ transform: "scale(1.18)" }, { transform: "scale(1)" }], { duration: 1200, delay: d, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" });
+      });
+    }, 0.5);
+  }
+
   // Bloques de texto y tarjetas: aparecen una vez, rápido, al entrar
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -12% 0px" });
   document.querySelectorAll(".aparece").forEach((el) => io.observe(el));

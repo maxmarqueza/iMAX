@@ -8,20 +8,8 @@ main [data-sc-stage] { position: relative; height: 100svh; overflow: hidden; }
 .hero { --hero-shift: -19svh; }
 @media (max-width: 699px) { .hero { --hero-shift: -36svh; } }
 
-/* Servicios: carrusel normal que se desliza de lado; las tarjetas entran escalonadas */
-.svc__stage { height: auto !important; overflow: visible !important; padding-block: clamp(64px, 9vw, 120px); }
-.svc__rail { display: flex; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px; scroll-padding-inline: var(--sc-gutter); }
-.svc__rail::-webkit-scrollbar { display: none; }
-.svc__rail > * { scroll-snap-align: start; }
-.svc__item a { cursor: pointer; }
-.svc .aparece > * { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity .4s var(--ease), transform .4s var(--ease); }
-.svc .aparece.is-in > * { opacity: 1; transform: none; }
-.svc .aparece.is-in > :nth-child(2) { transition-delay: .05s; }
-.svc .aparece.is-in > :nth-child(3) { transition-delay: .1s; }
-.svc .aparece.is-in > :nth-child(4) { transition-delay: .15s; }
-.svc .aparece.is-in > :nth-child(5) { transition-delay: .2s; }
-.svc .aparece.is-in > :nth-child(6) { transition-delay: .25s; }
-@media (hover: hover) { .svc__item a:hover img { transform: scale(1.04); } .svc__item img { transition: transform .5s var(--ease); } }
+/* Servicios: antes de caer, las tarjetas esperan escondidas (fx/auto.js las suelta) */
+.svc:not(.cayo) .svc__slot { opacity: 0; }
 
 /* Pie: una pantalla; la salida por la M corre sola al aparecer */
 .foot__scene { height: auto !important; }
@@ -36,4 +24,4 @@ main [data-sc-stage] { position: relative; height: 100svh; overflow: hidden; }
 .tour .repetir { top: auto; bottom: 18px; left: auto; right: var(--sc-gutter); }
 @media (max-width: 860px) { .tour .repetir { top: 80px; bottom: auto; left: var(--sc-gutter); right: auto; } }
 
-@media (prefers-reduced-motion: reduce) { .svc .aparece > * { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .svc:not(.cayo) .svc__slot { opacity: 1; } }
