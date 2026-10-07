@@ -100,29 +100,6 @@
     alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
   }
 
-  // ---------------------------------------------------------------- Proceso
-  const build = document.getElementById("proceso");
-  const PASOS = [
-    ["Terreno y factibilidad", "Uso de suelo, mecánica de suelos, topografía y factibilidades de agua, drenaje y energía.", 0],
-    ["Proyecto e ingeniería", "Proyecto arquitectónico, estructural y de instalaciones a partir de tu operación.", 0.115],
-    ["Permisos", "Uso de suelo, impacto ambiental y vial, Protección Civil y licencia de construcción.", 0.235],
-    ["Obra", "Terracerías, cimentación, estructura, cubierta, muros, piso, instalaciones y urbanización.", 0.345],
-    ["Entrega", "Pruebas, terminación de obra y entrega lista para instalar equipo y operar.", 0.845],
-  ];
-  if (build && V("proceso") === "b") {
-    root.classList.add("v-proceso-b");
-    barra(build, PASOS.map(([t, , s]) => ({ t, s })), 0.8);
-  }
-  if (build && V("proceso") === "c") {
-    root.classList.add("v-proceso-c");
-    build.querySelector(".build__stage").appendChild(h("div", "vtitulo", '<h2 class="hd-lg">De un terreno vacío a una nave operando</h2><p class="lede">Cinco pasos, una sola empresa responsable de todos.</p>'));
-    const wrap = h("div", "vwrap vwrap--dark");
-    const grid = rejilla("vgrid--5", PASOS, ([t, p], i) => h("div", "vcard vcard--dark", `<div class="vbody"><b class="vnum">${String(i + 1).padStart(2, "0")}</b><h3>${t}</h3><p>${p}</p></div>`));
-    wrap.appendChild(grid);
-    build.appendChild(wrap);
-    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
-  }
-
   // ---------------------------------------------------------------- Preguntas
   const faq = document.querySelector(".faq__list");
   if (faq && V("faq") === "a") {

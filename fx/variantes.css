@@ -40,9 +40,7 @@
 .vrail button.is-on { color: #fff; background: rgba(255, 255, 255, .1); }
 @media (hover: hover) and (pointer: fine) { .vrail button:hover { color: #fff; background: rgba(255, 194, 14, .22); transform: translateY(-2px); } }
 .v-anat-b .anat__rail, .v-anat-b .anat__note { display: none; }
-.v-proceso-b .meter { display: none; }
 .vrail { transition: opacity .3s var(--ease); }
-.v-proceso-b .build__stage.is-tt .vrail { opacity: 0; pointer-events: none; }
 @media (max-width: 860px) {
   .vrail { top: 116px; gap: 2px; padding: 6px; grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); }
   .vrail button { padding: 10px 4px 4px; font-size: .66rem; }
@@ -54,11 +52,6 @@
 .v-anat-c .anat { background: var(--sc-canvas); }
 
 /* Proceso C: sin video; el comparador se abre solo y los pasos van en tarjetas */
-.v-proceso-c .build__steps li:not(.tt__copy), .v-proceso-c .meter { display: none; }
-.vtitulo { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(48px, 9vh, 96px); max-width: 40rem; display: grid; gap: 12px; color: #fff; transition: opacity .4s var(--ease); }
-.vtitulo .lede { color: rgba(255, 255, 255, .88); }
-.v-proceso-c .build__stage.is-tt .vtitulo { opacity: 0; }
-.v-proceso-c .vwrap--dark { padding-top: clamp(28px, 3vw, 44px); }
 
 /* Preguntas A: realce al pasar el cursor */
 @media (hover: hover) and (pointer: fine) {

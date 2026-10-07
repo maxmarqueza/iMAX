@@ -235,9 +235,20 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .plan__labels text { fill: var(--sc-accent); font-size: 34px; font-weight: 600; paint-order: stroke; stroke: rgba(13, 26, 38, .7); stroke-width: 7px; }
 
 .build__steps .sc-copy { max-width: min(40rem, 74vw); display: grid; gap: 14px; }
-.meter { position: absolute; z-index: var(--sc-z-copy); right: var(--sc-gutter); bottom: calc(clamp(56px, 9vh, 96px) + var(--barra)); display: grid; gap: 12px; text-align: right; font-size: .9rem; font-weight: 600; opacity: calc(1 - clamp(0, calc((var(--sc-p, 0) - .8) / .05), 1)); }
-.meter li { --on: clamp(0, calc((var(--q) - var(--s)) * 60), 1); --off: clamp(0, calc((var(--q) - var(--e)) * 60), 1); position: relative; padding-right: 22px; opacity: calc(.42 + .58 * (var(--on) - var(--off))); }
-.meter li::after { content: ""; position: absolute; right: 0; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; border: 1.5px solid var(--sc-ink); background: rgb(246 185 59 / var(--on)); }
+/* Título sobre el video y los cinco pasos en tarjetas debajo; el título se va al abrirse los tres tiempos */
+.build__titulo { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: calc(clamp(48px, 9vh, 96px) + var(--barra)); max-width: 40rem; display: grid; gap: 12px; transition: opacity .4s var(--ease); }
+.build__stage.is-tt .build__titulo { opacity: 0; pointer-events: none; }
+.build__grid { max-width: var(--sc-maxw); margin: 0 auto; padding: clamp(28px, 3vw, 44px) var(--sc-gutter) clamp(56px, 7vw, 96px); display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(10px, 1.2vw, 18px); }
+.build { background: #0b1218; }
+.build__card { position: relative; display: grid; align-content: start; gap: 8px; padding: clamp(16px, 1.4vw, 22px); border-radius: 20px; background: #16212b; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.build__card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 var(--sc-accent); pointer-events: none; transition: box-shadow .3s var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+  .build__card:hover { transform: translateY(-8px); box-shadow: 0 28px 44px -26px rgba(0, 0, 0, .7); }
+  .build__card:hover::after { box-shadow: inset 0 0 0 4px var(--sc-accent); }
+}
+.build__num { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--sc-accent); color: #111416; font-size: .85rem; }
+.build__card h3 { font-size: clamp(1.05rem, .95rem + .4vw, 1.3rem); }
+.build__card p { color: #b8c6d1; font-size: .93rem; }
 .build__note { position: absolute; right: var(--sc-gutter); bottom: calc(18px + var(--barra)); z-index: 5; }
 .build .sc-copy--lead { bottom: calc(clamp(3rem, 12vh, 9rem) + var(--barra)); }
 
@@ -334,7 +345,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 }
 
 @media (max-width: 860px) {
-  .tour__grid { grid-template-columns: 1fr 1fr; }
+  .tour__grid, .build__grid { grid-template-columns: 1fr 1fr; }
+  .build__card:last-child { grid-column: 1 / -1; }
   .tour__card:last-child { grid-column: 1 / -1; }
   .hero { --hero-shift: -30svh; }
   .hero__say p { font-size: 1.7rem; }
@@ -359,7 +371,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .anat__rail { display: none; }
 
 
-  .meter { display: none; }
   .plan__labels, .plan__axes text, .plan__axes circle { display: none; }
   .form { grid-template-columns: 1fr; }
 

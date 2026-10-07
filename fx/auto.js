@@ -171,6 +171,11 @@
       c.animate([{ opacity: 0, transform: "translateY(26px)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: i * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" })), 0.3);
   }
 
+  // 5. Proceso: las cinco tarjetas suben escalonadas al aparecer
+  const bgrid = document.querySelector(".build__grid");
+  if (bgrid && !FX.reduce) onShow(bgrid, () => [...bgrid.children].forEach((c, i) =>
+    c.animate([{ opacity: 0, transform: "translateY(26px)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: i * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" })), 0.3);
+
   // 7. Pie: al aparecer, la cámara sale sola por la M hasta IMAX
   const foot = document.querySelector(".foot__scene");
   if (foot) {
