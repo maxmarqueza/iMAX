@@ -100,68 +100,6 @@
     alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
   }
 
-  // ---------------------------------------------------------------- Ficha técnica
-  const spec = document.getElementById("ficha");
-  if (spec && V("ficha") === "a") {
-    alVer(spec.querySelector(".spec__body"), () => { subir([...spec.querySelectorAll(".spec__tabs button")], 0, 50); subir([...spec.querySelectorAll(".spec__panel.is-on .spec__rows > div")], 200, 60); });
-  }
-  if (spec && V("ficha") === "b") {
-    root.classList.add("v-ficha-b");
-    const tabs = [...spec.querySelectorAll(".spec__tabs [role='tab']")];
-    const panels = [...spec.querySelectorAll(".spec__panel")];
-    const dets = [...spec.querySelectorAll(".spec__sheet .det")];
-    const items = tabs.map((t, i) => {
-      const b = [...panels[i].querySelectorAll(".spec__rows b")].find((x) => x.firstChild && x.firstChild.textContent.trim());
-      const dt = b ? b.closest("div").querySelector("dt").textContent : "";
-      return { t: t.textContent.trim(), v: b ? b.firstChild.textContent.trim() : "", k: dt, det: dets[i] };
-    });
-    const grid = rejilla("vgrid--4 vfichas", items, (it, i) => {
-      const c = h("button", "vcard vficha");
-      c.type = "button";
-      c.innerHTML = `<b class="vnum">${String(i + 1).padStart(2, "0")}</b><h3>${it.t}</h3>${it.v ? `<p><span>${it.k}</span><strong>${it.v}</strong></p>` : ""}`;
-      if (it.det) {
-        const x = +it.det.getAttribute("transform").match(/translate\(([\d.]+) ([\d.]+)\)/)[1], y = +it.det.getAttribute("transform").match(/translate\(([\d.]+) ([\d.]+)\)/)[2];
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.setAttribute("viewBox", `${x} ${y} 480 240`);
-        svg.setAttribute("class", "spec__draw vmini");
-        svg.setAttribute("aria-hidden", "true");
-        const g = it.det.cloneNode(true);
-        g.querySelectorAll(".tit, .cell").forEach((n) => n.remove());
-        svg.appendChild(g);
-        c.prepend(svg);
-      }
-      c.addEventListener("click", () => {
-        tabs[i].click();
-        grid.querySelectorAll(".vficha").forEach((x, j) => x.classList.toggle("is-sel", j === i));
-        spec.querySelector(".spec__panels").animate([{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "none" }], { duration: 380, easing: "cubic-bezier(.22,1,.36,1)" });
-      });
-      return c;
-    });
-    grid.querySelector(".vficha").classList.add("is-sel");
-    spec.querySelector(".spec__body").prepend(grid);
-    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
-  }
-  if (spec && V("ficha") === "c") {
-    root.classList.add("v-ficha-c");
-    const C = [
-      [9.75, 2, "a 11 m", "Altura libre"], [15, 0, "× 15 m", "Claro entre columnas"], [15, 0, "cm", "Piso, desde 5 ton/m²"],
-      [40, 0, "m", "Patio de maniobras"], [2.74, 2, "× 3.05 m", "Puerta de andén"], [13, 0, "", "Rociadores ESFR, NFPA"],
-    ];
-    const strip = h("div", "vcifras");
-    C.forEach(([n, dec, u, k]) => strip.appendChild(h("div", "vcifra", `<b data-n="${n}" data-d="${dec}">${(0).toFixed(dec)}</b><span class="u">${u}</span><span class="k">${k}</span>`)));
-    spec.querySelector(".spec__head").after(strip);
-    alVer(strip, () => {
-      subir([...strip.children], 0, 70);
-      const t0 = performance.now();
-      const step = (t) => {
-        const k = FX.reduce ? 1 : FX.clamp01((t - t0) / 1100), e = 1 - Math.pow(1 - k, 3);
-        strip.querySelectorAll("b").forEach((b) => { b.textContent = (+b.dataset.n * e).toFixed(+b.dataset.d); });
-        if (k < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    });
-  }
-
   // ---------------------------------------------------------------- Parque
   const tour = document.getElementById("parque");
   const STOPS = [...(tour ? tour.querySelectorAll(".tour__stop") : [])].slice(1).map((st) => ({ t: st.querySelector("h3").textContent, p: st.querySelector("p").textContent }));

@@ -182,29 +182,3 @@ form.addEventListener("submit", (event) => {
   window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(lines.join("\n")), "_blank", "noopener");
 });
 
-// Ficha técnica: pestañas por sistema (clic, flechas, inicio y fin)
-(function spec() {
-  const tabs = [...document.querySelectorAll(".spec__tabs [role='tab']")];
-  const panels = [...document.querySelectorAll(".spec__panel")];
-  if (!tabs.length) return;
-  function select(index, focus) {
-    tabs.forEach((tab, i) => {
-      tab.setAttribute("aria-selected", String(i === index));
-      tab.tabIndex = i === index ? 0 : -1;
-    });
-    panels.forEach((panel, i) => panel.classList.toggle("is-on", i === index));
-    if (focus) tabs[index].focus();
-  }
-  tabs.forEach((tab, i) => {
-    tab.addEventListener("click", () => select(i));
-    tab.addEventListener("keydown", (e) => {
-      const move = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-      if (move) { e.preventDefault(); select((i + move + tabs.length) % tabs.length, true); }
-      if (e.key === "Home") { e.preventDefault(); select(0, true); }
-      if (e.key === "End") { e.preventDefault(); select(tabs.length - 1, true); }
-    });
-  });
-  // Enlaces que abren una pestaña concreta, como el de las preguntas frecuentes
-  document.querySelectorAll("a[data-spec]").forEach((a) => a.addEventListener("click", () => select(Number(a.dataset.spec))));
-  select(0);
-})();

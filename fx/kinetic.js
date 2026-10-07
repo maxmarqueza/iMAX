@@ -12,7 +12,7 @@
   };
 
   // 1. Títulos
-  const heads = [...document.querySelectorAll(".svc__lead h2, .spec__head h2, .faq__head h2, .contact__intro h2, .tour__panel h2, .build__steps li:first-child h2")];
+  const heads = [...document.querySelectorAll(".svc__lead h2, .faq__head h2, .contact__intro h2, .tour__panel h2, .build__steps li:first-child h2")];
   heads.forEach((h) => { h.classList.add("kt"); splitWords(h, "kw"); });
   if (R) heads.forEach((h) => h.classList.add("is-in"));
   else {
