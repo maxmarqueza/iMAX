@@ -9,8 +9,6 @@
 .hero__say p .w { opacity: .22; transition: opacity .35s var(--ease); }
 .hero__say p .w.on { opacity: 1; }
 
-.ticker.is-js .ticker__row { animation: none; will-change: transform; }
-.ticker__row span { transition: none; }
 
 .contact__marquee { overflow: hidden; margin-top: calc(clamp(80px, 10vw, 140px) * -1); margin-bottom: clamp(40px, 6vw, 72px); padding-block: 10px; border-bottom: 2px solid var(--sc-ink); }
 .contact__track { display: flex; width: max-content; gap: .45em; font-size: clamp(3rem, 1.4rem + 7vw, 9rem); font-weight: 900; font-stretch: 125%; letter-spacing: -.04em; line-height: 1; white-space: nowrap; will-change: transform; }

@@ -1,7 +1,6 @@
 // Tipografía en movimiento.
 // 1. Títulos de sección: las palabras suben desde su máscara y se ensanchan hasta su ancho final.
 // 2. La frase de la portada se enciende palabra por palabra con el scroll.
-// 3. La franja de cifras corre más rápido, cambia de sentido y se inclina con la velocidad del scroll.
 // 4. La banda de servicios del contacto se desliza con el scroll.
 (function kinetic() {
   const R = FX.reduce;
@@ -26,41 +25,23 @@
   let words = [];
   if (say) { splitWords(say); words = [...say.querySelectorAll(".w")]; }
 
-  // 3 y 4. Velocidad del scroll
-  const ticker = document.querySelector(".ticker");
-  const row = ticker && ticker.querySelector(".ticker__row");
-  const spans = row ? [...row.children] : [];
+  // 4. Banda de servicios del contacto
   const band = document.querySelector(".contact__band");
   const track = document.querySelector(".contact__track");
-  if (ticker && !R) ticker.classList.add("is-js");
 
   // <html data-sin-scroll>: nada sigue la velocidad del scroll
   const sinScroll = document.documentElement.hasAttribute("data-sin-scroll");
   let bandX = 0;
-  let lastY = scrollY, vel = 0, x = 0, dir = -1, lastT = performance.now(), lastN = -1, hoverPause = false;
-  if (ticker) { ticker.addEventListener("pointerenter", () => (hoverPause = true)); ticker.addEventListener("pointerleave", () => (hoverPause = false)); }
+  let lastY = scrollY, vel = 0, lastT = performance.now(), lastN = -1;
   function frame(t) {
     const dt = Math.min(64, t - lastT); lastT = t;
     const dy = scrollY - lastY; lastY = scrollY;
     vel = sinScroll ? 0 : FX.lerp(vel, dy, 0.18);
-    if (Math.abs(vel) > 0.5) dir = vel > 0 ? -1 : 1;
 
     if (say && words.length) {
       const p = FX.actP(hero);
       const n = R ? words.length : Math.round(FX.clamp01((p - 0.58) / 0.16) * words.length);
       if (n !== lastN) { words.forEach((w, i) => w.classList.toggle("on", i < n)); lastN = n; }
-    }
-    if (row && !R) {
-      const r = ticker.getBoundingClientRect();
-      if (r.bottom > -50 && r.top < innerHeight + 50) {
-        const speed = hoverPause ? 0 : 0.05 + Math.min(2.4, Math.abs(vel) * 0.06);
-        x += dir * speed * dt;
-        const half = row.scrollWidth / 2;
-        if (x <= -half) x += half; else if (x > 0) x -= half;
-        row.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
-        const skew = Math.max(-12, Math.min(12, vel * -0.35));
-        spans.forEach((s) => (s.style.transform = `skewX(${skew.toFixed(2)}deg)`));
-      }
     }
     if (band && track && !R) {
       const r = band.getBoundingClientRect();

@@ -19,7 +19,7 @@
 
 html { scroll-padding-top: 84px; }
 body { font-size: clamp(1rem, .97rem + .16vw, 1.075rem); line-height: 1.55; }
-main > section, main > .ticker { position: relative; z-index: 1; }
+main > section { position: relative; z-index: 1; }
 
 h1, h2, h3 { margin: 0; font-family: var(--sc-font-display); font-weight: 820; font-stretch: 118%; letter-spacing: -.03em; line-height: .98; text-wrap: balance; }
 h3 { font-size: 1.5rem; font-weight: 780; line-height: 1.05; letter-spacing: -.02em; }
@@ -120,13 +120,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 }
 @keyframes sube { from { opacity: 0; transform: translate3d(0, 18px, 0); } }
 
-/* Cifras de referencia que corren */
-.ticker { overflow: hidden; border-block: 1px solid var(--line); background: var(--paper); }
-.ticker__row { display: flex; width: max-content; animation: corre 42s linear infinite; }
-.ticker__row span { display: inline-flex; align-items: center; gap: 14px; padding: 18px 28px; font-weight: 700; font-stretch: 110%; white-space: nowrap; }
-.ticker__row span::before { content: ""; width: 10px; height: 10px; background: var(--sc-accent); transform: rotate(45deg); }
-@media (hover: hover) { .ticker:hover .ticker__row { animation-play-state: paused; } }
-@keyframes corre { to { transform: translateX(-50%); } }
 
 /* 2. Servicios: las cuatro tarjetas a la vista; al aparecer caen y rebotan (fx/auto.js).
    Al pasar el cursor, la tarjeta se eleva y la enmarca un borde amarillo. */
@@ -403,8 +396,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .hero__intro { top: 96px; opacity: 1; color: #fff; }
   .hero__say { opacity: 1; transform: none; }
   .hero__routes { opacity: 1; }
-  .ticker__row { animation: none; flex-wrap: wrap; width: auto; }
-  .ticker__row span[aria-hidden] { display: none; }
   .build__final, .anat__still { display: block; }
   .anat:not(.sc-has-clip) .anat__tag { visibility: visible; opacity: 1; }
   .pin::after, .tour__route path { animation: none; }
