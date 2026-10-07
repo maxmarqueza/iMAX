@@ -115,12 +115,8 @@
   }
   if (build && V("proceso") === "c") {
     root.classList.add("v-proceso-c");
-    const s = A.scene(build);
-    s.set(0.8);
-    build.classList.add("sc-has-clip");
-    A.onShow(build, () => s.tween(1, 900), 0.5);
+    build.querySelector(".build__stage").appendChild(h("div", "vtitulo", '<h2 class="hd-lg">De un terreno vacío a una nave operando</h2><p class="lede">Cinco pasos, una sola empresa responsable de todos.</p>'));
     const wrap = h("div", "vwrap vwrap--dark");
-    wrap.appendChild(cab("De un terreno vacío a una nave operando", "Cinco pasos, una sola empresa responsable de todos."));
     const grid = rejilla("vgrid--5", PASOS, ([t, p], i) => h("div", "vcard vcard--dark", `<div class="vbody"><b class="vnum">${String(i + 1).padStart(2, "0")}</b><h3>${t}</h3><p>${p}</p></div>`));
     wrap.appendChild(grid);
     build.appendChild(wrap);

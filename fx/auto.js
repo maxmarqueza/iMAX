@@ -154,7 +154,7 @@
   // Los archivos ya vienen acelerados (unos 5 s a 30 cuadros): se reproducen a velocidad normal. Reproducirlos
   // al 2.6× obligaba a decodificar ~60 cuadros por segundo y el video se veía cortado y lento.
   if (V("anat") !== "c") videoScene("anatomia", { rate: 1, end: 1 });
-  if (V("proceso") !== "c") videoScene("proceso", { rate: 1, end: 0.8, tail: 600 });
+  videoScene("proceso", { rate: 1, end: 0.8, tail: 600 });
 
   // 4. Parque: el video del recorrido corre solo una vez al aparecer y las cinco partes entran como tarjetas
   const tour = document.getElementById("parque");

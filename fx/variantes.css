@@ -54,8 +54,11 @@
 .v-anat-c .anat { background: var(--sc-canvas); }
 
 /* Proceso C: sin video; el comparador se abre solo y los pasos van en tarjetas */
-.v-proceso-c .build__stage video, .v-proceso-c .build .repetir { display: none; }
-.v-proceso-c .build__steps li:not(.tt__copy) { display: none; }
+.v-proceso-c .build__steps li:not(.tt__copy), .v-proceso-c .meter { display: none; }
+.vtitulo { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(48px, 9vh, 96px); max-width: 40rem; display: grid; gap: 12px; color: #fff; transition: opacity .4s var(--ease); }
+.vtitulo .lede { color: rgba(255, 255, 255, .88); }
+.v-proceso-c .build__stage.is-tt .vtitulo { opacity: 0; }
+.v-proceso-c .vwrap--dark { padding-top: clamp(28px, 3vw, 44px); }
 
 /* Preguntas A: realce al pasar el cursor */
 @media (hover: hover) and (pointer: fine) {
