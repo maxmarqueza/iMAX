@@ -42,7 +42,7 @@
     }
     // Cuadro del video para el mate (85 cuadros, uno de cada cuatro)
     if (video && video.duration) {
-      const idx = Math.max(0, Math.min(84, Math.round((video.currentTime * 24) / 4)));
+      const idx = Math.max(0, Math.min(84, Math.round(((video.currentTime / video.duration) * 336) / 4)));
       if (idx !== last) {
         last = idx;
         sky.style.setProperty("--cx", ((idx % 10) / 9 * 100).toFixed(3) + "%");

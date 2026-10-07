@@ -72,7 +72,8 @@
     const e = act.__e != null ? act.__e : FX.clamp01(1 - r.top / innerHeight);
     svg.style.setProperty("--e", e.toFixed(3));
     if (video && video.duration) {
-      const idx = Math.max(0, Math.min(80, Math.round((video.currentTime * 24) / 2)));
+      // Cuadro del maestro (337 cuadros) según el avance: el archivo publicado ya viene acelerado
+      const idx = Math.max(0, Math.min(80, Math.round(((video.currentTime / video.duration) * 336) / 2)));
       if (idx !== lastIdx) {
         lastIdx = idx;
         svg.style.setProperty("--mx", ((idx % 9) / 8 * 100).toFixed(3) + "%");

@@ -123,10 +123,17 @@
       s.set(end);
       if (end < 1) s.tween(1, tail || 900);
     });
-    const play = () => {
+    // Arranca cuando hay video suficiente para no detenerse a medio camino (máximo 2.5 s de espera)
+    const ready = () => new Promise((res) => {
+      if (v.readyState >= 4) return res();
+      const t = setTimeout(res, 2500);
+      v.addEventListener("canplaythrough", () => { clearTimeout(t); res(); }, { once: true });
+    });
+    const play = async () => {
       s.set(0);
       v.currentTime = 0;
       v.playbackRate = rate;
+      await ready();
       // De polvo a nave: primero se traza la planta sobre el terreno (1 s) y luego corre el video
       if (act.querySelector(".anat__trazo")) {
         act.__e = 0;
@@ -144,8 +151,10 @@
     onShow(act, play, 0.55);
     replay(act, play);
   }
-  if (V("anat") !== "c") videoScene("anatomia", { rate: 2.6, end: 1 });
-  if (V("proceso") !== "c") videoScene("proceso", { rate: 2.4, end: 0.8, tail: 600 });
+  // Los archivos ya vienen acelerados (unos 5 s a 30 cuadros): se reproducen a velocidad normal. Reproducirlos
+  // al 2.6× obligaba a decodificar ~60 cuadros por segundo y el video se veía cortado y lento.
+  if (V("anat") !== "c") videoScene("anatomia", { rate: 1, end: 1 });
+  if (V("proceso") !== "c") videoScene("proceso", { rate: 1, end: 0.8, tail: 600 });
 
   // 4. Parque: la cámara recorre sola las cinco paradas; los botones llevan a cada una
   const tour = document.getElementById("parque");
