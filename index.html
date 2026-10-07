@@ -33,7 +33,6 @@
   <link rel="stylesheet" href="fx/portada.css">
   <link rel="stylesheet" href="fx/replanteo.css">
   <link rel="stylesheet" href="fx/cielo.css">
-  <link rel="stylesheet" href="fx/anochece.css">
   <link rel="stylesheet" href="fx/tiempos.css">
   <link rel="stylesheet" href="fx/kinetic.css">
   <link rel="stylesheet" href="fx/salida.css">
@@ -241,62 +240,24 @@
       </div>
     </section>
 
-    <!-- 4. Recorrido por un parque -->
+    <!-- 4. Parque industrial: video que corre solo al aparecer y las cinco partes en tarjetas -->
     <section class="tour" id="parque" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="tour__stage">
-        <div class="tour__world">
-          <div class="tour__cam">
-            <img src="img/parque.webp" width="2752" height="1536" alt="Vista aérea de un parque industrial con seis naves, vialidad central y caseta de acceso" loading="lazy">
-            <img class="tour__dusk" src="img/parque-azul.webp" data-src-mobile="img/parque-azul-m.webp" width="2752" height="1536" alt="" loading="lazy">
-            <canvas class="tour__lights" aria-hidden="true"></canvas>
-            <svg class="tour__route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M52.6 98 L54.7 84 L54 72 L53 53 Q53.1 48 57 48.5 L62.5 51.5 L67.5 57" />
-            </svg>
-            <button class="pin" type="button" style="--x:50.4%;--y:80.5%" data-stop="0"><span class="sr">Acceso controlado</span></button>
-            <button class="pin" type="button" style="--x:50.3%;--y:57%" data-stop="1"><span class="sr">Vialidad interna</span></button>
-            <button class="pin" type="button" style="--x:67.5%;--y:57%" data-stop="2"><span class="sr">Patios de maniobras y andenes</span></button>
-            <button class="pin" type="button" style="--x:80%;--y:52%" data-stop="3"><span class="sr">Naves</span></button>
-            <button class="pin" type="button" style="--x:80.4%;--y:71.5%" data-stop="4"><span class="sr">Oficinas</span></button>
-          </div>
-        </div>
+        <img class="tour__poster" src="img/parque-poster.webp" alt="Vista aérea de un parque industrial con naves a ambos lados de la vialidad central y caseta de acceso">
+        <video class="tour__video" muted playsinline preload="none" data-src="media/parque.mp4" data-src-mobile="media/parque-m.mp4" data-src-4k="media/parque-4k.mp4" aria-hidden="true"></video>
         <div class="tour__shade" aria-hidden="true"></div>
-
-        <div class="tour__panel">
-          <h2 class="hd-md">Así se arma un parque industrial</h2>
-          <div class="tour__stops">
-            <div class="tour__stop" data-sc-cue="0 0.13 0">
-              <p>Desarrollamos parques completos: terreno con uso de suelo industrial, urbanización, redes de servicios y naves. Recórrelo de la caseta a las oficinas.</p>
-            </div>
-            <div class="tour__stop" data-sc-cue="0.11 0.3 0.22 0.22">
-              <h3>Acceso controlado</h3>
-              <p>Caseta de vigilancia, barda perimetral y un solo punto de entrada y salida, con carriles separados para carga y para personal. Sobre la carretera, carriles de aceleración y desaceleración.</p>
-            </div>
-            <div class="tour__stop" data-sc-cue="0.27 0.46 0.22 0.22">
-              <h3>Vialidad interna</h3>
-              <p>Vialidades de concreto para tractocamiones, con guarniciones, banquetas y alumbrado. Debajo van las redes de agua, drenaje, energía en media tensión y telecomunicaciones.</p>
-            </div>
-            <div class="tour__stop" data-sc-cue="0.43 0.62 0.22 0.22">
-              <h3>Patios de maniobras y andenes</h3>
-              <p>Cada nave tiene su patio de concreto para maniobrar tractocamiones y andenes con rampa niveladora, sello, topes y retenedor.</p>
-            </div>
-            <div class="tour__stop" data-sc-cue="0.59 0.78 0.22 0.22">
-              <h3>Naves</h3>
-              <p>Naves de inventario listas para ocupar y lotes para naves a la medida. Cada lote deja libres sus restricciones al frente y a los lados, su área verde y su estacionamiento.</p>
-            </div>
-            <div class="tour__stop" data-sc-cue="0.75 1 0.22 0">
-              <h3>Oficinas</h3>
-              <p>Oficinas integradas a cada nave, con acceso y estacionamiento separados del tránsito de carga. El parque tiene reglamento interno y administración para las áreas comunes.</p>
-            </div>
-          </div>
-          <div class="tour__dots" role="group" aria-label="Partes del parque">
-            <button type="button" data-stop="0">Acceso</button>
-            <button type="button" data-stop="1">Vialidad</button>
-            <button type="button" data-stop="2">Patios</button>
-            <button type="button" data-stop="3">Naves</button>
-            <button type="button" data-stop="4">Oficinas</button>
-          </div>
+        <div class="tour__copy">
+          <h2 class="hd-lg">Así se arma un parque industrial</h2>
+          <p class="lede">Desarrollamos parques completos: terreno con uso de suelo industrial, urbanización, redes de servicios y naves.</p>
         </div>
         <p class="note tour__note">Imagen ilustrativa</p>
+      </div>
+      <div class="tour__grid">
+          <article class="tour__card"><b class="tour__num">1</b><h3>Acceso controlado</h3><p>Caseta de vigilancia, barda perimetral y un solo punto de entrada y salida, con carriles separados para carga y para personal. Sobre la carretera, carriles de aceleración y desaceleración.</p></article>
+          <article class="tour__card"><b class="tour__num">2</b><h3>Vialidad interna</h3><p>Vialidades de concreto para tractocamiones, con guarniciones, banquetas y alumbrado. Debajo van las redes de agua, drenaje, energía en media tensión y telecomunicaciones.</p></article>
+          <article class="tour__card"><b class="tour__num">3</b><h3>Patios de maniobras y andenes</h3><p>Cada nave tiene su patio de concreto para maniobrar tractocamiones y andenes con rampa niveladora, sello, topes y retenedor.</p></article>
+          <article class="tour__card"><b class="tour__num">4</b><h3>Naves</h3><p>Naves de inventario listas para ocupar y lotes para naves a la medida. Cada lote deja libres sus restricciones al frente y a los lados, su área verde y su estacionamiento.</p></article>
+          <article class="tour__card"><b class="tour__num">5</b><h3>Oficinas</h3><p>Oficinas integradas a cada nave, con acceso y estacionamiento separados del tránsito de carga. El parque tiene reglamento interno y administración para las áreas comunes.</p></article>
       </div>
     </section>
 
@@ -570,7 +531,6 @@
   <script src="fx/portada.js"></script>
   <script src="fx/replanteo.js"></script>
   <script src="fx/cielo.js"></script>
-  <script src="fx/anochece.js"></script>
   <script src="fx/tiempos.js"></script>
   <script src="fx/escala.js"></script>
   <script src="fx/kinetic.js"></script>

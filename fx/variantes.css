@@ -53,26 +53,6 @@
 .v-anat-c .anat__stage { display: none; }
 .v-anat-c .anat { background: var(--sc-canvas); }
 
-/* Parque B: vista aérea completa, puntos numerados y paradas como tarjetas */
-.v-parque-b .tour .vhead, .v-parque-c .tour .vhead { padding-top: clamp(64px, 8vw, 110px); padding-bottom: clamp(18px, 2.4vw, 28px); }
-.v-parque-b .tour { background: var(--sc-canvas); }
-.v-parque-b .tour__stage { height: auto !important; min-height: 0 !important; aspect-ratio: 2752 / 1536; max-width: calc(var(--sc-maxw) - 2 * var(--sc-gutter)); margin: 0 auto; border-radius: 22px; }
-.v-parque-b .tour__world { width: 100%; left: 0; top: 0; translate: none; }
-.v-parque-b .tour__panel, .v-parque-b .tour .repetir, .v-parque-b .tour__route, .v-parque-b .tour__shade { display: none; }
-.v-parque-b .tour:not(.cayo) .pin { opacity: 0; }
-.v-parque-b .pin::before { inset: 8px; background: var(--sc-accent); }
-.v-parque-b .pin::after { content: attr(data-n); display: grid; place-items: center; inset: 8px; border: 0; animation: none; color: var(--sc-ink); font: 900 .9rem var(--sc-font-text); }
-.v-parque-b .pin.is-on::before { background: #fff; box-shadow: 0 0 0 6px rgba(255, 194, 14, .6), 0 6px 16px rgba(0, 0, 0, .5); }
-.v-parque-b .tour__note { top: 14px; }
-@media (max-width: 860px) { .v-parque-b .tour__stage { border-radius: 0; max-width: none; } .v-parque-b .pin { width: 34px; height: 34px; margin: -17px 0 0 -17px; } .v-parque-b .pin::before, .v-parque-b .pin::after { inset: 4px; } }
-
-/* Parque C: cinco tarjetas con acercamiento a cada parada */
-.v-parque-c .tour__stage { display: none; }
-.v-parque-c .tour { background: var(--sc-canvas); }
-.v-parque-c .tour .vhead { padding: 0; }
-.vzoom { background: url("../img/parque.webp") no-repeat; background-size: 520%; background-position: var(--fx) var(--fy); transition: background-size .6s var(--ease); }
-@media (hover: hover) and (pointer: fine) { .vcard:hover .vzoom { background-size: 580%; } }
-
 /* Proceso C: sin video; el comparador se abre solo y los pasos van en tarjetas */
 .v-proceso-c .build__stage video, .v-proceso-c .build .repetir { display: none; }
 .v-proceso-c .build__steps li:not(.tt__copy) { display: none; }

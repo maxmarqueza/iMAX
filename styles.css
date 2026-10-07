@@ -182,30 +182,25 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .anat__note { position: absolute; right: var(--sc-gutter); top: 80px; z-index: 5; padding: 4px 10px; border-radius: 999px; background: var(--sc-accent); color: var(--sc-ink); font-weight: 700; }
 
 /* 4. Recorrido por el parque */
-.tour__stage { background: #dfe3e6; }
-.tour__world { position: absolute; left: 50%; top: 50%; width: max(100vw, calc(100svh * 1.7917)); aspect-ratio: 2752 / 1536; translate: -50% -50%; }
-.tour__cam { position: absolute; inset: 0; transform-origin: 0 0; will-change: transform; }
-.tour__cam > img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
-.tour__route { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.tour__route path { fill: none; stroke: var(--sc-accent); stroke-width: 3.5; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-dasharray: 2 14; animation: ruta 1.6s linear infinite; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .5)); }
-@keyframes ruta { to { stroke-dashoffset: -16; } }
+.tour__stage { background: #1d2a33; }
+.tour__poster, .tour__video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.tour__video { opacity: 0; transition: opacity .4s var(--ease); }
+.tour__video.is-on { opacity: 1; }
+.tour__shade { background: linear-gradient(0deg, rgba(10, 14, 18, .72) 0%, rgba(10, 14, 18, .25) 38%, rgba(10, 14, 18, 0) 60%) !important; }
+.tour__copy { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(36px, 7vh, 72px); max-width: 44rem; display: grid; gap: 14px; color: #fff; }
+.tour__copy .lede { color: rgba(255, 255, 255, .88); }
+.tour__grid { max-width: var(--sc-maxw); margin: 0 auto; padding: clamp(24px, 3vw, 40px) var(--sc-gutter) clamp(56px, 7vw, 96px); display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(10px, 1.2vw, 18px); background: var(--concrete); }
+.tour { background: var(--concrete); }
+.tour__card { position: relative; display: grid; align-content: start; gap: 8px; padding: clamp(16px, 1.4vw, 22px); border-radius: 20px; background: var(--paper); box-shadow: 0 1px 0 var(--line); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.tour__card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 var(--sc-accent); pointer-events: none; transition: box-shadow .3s var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+  .tour__card:hover { transform: translateY(-8px); box-shadow: 0 28px 44px -26px rgba(17, 20, 22, .5); }
+  .tour__card:hover::after { box-shadow: inset 0 0 0 4px var(--sc-accent); }
+}
+.tour__num { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--sc-accent); color: var(--sc-ink); font-size: .85rem; }
+.tour__card h3 { font-size: clamp(1.05rem, .95rem + .4vw, 1.3rem); }
+.tour__card p { color: var(--sc-ink-soft); font-size: .93rem; }
 .tour__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(17, 20, 22, .3), rgba(17, 20, 22, 0) 18%); }
-.pin { position: absolute; left: var(--x); top: var(--y); width: 44px; height: 44px; margin: -22px 0 0 -22px; border: 0; border-radius: 50%; background: none; cursor: pointer; transform: scale(calc(1 / var(--cam-s, 1))); }
-.pin::before { content: ""; position: absolute; inset: 13px; border-radius: 50%; background: #fff; border: 2px solid var(--sc-ink); box-shadow: 0 4px 14px rgba(0, 0, 0, .45); transition: background-color 200ms var(--ease); }
-.pin::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .9); animation: ping 2.4s ease-out infinite; }
-.pin.is-on::before { background: var(--sc-accent); }
-.pin.is-on::after { border-color: var(--sc-accent); }
-@keyframes ping { from { transform: scale(.5); opacity: 1; } to { transform: scale(1.55); opacity: 0; } }
-.tour__panel { position: absolute; z-index: var(--sc-z-copy); left: var(--sc-gutter); top: 50%; translate: 0 -44%; width: min(27rem, 40vw); padding: clamp(22px, 2.2vw, 30px); border-radius: 22px; background: var(--paper); color: var(--sc-ink); box-shadow: 0 30px 70px -30px rgba(0, 0, 0, .5); }
-.tour__panel h2 { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.3rem); }
-.tour__stops { display: grid; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
-.tour__stop { grid-area: 1 / 1; align-self: start; display: grid; gap: 8px; }
-.tour__stop h3 { font-size: 1.35rem; }
-.tour__stop h3::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 10px; background: var(--sc-accent); transform: rotate(45deg) translateY(-2px); }
-.tour__stop p { color: var(--sc-ink-soft); }
-.tour__dots { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
-.tour__dots button { min-height: 38px; padding: 0 15px; border: 1.5px solid var(--sc-ink); border-radius: 999px; background: transparent; color: var(--sc-ink); font-size: .86rem; font-weight: 650; cursor: pointer; transition: background-color 160ms var(--ease), color 160ms var(--ease); }
-.tour__dots button.is-on { background: var(--sc-ink); color: #fff; }
 .tour__note { position: absolute; right: var(--sc-gutter); top: 80px; z-index: 5; padding: 4px 10px; border-radius: 999px; background: var(--sc-accent); color: var(--sc-ink); font-weight: 700; }
 
 /* 5. Proceso: el capítulo nocturno, con su propio tema oscuro */
@@ -325,7 +320,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   :root { --barra: calc(100lvh - 100dvh); }
   .sc-stage { height: 100lvh; }
   .anat__world { width: max(100vw, calc(100lvh * var(--anat-ar, 1.798))); }
-  .tour__world { width: max(100vw, calc(100lvh * 1.7917)); }
 }
 
 /* Responsivo */
@@ -340,6 +334,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 }
 
 @media (max-width: 860px) {
+  .tour__grid { grid-template-columns: 1fr 1fr; }
+  .tour__card:last-child { grid-column: 1 / -1; }
   .hero { --hero-shift: -30svh; }
   .hero__say p { font-size: 1.7rem; }
 
@@ -362,16 +358,6 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .anat__lbl i { display: none; }
   .anat__rail { display: none; }
 
-  .tour__stage { background-color: var(--paper); }
-  .tour__panel { top: auto; bottom: 0; left: 0; right: 0; width: auto; translate: none; padding: 18px var(--sc-gutter) calc(40px + var(--barra)); border-radius: 22px 22px 0 0; }
-  /* Panel compacto: título en una línea y paradas en una sola fila que se desliza de lado,
-     para que la vista del parque tenga más alto */
-  .tour__panel h2 { font-size: 1.12rem; }
-  .tour__stops { margin-top: 10px; padding-top: 12px; }
-  .tour__stop h3 { font-size: 1.15rem; }
-  .tour__dots { flex-wrap: nowrap; overflow-x: auto; margin: 14px calc(var(--sc-gutter) * -1) 0; padding: 0 var(--sc-gutter); scrollbar-width: none; }
-  .tour__dots::-webkit-scrollbar { display: none; }
-  .tour__dots button { flex: none; min-height: 36px; padding: 0 13px; font-size: .84rem; }
 
   .meter { display: none; }
   .plan__labels, .plan__axes text, .plan__axes circle { display: none; }
@@ -398,5 +384,4 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .hero__routes { opacity: 1; }
   .build__final, .anat__still { display: block; }
   .anat:not(.sc-has-clip) .anat__tag { visibility: visible; opacity: 1; }
-  .pin::after, .tour__route path { animation: none; }
 }

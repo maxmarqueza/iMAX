@@ -156,29 +156,19 @@
   if (V("anat") !== "c") videoScene("anatomia", { rate: 1, end: 1 });
   if (V("proceso") !== "c") videoScene("proceso", { rate: 1, end: 0.8, tail: 600 });
 
-  // 4. Parque: la cámara recorre sola las cinco paradas; los botones llevan a cada una
+  // 4. Parque: el video del recorrido corre solo una vez al aparecer y las cinco partes entran como tarjetas
   const tour = document.getElementById("parque");
-  if (tour && V("parque") === "a") {
-    const s = scene(tour);
-    const STOPS = [0.2, 0.365, 0.525, 0.685, 0.86];
-    let timer = 0, i = -1;
-    const next = () => {
-      i++;
-      if (i >= STOPS.length) return;
-      s.tween(STOPS[i], i === 0 ? 700 : 600, () => { timer = setTimeout(next, 1000); });
-    };
-    const play = () => { clearTimeout(timer); i = -1; s.set(0); timer = setTimeout(next, 300); };
-    onShow(tour, play, 0.55);
+  if (tour) {
+    const v = tour.querySelector(".tour__video");
+    v.muted = true; v.playsInline = true; v.preload = "auto";
+    v.src = FX.videoSrc(v.dataset.src, v.dataset.srcMobile, v.getAttribute("data-src-4k"));
+    v.addEventListener("playing", () => v.classList.add("is-on"), { once: true });
+    const play = () => { v.currentTime = 0; v.play().catch(() => {}); };
+    onShow(tour.querySelector(".tour__stage"), play, 0.5);
     replay(tour, play);
-    // Tocar una parada lleva la cámara ahí (sin mover la página)
-    tour.addEventListener("click", (e) => {
-      const b = e.target.closest("[data-stop]");
-      if (!b) return;
-      e.preventDefault(); e.stopPropagation();
-      clearTimeout(timer);
-      i = STOPS.length;
-      s.tween(STOPS[+b.dataset.stop], 600);
-    }, true);
+    const cards = [...tour.querySelectorAll(".tour__card")];
+    if (!FX.reduce) onShow(tour.querySelector(".tour__grid"), () => cards.forEach((c, i) =>
+      c.animate([{ opacity: 0, transform: "translateY(26px)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: i * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" })), 0.3);
   }
 
   // 7. Pie: al aparecer, la cámara sale sola por la M hasta IMAX

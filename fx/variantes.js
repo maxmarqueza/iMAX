@@ -100,46 +100,6 @@
     alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
   }
 
-  // ---------------------------------------------------------------- Parque
-  const tour = document.getElementById("parque");
-  const STOPS = [...(tour ? tour.querySelectorAll(".tour__stop") : [])].slice(1).map((st) => ({ t: st.querySelector("h3").textContent, p: st.querySelector("p").textContent }));
-  const FOCO = [[50.4, 80], [50.5, 56], [65.5, 57], [79, 53], [80, 71]];
-  const intro = tour && tour.querySelector(".tour__stop p").textContent;
-  if (tour && V("parque") === "b") {
-    root.classList.add("v-parque-b");
-    const pins = [...tour.querySelectorAll(".pin")];
-    pins.forEach((p, i) => p.setAttribute("data-n", i + 1));
-    const wrap = h("div", "vwrap vwrap--tight");
-    const grid = rejilla("vgrid--5", STOPS, (st, i) => h("div", "vcard vstop", `<div class="vbody"><b class="vnum">${i + 1}</b><h3>${st.t}</h3><p>${st.p}</p></div>`));
-    wrap.appendChild(grid);
-    tour.prepend(cab("Así se arma un parque industrial", intro));
-    tour.appendChild(wrap);
-    [...grid.querySelectorAll(".vstop")].forEach((c, i) => {
-      c.addEventListener("pointerenter", () => pins.forEach((p, j) => p.classList.toggle("is-on", i === j)));
-      c.addEventListener("pointerleave", () => pins.forEach((p) => p.classList.remove("is-on")));
-    });
-    pins.forEach((p, i) => {
-      p.addEventListener("pointerenter", () => grid.children[i].querySelector(".vstop").classList.add("is-sel"));
-      p.addEventListener("pointerleave", () => grid.children[i].querySelector(".vstop").classList.remove("is-sel"));
-    });
-    alVer(tour.querySelector(".tour__stage"), () => {
-      tour.classList.add("cayo");
-      grid.classList.add("cayo");
-      pins.forEach((p, i) => { if (!FX.reduce) p.animate([{ opacity: 0, transform: "scale(0)" }, { opacity: 1, transform: "scale(1.25)", offset: 0.7 }, { opacity: 1, transform: "scale(1)" }], { duration: 450, delay: 150 + i * 160, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" }); });
-      subir([...grid.children], 300, 80);
-    }, 0.4);
-  }
-  if (tour && V("parque") === "c") {
-    root.classList.add("v-parque-c");
-    const wrap = h("div", "vwrap");
-    wrap.appendChild(cab("Así se arma un parque industrial", intro));
-    const grid = rejilla("vgrid--5", STOPS, (st, i) => h("div", "vcard", `<figure class="vzoom" style="--fx:${FOCO[i][0]}%;--fy:${FOCO[i][1]}%"><b class="vbadge">${i + 1}</b></figure><div class="vbody"><h3>${st.t}</h3><p>${st.p}</p></div>`));
-    wrap.appendChild(grid);
-    wrap.appendChild(h("p", "note", "Imagen ilustrativa"));
-    tour.appendChild(wrap);
-    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
-  }
-
   // ---------------------------------------------------------------- Proceso
   const build = document.getElementById("proceso");
   const PASOS = [
