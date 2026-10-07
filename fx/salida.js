@@ -54,7 +54,7 @@
 
   if (!FX.reduce && video) {
     FX.watch(stage, () => {
-      if (!video.src) video.src = FX.narrow() ? video.dataset.srcMobile : video.dataset.src;
+      if (!video.src) video.src = FX.videoSrc(video.dataset.src, video.dataset.srcMobile, video.getAttribute("data-src-4k"));
       video.play().catch(() => {});
     }, () => video.pause(), "200px 0px");
   }

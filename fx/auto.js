@@ -111,7 +111,7 @@
     const s = scene(act);
     if (act.querySelector(".anat__trazo")) act.__e = 0;
     v.muted = true; v.playsInline = true; v.preload = "auto";
-    v.src = mobile ? v.dataset.scSrcMobile || v.dataset.scSrc : v.dataset.scSrc;
+    v.src = FX.videoSrc(v.dataset.scSrc, v.dataset.scSrcMobile, v.getAttribute("data-sc-src-4k"));
     let rafV = 0;
     const follow = () => {
       if (v.duration) s.set((v.currentTime / v.duration) * end);

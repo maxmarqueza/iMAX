@@ -14,7 +14,7 @@
 
   // Video: archivo según el ancho; solo corre con la portada en pantalla
   if (!FX.reduce && video) {
-    video.src = FX.narrow() ? video.dataset.srcMobile : video.dataset.src;
+    video.src = FX.videoSrc(video.dataset.src, video.dataset.srcMobile, video.getAttribute("data-src-4k"));
     video.addEventListener("playing", () => video.classList.add("is-on"), { once: true });
     FX.watch(stage, () => video.play().catch(() => {}), () => video.pause());
   }

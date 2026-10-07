@@ -105,5 +105,12 @@
     },
   };
 
-  window.FX = { reduce, fine, coarse, clamp01, lerp, smooth, actP, watch, loop, fit, plate, narrow: () => innerWidth <= 860 };
+  // Archivo de video según la pantalla: 4K solo si la ventana tiene píxeles para mostrarlo (unos 2600 o más
+  // de ancho real, p. ej. una laptop retina a pantalla completa) y la conexión no pide ahorrar datos; versión ligera en celular; 1440p en lo demás
+  const big = () => {
+    const c = navigator.connection;
+    return !(c && (c.saveData || /2g/.test(c.effectiveType || ""))) && innerWidth * (devicePixelRatio || 1) >= 2600 && innerWidth > 860;
+  };
+  const videoSrc = (desktop, mobile, k4) => (innerWidth <= 860 ? mobile || desktop : big() && k4 ? k4 : desktop);
+  window.FX = { reduce, fine, coarse, clamp01, lerp, smooth, actP, watch, loop, fit, plate, videoSrc, narrow: () => innerWidth <= 860 };
 })();
