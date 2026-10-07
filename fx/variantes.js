@@ -124,6 +124,7 @@
     });
     alVer(tour.querySelector(".tour__stage"), () => {
       tour.classList.add("cayo");
+      grid.classList.add("cayo");
       pins.forEach((p, i) => { if (!FX.reduce) p.animate([{ opacity: 0, transform: "scale(0)" }, { opacity: 1, transform: "scale(1.25)", offset: 0.7 }, { opacity: 1, transform: "scale(1)" }], { duration: 450, delay: 150 + i * 160, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" }); });
       subir([...grid.children], 300, 80);
     }, 0.4);
