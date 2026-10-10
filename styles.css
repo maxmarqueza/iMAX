@@ -374,6 +374,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .plan__labels, .plan__axes text, .plan__axes circle { display: none; }
   .form { grid-template-columns: 1fr; }
 
+  .faq { grid-template-columns: 1fr; }
   .faq__head { position: static; }
   .escala text { font-size: 13px; }
 }
