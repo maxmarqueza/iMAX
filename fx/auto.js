@@ -176,6 +176,22 @@
   if (bgrid && !FX.reduce) onShow(bgrid, () => [...bgrid.children].forEach((c, i) =>
     c.animate([{ opacity: 0, transform: "translateY(26px)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: i * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" })), 0.3);
 
+  // 6. Preguntas: las tarjetas caen una tras otra y rebotan, como en servicios
+  const faq = document.querySelector(".faq__list");
+  if (faq) onShow(faq, () => {
+    faq.classList.add("cayo");
+    if (FX.reduce) return;
+    [...faq.children].forEach((s, i) => {
+      const rot = (Math.random() * 2 - 1) * 9;
+      s.animate([
+        { opacity: 0, transform: `translateY(-70vh) rotate(${rot}deg)` },
+        { opacity: 1, transform: `translateY(0) rotate(${rot * 0.15}deg) scaleY(.96)`, offset: 0.62 },
+        { transform: "translateY(-16px) rotate(0deg) scaleY(1.01)", offset: 0.8 },
+        { opacity: 1, transform: "none" },
+      ], { duration: 950, delay: 80 + i * 90, easing: "cubic-bezier(.45,0,.55,1)", fill: "backwards" });
+    });
+  }, 0.15);
+
   // 7. Pie: al aparecer, la cámara sale sola por la M hasta IMAX
   const foot = document.querySelector(".foot__scene");
   if (foot) {

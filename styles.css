@@ -259,10 +259,15 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 
 /* 6. Preguntas, contacto y pie */
 .contact { position: relative; padding-top: clamp(84px, 11vw, 150px); background: var(--concrete); }
-.faq { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(24px, 5vw, 72px); align-items: start; margin-bottom: clamp(64px, 9vw, 120px); }
-.faq__head { display: grid; gap: 16px; position: sticky; top: 104px; }
-.faq__list { border-top: 2px solid var(--sc-ink); }
-.faq details { border-bottom: 1px solid var(--line); }
+/* Preguntas: una tarjeta por pregunta, en dos columnas; caen al aparecer (fx/auto.js) */
+.faq { display: grid; gap: clamp(22px, 3vw, 36px); margin-bottom: clamp(64px, 9vw, 120px); }
+.faq__head { display: grid; gap: 16px; }
+.faq__list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.faq__slot { display: grid; }
+.faq__list:not(.cayo) > .faq__slot { opacity: 0; }
+.faq details { position: relative; border-radius: 18px; background: var(--paper); padding: 0 20px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.faq details[open] { box-shadow: inset 0 0 0 3px var(--sc-accent); }
+@media (hover: hover) and (pointer: fine) { .faq details:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -26px rgba(17, 20, 22, .45), inset 0 0 0 4px var(--sc-accent); } }
 .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0; cursor: pointer; list-style: none; font-weight: 760; font-stretch: 110%; font-size: clamp(1.02rem, .96rem + .35vw, 1.22rem); }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--sc-ink); color: #fff; font-size: 1.1rem; transition: transform 240ms var(--ease), background-color 240ms var(--ease); }
@@ -374,8 +379,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .plan__labels, .plan__axes text, .plan__axes circle { display: none; }
   .form { grid-template-columns: 1fr; }
 
-  .faq { grid-template-columns: 1fr; }
-  .faq__head { position: static; }
+  .faq__list { grid-template-columns: 1fr; }
   .escala text { font-size: 13px; }
 }
 
@@ -386,6 +390,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .faq__list:not(.cayo) > .faq__slot { opacity: 1; }
   .build__lot, .plan { display: none; }
   .hero__plate, .hero__edge { display: none; }
   .hero__stage { background-color: #0d1923; }

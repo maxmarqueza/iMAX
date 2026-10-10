@@ -100,16 +100,4 @@
     alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
   }
 
-  // ---------------------------------------------------------------- Preguntas
-  const faq = document.querySelector(".faq__list");
-  if (faq && V("faq") === "a") {
-    root.classList.add("v-faq-a");
-    alVer(faq, () => subir([...faq.querySelectorAll("details")], 0, 60), 0.15);
-  }
-  if (faq && V("faq") === "b") {
-    root.classList.add("v-faq-b");
-    const ds = [...faq.querySelectorAll("details")];
-    ds.forEach((d) => { d.removeAttribute("open"); const s = h("div", "vslot"); d.before(s); s.appendChild(d); });
-    alVer(faq, () => { faq.classList.add("cayo"); caer([...faq.children], 80); }, 0.15);
-  }
 })();
