@@ -1,0 +1,16 @@
+{
+  "name": "imax-tools",
+  "version": "1.0.0",
+  "description": "Scripts de verificación del sitio de IMAX (capturas con Chrome sin ventana)",
+  "scripts": {
+    "servidor": "node serve.mjs --root .. --port 4173"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright-core": "^1.63.0"
+  },
+  "private": true
+}
