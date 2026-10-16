@@ -8,7 +8,10 @@ Max dejó la carpeta `IMAX/` (y `IMAX-tomas-4K/`, que son las imágenes de inici
   `VIDEOS/NEXTIPAC.mov` 33–41 s (interiores, vertical). El video de dron del parque sin letreros
   (`VIDEOS/VIDEO-2025-11-12-16-17-25.mp4`) solo está en baja calidad (848×480).
 - Fotos: 2 fachadas de una nave (960×1280, celular). Logo i-MAX.
-- La lona trae **WhatsApp 33 1467 1188** → confirmar con Max si es el del sitio.
+- WhatsApp **33 1467 1188** (de la lona): Max confirmó; ya está en `CONFIG` y visible en Contacto.
+- Vista previa `/opciones/secciones/real/`: portada y proceso, A = como está, B = toma real
+  (`media/real-nave*`, `media/real-obra*`, en cámara lenta ½ porque la fuente es de 60 cuadros; la portada en bucle
+  ida y vuelta). Variantes `?v=hero-b` y `?v=proc-b` en `fx/variantes.*`. **Esperando que Max elija A o B en cada una.**
 - Datos reales que aparecen en sus videos: «operaciones desde 2010», bodega en **Nextipac** (venta o renta).
   Confirmar con Max antes de ponerlos.
 - **Pedir a Max los videos originales de dron sin letreros** (los que usó su editor).

@@ -1,6 +1,7 @@
 // Datos de contacto de IMAX. Llenar antes de publicar.
 const CONFIG = {
-  whatsapp: "", // con lada de país y sin signos, por ejemplo "5215512345678"
+  whatsapp: "523314671188", // con lada de país y sin signos (de la lona de IMAX)
+  whatsappText: "33 1467 1188", // como se muestra en el sitio
   phone: "",    // como se debe leer, por ejemplo "55 1234 5678"
   email: "",
   address: "",
@@ -24,6 +25,7 @@ document.querySelectorAll("[data-cfg]").forEach((el) => {
   el.textContent = value;
   if (el.dataset.cfg === "phone") el.href = "tel:" + value.replace(/\s+/g, "");
   if (el.dataset.cfg === "email") el.href = "mailto:" + value;
+  if (el.dataset.cfg === "whatsappText") { el.href = "https://wa.me/" + CONFIG.whatsapp; el.target = "_blank"; el.rel = "noopener"; }
 });
 document.querySelectorAll(".contact__data").forEach((dl) => { dl.hidden = !dl.querySelector("div:not([hidden])"); });
 document.getElementById("anio").textContent = new Date().getFullYear();

@@ -70,3 +70,5 @@ Las citas entre comillas son palabras de Max.
 ## 2026-10-16 — Revisión del material real
 - Se revisó la carpeta `IMAX/`: videos promocionales con letreros encima; pocos tramos limpios. Se le pidió a Max
   los originales sin letreros y confirmar el WhatsApp de la lona (33 1467 1188). Detalle en `PENDIENTES.md`.
+- Max confirmó el WhatsApp 33 1467 1188 → puesto en el sitio. Se armó la vista previa con las dos tomas reales
+  limpias (portada: nave blanca desde dron; proceso: obra con revolvedora).

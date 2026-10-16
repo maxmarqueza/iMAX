@@ -100,4 +100,24 @@
     alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); });
   }
 
+
+  // ---------------------------------------------------------------- Tomas reales de IMAX (sin etiqueta «ilustrativa»)
+  // Cambia el video antes de que empiece a correr; portada.js y auto.js ya tienen sus eventos en el mismo <video>.
+  function real(v, poster, name) {
+    if (!v) return;
+    const src = FX.videoSrc("media/" + name + ".mp4", "media/" + name + "-m.mp4", "media/" + name + "-4k.mp4");
+    if (poster) poster.src = "img/" + name + "-poster.webp";
+    if (!FX.reduce) { v.src = src; v.load(); }
+  }
+  const hero = document.getElementById("inicio");
+  if (hero && V("hero") === "b") {
+    root.classList.add("v-hero-b");
+    real(hero.querySelector(".hero__video"), hero.querySelector(".hero__scene img"), "real-nave");
+  }
+  const proc = document.getElementById("proceso");
+  if (proc && V("proc") === "b") {
+    root.classList.add("v-proc-b");
+    real(proc.querySelector("video[data-sc-scrub]"), proc.querySelector(".sc-stage__poster"), "real-obra");
+  }
+
 })();
