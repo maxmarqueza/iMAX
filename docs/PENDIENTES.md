@@ -1,5 +1,18 @@
 # Pendientes — IMAX (al 2026-10-11)
 
+## Material real revisado (2026-10-16)
+Max dejó la carpeta `IMAX/` (y `IMAX-tomas-4K/`, que son las imágenes de inicio/fin de las tomas de IA).
+- Casi todos los videos reales son **promocionales ya editados con letreros o subtítulos encima** y mezclan
+  tomas de banco (gente con casco, planos, apretones de mano) que **no son de IMAX** → no usar esas.
+- Tramos limpios en 4K: `0124 (1).mp4` 2–6 s (nave blanca desde dron) y 51–55 s (nave en obra con revolvedora);
+  `VIDEOS/NEXTIPAC.mov` 33–41 s (interiores, vertical). El video de dron del parque sin letreros
+  (`VIDEOS/VIDEO-2025-11-12-16-17-25.mp4`) solo está en baja calidad (848×480).
+- Fotos: 2 fachadas de una nave (960×1280, celular). Logo i-MAX.
+- La lona trae **WhatsApp 33 1467 1188** → confirmar con Max si es el del sitio.
+- Datos reales que aparecen en sus videos: «operaciones desde 2010», bodega en **Nextipac** (venta o renta).
+  Confirmar con Max antes de ponerlos.
+- **Pedir a Max los videos originales de dron sin letreros** (los que usó su editor).
+
 ## Siguiente paso inmediato
 1. **Material real de IMAX.** Max está pasando fotos y videos reales de naves y parques que hizo IMAX a la carpeta
    `material-real/` (en la Mac, ignorada por git). Revisarlos y proponer dónde va cada uno (portada, servicios,

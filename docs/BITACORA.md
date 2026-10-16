@@ -66,3 +66,7 @@ Las citas entre comillas son palabras de Max.
 - Efectos de cursor complejos (inclinación 3D, cortina con panel, cursor personalizado, plano técnico, foco que apaga a las demás, expansión).
 - Ficha técnica y cualquier cifra técnica fija.
 - Respuestas largas, tablas, listas de lo ya hecho.
+
+## 2026-10-16 — Revisión del material real
+- Se revisó la carpeta `IMAX/`: videos promocionales con letreros encima; pocos tramos limpios. Se le pidió a Max
+  los originales sin letreros y confirmar el WhatsApp de la lona (33 1467 1188). Detalle en `PENDIENTES.md`.
