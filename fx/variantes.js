@@ -120,4 +120,62 @@
     real(proc.querySelector("video[data-sc-scrub]"), proc.querySelector(".sc-stage__poster"), "real-obra");
   }
 
+  // ---------------------------------------------------------------- Contacto
+  // B y C: formulario corto que empieza con cuatro tarjetas «¿Qué te interesa?» (caen al aparecer) y botón
+  // grande de WhatsApp. C además cambia el dibujo a escala por la toma real de la nave en video.
+  const form = document.getElementById("form-contacto");
+  const vc = V("cont");
+  if (form && (vc === "b" || vc === "c")) {
+    root.classList.add("v-cont-" + vc);
+    const sel = form.interes;
+    const OP = [
+      ["Rentar una nave", "Rentar", "nave.webp"],
+      ["Comprar una nave", "Comprar", "nave-dorada.webp"],
+      ["Construir una nave a la medida", "Construir a la medida", "obra.webp"],
+      ["Desarrollar un parque industrial", "Parque industrial", "parque.webp"],
+    ];
+    const pick = h("fieldset", "vpick field--wide", "<legend>¿Qué te interesa?</legend>");
+    const grid = h("div", "vpick__grid");
+    const cards = OP.map(([val, t, img]) => {
+      const slot = h("div", "vslot");
+      const b = h("button", "vcard vpick__card", `<figure><img src="img/${img}" alt="" loading="lazy"></figure><span>${t}</span>`);
+      b.type = "button";
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", () => { sel.value = val; sync(); });
+      b.dataset.val = val;
+      slot.appendChild(b);
+      grid.appendChild(slot);
+      return b;
+    });
+    const sync = () => cards.forEach((b) => { const on = b.dataset.val === sel.value; b.classList.toggle("is-sel", on); b.setAttribute("aria-pressed", on); });
+    sel.addEventListener("change", sync);
+    document.querySelectorAll("[data-interes]").forEach((a) => a.addEventListener("click", () => setTimeout(sync)));
+    sync();
+    pick.appendChild(grid);
+    pick.appendChild(h("p", "note", "Imágenes ilustrativas"));
+    form.prepend(pick);
+    alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children], 60); }, 0.3);
+
+    // Botón grande de WhatsApp junto al título
+    const intro = document.querySelector(".contact__intro");
+    const wa = h("a", "vwa", `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2s-1 .3-3.3-.7a11.4 11.4 0 0 1-4.4-3.9c-.3-.5-1.1-1.6-1.1-3s.7-2.2 1-2.5.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6a8 8 0 0 0 1.5 1.9 7.4 7.4 0 0 0 2.2 1.3c.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3s.1.7-.1 1.3Z"/></svg><span>Escríbenos por WhatsApp<b>33 1467 1188</b></span>`);
+    wa.href = "https://wa.me/523314671188";
+    wa.target = "_blank";
+    wa.rel = "noopener";
+    intro.querySelector(".lede").after(wa);
+    intro.querySelector(".lede").textContent = "Dinos qué buscas y en qué zona; te contestamos por WhatsApp.";
+    form.querySelector("button[type=submit]").textContent = "Enviar mensaje";
+
+    if (vc === "c") {
+      const fig = h("figure", "vcont-video", `<video muted loop playsinline preload="none" poster="img/real-nave-poster.webp" aria-hidden="true"></video>`);
+      intro.querySelector(".escala").replaceWith(fig);
+      const v = fig.querySelector("video");
+      alVer(fig, () => {
+        if (FX.reduce) return;
+        v.src = FX.videoSrc("media/real-nave.mp4", "media/real-nave-m.mp4", "media/real-nave-4k.mp4");
+        v.play().catch(() => {});
+      }, 0.2);
+    }
+  }
+
 })();

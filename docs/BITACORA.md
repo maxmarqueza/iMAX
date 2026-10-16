@@ -72,3 +72,5 @@ Las citas entre comillas son palabras de Max.
   los originales sin letreros y confirmar el WhatsApp de la lona (33 1467 1188). Detalle en `PENDIENTES.md`.
 - Max confirmó el WhatsApp 33 1467 1188 → puesto en el sitio. Se armó la vista previa con las dos tomas reales
   limpias (portada: nave blanca desde dron; proceso: obra con revolvedora).
+- Contacto: se prepararon 3 opciones (A como está, B directo con WhatsApp y tarjetas de interés, C igual con el
+  video real de la nave). Esperando su elección.

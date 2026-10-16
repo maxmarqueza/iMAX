@@ -21,8 +21,10 @@ Max dejó la carpeta `IMAX/` (y `IMAX-tomas-4K/`, que son las imágenes de inici
    `material-real/` (en la Mac, ignorada por git). Revisarlos y proponer dónde va cada uno (portada, servicios,
    parque, proceso). El material real **sustituye** al generado por IA y no lleva la etiqueta «Imagen ilustrativa».
    Videos: prepararlos como los actuales (ver `docs/VIDEO.md`: 3 tamaños, 30 fps, ~5 s, sin audio).
-2. **Sección Contacto** (la única que falta repasar con Max): banda amarilla, figura a escala y formulario.
-   Prepararle 2–3 opciones con vista previa (`opciones/secciones/contacto/`), siguiendo las reglas de `AGENTS.md`.
+2. **Sección Contacto**: vista previa publicada en `/opciones/secciones/contacto/` (`?v=cont-a|b|c` en
+   `fx/variantes.*`). A = como está; B = botón grande de WhatsApp + formulario corto con 4 tarjetas de interés que
+   caen (sin dibujo a escala ni campos técnicos); C = B con la toma real de la nave en video en lugar del dibujo.
+   **Esperando que Max elija A, B o C.**
 3. Después: repasar el **pie** si Max lo pide.
 
 ## Lo que falta que Max dé o decida
