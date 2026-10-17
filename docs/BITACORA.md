@@ -89,3 +89,6 @@ Las citas entre comillas son palabras de Max.
   C pantalla y tarjetas). Se borraron los videos de antes/después generados con IA.
 - «Olvida mejor ahorita nuestro material, vamos repasando el sitio sección por sección». Material real en pausa
   (la vista previa de Nuestros trabajos sigue en línea). Se empezó por la portada.
+- Portada: «así no son las naves industriales reales». Nueva regla: las imágenes generadas deben parecerse a sus
+  naves reales (lámina blanca, techo de dientes de sierra, fachada de block o ladrillo, cortinas blancas, escala
+  mexicana), no a centros de distribución de EE. UU. Se le mandaron 3 imágenes para elegir antes de animar.

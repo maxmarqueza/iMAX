@@ -5,7 +5,11 @@ Max: «olvida ahorita nuestro material, vamos repasando el sitio sección por se
 2 Servicios, 3 De polvo a nave, 4 Parque, 5 Proceso, 6 Preguntas, 7 Contacto, 8 Pie. Por cada una se le manda un
 video corto de cómo está hoy (`docs/repaso/N-seccion.mp4`, grabado con el script de capturas por CDP) y él dice
 si se queda o pide opciones.
-- 1 Portada: video enviado; esperando su respuesta.
+- 1 Portada: Max: «así no son las naves industriales reales» (la nave de la portada parece un centro de distribución
+  gringo). Se generaron 3 imágenes con naves como las suyas usando sus fotos de referencia (Higgsfield, GPT Image 2.5):
+  A bodega de block tipo su foto al atardecer; B hilera de naves de su parque (dientes de sierra, ladrillo) de noche;
+  C nave blanca de lámina con andenes de noche. Lámina `docs/repaso/1-portada-opciones.jpg`. Falta que elija una
+  para animarla (Kling 3.0 4K, 8 s, 48 créditos) y ponerla dentro de las letras IMAX (y en el pie).
 
 ## Sección nueva «Nuestros trabajos» (2026-10-16, noche) — EN PAUSA (Max la dejó para después)
 Max decidió: el material real **solo** va en una sección nueva con sus trabajos (nada de antes/después, ni en
