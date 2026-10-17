@@ -10,6 +10,12 @@ si se queda o pide opciones.
   A bodega de block tipo su foto al atardecer; B hilera de naves de su parque (dientes de sierra, ladrillo) de noche;
   C nave blanca de lámina con andenes de noche. Lámina `docs/repaso/1-portada-opciones.jpg`. Falta que elija una
   para animarla (Kling 3.0 4K, 8 s, 48 créditos) y ponerla dentro de las letras IMAX (y en el pie).
+  Max: «es mejor que busques naves industriales y parques industriales reales». Se buscaron videos **reales** de
+  uso libre (licencia Pexels, permite uso comercial sin atribución) de naves en México: lámina
+  `docs/repaso/1-portada-reales.jpg` — Pexels 30347751 (atardecer con cerros, Tultepec), 30224729 (naves blancas,
+  cielo azul), 31363040 (andenes y trailers), 31363044 (nave, patio y calle), 30616899 (naves junto a la ciudad),
+  30347753 (nave grande al atardecer). Descarga: `https://www.pexels.com/download/video/<id>/`. No son de IMAX →
+  llevan «Imagen ilustrativa». Esperando que elija.
 
 ## Sección nueva «Nuestros trabajos» (2026-10-16, noche) — EN PAUSA (Max la dejó para después)
 Max decidió: el material real **solo** va en una sección nueva con sus trabajos (nada de antes/después, ni en

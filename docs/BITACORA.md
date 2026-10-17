@@ -92,3 +92,5 @@ Las citas entre comillas son palabras de Max.
 - Portada: «así no son las naves industriales reales». Nueva regla: las imágenes generadas deben parecerse a sus
   naves reales (lámina blanca, techo de dientes de sierra, fachada de block o ladrillo, cortinas blancas, escala
   mexicana), no a centros de distribución de EE. UU. Se le mandaron 3 imágenes para elegir antes de animar.
+- Preguntó con qué se hacían las propuestas (Higgsfield, GPT Image 2.5) y pidió mejor **naves y parques reales**.
+  Se le mostraron 6 videos reales de naves en México de Pexels (uso libre) para la portada.
