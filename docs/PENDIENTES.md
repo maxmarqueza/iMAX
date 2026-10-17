@@ -30,6 +30,13 @@ si se queda o pide opciones.
   grande de noche. Job ids Higgsfield: c8d6c13c…, a322c7fc…, 60bb6fa9…, 43c0e238…, ccdaa4bf…, 87374419…
   Esperando que elija una para animar (Kling 3.0 4K, bucle de 8 s, igual que la portada original).
 
+## Fotos usables del material real (2026-10-17)
+Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
+`blurdetect`; sin letreros) en `Material/fotos-elegidas/` (local, ignorado por git) y lámina `docs/fotos-material-real.jpg`
+con dónde iría cada una. Ojo: en `BODEGAS-MAX.mp4` y `NEXTIPAC.mov` el `-ss` antes de `-i` cae en cuadros
+equivocados; usar búsqueda exacta (`-ss` antes y después de `-i`). Los interiores de Nextipac tienen letreros
+(superficie, oficinas): no sirven. Los cuadros de video se ven bien en tarjetas, no a pantalla completa.
+
 ## Sección nueva «Nuestros trabajos» (2026-10-16, noche) — EN PAUSA (Max la dejó para después)
 Max decidió: el material real **solo** va en una sección nueva con sus trabajos (nada de antes/después, ni en
 portada/parque/proceso). Vista previa `/opciones/secciones/trabajos/` (`?v=trab-a|b|c&solo=trabajos`,
