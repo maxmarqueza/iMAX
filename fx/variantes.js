@@ -183,4 +183,85 @@
     }
   }
 
+
+  // ---------------------------------------------------------------- Nuestros trabajos (solo material real de IMAX)
+  // A: el video corto de cortes rápidos a todo lo ancho. B: muro de 8 tomas que corren solas.
+  // C: pantalla grande que va pasando las tomas y, debajo, las 8 tarjetas para elegir una.
+  const vt = V("trab");
+  const main = document.getElementById("contenido");
+  if (main && (vt === "a" || vt === "b" || vt === "c")) {
+    root.classList.add("v-trab-" + vt);
+    const T = [
+      ["terreno", "Terreno"], ["estructura", "Estructura de acero"], ["colado", "Colado de piso"],
+      ["bomba", "Bombeo de concreto"], ["obra-frente", "Naves en obra"], ["nave", "Nave terminada"],
+      ["calle", "Parque en operación"], ["escalera", "Oficinas y mezzanine"],
+    ];
+    const src = (n) => FX.videoSrc("media/trabajos/" + n + ".mp4", "media/trabajos/" + n + "-m.mp4");
+    // Cada video corre solo mientras se ve
+    const enVista = (v, load) => {
+      const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) { if (!v.src) v.src = load(); v.play().catch(() => {}); } else v.pause();
+      }), { threshold: 0.25 });
+      io.observe(v);
+    };
+    const sec = h("section", "trab", "");
+    sec.id = "trabajos";
+    const head = `<h2 class="hd-lg">Nuestros trabajos</h2><p class="lede">Tomas de nuestras obras: del terreno a la nave terminada.</p>`;
+
+    if (vt === "a") {
+      sec.classList.add("trab--a");
+      sec.innerHTML = `<div class="trab__stage"><img src="img/trabajos/reel.webp" alt=""><video muted loop playsinline preload="none" aria-hidden="true"></video><div class="trab__shade" aria-hidden="true"></div><div class="trab__copy">${head}</div></div>`;
+      const v = sec.querySelector("video");
+      if (!FX.reduce) enVista(v, () => FX.videoSrc("media/trabajos/reel.mp4", "media/trabajos/reel-m.mp4"));
+      v.addEventListener("playing", () => v.classList.add("is-on"), { once: true });
+    }
+
+    if (vt === "b") {
+      sec.innerHTML = `<div class="vwrap"><div class="vhead">${head}</div></div>`;
+      const grid = rejilla("vgrid--4", T, ([n, t]) => h("div", "vcard trab__card", `<figure><img src="img/trabajos/${n}.webp" alt="${t}" loading="lazy"><video muted loop playsinline preload="none" aria-hidden="true"></video></figure><div class="vbody"><h3>${t}</h3></div>`));
+      sec.querySelector(".vwrap").appendChild(grid);
+      if (!FX.reduce) grid.querySelectorAll("video").forEach((v, i) => {
+        enVista(v, () => FX.videoSrc("media/trabajos/" + T[i][0] + "-m.mp4", "media/trabajos/" + T[i][0] + "-m.mp4"));
+        v.addEventListener("playing", () => v.classList.add("is-on"), { once: true });
+      });
+      alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); }, 0.2);
+    }
+
+    if (vt === "c") {
+      sec.innerHTML = `<div class="vwrap"><div class="vhead">${head}</div><div class="trab__screen"><img src="img/trabajos/${T[0][0]}.webp" alt=""><video muted playsinline preload="none" aria-hidden="true"></video><b class="trab__label">${T[0][1]}</b></div></div>`;
+      const wrap = sec.querySelector(".vwrap");
+      const v = sec.querySelector(".trab__screen video");
+      const label = sec.querySelector(".trab__label");
+      const poster = sec.querySelector(".trab__screen img");
+      let cur = 0, started = false;
+      const grid = rejilla("vgrid--4", T, ([n, t], i) => {
+        const b = h("button", "vcard trab__pick", `<figure><img src="img/trabajos/${n}.webp" alt="" loading="lazy"><i></i></figure><div class="vbody"><h3>${t}</h3></div>`);
+        b.type = "button";
+        b.addEventListener("click", () => show(i));
+        return b;
+      });
+      wrap.appendChild(grid);
+      const cards = [...grid.querySelectorAll(".trab__pick")];
+      function show(i) {
+        cur = i;
+        cards.forEach((c, k) => c.classList.toggle("is-sel", k === i));
+        label.textContent = T[i][1];
+        poster.src = "img/trabajos/" + T[i][0] + ".webp";
+        if (FX.reduce) return;
+        v.src = src(T[i][0]);
+        v.play().catch(() => {});
+      }
+      v.addEventListener("ended", () => show((cur + 1) % T.length));
+      v.addEventListener("playing", () => v.classList.add("is-on"));
+      v.addEventListener("timeupdate", () => { if (v.duration) cards[cur].style.setProperty("--k", (v.currentTime / v.duration).toFixed(3)); });
+      cards[0].classList.add("is-sel");
+      const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) { if (!started) { started = true; show(0); } else v.play().catch(() => {}); } else v.pause();
+      }), { threshold: 0.3 });
+      io.observe(sec.querySelector(".trab__screen"));
+      alVer(grid, () => { grid.classList.add("cayo"); caer([...grid.children]); }, 0.2);
+    }
+    main.insertBefore(sec, document.getElementById("contacto"));
+  }
+
 })();

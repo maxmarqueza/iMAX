@@ -77,3 +77,10 @@ Las citas entre comillas son palabras de Max.
 - Max avisó que el material real está en la carpeta `Material/` (es la misma que `IMAX/`, renombrada). Revisión
   segundo a segundo: se encontró un minuto limpio de dron sobre su parque en `MAX.mp4` → opción Parque B en la
   vista previa de tomas reales. Detalle de todas las tomas útiles en `PENDIENTES.md`.
+- Higgsfield con material real: se hizo «tu obra se termina» con final generado por IA desde el dron → **no le
+  gustó** («la tomas desde arriba»). Pidió analizar todo el material y usar una foto real en obra y otra real
+  terminada. Se le propusieron 3 parejas a nivel de piso (A estructura→interior, B obra de frente→fachada,
+  C colado→foto de su bodega).
+- Tampoco le encantaron las parejas a nivel de piso: «olvidemos el antes y después y usemos el material».
+  Se le propusieron 5 usos directos de sus tomas reales (portada, servicios, parque, proceso y una sección nueva
+  «Nuestras obras»).

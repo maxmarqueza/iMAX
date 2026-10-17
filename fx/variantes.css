@@ -101,3 +101,32 @@
   .vwa svg { width: 34px; height: 34px; }
 }
 .vpick .note { margin: 6px 0 0; text-align: right; }
+
+/* Nuestros trabajos (solo material real de IMAX; sin etiqueta de imagen ilustrativa) */
+.trab { position: relative; background: var(--concrete); }
+.trab video { opacity: 0; transition: opacity .5s var(--ease); }
+.trab video.is-on { opacity: 1; }
+/* A: video a todo lo ancho con el título encima */
+.trab__stage { position: relative; height: min(88svh, 56.25vw + 80px); min-height: 520px; overflow: hidden; background: #111416; }
+.trab__stage > img, .trab__stage > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.trab__shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10, 14, 18, .82) 0%, rgba(10, 14, 18, .35) 38%, rgba(10, 14, 18, 0) 62%); }
+.trab__copy { position: absolute; left: var(--sc-gutter); right: var(--sc-gutter); bottom: clamp(32px, 7vh, 80px); display: grid; gap: 12px; color: #fff; }
+.trab__copy .lede { color: #e6ecef; }
+/* B y C: tarjetas con toma real */
+.trab .vcard figure { aspect-ratio: 16 / 10; background: #c9ced2; }
+.trab .vcard figure video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.trab .vbody { padding: 12px 16px 14px; }
+/* C: pantalla grande y tarjetas para elegir */
+.trab__screen { position: relative; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; background: #111416; box-shadow: 0 40px 70px -46px rgba(17, 20, 22, .7); }
+.trab__screen > img, .trab__screen > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.trab__label { position: absolute; left: 18px; bottom: 16px; padding: 7px 14px; border-radius: 999px; background: rgba(17, 20, 22, .72); color: #fff; font-size: .95rem; }
+.trab__pick { padding: 0; cursor: pointer; }
+.trab__pick figure i { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--sc-accent); transform: scaleX(var(--k, 0)); transform-origin: left; opacity: 0; }
+.trab__pick.is-sel figure i { opacity: 1; }
+.trab__pick:focus-visible { outline: 3px solid var(--sc-ink); outline-offset: 2px; }
+@media (max-width: 860px) {
+  .trab__stage { height: 72svh; min-height: 420px; }
+  .trab__screen { border-radius: 16px; }
+  .trab .vbody { padding: 10px 12px 12px; }
+  .trab .vbody h3 { font-size: .95rem; }
+}

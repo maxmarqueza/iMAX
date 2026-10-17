@@ -1,5 +1,29 @@
 # Pendientes — IMAX (al 2026-10-11)
 
+## Propuestas para usar el material real tal cual (2026-10-16, noche)
+Max descartó el «antes y después» (ni aéreo ni a nivel de piso): **usar las tomas reales tal cual**.
+Lámina `docs/propuestas-material.jpg`:
+1. Portada: su nave blanca (ya en vista previa B).
+2. Servicios: cada tarjeta con una toma real que corre sola (renta → interior vacío `0124` 15 s; venta → foto de
+   fachada; construcción → estructura de acero `BODEGAS` 27 s; parques → calle interna `BODEGAS` 4/69 s).
+3. Parque: su parque desde el dron (`real-parque`, ya en vista previa) o la calle interna.
+4. Proceso: los 5 pasos con sus obras (terreno `BODEGAS` 85, terracerías 62, estructura 27, colado 47,
+   naves en obra `0124` 49).
+5. Sección nueva «Nuestras obras»: video corto con cortes rápidos (bomba de concreto, drenaje, escalera
+   Nextipac, naves en obra, fachada).
+Higgsfield se usaría solo para **mejorar la nitidez** (escalar a 4K) sin cambiar lo que se ve.
+
+## Video «de obra a terminada» con Higgsfield (2026-10-16, noche) — descartado
+- Max **no quiere tomas desde arriba** (rechazó obra→terminada aérea) ni finales inventados por IA: quiere un video
+  que vaya de una **foto real en obra** a una **foto real terminada**, a nivel de piso o de frente.
+- Parejas propuestas (lámina `docs/propuestas-obra-terminada.jpg`, cuadros ya sin letreros):
+  A. Estructura de acero a cielo abierto (`BODEGAS-MAX` 27.5 s) → nave terminada por dentro (`0124` 15.5 s).
+  B. Obra de frente con revolvedora (`0124` 49.5 s) → fachada terminada de ladrillo (`BODEGAS-MAX` 22.2 s).
+  C. Colado con el equipo frente a la estructura (`BODEGAS-MAX` 47.5 s) → foto de la bodega terminada (`PHOTO…663`).
+- Ya generados y en `media/` (vista previa, sin aprobar): `obra-real-fin` (aérea, rechazada), `interior-real-fin`,
+  `parque-real-fin`; `nave-noche` se quedó sin preparar. Las opciones `?v=proc-c`, `tour-c`, `cont-d`, `hero-c`
+  están en `fx/variantes.js` pero **no publicadas**. Kling 3.0 4K, 8 s = 48 créditos.
+
 ## Material real: revisión segundo a segundo (2026-10-16, tarde)
 La carpeta `IMAX/` ahora se llama **`Material/`** (mismo contenido, ignorada por git). Se revisó cuadro por cuadro:
 - `0124 (1).mp4` = `VIDEOS/iMAX.mov` (mismo video). `Parques.mp4` = `BODEGAS-MAX.mp4` (mismo video).
