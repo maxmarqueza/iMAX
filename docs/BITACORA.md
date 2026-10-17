@@ -96,3 +96,4 @@ Las citas entre comillas son palabras de Max.
   Se le mostraron 6 videos reales de naves en México de Pexels (uso libre) para la portada.
 - «Olvídalo mejor, la recreamos en Higgsfield». Se recreó la portada con Kling 3.0 4K en 3 versiones con naves como
   las de México (bodega de block, hilera de naves, nave blanca con andenes) y se le mandó un video con las 4.
+- «Dame opciones de naves industriales» → 6 tipos de nave de México para la portada (imágenes, antes de animar).

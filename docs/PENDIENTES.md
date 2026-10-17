@@ -21,7 +21,14 @@ si se queda o pide opciones.
   48 créditos c/u) a partir de las imágenes A/B/C: `media/portada-n1|n2|n3*` (24 fps). Vista previa
   `/opciones/secciones/portada/` (A como está, B bodega de block `?v=hero-n1`, C hilera de naves `hero-n2`,
   D nave blanca con andenes `hero-n3`); la variante cambia también el video del pie. Video comparativo
-  `docs/repaso/1-portada-4opciones.mp4`. Esperando que elija.
+  `docs/repaso/1-portada-4opciones.mp4`.
+  Preguntó si Seedance 2.5 haría naves más reales: el realismo lo da la imagen de inicio; Seedance 2.5 llega solo a
+  1080p (Kling 3.0 a 4K) y cuesta 128 créditos por 8 s (Kling 4K 48), pero acepta varias fotos de referencia.
+  Pidió «opciones de naves industriales» → 6 tipos (GPT Image 2.5 con sus fotos de referencia), lámina
+  `docs/repaso/1-portada-6naves.jpg`: 1 precolado con andenes (Bajío), 2 lámina blanca con oficinas de block,
+  3 bodega mediana de block y lámina, 4 hilera de ladrillo con dientes de sierra, 5 panel gris oscuro, 6 nave blanca
+  grande de noche. Job ids Higgsfield: c8d6c13c…, a322c7fc…, 60bb6fa9…, 43c0e238…, ccdaa4bf…, 87374419…
+  Esperando que elija una para animar (Kling 3.0 4K, bucle de 8 s, igual que la portada original).
 
 ## Sección nueva «Nuestros trabajos» (2026-10-16, noche) — EN PAUSA (Max la dejó para después)
 Max decidió: el material real **solo** va en una sección nueva con sus trabajos (nada de antes/después, ni en
