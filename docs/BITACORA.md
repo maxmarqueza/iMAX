@@ -87,3 +87,5 @@ Las citas entre comillas son palabras de Max.
 - Después: «olvídalo, mejor solo usaremos nuestro material real para una sola sección en la que aparecerán
   nuestros trabajos». Se armó «Nuestros trabajos» con 3 opciones (A video a lo ancho, B muro de videos,
   C pantalla y tarjetas). Se borraron los videos de antes/después generados con IA.
+- «Olvida mejor ahorita nuestro material, vamos repasando el sitio sección por sección». Material real en pausa
+  (la vista previa de Nuestros trabajos sigue en línea). Se empezó por la portada.
