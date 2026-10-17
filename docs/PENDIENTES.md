@@ -1,5 +1,20 @@
 # Pendientes — IMAX (al 2026-10-11)
 
+## Material real: revisión segundo a segundo (2026-10-16, tarde)
+La carpeta `IMAX/` ahora se llama **`Material/`** (mismo contenido, ignorada por git). Se revisó cuadro por cuadro:
+- `0124 (1).mp4` = `VIDEOS/iMAX.mov` (mismo video). `Parques.mp4` = `BODEGAS-MAX.mp4` (mismo video).
+- **`MAX.mp4` 5–62 s**: casi un minuto de dron sobre un parque de naves blancas; el letrero va abajo y se recorta
+  (`crop=3288:1850:264:0`). Ya se preparó `media/real-parque*` (24–29 s) y la opción Parque B en
+  `/opciones/secciones/real/` (`?v=tour-b`). La fuente se ve algo suave (es video reescalado), pero aguanta.
+- `0124` 14–17 s: **interior de nave vacía** (letrero en la esquina inferior izquierda → recortar abajo ~20 %);
+  10–13 s naves en obra desde dron; 23–25 bomba de concreto; 31–35 colado interior. Útiles para servicios/proceso.
+- `BODEGAS-MAX` (subtítulos chicos al centro abajo): calle interna del parque 3–6 s, techos 19–20, estructura de
+  acero 26–27, terreno urbanizado 35–37, terracerías con retro 62–66. Mezcla tomas de banco (gente con casco,
+  apretones de mano, planos): **no usar esas**.
+- `NEXTIPAC.mov` (vertical): interiores limpios 33–41 s (escalera, oficinas, baño); vista aérea limpia 1:09.
+  Tiene cifras de esa bodega (2,561 m², 12 m de altura…): no ponerlas como dato general de IMAX.
+- Fotos: 2 fachadas de una nave (960×1280) y el logo.
+
 ## Material real revisado (2026-10-16)
 Max dejó la carpeta `IMAX/` (y `IMAX-tomas-4K/`, que son las imágenes de inicio/fin de las tomas de IA).
 - Casi todos los videos reales son **promocionales ya editados con letreros o subtítulos encima** y mezclan

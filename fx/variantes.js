@@ -119,6 +119,11 @@
     root.classList.add("v-proc-b");
     real(proc.querySelector("video[data-sc-scrub]"), proc.querySelector(".sc-stage__poster"), "real-obra");
   }
+  const tour = document.getElementById("parque");
+  if (tour && V("tour") === "b") {
+    root.classList.add("v-tour-b");
+    real(tour.querySelector(".tour__video"), tour.querySelector(".tour__poster"), "real-parque");
+  }
 
   // ---------------------------------------------------------------- Contacto
   // B y C: formulario corto que empieza con cuatro tarjetas «¿Qué te interesa?» (caen al aparecer) y botón

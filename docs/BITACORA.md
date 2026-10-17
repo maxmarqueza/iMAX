@@ -74,3 +74,6 @@ Las citas entre comillas son palabras de Max.
   limpias (portada: nave blanca desde dron; proceso: obra con revolvedora).
 - Contacto: se prepararon 3 opciones (A como está, B directo con WhatsApp y tarjetas de interés, C igual con el
   video real de la nave). Esperando su elección.
+- Max avisó que el material real está en la carpeta `Material/` (es la misma que `IMAX/`, renombrada). Revisión
+  segundo a segundo: se encontró un minuto limpio de dron sobre su parque en `MAX.mp4` → opción Parque B en la
+  vista previa de tomas reales. Detalle de todas las tomas útiles en `PENDIENTES.md`.

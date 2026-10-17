@@ -68,7 +68,7 @@
 @media (prefers-reduced-motion: reduce) { .vgrid:not(.cayo) > .vslot, .v-parque-b .tour:not(.cayo) .pin { opacity: 1; } }
 
 /* Tomas reales: sin etiqueta de imagen ilustrativa; en proceso, sin los tres tiempos (son de la toma generada) */
-.v-hero-b .hero__tag { display: none; }
+.v-hero-b .hero__tag, .v-tour-b .tour__note { display: none; }
 .v-proc-b .build__note, .v-proc-b .build__final, .v-proc-b .build__lot, .v-proc-b .build__steel,
 .v-proc-b .build__then, .v-proc-b .tt { display: none !important; }
 /* La toma real es de día y muy clara: sombra más fuerte detrás del texto */
