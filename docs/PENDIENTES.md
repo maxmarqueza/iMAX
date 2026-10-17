@@ -1,28 +1,18 @@
 # Pendientes — IMAX (al 2026-10-11)
 
-## Propuestas para usar el material real tal cual (2026-10-16, noche)
-Max descartó el «antes y después» (ni aéreo ni a nivel de piso): **usar las tomas reales tal cual**.
-Lámina `docs/propuestas-material.jpg`:
-1. Portada: su nave blanca (ya en vista previa B).
-2. Servicios: cada tarjeta con una toma real que corre sola (renta → interior vacío `0124` 15 s; venta → foto de
-   fachada; construcción → estructura de acero `BODEGAS` 27 s; parques → calle interna `BODEGAS` 4/69 s).
-3. Parque: su parque desde el dron (`real-parque`, ya en vista previa) o la calle interna.
-4. Proceso: los 5 pasos con sus obras (terreno `BODEGAS` 85, terracerías 62, estructura 27, colado 47,
-   naves en obra `0124` 49).
-5. Sección nueva «Nuestras obras»: video corto con cortes rápidos (bomba de concreto, drenaje, escalera
-   Nextipac, naves en obra, fachada).
-Higgsfield se usaría solo para **mejorar la nitidez** (escalar a 4K) sin cambiar lo que se ve.
-
-## Video «de obra a terminada» con Higgsfield (2026-10-16, noche) — descartado
-- Max **no quiere tomas desde arriba** (rechazó obra→terminada aérea) ni finales inventados por IA: quiere un video
-  que vaya de una **foto real en obra** a una **foto real terminada**, a nivel de piso o de frente.
-- Parejas propuestas (lámina `docs/propuestas-obra-terminada.jpg`, cuadros ya sin letreros):
-  A. Estructura de acero a cielo abierto (`BODEGAS-MAX` 27.5 s) → nave terminada por dentro (`0124` 15.5 s).
-  B. Obra de frente con revolvedora (`0124` 49.5 s) → fachada terminada de ladrillo (`BODEGAS-MAX` 22.2 s).
-  C. Colado con el equipo frente a la estructura (`BODEGAS-MAX` 47.5 s) → foto de la bodega terminada (`PHOTO…663`).
-- Ya generados y en `media/` (vista previa, sin aprobar): `obra-real-fin` (aérea, rechazada), `interior-real-fin`,
-  `parque-real-fin`; `nave-noche` se quedó sin preparar. Las opciones `?v=proc-c`, `tour-c`, `cont-d`, `hero-c`
-  están en `fx/variantes.js` pero **no publicadas**. Kling 3.0 4K, 8 s = 48 créditos.
+## Sección nueva «Nuestros trabajos» (2026-10-16, noche) — esperando que Max elija
+Max decidió: el material real **solo** va en una sección nueva con sus trabajos (nada de antes/después, ni en
+portada/parque/proceso). Vista previa `/opciones/secciones/trabajos/` (`?v=trab-a|b|c&solo=trabajos`,
+código en `fx/variantes.*`; la sección se inserta antes de Contacto):
+- A: video de 14 s con cortes rápidos (`media/trabajos/reel*`) a todo lo ancho, título encima.
+- B: muro de 8 tarjetas que caen, cada una un video real en bucle (`media/trabajos/<toma>-m.mp4`).
+- C: pantalla grande que pasa las tomas una por una + 8 tarjetas para elegir (la activa con marco amarillo).
+Tomas (11, sin letreros, cámara lenta 2/3 a 30 fps, en `media/trabajos/` e `img/trabajos/`): terreno,
+estructura, colado, bomba, colado-interior, obra-dron, obra-frente, nave, calle, parque, escalera. Recortes:
+`0124` 2976×1674+420+0, `BODEGAS` 2610×1468+603+0, `MAX` 3288×1850+264+0, `NEXTIPAC` 2160×1215+0+1150.
+Cuando elija: pasar la sección a `index.html`/`styles.css`/`fx/auto.js`, borrar `trab` de `variantes.*` y
+retirar las opciones con material real de la vista previa de portada/parque/proceso (B) y de Contacto (C).
+Los videos de antes/después hechos con IA se descartaron y se borraron.
 
 ## Material real: revisión segundo a segundo (2026-10-16, tarde)
 La carpeta `IMAX/` ahora se llama **`Material/`** (mismo contenido, ignorada por git). Se revisó cuadro por cuadro:

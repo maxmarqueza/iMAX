@@ -84,3 +84,6 @@ Las citas entre comillas son palabras de Max.
 - Tampoco le encantaron las parejas a nivel de piso: «olvidemos el antes y después y usemos el material».
   Se le propusieron 5 usos directos de sus tomas reales (portada, servicios, parque, proceso y una sección nueva
   «Nuestras obras»).
+- Después: «olvídalo, mejor solo usaremos nuestro material real para una sola sección en la que aparecerán
+  nuestros trabajos». Se armó «Nuestros trabajos» con 3 opciones (A video a lo ancho, B muro de videos,
+  C pantalla y tarjetas). Se borraron los videos de antes/después generados con IA.
