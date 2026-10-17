@@ -15,7 +15,13 @@ si se queda o pide opciones.
   `docs/repaso/1-portada-reales.jpg` — Pexels 30347751 (atardecer con cerros, Tultepec), 30224729 (naves blancas,
   cielo azul), 31363040 (andenes y trailers), 31363044 (nave, patio y calle), 30616899 (naves junto a la ciudad),
   30347753 (nave grande al atardecer). Descarga: `https://www.pexels.com/download/video/<id>/`. No son de IMAX →
-  llevan «Imagen ilustrativa». Esperando que elija.
+  llevan «Imagen ilustrativa».
+  Luego Max: «olvídalo, mejor la recreamos en Higgsfield» (la original fue Kling 3.0 4K, 8 s, bucle con el mismo
+  cuadro de inicio y fin; ver `docs/VIDEO-4K-origen.md`). Se recrearon 3 portadas igual (Kling 3.0 4K, 8 s, bucle,
+  48 créditos c/u) a partir de las imágenes A/B/C: `media/portada-n1|n2|n3*` (24 fps). Vista previa
+  `/opciones/secciones/portada/` (A como está, B bodega de block `?v=hero-n1`, C hilera de naves `hero-n2`,
+  D nave blanca con andenes `hero-n3`); la variante cambia también el video del pie. Video comparativo
+  `docs/repaso/1-portada-4opciones.mp4`. Esperando que elija.
 
 ## Sección nueva «Nuestros trabajos» (2026-10-16, noche) — EN PAUSA (Max la dejó para después)
 Max decidió: el material real **solo** va en una sección nueva con sus trabajos (nada de antes/después, ni en
