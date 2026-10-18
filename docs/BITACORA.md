@@ -122,3 +122,4 @@ Las citas entre comillas son palabras de Max.
 - Max generó él mismo la toma baja con ese prompt y dijo «listo, usa esta». Se amplió a 4K sin cambiarla, en
   computadora se le agregó cielo y calle para que quepa la hilera completa, y en el pie se acercó para que las letras
   muestren las naves. Publicada en portada y pie.
+- Pidió el texto de la portada en el cielo para que no tape las bodegas → 3 opciones (izquierda, centrado, título arriba y botones abajo).

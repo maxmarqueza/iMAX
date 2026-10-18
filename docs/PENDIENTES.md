@@ -92,6 +92,10 @@ si se queda o pide opciones.
   Sunburst max `bc5153f5…` (3504×2336, bodegas idénticas) → `img/portada-parque.webp` (3200). En el pie las naves quedaban
   bajo las letras: `.foot__poster` con `object-position: 50% 100%` y `scale(1.25)` desde abajo (`fx/salida.css`).
   Originales en `Material/fotos-elegidas/portada-max-*.png`.
+  Después: «dame opciones con el texto en el cielo para que no tape las bodegas». Vista previa
+  `/opciones/secciones/portada/` (`?v=cielo-a|b|c&solo=inicio`, solo CSS en `fx/variantes.css` con `[data-v-cielo]`):
+  A arriba a la izquierda (título y botones juntos), B centrado, C título arriba y botones abajo sobre la calle.
+  Lámina `docs/repaso/1-portada-texto-cielo.jpg`. **Esperando que elija.**
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
