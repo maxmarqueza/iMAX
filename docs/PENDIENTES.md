@@ -76,6 +76,9 @@ si se queda o pide opciones.
   luces (`a5e658bd…`)** — publicada 2026-10-18: computadora `img/portada-parque.webp` (outpaint 21:9 `2f43f023…`,
   3168×1344, `object-position: 57% 60%`), celular `img/portada-parque-m.webp` (la original 16:9). Originales en
   `Material/fotos-elegidas/portada-gpt-*.png`.
+  Después: «la toma a más baja altura, sin modificar bodegas y cielo». GPT Image 2.5 Sunburst max sí baja la cámara si
+  se describe cómo se ve desde abajo: 1 «8 m» `3342b74c…`, 2 «4 m» `46df8593…` (ambas con techos ocultos y cielo grande);
+  NB Pro «4 m» `db00119a…` casi no bajó. Lámina `docs/repaso/1-portada-mas-baja-2.jpg`. Esperando cuál.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
