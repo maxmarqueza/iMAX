@@ -54,7 +54,10 @@ si se queda o pide opciones.
   Nano Banana Pro y Nano Banana 2.1 de Google dentro de Higgsfield; outpaint de Higgsfield para ampliar). Edición de
   `a07b68bb…` sin tocar las bodegas, cámara ~12 m: lámina `docs/repaso/1-portada-atardecer.jpg` — 1 atardecer naranja
   y rosa (NB Pro `7bd6d3c4…`), 2 atardecer (NB 2.1 `07aae556…`), 3 justo después del atardecer con luces (NB Pro
-  `2259fdef…`). 5504×3072, ya caben completas sin outpaint. Esperando que elija.
+  `2259fdef…`). 5504×3072, ya caben completas sin outpaint. **Eligió la 3** (Nano Banana Pro; Higgsfield la registra
+  con el nombre interno «nano_banana_2»). Pidió la toma **más baja**: al editar, los modelos casi no mueven la cámara
+  (`42bf7160…`, `bcc031d0…`, `94986e6f…`, `324312cf…` salieron iguales). La que sí bajó: NB Pro «3 m» `416bb466…`.
+  Comparación `docs/repaso/1-portada-mas-baja.jpg`. Esperando su visto bueno.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
