@@ -99,3 +99,5 @@ Las citas entre comillas son palabras de Max.
 - «Dame opciones de naves industriales» → 6 tipos de nave de México para la portada (imágenes, antes de animar).
 - Max: «¿no es mejor, con esas referencias, recrear una mejor imagen frontal de todas las bodegas?». Se recreó su
   hilera de bodegas terminada, de frente, con sus tomas reales como referencia (día, atardecer y noche).
+- «Podemos utilizar Higgsfield para esta recreación, no Seedance. Queremos imágenes» → se compararon 4 modelos de
+  imagen de Higgsfield con la hilera de su parque de noche (Nano Banana Pro, Nano Banana 2.1, Soul Cinema, FLUX 3).

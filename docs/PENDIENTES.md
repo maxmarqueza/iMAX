@@ -34,6 +34,11 @@ si se queda o pide opciones.
   terminada `46685b87…`, hilera desde el dron `fdd66ff9…`. Resultado (GPT Image 2.5), lámina
   `docs/repaso/1-portada-tu-parque.jpg`: A de día `0c4c4b01…`, B atardecer `2617c302…`, C noche `10e8df26…`.
   Muy fieles al parque real. Falta que elija luz para animarla (Kling 3.0 4K, bucle 8 s, 48 créditos).
+  Max preguntó por Seedance 2.5 (sí acepta inicio/fin + referencias; 1080p; 128 créditos/8 s) y luego dijo: «usa
+  Higgsfield, no Seedance; queremos **imágenes**». Comparación de modelos de imagen en Higgsfield (noche, mismas
+  referencias), lámina `docs/repaso/1-portada-modelos.jpg`: 1 Nano Banana Pro 4K `a2c9ac08…` (bien), 2 Nano Banana 2.1
+  4K thinking high `db8918e5…` (la más parecida al parque real), 3 Soul Cinema `a58463e5…` (no sirve: dejó la obra),
+  4 FLUX 3 4K `4b653cb6…` (bien). Salen a 5504×3072. Esperando que elija.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
