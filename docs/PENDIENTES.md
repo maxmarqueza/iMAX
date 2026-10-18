@@ -69,7 +69,10 @@ si se queda o pide opciones.
   (`.top.sobre-foto`, lo pone `fx/portada.js`).
   Max pidió rehacer con **Nano Banana Pro** la versión 2 (la de NB 2.1, a media altura) sin cambiar la estructura:
   A mismo atardecer `8c8ea37c…`, B cielo encendido con luces `6442af00…` (lámina `docs/repaso/1-portada-nbpro.jpg`).
-  En el sitio sigue la «3 m» (`416bb466…`). Esperando cuál dejar.
+  En el sitio sigue la «3 m» (`416bb466…`).
+  Luego pidió compararla con **GPT Image 2.5 variante Sunburst, calidad máxima, 4K** (15 créditos c/u; ojo: antes se
+  usaba con los valores por defecto flare/low/1k): atardecer `280b3dea…`, cielo encendido con luces `a5e658bd…`
+  (3840×2160). Lámina `docs/repaso/1-portada-nbpro-vs-gpt.jpg`. GPT deja la hilera completa con margen. Esperando cuál dejar.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
