@@ -29,6 +29,11 @@ si se queda o pide opciones.
   3 bodega mediana de block y lámina, 4 hilera de ladrillo con dientes de sierra, 5 panel gris oscuro, 6 nave blanca
   grande de noche. Job ids Higgsfield: c8d6c13c…, a322c7fc…, 60bb6fa9…, 43c0e238…, ccdaa4bf…, 87374419…
   Esperando que elija una para animar (Kling 3.0 4K, bucle de 8 s, igual que la portada original).
+  Después Max propuso recrear de frente **la hilera de bodegas de su propio parque** (el de la toma «naves en obra»,
+  que confirmó es el mismo que el terminado). Referencias subidas a Higgsfield: obra de frente `73d7668e…`, calle
+  terminada `46685b87…`, hilera desde el dron `fdd66ff9…`. Resultado (GPT Image 2.5), lámina
+  `docs/repaso/1-portada-tu-parque.jpg`: A de día `0c4c4b01…`, B atardecer `2617c302…`, C noche `10e8df26…`.
+  Muy fieles al parque real. Falta que elija luz para animarla (Kling 3.0 4K, bucle 8 s, 48 créditos).
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
