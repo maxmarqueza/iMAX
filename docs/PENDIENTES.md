@@ -49,7 +49,12 @@ si se queda o pide opciones.
   (computadora) e `img/portada-parque-m.webp` (celular, la original más cerrada). Originales en
   `Material/fotos-elegidas/portada-parque-*.png`. Vista previa `?v=hero-p` en `/opciones/secciones/portada/`
   (A como está, B tu parque, imagen fija sin video; también cambia el pie). Video `docs/repaso/1-portada-tu-parque.mp4`.
-  Grabadora de secciones: `tools/grabar.mjs`. Falta que Max apruebe para pasarla al sitio.
+  Grabadora de secciones: `tools/grabar.mjs`.
+  Max: «antes rehacer la imagen a media altura y con un cielo de atardecer más llamativo» (y preguntó qué modelos:
+  Nano Banana Pro y Nano Banana 2.1 de Google dentro de Higgsfield; outpaint de Higgsfield para ampliar). Edición de
+  `a07b68bb…` sin tocar las bodegas, cámara ~12 m: lámina `docs/repaso/1-portada-atardecer.jpg` — 1 atardecer naranja
+  y rosa (NB Pro `7bd6d3c4…`), 2 atardecer (NB 2.1 `07aae556…`), 3 justo después del atardecer con luces (NB Pro
+  `2259fdef…`). 5504×3072, ya caben completas sin outpaint. Esperando que elija.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
