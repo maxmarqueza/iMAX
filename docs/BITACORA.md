@@ -115,3 +115,6 @@ Las citas entre comillas son palabras de Max.
   se ve la foto; al bajar vuelve a la barra clara.
 - Portada final: comparó Nano Banana Pro contra **GPT Image 2.5 Sunburst en calidad máxima** y se quedó con la de GPT,
   cielo encendido con luces, a media altura y sin cambiar la estructura de las bodegas. Publicada.
+- «La toma a más baja altura, sin modificar bodegas y cielo» → GPT Image 2.5 Sunburst max a ~4 m (la 2 de 3). Publicada
+  en portada y pie; en computadora se amplió solo hacia arriba y abajo (mismo cielo, más calle) para que se vea la
+  hilera completa. Se descartó un outpaint que cambiaba el color del cielo.
