@@ -114,31 +114,6 @@
     root.classList.add("v-hero-b");
     real(hero.querySelector(".hero__video"), hero.querySelector(".hero__scene img"), "real-nave");
   }
-  // Portada recreada en Higgsfield con naves como las de México (n1 bodega de block, n2 hilera de naves, n3 nave blanca);
-  // el mismo video va también en el pie. Son generadas → se queda «Imagen ilustrativa».
-  const vh = V("hero");
-  if (hero && /^n[123]$/.test(vh)) {
-    root.classList.add("v-hero-" + vh);
-    const name = "portada-" + vh;
-    real(hero.querySelector(".hero__video"), hero.querySelector(".hero__scene img"), name);
-    const fv = document.querySelector(".foot__video");
-    if (fv) { fv.dataset.src = "media/" + name + ".mp4"; fv.dataset.srcMobile = "media/" + name + "-m.mp4"; fv.setAttribute("data-src-4k", "media/" + name + "-4k.mp4"); if (fv.src) fv.src = FX.videoSrc(fv.dataset.src, fv.dataset.srcMobile, fv.getAttribute("data-src-4k")); }
-    const fp = document.querySelector(".foot__poster");
-    if (fp) fp.src = "img/" + name + "-poster.webp";
-  }
-  // P: imagen fija de su propio parque terminado, recreado de frente a media altura (Higgsfield, Nano Banana Pro,
-  // con sus tomas de dron de referencia). Sin video; va también en el pie. Generada → «Imagen ilustrativa».
-  if (hero && vh === "p") {
-    root.classList.add("v-hero-p");
-    const src = FX.narrow() ? "img/portada-parque-m.webp" : "img/portada-parque.webp";
-    const fijo = (img, v) => {
-      if (img) img.src = src;
-      // Se apaga el video: portada.js y salida.js ya lo tienen en mano, así que src y play se vuelven inofensivos
-      if (v) { v.pause(); v.removeAttribute("src"); v.load(); v.style.display = "none"; Object.defineProperty(v, "src", { get: () => "fijo", set: () => {} }); v.play = () => Promise.resolve(); }
-    };
-    fijo(hero.querySelector(".hero__scene img"), hero.querySelector(".hero__video"));
-    fijo(document.querySelector(".foot__poster"), document.querySelector(".foot__video"));
-  }
   const proc = document.getElementById("proceso");
   if (proc && V("proc") === "b") {
     root.classList.add("v-proc-b");

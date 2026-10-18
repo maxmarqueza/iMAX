@@ -27,7 +27,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <link rel="preload" as="image" href="img/hero-poster.webp">
+  <link rel="preload" as="image" href="img/portada-parque.webp" media="(min-width: 861px)">
+  <link rel="preload" as="image" href="img/portada-parque-m.webp" media="(max-width: 860px)">
   <link rel="stylesheet" href="scrollcraft.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="fx/portada.css">
@@ -84,12 +85,15 @@
 
   <main id="contenido">
 
-    <!-- 1. Portada: el nombre es una ventana hacia la nave; al cargar, la cámara entra sola por la M -->
+    <!-- 1. Portada: el nombre es una ventana hacia el parque de IMAX al atardecer; al cargar, la cámara entra sola por la M.
+         La imagen es su parque terminado recreado de frente con IA (Higgsfield) a partir de sus tomas de dron. -->
     <section class="hero" id="inicio" data-sc-drift="#e9ebe8">
       <div data-sc-stage class="hero__stage">
         <div class="hero__scene" aria-hidden="true">
-          <img src="img/hero-poster.webp" alt="">
-          <video class="hero__video" muted loop playsinline preload="none" data-src="media/hero-loop.mp4" data-src-mobile="media/hero-loop-m.mp4" data-src-4k="media/hero-loop-4k.mp4"></video>
+          <picture>
+            <source media="(max-width: 860px)" srcset="img/portada-parque-m.webp">
+            <img src="img/portada-parque.webp" alt="">
+          </picture>
         </div>
         <div class="hero__scrim" aria-hidden="true"></div>
         <canvas class="hero__plate" aria-hidden="true"></canvas>
@@ -487,8 +491,10 @@
         <!-- Salida: la cámara regresa por la M y la página termina viendo IMAX con la nave adentro -->
         <div class="foot__scene">
           <div class="foot__stage">
-            <img class="foot__poster" src="img/hero-poster.webp" alt="" aria-hidden="true">
-            <video class="foot__video" muted loop playsinline preload="none" data-src="media/hero-loop.mp4" data-src-mobile="media/hero-loop-m.mp4" data-src-4k="media/hero-loop-4k.mp4" aria-hidden="true"></video>
+            <picture>
+              <source media="(max-width: 860px)" srcset="img/portada-parque-m.webp">
+              <img class="foot__poster" src="img/portada-parque.webp" alt="" aria-hidden="true" loading="lazy">
+            </picture>
             <canvas class="foot__plate" aria-hidden="true"></canvas>
             <div class="foot__draw" aria-hidden="true">
               <svg class="foot__line" viewBox="0 0 1440 150" preserveAspectRatio="xMidYMax slice">

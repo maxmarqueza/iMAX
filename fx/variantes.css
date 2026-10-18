@@ -130,5 +130,3 @@
   .trab .vbody { padding: 10px 12px 12px; }
   .trab .vbody h3 { font-size: .95rem; }
 }
-/* Portada con su parque al atardecer: sombra solo abajo, para que se vean las luces de las fachadas */
-.v-hero-p .hero__scrim { background: linear-gradient(0deg, rgba(10, 14, 18, .8) 0%, rgba(10, 14, 18, .45) 28%, rgba(10, 14, 18, 0) 52%); }

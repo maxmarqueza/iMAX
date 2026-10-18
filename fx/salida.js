@@ -5,7 +5,6 @@
   if (!scene) return;
   const stage = scene.querySelector(".foot__stage");
   const canvas = scene.querySelector(".foot__plate");
-  const video = scene.querySelector(".foot__video");
   const ctx = canvas.getContext("2d");
   const COLOR = "#111416";
   let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, dive = 1, cover = 1, metrics = null, lastKey = "";
@@ -52,12 +51,6 @@
     FX.plate.draw(ctx, { w, h, dpr, color: COLOR, size, left, baseline, ox, oy, scale, metrics });
   }
 
-  if (!FX.reduce && video) {
-    FX.watch(stage, () => {
-      if (!video.src) video.src = FX.videoSrc(video.dataset.src, video.dataset.srcMobile, video.getAttribute("data-src-4k"));
-      video.play().catch(() => {});
-    }, () => video.pause(), "200px 0px");
-  }
   addEventListener("scroll", draw, { passive: true });
   addEventListener("resize", layout);
   layout();

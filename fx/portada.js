@@ -1,23 +1,16 @@
 // Portada: la palabra IMAX es una placa de concreto con las letras recortadas; adentro se ve la nave
-// en video. Al cargar, cada letra se abre de abajo hacia arriba como una cortina de andén, con un filo
+// (su parque al atardecer). Al cargar, cada letra se abre de abajo hacia arriba como una cortina de andén, con un filo
 // amarillo. Enseguida la cámara atraviesa sola el asta de la M (fx/auto.js) y la placa se disuelve sobre la nave.
 (function portada() {
   const act = document.getElementById("inicio");
   if (!act) return;
   const stage = act.querySelector(".hero__stage");
-  const video = act.querySelector(".hero__video");
   const canvas = act.querySelector(".hero__plate");
   const ctx = canvas.getContext("2d");
   const PLATE = "#e9ebe8", EDGE = "255,194,14";
   let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, dive = 1, cover = 1, metrics = null, lastKey = "";
   let open = FX.reduce ? null : [0, 0, 0, 0];
 
-  // Video: archivo según el ancho; solo corre con la portada en pantalla
-  if (!FX.reduce && video) {
-    video.src = FX.videoSrc(video.dataset.src, video.dataset.srcMobile, video.getAttribute("data-src-4k"));
-    video.addEventListener("playing", () => video.classList.add("is-on"), { once: true });
-    FX.watch(stage, () => video.play().catch(() => {}), () => video.pause());
-  }
   if (FX.reduce) return;
 
   function layout() {

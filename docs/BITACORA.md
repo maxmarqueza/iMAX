@@ -107,3 +107,5 @@ Las citas entre comillas son palabras de Max.
   arriba/abajo para que en computadora se vea la hilera completa. En vista previa como opción B.
 - Portada definida: **su parque recreado de frente, más bajo, con atardecer encendido y luces** (Nano Banana Pro en
   Higgsfield, ampliado a los lados). «Sobre esa imagen trabajaremos la portada.»
+- «Así está bien, pásala al sitio» → portada y pie con su parque al atardecer, publicados. Siguiente en el repaso:
+  Servicios.

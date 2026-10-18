@@ -1,11 +1,10 @@
 # Pendientes — IMAX (al 2026-10-11)
 
 ## Repaso sección por sección (desde 2026-10-16, noche) — EN CURSO
-Max: «olvida ahorita nuestro material, vamos repasando el sitio sección por sección». Orden: 1 Portada,
-2 Servicios, 3 De polvo a nave, 4 Parque, 5 Proceso, 6 Preguntas, 7 Contacto, 8 Pie. Por cada una se le manda un
+Max: «olvida ahorita nuestro material, vamos repasando el sitio sección por sección». Orden: 1 Portada (lista), **2 Servicios (siguiente)**, 3 De polvo a nave, 4 Parque, 5 Proceso, 6 Preguntas, 7 Contacto, 8 Pie. Por cada una se le manda un
 video corto de cómo está hoy (`docs/repaso/N-seccion.mp4`, grabado con el script de capturas por CDP) y él dice
 si se queda o pide opciones.
-- 1 Portada: Max: «así no son las naves industriales reales» (la nave de la portada parece un centro de distribución
+- 1 Portada: **LISTA (publicada 2026-10-18)**. Historia: Max: «así no son las naves industriales reales» (la nave de la portada parece un centro de distribución
   gringo). Se generaron 3 imágenes con naves como las suyas usando sus fotos de referencia (Higgsfield, GPT Image 2.5):
   A bodega de block tipo su foto al atardecer; B hilera de naves de su parque (dientes de sierra, ladrillo) de noche;
   C nave blanca de lámina con andenes de noche. Lámina `docs/repaso/1-portada-opciones.jpg`. Falta que elija una
@@ -61,7 +60,8 @@ si se queda o pide opciones.
   portada».** Se amplió solo a los lados (outpaint 21:9 `3cb75842…`, 3168×1344) — la versión 16:9 `1fb2a4c4…` agregaba
   mucho estacionamiento y se veía alta, se descartó. Computadora: `img/portada-parque.webp` (21:9); celular:
   `img/portada-parque-m.webp` (la original 4K reducida). Originales en `Material/fotos-elegidas/portada-atardecer-*`.
-  Sombra del texto más ligera (`.v-hero-p .hero__scrim`) para que se vean las luces. Vista previa `?v=hero-p`.
+  Sombra del texto más ligera para que se vean las luces. **Publicada en el sitio el 2026-10-18** (portada y pie);
+  se borraron la página de opciones de portada y los videos `portada-n*`.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
