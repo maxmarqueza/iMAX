@@ -1,7 +1,8 @@
 # Pendientes — IMAX (al 2026-10-11)
 
 ## Repaso sección por sección (desde 2026-10-16, noche) — EN CURSO
-Max: «olvida ahorita nuestro material, vamos repasando el sitio sección por sección». Orden: 1 Portada (lista), **2 Servicios (siguiente)**, 3 De polvo a nave, 4 Parque, 5 Proceso, 6 Preguntas, 7 Contacto, 8 Pie. Por cada una se le manda un
+Max: «olvida ahorita nuestro material, vamos repasando el sitio sección por sección». Orden: 1 Portada (lista), **2 Servicios (en revisión: video `docs/repaso/2-servicios.mp4` enviado; propuesto:
+fotos como sus naves, imagen de parque en «Parques», título breve y textos más cortos)**, 3 De polvo a nave, 4 Parque, 5 Proceso, 6 Preguntas, 7 Contacto, 8 Pie. Por cada una se le manda un
 video corto de cómo está hoy (`docs/repaso/N-seccion.mp4`, grabado con el script de capturas por CDP) y él dice
 si se queda o pide opciones.
 - 1 Portada: **LISTA (publicada 2026-10-18)**. Historia: Max: «así no son las naves industriales reales» (la nave de la portada parece un centro de distribución
