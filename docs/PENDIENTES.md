@@ -67,6 +67,9 @@ si se queda o pide opciones.
   inmueble.»). Se le propusieron 6 títulos breves según los giros; **eligió «Naves industriales para rentar, comprar o
   construir.»** (publicado 2026-10-18). Menú sobre el cielo: resuelto (2026-10-18), menú y logo en blanco mientras se ve la foto
   (`.top.sobre-foto`, lo pone `fx/portada.js`).
+  Max pidió rehacer con **Nano Banana Pro** la versión 2 (la de NB 2.1, a media altura) sin cambiar la estructura:
+  A mismo atardecer `8c8ea37c…`, B cielo encendido con luces `6442af00…` (lámina `docs/repaso/1-portada-nbpro.jpg`).
+  En el sitio sigue la «3 m» (`416bb466…`). Esperando cuál dejar.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
