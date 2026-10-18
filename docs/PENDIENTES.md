@@ -86,6 +86,12 @@ si se queda o pide opciones.
   `3a381e02…` (acercó la toma). Originales en `Material/fotos-elegidas/portada-baja-*.png`.
   Max pidió la referencia y el prompt para hacerla él: carpeta local `Material/prompt-portada-baja/` (las 2
   referencias en orden, `prompt.txt` con modelo, ajustes y prompt exacto, y el resultado esperado).
+  **Max la generó él y dijo «listo, usa esta»** (hilera de 8 naves con las 2 bajas a la izquierda y la caseta; llegó a
+  1672×941). Publicada 2026-10-18: se subió a Higgsfield (`5c5b8c97…`), se amplió a 4K sin cambiarla (upscale
+  `88e4ed8b…`, 4096×2313) → celular `img/portada-parque-m.webp` (2400). Computadora: ampliada arriba/abajo a 3:2 con GPT
+  Sunburst max `bc5153f5…` (3504×2336, bodegas idénticas) → `img/portada-parque.webp` (3200). En el pie las naves quedaban
+  bajo las letras: `.foot__poster` con `object-position: 50% 100%` y `scale(1.25)` desde abajo (`fx/salida.css`).
+  Originales en `Material/fotos-elegidas/portada-max-*.png`.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

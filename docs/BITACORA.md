@@ -119,3 +119,6 @@ Las citas entre comillas son palabras de Max.
   en portada y pie; en computadora se amplió solo hacia arriba y abajo (mismo cielo, más calle) para que se vea la
   hilera completa. Se descartó un outpaint que cambiaba el color del cielo.
 - Max pidió la imagen de referencia y el prompt completo de la toma baja para generarla él → `Material/prompt-portada-baja/`.
+- Max generó él mismo la toma baja con ese prompt y dijo «listo, usa esta». Se amplió a 4K sin cambiarla, en
+  computadora se le agregó cielo y calle para que quepa la hilera completa, y en el pie se acercó para que las letras
+  muestren las naves. Publicada en portada y pie.
