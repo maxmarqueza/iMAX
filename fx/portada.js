@@ -11,7 +11,9 @@
   let w = 0, h = 0, dpr = 1, size = 0, left = 0, baseline = 0, ox = 0, oy = 0, dive = 1, cover = 1, metrics = null, lastKey = "";
   let open = FX.reduce ? null : [0, 0, 0, 0];
 
-  if (FX.reduce) return;
+  // Menú: mientras se ve la foto de la portada va en blanco para leerse sobre el cielo (styles.css, .top.sobre-foto)
+  const top = document.getElementById("top");
+  if (FX.reduce) { if (top) top.classList.add("sobre-foto"); return; }
 
   function layout() {
     const r = stage.getBoundingClientRect();
@@ -49,6 +51,7 @@
     const alpha = scale > 40 ? 0 : 1 - FX.smooth((t - 0.5) / 0.42);
     // Ya dentro de la M, la orilla de abajo es la nave: Safari toma ese color para la franja bajo su barra
     stage.classList.toggle("is-dentro", scale >= cover);
+    if (top) top.classList.toggle("sobre-foto", scale >= cover);
     const key = scale.toFixed(3) + "|" + alpha.toFixed(3) + "|" + (open ? open.map((o) => o.toFixed(3)).join(",") : "");
     if (key === lastKey) return;
     lastKey = key;

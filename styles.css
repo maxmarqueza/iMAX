@@ -60,6 +60,13 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .top.is-solid .top__bar, .top.is-open .top__bar { background: rgba(233, 235, 232, .9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
 .brand { display: block; text-decoration: none; }
 .brand img { display: block; height: 42px; width: auto; }
+.brand .brand__blanco { display: none; }
+/* Sobre la foto de la portada (sin barra sólida): menú y logo en blanco con una sombra suave arriba */
+.top.sobre-foto:not(.is-solid):not(.is-open) .top__bar { background: linear-gradient(180deg, rgba(10, 14, 18, .5), rgba(10, 14, 18, 0)); }
+.top.sobre-foto:not(.is-solid):not(.is-open) .nav__link { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, .45); }
+.top.sobre-foto:not(.is-solid):not(.is-open) .nav__link:hover { background: rgba(255, 255, 255, .16); }
+.top.sobre-foto:not(.is-solid):not(.is-open) .brand img:not(.brand__blanco) { display: none; }
+.top.sobre-foto:not(.is-solid):not(.is-open) .brand .brand__blanco { display: block; }
 .nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
 .nav__link { display: inline-flex; align-items: center; min-height: 42px; padding: 0 14px; border: 0; border-radius: 999px; background: none; color: inherit; font-size: .95rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background-color 160ms var(--ease); }
 .nav__link:hover, .nav__trigger[aria-expanded="true"] { background: rgba(17, 20, 22, .07); }

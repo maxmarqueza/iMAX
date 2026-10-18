@@ -64,7 +64,8 @@ si se queda o pide opciones.
   se borraron la página de opciones de portada y los videos `portada-n*`.
   Max: «no me gusta el texto de introducción» («Una sola empresa responde por el terreno, el proyecto, la obra y el
   inmueble.»). Se le propusieron 6 títulos breves según los giros; **eligió «Naves industriales para rentar, comprar o
-  construir.»** (publicado 2026-10-18). Pendiente aparte: los enlaces del menú se leen poco sobre el cielo de la portada.
+  construir.»** (publicado 2026-10-18). Menú sobre el cielo: resuelto (2026-10-18), menú y logo en blanco mientras se ve la foto
+  (`.top.sobre-foto`, lo pone `fx/portada.js`).
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

@@ -111,3 +111,5 @@ Las citas entre comillas son palabras de Max.
   Servicios.
 - Título de la portada: «Una sola empresa responde por el terreno, el proyecto, la obra y el inmueble.» → **«Naves
   industriales para rentar, comprar o construir.»** (eligió la 2 de 6 propuestas). Quiere títulos breves y concisos.
+- Menú de arriba ilegible sobre el cielo de la portada → ahora va en blanco (con logo blanco y sombra suave) mientras
+  se ve la foto; al bajar vuelve a la barra clara.
