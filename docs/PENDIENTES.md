@@ -62,6 +62,9 @@ si se queda o pide opciones.
   `img/portada-parque-m.webp` (la original 4K reducida). Originales en `Material/fotos-elegidas/portada-atardecer-*`.
   Sombra del texto más ligera para que se vean las luces. **Publicada en el sitio el 2026-10-18** (portada y pie);
   se borraron la página de opciones de portada y los videos `portada-n*`.
+  Max: «no me gusta el texto de introducción» («Una sola empresa responde por el terreno, el proyecto, la obra y el
+  inmueble.»). Se le propusieron títulos breves según los giros (renta, venta, construcción a la medida, parques);
+  esperando que elija. Pendiente aparte: los enlaces del menú se leen poco sobre el cielo de la portada.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
