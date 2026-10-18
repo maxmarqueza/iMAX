@@ -38,7 +38,13 @@ si se queda o pide opciones.
   Higgsfield, no Seedance; queremos **imágenes**». Comparación de modelos de imagen en Higgsfield (noche, mismas
   referencias), lámina `docs/repaso/1-portada-modelos.jpg`: 1 Nano Banana Pro 4K `a2c9ac08…` (bien), 2 Nano Banana 2.1
   4K thinking high `db8918e5…` (la más parecida al parque real), 3 Soul Cinema `a58463e5…` (no sirve: dejó la obra),
-  4 FLUX 3 4K `4b653cb6…` (bien). Salen a 5504×3072. Esperando que elija.
+  4 FLUX 3 4K `4b653cb6…` (bien). Salen a 5504×3072.
+  Max: «es importante que no modifique las bodegas ya finalizadas; usa la toma de referencia desde arriba y regénerala
+  a media altura con mayor panorama, sin perder altura de las bodegas ni su estructura». Referencias desde arriba
+  (MAX 12/26/30/41 s): `c0ee9f40…`, `5d080df0…`, `fae9b557…`, `d92087de…` + `fdd66ff9…` y calle `46685b87…`. De día como
+  las tomas. Lámina `docs/repaso/1-portada-media-altura.jpg`: 1 de frente toda la hilera (Nano Banana Pro 4K
+  `a07b68bb…`, la mejor), 2 por la calle central (Nano Banana Pro `a6b0fb86…`), 3 y 4 (Nano Banana 2.1) quedaron muy
+  altas. Esperando que elija.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

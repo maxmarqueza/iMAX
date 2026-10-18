@@ -101,3 +101,5 @@ Las citas entre comillas son palabras de Max.
   hilera de bodegas terminada, de frente, con sus tomas reales como referencia (día, atardecer y noche).
 - «Podemos utilizar Higgsfield para esta recreación, no Seedance. Queremos imágenes» → se compararon 4 modelos de
   imagen de Higgsfield con la hilera de su parque de noche (Nano Banana Pro, Nano Banana 2.1, Soul Cinema, FLUX 3).
+- Regla nueva: **no modificar las bodegas terminadas** al recrear; usar las tomas desde arriba como referencia y
+  cambiar solo la cámara (media altura, panorama con todas las bodegas, sin perder su altura ni estructura).
