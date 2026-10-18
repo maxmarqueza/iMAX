@@ -123,3 +123,4 @@ Las citas entre comillas son palabras de Max.
   computadora se le agregó cielo y calle para que quepa la hilera completa, y en el pie se acercó para que las letras
   muestren las naves. Publicada en portada y pie.
 - Pidió el texto de la portada en el cielo para que no tape las bodegas → 3 opciones (izquierda, centrado, título arriba y botones abajo).
+- Texto de la portada: eligió la **B, centrado en el cielo** (título y botones). Las bodegas quedan libres. Publicada.

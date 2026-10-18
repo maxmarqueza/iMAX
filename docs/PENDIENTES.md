@@ -95,7 +95,9 @@ si se queda o pide opciones.
   Después: «dame opciones con el texto en el cielo para que no tape las bodegas». Vista previa
   `/opciones/secciones/portada/` (`?v=cielo-a|b|c&solo=inicio`, solo CSS en `fx/variantes.css` con `[data-v-cielo]`):
   A arriba a la izquierda (título y botones juntos), B centrado, C título arriba y botones abajo sobre la calle.
-  Lámina `docs/repaso/1-portada-texto-cielo.jpg`. **Esperando que elija.**
+  Lámina `docs/repaso/1-portada-texto-cielo.jpg`. **Eligió la B (centrado)** — publicada 2026-10-18 en `styles.css`
+  (sombra desde arriba, `.hero__say` arriba y centrado; en teléfonos bajos más compacto; sin animación la frase de
+  presentación va abajo). Se borraron la página de opciones y su CSS.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
