@@ -109,3 +109,5 @@ Las citas entre comillas son palabras de Max.
   Higgsfield, ampliado a los lados). «Sobre esa imagen trabajaremos la portada.»
 - «Así está bien, pásala al sitio» → portada y pie con su parque al atardecer, publicados. Siguiente en el repaso:
   Servicios.
+- Título de la portada: «Una sola empresa responde por el terreno, el proyecto, la obra y el inmueble.» → **«Naves
+  industriales para rentar, comprar o construir.»** (eligió la 2 de 6 propuestas). Quiere títulos breves y concisos.
