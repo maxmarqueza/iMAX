@@ -30,8 +30,8 @@ Regla general: **nada se mueve con el scroll**; cada sección se anima sola, rá
 ### 1. Portada — `#inicio` (`.hero`)
 - La palabra **IMAX** gigante es una «placa» de concreto con las letras recortadas; dentro de las letras se ve
   **el parque de IMAX al atardecer** (imagen fija desde 2026-10-18): `img/portada-parque.webp` (computadora, 21:9 para
-  que quepa la hilera completa) e `img/portada-parque-m.webp` (celular), con `<picture>`. Recreado con Nano Banana Pro
-  en Higgsfield a partir de sus tomas de dron, sin cambiar las bodegas; lleva «Imagen ilustrativa». La misma imagen va
+  que quepa la hilera completa) e `img/portada-parque-m.webp` (celular), con `<picture>`. Recreado con GPT Image 2.5
+  (variante Sunburst, calidad máxima, 4K) en Higgsfield a partir de sus tomas de dron, sin cambiar las bodegas; lleva «Imagen ilustrativa». La misma imagen va
   en el pie. El video anterior (`media/hero-loop*.mp4`) ya no se usa.
 - Al cargar, cada letra se abre de abajo hacia arriba como cortina de andén con un filo amarillo (`fx/portada.js`).
 - A los ~1.4 s la cámara entra sola por el asta de la M (zoom ~1.2 s) y queda la nave a pantalla completa con la
@@ -95,7 +95,7 @@ Regla general: **nada se mueve con el scroll**; cada sección se anima sola, rá
 | Archivo | Qué es | Origen |
 |---|---|---|
 | `media/hero-loop{,-4k,-m}.mp4` | Nave de noche en bucle (portada y pie hasta 2026-10-17; ya no se usa) | Kling 3.0 4K, 2026-10-06 |
-| `img/portada-parque{,-m}.webp` | Su parque al atardecer (portada y pie) | Nano Banana Pro + outpaint, Higgsfield, 2026-10-18 |
+| `img/portada-parque{,-m}.webp` | Su parque al atardecer con luces (portada y pie) | GPT Image 2.5 Sunburst max + outpaint, Higgsfield, 2026-10-18 |
 | `media/despiece{,-4k,-m}.mp4` | De polvo a nave, 5.4 s | Kling 3.0 4K (2 tomas unidas) |
 | `media/obra{,-4k,-m}.mp4` | Obra de noche, 5 s | Kling 3.0 4K (2 tomas unidas) |
 | `media/parque{,-4k,-m}.mp4` | Dron sobre el parque, 5 s | Kling 3.0 4K, 2026-10-07 |

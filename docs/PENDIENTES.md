@@ -72,7 +72,10 @@ si se queda o pide opciones.
   En el sitio sigue la «3 m» (`416bb466…`).
   Luego pidió compararla con **GPT Image 2.5 variante Sunburst, calidad máxima, 4K** (15 créditos c/u; ojo: antes se
   usaba con los valores por defecto flare/low/1k): atardecer `280b3dea…`, cielo encendido con luces `a5e658bd…`
-  (3840×2160). Lámina `docs/repaso/1-portada-nbpro-vs-gpt.jpg`. GPT deja la hilera completa con margen. Esperando cuál dejar.
+  (3840×2160). Lámina `docs/repaso/1-portada-nbpro-vs-gpt.jpg`. **Eligió GPT Image 2.5 Sunburst max, cielo encendido con
+  luces (`a5e658bd…`)** — publicada 2026-10-18: computadora `img/portada-parque.webp` (outpaint 21:9 `2f43f023…`,
+  3168×1344, `object-position: 57% 60%`), celular `img/portada-parque-m.webp` (la original 16:9). Originales en
+  `Material/fotos-elegidas/portada-gpt-*.png`.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

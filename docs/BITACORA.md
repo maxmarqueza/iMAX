@@ -113,3 +113,5 @@ Las citas entre comillas son palabras de Max.
   industriales para rentar, comprar o construir.»** (eligió la 2 de 6 propuestas). Quiere títulos breves y concisos.
 - Menú de arriba ilegible sobre el cielo de la portada → ahora va en blanco (con logo blanco y sombra suave) mientras
   se ve la foto; al bajar vuelve a la barra clara.
+- Portada final: comparó Nano Banana Pro contra **GPT Image 2.5 Sunburst en calidad máxima** y se quedó con la de GPT,
+  cielo encendido con luces, a media altura y sin cambiar la estructura de las bodegas. Publicada.
