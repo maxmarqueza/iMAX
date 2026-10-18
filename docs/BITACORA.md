@@ -118,3 +118,4 @@ Las citas entre comillas son palabras de Max.
 - «La toma a más baja altura, sin modificar bodegas y cielo» → GPT Image 2.5 Sunburst max a ~4 m (la 2 de 3). Publicada
   en portada y pie; en computadora se amplió solo hacia arriba y abajo (mismo cielo, más calle) para que se vea la
   hilera completa. Se descartó un outpaint que cambiaba el color del cielo.
+- Max pidió la imagen de referencia y el prompt completo de la toma baja para generarla él → `Material/prompt-portada-baja/`.

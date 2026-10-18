@@ -84,6 +84,8 @@ si se queda o pide opciones.
   `img/portada-parque.webp` (3200 de ancho, `object-position: 50% 60%`). Celular: la 16:9 original
   (`img/portada-parque-m.webp`, 1600). Descartadas: outpaint 21:9 `bb3607a7…` (cambió el cielo a naranja) y GPT 21:9
   `3a381e02…` (acercó la toma). Originales en `Material/fotos-elegidas/portada-baja-*.png`.
+  Max pidió la referencia y el prompt para hacerla él: carpeta local `Material/prompt-portada-baja/` (las 2
+  referencias en orden, `prompt.txt` con modelo, ajustes y prompt exacto, y el resultado esperado).
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
