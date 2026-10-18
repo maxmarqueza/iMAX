@@ -104,7 +104,10 @@ si se queda o pide opciones.
   `f590744b…`, 2160×3840, naves idénticas → `img/portada-parque-m-hilera.webp`; `--hero-shift: -14svh` para que la
   franja quede dentro de IMAX); C título más grande arriba y los 4 botones en 2×2 abajo sobre la calle. Código en
   `fx/variantes.css` (`[data-v-movil]`) y `fx/variantes.js` (cambia la imagen en B). Lámina
-  `docs/repaso/1-portada-celular-opciones.jpg`. **Esperando que elija.**
+  `docs/repaso/1-portada-celular-opciones.jpg`. **Eligió la B (toda la hilera)** y pidió opciones con el texto abajo,
+  sobre la calle. Misma página, ahora `?v=movil-b,calle-a|b|c` (`[data-v-calle]` en `fx/variantes.css`; se borró la C
+  de botones abajo con la imagen cercana): A centrado abajo, B título grande a la izquierda y botones 2×2, C título
+  justo bajo las naves y botones al pie. Lámina `docs/repaso/1-portada-celular-calle.jpg`. **Esperando que elija.**
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

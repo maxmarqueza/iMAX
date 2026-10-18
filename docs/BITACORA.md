@@ -125,3 +125,4 @@ Las citas entre comillas son palabras de Max.
 - Pidió el texto de la portada en el cielo para que no tape las bodegas → 3 opciones (izquierda, centrado, título arriba y botones abajo).
 - Texto de la portada: eligió la **B, centrado en el cielo** (título y botones). Las bodegas quedan libres. Publicada.
 - Pidió opciones de la portada solo para celular → A como está, B toda la hilera (imagen vertical), C botones abajo al alcance del pulgar.
+- Celular: eligió la B (imagen vertical con toda la hilera) y pidió el texto abajo, sobre la calle → 3 opciones (centrado, a la izquierda con botones 2×2, título bajo las naves).
