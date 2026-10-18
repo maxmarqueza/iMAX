@@ -57,7 +57,11 @@ si se queda o pide opciones.
   `2259fdef…`). 5504×3072, ya caben completas sin outpaint. **Eligió la 3** (Nano Banana Pro; Higgsfield la registra
   con el nombre interno «nano_banana_2»). Pidió la toma **más baja**: al editar, los modelos casi no mueven la cámara
   (`42bf7160…`, `bcc031d0…`, `94986e6f…`, `324312cf…` salieron iguales). La que sí bajó: NB Pro «3 m» `416bb466…`.
-  Comparación `docs/repaso/1-portada-mas-baja.jpg`. Esperando su visto bueno.
+  Comparación `docs/repaso/1-portada-mas-baja.jpg`. **Max: «me gusta el ahora… sobre esa imagen trabajaremos la
+  portada».** Se amplió solo a los lados (outpaint 21:9 `3cb75842…`, 3168×1344) — la versión 16:9 `1fb2a4c4…` agregaba
+  mucho estacionamiento y se veía alta, se descartó. Computadora: `img/portada-parque.webp` (21:9); celular:
+  `img/portada-parque-m.webp` (la original 4K reducida). Originales en `Material/fotos-elegidas/portada-atardecer-*`.
+  Sombra del texto más ligera (`.v-hero-p .hero__scrim`) para que se vean las luces. Vista previa `?v=hero-p`.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

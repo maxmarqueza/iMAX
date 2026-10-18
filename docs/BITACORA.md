@@ -105,3 +105,5 @@ Las citas entre comillas son palabras de Max.
   cambiar solo la cámara (media altura, panorama con todas las bodegas, sin perder su altura ni estructura).
 - Portada: eligió **su parque recreado de frente a media altura** (imagen fija, sin video). Se amplió a los lados y
   arriba/abajo para que en computadora se vea la hilera completa. En vista previa como opción B.
+- Portada definida: **su parque recreado de frente, más bajo, con atardecer encendido y luces** (Nano Banana Pro en
+  Higgsfield, ampliado a los lados). «Sobre esa imagen trabajaremos la portada.»
