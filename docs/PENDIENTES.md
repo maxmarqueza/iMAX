@@ -37,6 +37,13 @@ con dónde iría cada una. Ojo: en `BODEGAS-MAX.mp4` y `NEXTIPAC.mov` el `-ss` a
 equivocados; usar búsqueda exacta (`-ss` antes y después de `-i`). Los interiores de Nextipac tienen letreros
 (superficie, oficinas): no sirven. Los cuadros de video se ven bien en tarjetas, no a pantalla completa.
 
+## Parque terminado (2026-10-18)
+Max preguntó si hay tomas del parque de la toma «naves en obra de frente» ya terminado. Sí: mismo tipo de naves
+(dientes de sierra, fachada rosa de ladrillo, columnas blancas) en `BODEGAS-MAX.mp4` 3–6 s y 69–70 s (calle interna,
+dron bajo), 50–51 s (glorieta), 22 s (fachada), 19–20 s (techos) y en `MAX.mp4` 6–60 s (dron alto; 30, 36 y 41 s
+muestran la fachada). Lámina `docs/parque-terminado.jpg`. No hay toma del mismo ángulo frontal que la obra; lo más
+parecido es la calle interna. Falta que Max confirme que es el mismo parque.
+
 ## Sección nueva «Nuestros trabajos» (2026-10-16, noche) — EN PAUSA (Max la dejó para después)
 Max decidió: el material real **solo** va en una sección nueva con sus trabajos (nada de antes/después, ni en
 portada/parque/proceso). Vista previa `/opciones/secciones/trabajos/` (`?v=trab-a|b|c&solo=trabajos`,
