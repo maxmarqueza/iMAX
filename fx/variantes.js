@@ -114,6 +114,11 @@
     root.classList.add("v-hero-b");
     real(hero.querySelector(".hero__video"), hero.querySelector(".hero__scene img"), "real-nave");
   }
+  // Portada en celular (?v=movil-b): imagen vertical con toda la hilera de naves
+  if (hero && V("movil") === "b") {
+    const src = hero.querySelector(".hero__scene source");
+    if (src) src.srcset = "img/portada-parque-m-hilera.webp";
+  }
   const proc = document.getElementById("proceso");
   if (proc && V("proc") === "b") {
     root.classList.add("v-proc-b");

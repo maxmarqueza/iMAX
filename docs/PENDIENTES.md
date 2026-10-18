@@ -98,6 +98,13 @@ si se queda o pide opciones.
   Lámina `docs/repaso/1-portada-texto-cielo.jpg`. **Eligió la B (centrado)** — publicada 2026-10-18 en `styles.css`
   (sombra desde arriba, `.hero__say` arriba y centrado; en teléfonos bajos más compacto; sin animación la frase de
   presentación va abajo). Se borraron la página de opciones y su CSS.
+  Después: «opciones con vista previa para la versión celular de esta misma sección». Vista previa
+  `/opciones/secciones/portada-celular/` (tres teléfonos de 390×844, `?v=movil-a|b|c&solo=inicio`; en computadora no
+  cambia): A como está; B imagen vertical con toda la hilera (GPT Sunburst max 9:16 desde `bc5153f5…` →
+  `f590744b…`, 2160×3840, naves idénticas → `img/portada-parque-m-hilera.webp`; `--hero-shift: -14svh` para que la
+  franja quede dentro de IMAX); C título más grande arriba y los 4 botones en 2×2 abajo sobre la calle. Código en
+  `fx/variantes.css` (`[data-v-movil]`) y `fx/variantes.js` (cambia la imagen en B). Lámina
+  `docs/repaso/1-portada-celular-opciones.jpg`. **Esperando que elija.**
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

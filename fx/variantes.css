@@ -130,3 +130,23 @@
   .trab .vbody { padding: 10px 12px 12px; }
   .trab .vbody h3 { font-size: .95rem; }
 }
+
+/* Portada en celular (?v=movil-a|b|c). Solo cambia en pantallas angostas; en computadora queda igual */
+@media (max-width: 860px) {
+  /* B: imagen vertical con toda la hilera; la escena sube un poco para que la franja de naves quede dentro de IMAX */
+  [data-v-movil="b"] .hero { --hero-shift: -14svh; }
+  /* C: título grande en el cielo y los cuatro botones abajo, sobre la calle, al alcance del pulgar */
+  [data-v-movil="c"] .hero__say { bottom: calc(58px + var(--barra)); display: flex; flex-direction: column; justify-content: space-between; }
+  [data-v-movil="c"] .hero__say p { font-size: 2.05rem; }
+  [data-v-movil="c"] .hero__routes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  [data-v-movil="c"] .hero__routes a { justify-content: center; min-height: 48px; padding: 4px 10px; font-size: .92rem; line-height: 1.1; text-align: center; }
+  [data-v-movil="c"] .hero__routes li { display: flex; }
+  [data-v-movil="c"] .hero__routes a { flex: 1; }
+  [data-v-movil="c"] .hero__scrim { background: linear-gradient(180deg, rgba(10, 14, 18, .55) 0%, rgba(10, 14, 18, 0) 40%), linear-gradient(0deg, rgba(10, 14, 18, .65) 0%, rgba(10, 14, 18, 0) 26%); }
+}
+@media (max-width: 860px) and (max-height: 720px) {
+  [data-v-movil="c"] .hero__say { bottom: calc(48px + var(--barra)); }
+  [data-v-movil="c"] .hero__say p { font-size: 1.75rem; }
+  [data-v-movil="c"] .hero__routes { gap: 6px; }
+  [data-v-movil="c"] .hero__routes a { min-height: 38px; font-size: .84rem; }
+}
