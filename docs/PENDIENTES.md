@@ -44,7 +44,12 @@ si se queda o pide opciones.
   (MAX 12/26/30/41 s): `c0ee9f40…`, `5d080df0…`, `fae9b557…`, `d92087de…` + `fdd66ff9…` y calle `46685b87…`. De día como
   las tomas. Lámina `docs/repaso/1-portada-media-altura.jpg`: 1 de frente toda la hilera (Nano Banana Pro 4K
   `a07b68bb…`, la mejor), 2 por la calle central (Nano Banana Pro `a6b0fb86…`), 3 y 4 (Nano Banana 2.1) quedaron muy
-  altas. Esperando que elija.
+  altas. **Max eligió la 1** (de frente, toda la hilera). Para que en computadora quepa la hilera completa se amplió
+  con outpaint de Higgsfield (21:9 `252d0089…` y luego 16:9 `9d9a2bc7…`, 2752×1536): `img/portada-parque.webp`
+  (computadora) e `img/portada-parque-m.webp` (celular, la original más cerrada). Originales en
+  `Material/fotos-elegidas/portada-parque-*.png`. Vista previa `?v=hero-p` en `/opciones/secciones/portada/`
+  (A como está, B tu parque, imagen fija sin video; también cambia el pie). Video `docs/repaso/1-portada-tu-parque.mp4`.
+  Grabadora de secciones: `tools/grabar.mjs`. Falta que Max apruebe para pasarla al sitio.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

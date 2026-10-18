@@ -103,3 +103,5 @@ Las citas entre comillas son palabras de Max.
   imagen de Higgsfield con la hilera de su parque de noche (Nano Banana Pro, Nano Banana 2.1, Soul Cinema, FLUX 3).
 - Regla nueva: **no modificar las bodegas terminadas** al recrear; usar las tomas desde arriba como referencia y
   cambiar solo la cámara (media altura, panorama con todas las bodegas, sin perder su altura ni estructura).
+- Portada: eligió **su parque recreado de frente a media altura** (imagen fija, sin video). Se amplió a los lados y
+  arriba/abajo para que en computadora se vea la hilera completa. En vista previa como opción B.

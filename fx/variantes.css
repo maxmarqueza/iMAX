@@ -72,7 +72,7 @@
 .v-proc-b .build__note, .v-proc-b .build__final, .v-proc-b .build__lot, .v-proc-b .build__steel,
 .v-proc-b .build__then, .v-proc-b .tt { display: none !important; }
 /* La toma real es de día y muy clara: sombra más fuerte detrás del texto */
-.v-hero-b .hero__scrim { background: linear-gradient(0deg, rgba(10, 14, 18, .9) 0%, rgba(10, 14, 18, .6) 42%, rgba(10, 14, 18, 0) 72%); }
+.v-hero-p .hero__scrim, .v-hero-b .hero__scrim { background: linear-gradient(0deg, rgba(10, 14, 18, .9) 0%, rgba(10, 14, 18, .6) 42%, rgba(10, 14, 18, 0) 72%); }
 
 /* Contacto B y C: formulario corto con tarjetas de interés y botón grande de WhatsApp */
 .v-cont-b #f-empresa, .v-cont-c #f-empresa,
