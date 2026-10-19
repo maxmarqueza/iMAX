@@ -119,7 +119,11 @@ si se queda o pide opciones.
   `fx/variantes.css` mueve el texto con `[data-v-cel]`, `--hero-shift: -6svh`): A todo abajo, B título arriba y botones
   abajo, C título grande arriba a la derecha y botones abajo (la primera C con botones arriba tapaba el techo).
   Lámina `docs/repaso/1-portada-celular-tu-imagen.jpg`. Originales en `Material/fotos-elegidas/portada-celular-max-*`.
-  **Esperando que elija.**
+  **Eligió la C (título a la derecha)** — publicada 2026-10-18: en teléfono `img/portada-celular.webp`, título arriba a la
+  derecha (`max-width: 8em`, 2rem), botones 2×2 al pie, `--hero-shift: -6svh`; sin animación la frase de presentación va
+  sobre la calle, encima de los botones. Se borraron la página de opciones, su código e `img/portada-parque-m-hilera.webp`.
+  Max pidió **máxima calidad 4K**: las dos imágenes de portada van a resolución completa, WebP calidad 92
+  (celular 2313×4096, computadora 3504×2336; ~2.3 MB cada una).
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

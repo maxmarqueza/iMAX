@@ -114,11 +114,6 @@
     root.classList.add("v-hero-b");
     real(hero.querySelector(".hero__video"), hero.querySelector(".hero__scene img"), "real-nave");
   }
-  // Portada en celular con la imagen vertical de Max (?v=cel-a|b|c): solo cambia la imagen; el texto lo mueve el CSS
-  if (hero && root.hasAttribute("data-v-cel")) {
-    const src = hero.querySelector(".hero__scene source");
-    if (src) src.srcset = "img/portada-celular.webp";
-  }
   const proc = document.getElementById("proceso");
   if (proc && V("proc") === "b") {
     root.classList.add("v-proc-b");

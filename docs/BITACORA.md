@@ -128,3 +128,4 @@ Las citas entre comillas son palabras de Max.
 - Celular: eligió la B (imagen vertical con toda la hilera) y pidió el texto abajo, sobre la calle → 3 opciones (centrado, a la izquierda con botones 2×2, título bajo las naves).
 - Celular: Max dijo «continuar» → se aplicó la C (imagen vertical con toda la hilera, título justo bajo las naves y botones al pie sobre la calle). Publicada.
 - Max mandó su imagen vertical para celular (hilera en perspectiva) y pidió opciones con vista previa → ampliada a 4K sin cambiarla; A todo abajo, B título arriba y botones abajo, C título a la derecha y botones abajo.
+- Celular: eligió la C con su imagen (título arriba a la derecha, botones abajo). Pidió máxima calidad: portada en 4K completo en celular y computadora. Publicada.

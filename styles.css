@@ -362,11 +362,12 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .tour__grid, .build__grid { grid-template-columns: 1fr 1fr; }
   .build__card:last-child { grid-column: 1 / -1; }
   .tour__card:last-child { grid-column: 1 / -1; }
-  .hero { --hero-shift: -14svh; }
-  /* Teléfono: el cielo queda libre; el título va justo debajo de las naves y los cuatro botones al pie, sobre la calle */
-  .hero__scrim { background: linear-gradient(0deg, rgba(10, 14, 18, .72) 0%, rgba(10, 14, 18, .35) 28%, rgba(10, 14, 18, 0) 44%); }
-  .hero__say { top: calc(66% + 6px); bottom: calc(52px + var(--barra)); display: flex; flex-direction: column; justify-content: space-between; }
-  .hero__say p { font-size: 1.7rem; }
+  .hero { --hero-shift: -6svh; }
+  /* Teléfono: la hilera en perspectiva queda libre; el título va arriba a la derecha, donde el cielo queda más abierto,
+     y los cuatro botones al pie, sobre la calle */
+  .hero__scrim { background: linear-gradient(180deg, rgba(10, 14, 18, .5) 0%, rgba(10, 14, 18, 0) 32%), linear-gradient(0deg, rgba(10, 14, 18, .65) 0%, rgba(10, 14, 18, 0) 30%); }
+  .hero__say { top: calc(66px + 14px); bottom: calc(52px + var(--barra)); display: flex; flex-direction: column; justify-content: space-between; text-align: right; }
+  .hero__say p { margin-inline: auto 0; max-width: 8em; font-size: 2rem; }
   .hero__routes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
   .hero__routes li { display: flex; }
   .hero__routes a { flex: 1; justify-content: center; min-height: 46px; padding: 4px 10px; font-size: .92rem; line-height: 1.1; text-align: center; }
@@ -401,7 +402,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 /* Teléfonos bajos: el texto de la portada más compacto para que quepa en la calle */
 @media (max-width: 860px) and (max-height: 720px) {
   .hero__say { bottom: calc(50px + var(--barra)); }
-  .hero__say p { font-size: 1.5rem; }
+  .hero__say p { font-size: 1.6rem; }
   .hero__routes { gap: 6px; }
   .hero__routes a { min-height: 38px; font-size: .84rem; }
 }
@@ -417,8 +418,8 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .hero__intro { top: auto; bottom: calc(56px + var(--barra)); opacity: 1; color: #fff; text-shadow: 0 2px 18px rgba(0, 0, 0, .5); }
   .hero__say { opacity: 1; transform: none; }
   .hero__routes { opacity: 1; }
-  /* En el teléfono los botones ocupan la calle: la frase de presentación va arriba, en el cielo */
-  @media (max-width: 860px) { .hero__intro { top: 96px; bottom: auto; } }
+  /* En el teléfono el título ocupa el cielo y los botones el pie: la frase de presentación va sobre la calle, encima de los botones */
+  @media (max-width: 860px) { .hero__intro { bottom: calc(176px + var(--barra)); } }
   .build__final, .anat__still { display: block; }
   .anat:not(.sc-has-clip) .anat__tag { visibility: visible; opacity: 1; }
 }
