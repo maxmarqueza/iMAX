@@ -234,3 +234,6 @@ Max dejó la carpeta `IMAX/` (y `IMAX-tomas-4K/`, que son las imágenes de inici
   Recomendación dada: **Nano Banana Pro (4K)** en Higgsfield con su foto como referencia, o **Higgsfield Soul 2.0
   con Soul ID** si se harán muchas (entrenar con 10–20 fotos). Requiere consentimiento del doctor y que las escenas
   correspondan a lo que realmente hace. No se ha hecho nada todavía.
+
+## Portada: naves que se construyen (2026-10-19)
+Time-lapse Seedance 2.5 en celular listo (`ce2f95cf…`, 8 s 1080×1920 24 fps, `docs/repaso/1-portada-obra-celular.mp4`): terreno → cimientos → acero → muros → terminada. El último cuadro casi coincide con la portada (escala ~2% distinta), así que puede terminar fundiéndose con la imagen 4K. Falta: que Max lo apruebe, hacer la versión de computadora (necesita las 4 etapas en horizontal) y montarlo en la portada.
