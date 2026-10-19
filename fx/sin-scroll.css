@@ -6,7 +6,8 @@ main [data-sc-stage] { position: relative; height: 100svh; overflow: hidden; }
 
 /* Portada: sin el desplazamiento inicial ligado al scroll */
 .hero { --hero-shift: -19svh; }
-@media (max-width: 699px) { .hero { --hero-shift: -36svh; } }
+/* Teléfono: la imagen es vertical y la hilera queda un poco abajo del centro; la escena sube lo justo para que quede dentro de IMAX */
+@media (max-width: 860px) { .hero { --hero-shift: -14svh; } }
 
 /* Servicios: antes de caer, las tarjetas esperan escondidas (fx/auto.js las suelta) */
 .svc:not(.cayo) .svc__slot { opacity: 0; }

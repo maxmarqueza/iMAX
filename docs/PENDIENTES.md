@@ -107,7 +107,11 @@ si se queda o pide opciones.
   `docs/repaso/1-portada-celular-opciones.jpg`. **Eligió la B (toda la hilera)** y pidió opciones con el texto abajo,
   sobre la calle. Misma página, ahora `?v=movil-b,calle-a|b|c` (`[data-v-calle]` en `fx/variantes.css`; se borró la C
   de botones abajo con la imagen cercana): A centrado abajo, B título grande a la izquierda y botones 2×2, C título
-  justo bajo las naves y botones al pie. Lámina `docs/repaso/1-portada-celular-calle.jpg`. **Esperando que elija.**
+  justo bajo las naves y botones al pie. Lámina `docs/repaso/1-portada-celular-calle.jpg`. Max respondió «continuar»
+  sin letra: se aplicó **la C** (la recomendada) — publicada 2026-10-18. En teléfono: `img/portada-parque-m-hilera.webp`,
+  `--hero-shift: -14svh` (`fx/sin-scroll.css` y `styles.css`), sombra desde abajo, título en `top: 66%` y botones 2×2
+  al pie; sin animación la frase de presentación va arriba. Se borraron la página de opciones y su código.
+  `img/portada-parque-m.webp` sigue para el pie en teléfono. Si prefiere A o B, se cambia en minutos.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

@@ -43,8 +43,9 @@ y `docs/VIDEO.md` (cómo se hicieron y se rehacen los videos).
    (`#0b1218`). Max no quiere el sitio todo oscuro.
 9. Portada: la palabra **IMAX** grande como protagonista, con **su propio parque terminado al atardecer** dentro de las
    letras (imagen fija, desde 2026-10-18); poco texto al inicio. Debajo de IMAX dice «Inmobiliaria, desarrolladora y
-   constructora de naves y parques industriales.» Al final, el título y los botones van **centrados en el cielo**: nada
-   de texto encima de las bodegas.
+   constructora de naves y parques industriales.» Al final, nada de texto encima de las bodegas: en computadora el
+   título y los botones van **centrados en el cielo**; en celular la imagen es vertical con **toda la hilera**, el título
+   va justo debajo de las naves y los botones al pie, sobre la calle.
 10. **Las naves deben parecer las de IMAX** (lámina blanca, techos de dientes de sierra, ladrillo rosa, columnas
    blancas, cortinas, escala mexicana), no centros de distribución de EE. UU. Al recrear con IA, **no modificar las
    bodegas reales**: usar sus tomas como referencia y cambiar solo cámara, luz o cielo.
