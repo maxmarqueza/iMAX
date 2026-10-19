@@ -112,5 +112,11 @@
     return !(c && (c.saveData || /2g/.test(c.effectiveType || ""))) && innerWidth * (devicePixelRatio || 1) >= 2600 && innerWidth > 860;
   };
   const videoSrc = (desktop, mobile, k4) => (innerWidth <= 860 ? mobile || desktop : big() && k4 ? k4 : desktop);
-  window.FX = { reduce, fine, coarse, clamp01, lerp, smooth, actP, watch, loop, fit, plate, videoSrc, narrow: () => innerWidth <= 860 };
+  // La portada abre sus letras cuando ya cargaron sus imágenes (máximo 5 s): cada script agrega lo suyo a FX.espera
+  // mientras carga la página; la lista se cierra cuando ya corrieron todos (DOMContentLoaded)
+  const espera = [];
+  const cargada = (img) => (img.complete ? Promise.resolve() : new Promise((r) => { img.addEventListener("load", r, { once: true }); img.addEventListener("error", r, { once: true }); }));
+  const cerrar = (res) => Promise.race([Promise.all(espera), new Promise((r) => setTimeout(r, 5000))]).then(res);
+  const portadaLista = new Promise((res) => (document.readyState === "loading" ? addEventListener("DOMContentLoaded", () => cerrar(res), { once: true }) : setTimeout(() => cerrar(res), 0)));
+  window.FX = { reduce, fine, coarse, clamp01, lerp, smooth, actP, watch, loop, fit, plate, videoSrc, narrow: () => innerWidth <= 860, espera, cargada, portadaLista };
 })();

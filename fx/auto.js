@@ -100,7 +100,8 @@
   if (hero) {
     const s = scene(hero);
     const go = () => s.tween(0.9, 1200);
-    setTimeout(go, FX.reduce ? 0 : 1400);
+    // Igual que las letras (fx/portada.js), espera a que carguen las imágenes de la portada
+    FX.portadaLista.then(() => setTimeout(go, FX.reduce ? 0 : 1400));
   }
 
   // 2 y 5. Escenas con video: el video corre solo y el avance sale de su tiempo

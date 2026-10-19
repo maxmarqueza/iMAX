@@ -111,7 +111,9 @@
   addEventListener("resize", layout);
   layout();
   const fontReady = document.fonts ? Promise.race([document.fonts.load(FX.plate.font(100), "IMAX"), new Promise((r) => setTimeout(r, 1200))]) : Promise.resolve();
-  fontReady.then(() => { layout(); curtain(); });
+  const foto = act.querySelector(".hero__scene img");
+  if (foto) FX.espera.push(FX.cargada(foto));
+  Promise.all([fontReady, FX.portadaLista]).then(() => { layout(); curtain(); });
   if (document.fonts) document.fonts.ready.then(layout);
 
   // La escena flota un poco con el cursor, detrás de la placa

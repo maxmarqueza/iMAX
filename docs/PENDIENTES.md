@@ -137,6 +137,9 @@ si se queda o pide opciones.
   C: después de la M cae el cielo, las naves caen y rebotan, y el título cae letra por letra. Video
   `docs/repaso/1-portada-entrada-opciones.mp4`. Ojo: un `url()` relativo dentro de una variable CSS se resuelve desde
   `fx/` (por eso las máscaras van con ruta completa). **Esperando que elija.**
+  Arreglo general: la portada ahora **espera a que carguen sus imágenes (máx. 5 s)** antes de abrir las letras y entrar
+  por la M (`FX.espera` / `FX.portadaLista` en `fx/core.js`, la lista se cierra en DOMContentLoaded). Con las imágenes 4K
+  (~2.3 MB) en una conexión lenta la espera llega a 5 s; si molesta, cargar primero una versión ligera.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

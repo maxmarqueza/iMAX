@@ -219,8 +219,10 @@
       root.classList.remove("v-entra");
       [fondo, cielo, calle, suelo].forEach((n) => n.remove());
     });
-    const fondoListo = Promise.all([fondo, cielo].map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; }))));
-    fondoListo.then(() => {
+    // Las capas y sus máscaras también tienen que estar cargadas antes de abrir las letras
+    const mascaras = ["suelo", "calle", "naves"].map((m) => { const im = new Image(); im.src = `img/entrada/${k}-${m}.png`; return FX.cargada(im); });
+    FX.espera.push(Promise.all([fondo, cielo, calle, naves].map(FX.cargada).concat(mascaras)));
+    FX.portadaLista.then(() => {
       const anims = [];
       if (ve === "a") {
         cielo.style.transform = naves.style.transform = "";
