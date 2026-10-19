@@ -124,6 +124,9 @@ si se queda o pide opciones.
   sobre la calle, encima de los botones. Se borraron la página de opciones, su código e `img/portada-parque-m-hilera.webp`.
   Max pidió **máxima calidad 4K**: las dos imágenes de portada van a resolución completa, WebP calidad 92
   (celular 2313×4096, computadora 3504×2336; ~2.3 MB cada una).
+  Después Max pidió **quitar de la portada los cuatro botones (Renta, Venta, Construcción a la medida, Parques
+  industriales) y la etiqueta «Imagen ilustrativa»** → borrados del HTML y sus estilos; queda solo el título (centrado en
+  el cielo en computadora, arriba a la derecha en celular). Publicado 2026-10-18.
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con
