@@ -135,3 +135,4 @@ Las citas entre comillas son palabras de Max.
 - Max quiere que las naves se vean construirse desde cero con Seedance 2.5 → prompts para ChatGPT de 4 etapas (terreno, cimientos, acero, muros) en `docs/prompts-construccion.md`.
 
 - Max hizo con ChatGPT las 4 etapas de obra en vertical (terreno, cimientos, acero, muros; `Material/obra-celular/`). Subidas a Higgsfield (`7a0c586b…`, `f40168c5…`, `dcf280c4…`, `19f99fdf…`) y time-lapse Seedance 2.5 omni 8 s 1080p 9:16 sin audio hacia la portada de celular (`a0f915a5…`): job `ce2f95cf…` (128 créditos).
+- Max: no generar video sin su autorización (son muchos créditos) → regla en AGENTS y memoria. Pidió opciones de portada con el video de la obra → A dentro de IMAX, B pantalla completa, C con etapas (solo celular).

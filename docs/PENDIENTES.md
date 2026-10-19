@@ -237,3 +237,4 @@ Max dejó la carpeta `IMAX/` (y `IMAX-tomas-4K/`, que son las imágenes de inici
 
 ## Portada: naves que se construyen (2026-10-19)
 Time-lapse Seedance 2.5 en celular listo (`ce2f95cf…`, 8 s 1080×1920 24 fps, `docs/repaso/1-portada-obra-celular.mp4`): terreno → cimientos → acero → muros → terminada. El último cuadro casi coincide con la portada (escala ~2% distinta), así que puede terminar fundiéndose con la imagen 4K. Falta: que Max lo apruebe, hacer la versión de computadora (necesita las 4 etapas en horizontal) y montarlo en la portada.
+Opciones con el video (sin gastar créditos): `/opciones/secciones/portada-celular/` (`?v=obra-a|b|c&solo=inicio`, solo celular; `media/obra-m.mp4` = el time-lapse a 2× y 30 fps, 4 s; `FX.retrasoM` en `fx/auto.js` retrasa la entrada por la M en A). A: la obra dentro de IMAX; B: terreno en las letras y obra a pantalla completa después de la M; C: B con el nombre de cada etapa. **Esperando que elija.**

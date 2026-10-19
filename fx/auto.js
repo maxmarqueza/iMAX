@@ -101,7 +101,8 @@
     const s = scene(hero);
     const go = () => s.tween(0.9, 1200);
     // Igual que las letras (fx/portada.js), espera a que carguen las imágenes de la portada
-    FX.portadaLista.then(() => setTimeout(go, FX.reduce ? 0 : 1400));
+    // FX.retrasoM: una variante puede pedir que la cámara entre más tarde (p. ej. mientras corre un video en las letras)
+    FX.portadaLista.then(() => setTimeout(go, FX.reduce ? 0 : FX.retrasoM || 1400));
   }
 
   // 2 y 5. Escenas con video: el video corre solo y el avance sale de su tiempo

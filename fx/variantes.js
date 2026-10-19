@@ -252,6 +252,73 @@
     });
   }
 
+  // ---------------------------------------------------------------- Portada en celular: las naves se construyen (video)
+  // ?v=obra-a|b|c, solo en pantallas angostas (el video es vertical). Time-lapse de Seedance 2.5 (media/obra-m.mp4, 4 s):
+  // del terreno a la portada terminada; al acabar se funde con la foto 4K y cae el título.
+  // A: el video corre dentro de las letras IMAX y después la cámara entra por la M.
+  // B: las letras muestran el terreno vacío; al pasar la M se construye a pantalla completa.
+  // C: igual que B, con el nombre de cada etapa abajo (Terreno, Cimientos, Estructura, Muros, Terminada).
+  const vo = root.getAttribute("data-v-obra");
+  if (hero && vo && !FX.reduce && matchMedia("(max-width: 860px)").matches) {
+    const scene = hero.querySelector(".hero__scene"), stage = hero.querySelector(".hero__stage");
+    const v = document.createElement("video");
+    v.className = "obra-video"; v.muted = true; v.playsInline = true; v.preload = "auto";
+    v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
+    v.poster = "img/obra-m-poster.webp"; v.src = "media/obra-m.mp4";
+    scene.append(v);
+    root.classList.add("v-obra");
+    let etiqueta = null;
+    if (vo === "c") {
+      etiqueta = document.createElement("div");
+      etiqueta.className = "obra-etapa"; etiqueta.setAttribute("aria-hidden", "true");
+      stage.append(etiqueta);
+    }
+    const ws = [...hero.querySelectorAll(".hero__say p .w")];
+    ws.forEach((w) => { w.style.opacity = "0"; });
+    FX.espera.push(new Promise((r) => { if (v.readyState >= 3) r(); v.addEventListener("canplaythrough", r, { once: true }); v.addEventListener("error", r, { once: true }); }));
+    // A: la cámara espera a que termine la obra dentro de las letras
+    if (vo === "a") FX.retrasoM = 4300;
+    const etapas = [[0, "Terreno"], [0.6, "Cimientos"], [1.5, "Estructura"], [2.5, "Muros"], [3.4, "Terminada"]];
+    const final = () => {
+      v.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, easing: "ease-out", fill: "forwards" }).finished.then(() => { v.remove(); root.classList.remove("v-obra"); });
+      if (etiqueta) etiqueta.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, delay: 500, fill: "forwards" });
+      ws.forEach((w, i) => {
+        const r = R(-9, 9);
+        w.style.opacity = "";
+        w.animate([
+          { opacity: 0, transform: `translate3d(0,-1.6em,0) rotate(${r}deg)` },
+          { opacity: 1, transform: `translate3d(0,0,0) rotate(${r * 0.15}deg) scaleY(.94)`, offset: 0.62 },
+          { transform: "translate3d(0,-.12em,0) scaleY(1.02)", offset: 0.8 },
+          { opacity: 1, transform: "none" },
+        ], { duration: 820, delay: 250 + i * 90, easing: "cubic-bezier(.45,0,.55,1)", fill: "both" });
+      });
+    };
+    const correr = () => {
+      v.play().catch(() => {});
+      if (etiqueta) {
+        const paso = () => {
+          const e = etapas.filter(([t]) => v.currentTime >= t).pop();
+          if (e && etiqueta.textContent !== e[1]) { etiqueta.textContent = e[1]; etiqueta.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 260, easing: "ease-out" }); }
+          if (!v.ended) requestAnimationFrame(paso);
+        };
+        requestAnimationFrame(paso);
+      }
+    };
+    v.addEventListener("ended", () => (vo === "a" ? null : final()), { once: true });
+    FX.portadaLista.then(() => {
+      if (vo === "a") {
+        setTimeout(correr, 150);
+        const t0 = performance.now();
+        const look = () => (stage.classList.contains("is-dentro") || performance.now() - t0 > 9000 ? setTimeout(final, 200) : requestAnimationFrame(look));
+        requestAnimationFrame(look);
+      } else {
+        const t0 = performance.now();
+        const look = () => (stage.classList.contains("is-dentro") || performance.now() - t0 > 6000 ? correr() : requestAnimationFrame(look));
+        requestAnimationFrame(look);
+      }
+    });
+  }
+
   // ---------------------------------------------------------------- Contacto
   // B y C: formulario corto que empieza con cuatro tarjetas «¿Qué te interesa?» (caen al aparecer) y botón
   // grande de WhatsApp. C además cambia el dibujo a escala por la toma real de la nave en video.
