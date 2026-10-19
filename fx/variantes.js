@@ -279,8 +279,14 @@
     // A: la cámara espera a que termine la obra dentro de las letras
     if (vo === "a") FX.retrasoM = 4300;
     const etapas = [[0, "Terreno"], [0.6, "Cimientos"], [1.5, "Estructura"], [2.5, "Muros"], [3.4, "Terminada"]];
-    const final = () => {
-      v.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, easing: "ease-out", fill: "forwards" }).finished.then(() => { v.remove(); root.classList.remove("v-obra"); });
+    // Transición a la foto final (?v=obra-b,fin-a|b|c): el video se corta antes de que la nave ya esté terminada, para que
+    // la nave terminada se vea una sola vez (la foto). [segundo de corte, duración del fundido en ms]
+    const corte = { a: [3.3, 250], b: [3.2, 550], c: [3.3, 0] }[root.getAttribute("data-v-fin")];
+    const final = (fundido) => {
+      const ms = fundido == null ? 450 : fundido;
+      const fuera = () => { v.remove(); root.classList.remove("v-obra"); };
+      if (ms === 0) fuera();
+      else v.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms, easing: "ease-out", fill: "forwards" }).finished.then(fuera);
       if (etiqueta) etiqueta.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, delay: 500, fill: "forwards" });
       ws.forEach((w, i) => {
         const r = R(-9, 9);
@@ -295,6 +301,13 @@
     };
     const correr = () => {
       v.play().catch(() => {});
+      if (corte) {
+        const vigila = () => {
+          if (v.currentTime >= corte[0]) { v.pause(); final(corte[1]); return; }
+          requestAnimationFrame(vigila);
+        };
+        requestAnimationFrame(vigila);
+      }
       if (etiqueta) {
         const paso = () => {
           const e = etapas.filter(([t]) => v.currentTime >= t).pop();
@@ -304,7 +317,7 @@
         requestAnimationFrame(paso);
       }
     };
-    v.addEventListener("ended", () => (vo === "a" ? null : final()), { once: true });
+    v.addEventListener("ended", () => (vo === "a" || corte ? null : final()), { once: true });
     FX.portadaLista.then(() => {
       if (vo === "a") {
         setTimeout(correr, 150);
