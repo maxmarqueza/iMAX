@@ -125,6 +125,131 @@
     real(tour.querySelector(".tour__video"), tour.querySelector(".tour__poster"), "real-parque");
   }
 
+  // ---------------------------------------------------------------- Portada: entrada del cielo, las naves y el texto
+  // ?v=entra-a|b|c. La foto se parte en capas con máscaras (img/entrada/): cielo, calle y naves. Detrás va un fondo sin
+  // naves (hecho con IA) que solo se asoma mientras las naves se mueven. Al terminar se quitan las capas y queda la foto tal cual.
+  // A: dentro de las letras IMAX, el cielo cae y las naves suben; después de la M, el título cae palabra por palabra.
+  // B: después de la M, el cielo se enciende, las naves se levantan del suelo y el título sube palabra por palabra.
+  // C: después de la M, cae el cielo, las naves caen y rebotan sobre la calle, y el título cae letra por letra.
+  const ve = root.getAttribute("data-v-entra");
+  if (hero && ve && !FX.reduce) {
+    const cel = matchMedia("(max-width: 860px)").matches, k = cel ? "cel" : "pc";
+    const scene = hero.querySelector(".hero__scene"), stage = hero.querySelector(".hero__stage");
+    const foto = scene.querySelector("img");
+    const src = cel ? "img/portada-celular.webp" : "img/portada-parque.webp";
+    const capa = (tag, cls, m) => {
+      const n = document.createElement(tag);
+      n.className = "ent " + cls;
+      if (tag === "img") { n.src = src; n.alt = ""; }
+      // Ruta completa: un url() relativo dentro de una variable se resolvería desde fx/ y no cargaría
+      if (m) n.style.setProperty("--m", `url("${new URL(`img/entrada/${k}-${m}.png`, location.href).href}")`);
+      return n;
+    };
+    const fondo = capa("img", "ent-fondo"); fondo.src = `img/entrada/fondo-${k}.webp`;
+    // Cielo: la foto con las naves borradas (el hueco se rellenó con el fondo de IA), recortada arriba del suelo
+    const cielo = capa("img", "ent-cielo", "suelo"); cielo.src = `img/entrada/sinnaves-${k}.webp`;
+    const calle = capa("img", "ent-calle", "calle");
+    const suelo = capa("div", "ent-suelo", "suelo");
+    const naves = capa("img", "ent-naves", "naves");
+    suelo.appendChild(naves);
+    scene.prepend(fondo);
+    scene.append(cielo, calle, suelo);
+    root.classList.add("v-entra");
+
+    const words = () => [...hero.querySelectorAll(".hero__say p .w")];
+    const bounce = (from) => [
+      { transform: from, offset: 0 },
+      { transform: "translate3d(0,0,0) scaleY(.97)", offset: 0.62 },
+      { transform: "translate3d(0,-2.5%,0) scaleY(1.01)", offset: 0.8 },
+      { transform: "none", offset: 1 },
+    ];
+    const run = (el, frames, ms, delay, easing) => el.animate(frames, { duration: ms, delay: delay || 0, easing: easing || "cubic-bezier(.22,1,.36,1)", fill: "both" });
+    // Estado inicial de cada opción (antes de que se vea nada)
+    const start = {
+      a: () => { cielo.style.transform = "translate3d(0,-38%,0)"; naves.style.transform = "translate3d(0,60%,0)"; },
+      b: () => { cielo.style.filter = fondo.style.filter = "brightness(.4) saturate(.5)"; naves.style.transform = "translate3d(0,70%,0)"; },
+      c: () => { cielo.style.transform = "translate3d(0,-45%,0)"; naves.style.transform = "translate3d(0,-140%,0)"; },
+    }[ve] || (() => {});
+    start();
+    // El título espera escondido hasta que le toca entrar
+    words().forEach((w) => { w.style.opacity = "0"; });
+    // Cuando la cámara ya pasó la M (fx/portada.js marca .is-dentro)
+    const dentro = (fn) => {
+      const t0 = performance.now();
+      const look = () => (stage.classList.contains("is-dentro") || performance.now() - t0 > 4000 ? fn() : requestAnimationFrame(look));
+      requestAnimationFrame(look);
+    };
+    const texto = (modo, delay) => {
+      const ws = words();
+      ws.forEach((w) => { w.style.opacity = "0"; });
+      const anims = [];
+      if (modo === "letras") {
+        let i = 0;
+        ws.forEach((w) => {
+          w.style.opacity = "";
+          const t = w.textContent;
+          w.innerHTML = [...t].map((ch) => `<span class="ent-l">${ch}</span>`).join("");
+          w.querySelectorAll(".ent-l").forEach((l) => {
+            const r = R(-14, 14);
+            anims.push(run(l, [
+              { opacity: 0, transform: `translate3d(0,-2.2em,0) rotate(${r}deg)` },
+              { opacity: 1, transform: `translate3d(0,0,0) rotate(${r * 0.2}deg) scaleY(.92)`, offset: 0.6 },
+              { transform: "translate3d(0,-.18em,0) scaleY(1.02)", offset: 0.8 },
+              { opacity: 1, transform: "none" },
+            ], 700, delay + i++ * 28, "cubic-bezier(.45,0,.55,1)"));
+          });
+        });
+      } else {
+        ws.forEach((w, i) => {
+          const r = R(-9, 9);
+          const desde = modo === "sube" ? "translate3d(0,1.1em,0)" : `translate3d(0,-1.6em,0) rotate(${r}deg)`;
+          anims.push(run(w, [
+            { opacity: 0, transform: desde },
+            { opacity: 1, transform: `translate3d(0,0,0) rotate(${modo === "sube" ? 0 : r * 0.15}deg) scaleY(.94)`, offset: 0.62 },
+            { transform: "translate3d(0,-.12em,0) scaleY(1.02)", offset: 0.8 },
+            { opacity: 1, transform: "none" },
+          ], 820, delay + i * 90, "cubic-bezier(.45,0,.55,1)"));
+          w.style.opacity = "";
+        });
+      }
+      return anims;
+    };
+    // Al terminar, la foto original vuelve a quedar sola
+    const limpiar = (anims) => Promise.all(anims.map((a) => a.finished)).then(() => {
+      root.classList.remove("v-entra");
+      [fondo, cielo, calle, suelo].forEach((n) => n.remove());
+    });
+    const fondoListo = Promise.all([fondo, cielo].map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; }))));
+    fondoListo.then(() => {
+      const anims = [];
+      if (ve === "a") {
+        cielo.style.transform = naves.style.transform = "";
+        anims.push(run(cielo, [{ transform: "translate3d(0,-38%,0)" }, { transform: "none" }], 900, 150, "cubic-bezier(.3,1.15,.5,1)"));
+        anims.push(run(naves, bounce("translate3d(0,60%,0)"), 950, 450, "cubic-bezier(.45,0,.55,1)"));
+        dentro(() => {
+          texto("cae", 250).forEach((a) => anims.push(a));
+          limpiar(anims);
+        });
+      } else if (ve === "b") {
+        dentro(() => {
+          cielo.style.filter = fondo.style.filter = naves.style.transform = "";
+          [cielo, fondo].forEach((n) => anims.push(run(n, [{ filter: "brightness(.4) saturate(.5)" }, { filter: "brightness(1) saturate(1)" }], 1200, 0, "ease-out")));
+          anims.push(run(naves, bounce("translate3d(0,70%,0)"), 1000, 150, "cubic-bezier(.45,0,.55,1)"));
+          texto("sube", 650).forEach((a) => anims.push(a));
+          limpiar(anims);
+        });
+      } else if (ve === "c") {
+        dentro(() => {
+          cielo.style.transform = naves.style.transform = "";
+          anims.push(run(cielo, [{ transform: "translate3d(0,-45%,0)" }, { transform: "none" }], 750, 0, "cubic-bezier(.3,1.1,.5,1)"));
+          anims.push(run(naves, bounce("translate3d(0,-140%,0)"), 950, 200, "cubic-bezier(.45,0,.55,1)"));
+          texto("letras", 750).forEach((a) => anims.push(a));
+          limpiar(anims);
+        });
+      }
+    });
+  }
+
   // ---------------------------------------------------------------- Contacto
   // B y C: formulario corto que empieza con cuatro tarjetas «¿Qué te interesa?» (caen al aparecer) y botón
   // grande de WhatsApp. C además cambia el dibujo a escala por la toma real de la nave en video.

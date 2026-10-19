@@ -127,6 +127,16 @@ si se queda o pide opciones.
   Después Max pidió **quitar de la portada los cuatro botones (Renta, Venta, Construcción a la medida, Parques
   industriales) y la etiqueta «Imagen ilustrativa»** → borrados del HTML y sus estilos; queda solo el título (centrado en
   el cielo en computadora, arriba a la derecha en celular). Publicado 2026-10-18.
+  Después: «un efecto de caída o entrada del cielo, de las bodegas y del texto; opciones con vista previa». Vista previa
+  `/opciones/secciones/portada/` (`?v=entra-a|b|c&solo=inicio`, código en `fx/variantes.js/.css`, capas en
+  `img/entrada/`): la foto se parte con máscaras — naves (recorte de Higgsfield `e1d635c1…` computadora,
+  `e37508ff…` celular), suelo (recta ajustada bajo las naves) y calle; el cielo es la foto con las naves borradas (hueco
+  rellenado con un fondo sin naves de GPT Sunburst max: `c60df02b…` computadora, `201965a6…` celular); al terminar se
+  quitan las capas y queda la foto original. A: dentro de las letras cae el cielo y suben las naves, después el título
+  cae palabra por palabra. B: después de la M el cielo se enciende, las naves se levantan del suelo y el título sube.
+  C: después de la M cae el cielo, las naves caen y rebotan, y el título cae letra por letra. Video
+  `docs/repaso/1-portada-entrada-opciones.mp4`. Ojo: un `url()` relativo dentro de una variable CSS se resuelve desde
+  `fx/` (por eso las máscaras van con ruta completa). **Esperando que elija.**
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

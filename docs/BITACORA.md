@@ -130,3 +130,4 @@ Las citas entre comillas son palabras de Max.
 - Max mandó su imagen vertical para celular (hilera en perspectiva) y pidió opciones con vista previa → ampliada a 4K sin cambiarla; A todo abajo, B título arriba y botones abajo, C título a la derecha y botones abajo.
 - Celular: eligió la C con su imagen (título arriba a la derecha, botones abajo). Pidió máxima calidad: portada en 4K completo en celular y computadora. Publicada.
 - Portada: Max pidió quitar los cuatro botones y la etiqueta «Imagen ilustrativa». Queda solo el título. Publicado.
+- Pidió un efecto de entrada del cielo, las naves y el texto → 3 opciones con vista previa (dentro de IMAX; las naves se levantan; todo cae), con la foto separada en capas.
