@@ -112,6 +112,14 @@ si se queda o pide opciones.
   `--hero-shift: -14svh` (`fx/sin-scroll.css` y `styles.css`), sombra desde abajo, título en `top: 66%` y botones 2×2
   al pie; sin animación la frase de presentación va arriba. Se borraron la página de opciones y su código.
   `img/portada-parque-m.webp` sigue para el pie en teléfono. Si prefiere A o B, se cambia en minutos.
+  Después Max mandó **su propia imagen vertical para celular** (la hilera en perspectiva, calle con paso de peatones;
+  llegó a 941×1671) y pidió «opciones con vista previa de la portada». Se subió a Higgsfield (`a57be596…`) y se amplió
+  a 4K sin cambiarla (upscale `a0f915a5…`, 2313×4096) → `img/portada-celular.webp` (1620). Vista previa en
+  `/opciones/secciones/portada-celular/` (`?v=cel-a|b|c&solo=inicio`; `fx/variantes.js` cambia la imagen y
+  `fx/variantes.css` mueve el texto con `[data-v-cel]`, `--hero-shift: -6svh`): A todo abajo, B título arriba y botones
+  abajo, C título grande arriba a la derecha y botones abajo (la primera C con botones arriba tapaba el techo).
+  Lámina `docs/repaso/1-portada-celular-tu-imagen.jpg`. Originales en `Material/fotos-elegidas/portada-celular-max-*`.
+  **Esperando que elija.**
 
 ## Fotos usables del material real (2026-10-17)
 Max: «dame fotos de mi material real que podrías usar». 14 cuadros (el más nítido de cada toma, medido con

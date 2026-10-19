@@ -130,3 +130,20 @@
   .trab .vbody { padding: 10px 12px 12px; }
   .trab .vbody h3 { font-size: .95rem; }
 }
+
+/* Portada en celular con la imagen vertical de Max: la hilera en perspectiva (?v=cel-a|b|c). Solo pantallas angostas */
+@media (max-width: 860px) {
+  /* La hilera ocupa más alto que en la imagen anterior: la escena casi no sube para que IMAX muestre las ventanas */
+  [data-v-cel] .hero { --hero-shift: -6svh; }
+  /* A: título y botones juntos abajo, sobre la calle */
+  [data-v-cel="a"] .hero__say { top: auto; }
+  /* B: título arriba en el cielo y botones abajo, sobre la calle */
+  [data-v-cel="b"] .hero__say { top: calc(66px + 18px); }
+  /* C: el título grande arriba a la derecha, donde el cielo queda más abierto; botones abajo, sobre la calle */
+  [data-v-cel="c"] .hero__say { top: calc(66px + 14px); text-align: right; }
+  [data-v-cel="c"] .hero__say p { margin-inline: auto 0; max-width: 8em; font-size: 2rem; }
+  [data-v-cel="b"] .hero__scrim, [data-v-cel="c"] .hero__scrim { background: linear-gradient(180deg, rgba(10, 14, 18, .5) 0%, rgba(10, 14, 18, 0) 32%), linear-gradient(0deg, rgba(10, 14, 18, .65) 0%, rgba(10, 14, 18, 0) 30%); }
+}
+@media (max-width: 860px) and (max-height: 720px) {
+  [data-v-cel="c"] .hero__say p { font-size: 1.6rem; }
+}
