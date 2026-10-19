@@ -18,6 +18,8 @@ y `docs/VIDEO.md` (cómo se hicieron y se rehacen los videos).
   *solo con esa sección* y 2–3 opciones (A/B/C) una debajo de otra; él elige una letra y se aplica al sitio.
   Ver «Cómo se hacen las opciones» en `docs/PROYECTO.md`.
 - Ir anotando en `docs/` cada decisión nueva (bitácora y pendientes) sin que lo pida.
+- **Créditos:** nunca generar video (ni gastos grandes en Higgsfield) sin que Max lo autorice explícitamente;
+  decirle antes el costo en créditos. Un «listo» al mandar material no es autorización.
 
 ## Reglas de diseño que Max ya fijó (no proponer lo contrario)
 
