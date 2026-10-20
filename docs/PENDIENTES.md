@@ -1,4 +1,33 @@
-# Pendientes — IMAX (al 2026-10-11)
+# Pendientes — IMAX (al 2026-10-20)
+
+## PARA RETOMAR (leer primero) — estado al 2026-10-20
+**Publicado en grupoimax.mx:**
+- Portada computadora: `img/portada-parque.webp` (hilera de frente al atardecer, 3504×2336, 4K), título centrado en el
+  cielo, sin botones ni etiqueta. Pie con la misma imagen.
+- Portada celular: tras pasar la M, la obra se construye en video (`fx/obra.js`, `media/obra-m.mp4` 4 s 2160×3840 4K,
+  cartel `img/obra-m-poster.webp`), se corta a 3.2 s y se funde 550 ms con la foto `img/portada-celular.webp`
+  (perspectiva al atardecer, 4K); el título cae desde el segundo 2 y queda arriba a la derecha.
+
+**En curso (esperando a Max):** rehacer las portadas **con cielo azul de día y fieles a las bodegas reales**.
+- Max se quejó de que las recreaciones no respetan la estructura real (rampas inclinadas en cajones y estacionamiento;
+  en realidad todo está a nivel de calle y solo los andenes de tráiler bajan, techados bajo la nave).
+- Mandó 14 fotos reales a nivel de suelo: `Material/referencias-suelo/suelo-01…14.jpg` (en Higgsfield: suelo-01
+  `b6b54b20…`, -04 `cd8b9bb5…`, -08 `f74e69f3…`, -13 `5d7a3477…`, -14 `293db90f…`).
+- Mejor resultado hasta ahora: **GPT Image 2.5 Sunburst max** celular `dd852462…` →
+  `Material/fotos-elegidas/real-suelo-gpt-4k.png` (2160×3840). NB Pro `76de6222…` falló (rampas). Comparación
+  `docs/repaso/real-suelo-comparacion.jpg`. Prompt: ver BITÁCORA 2026-10-20.
+- **Siguiente paso:** que Max apruebe la de GPT; hacer la de computadora igual (GPT Sunburst max 3:2 con las mismas
+  referencias, ~15 créditos) y, si quiere, rehacer el video de obra para que termine en la nueva imagen (pedir permiso:
+  Seedance 2.5 12 s ≈ 192 créditos, luego acelerar a 4 s y ampliar a 4K con ByteDance ≈ 3 créditos).
+- Versiones intermedias con cielo azul (descartadas por estructura): `portada-*-cielo-azul*-4k.png`, `rampas-*-4k.png`.
+
+**Otros pendientes:** versión de computadora del video de obra (no existe; necesita las etapas en horizontal);
+seguir el repaso con **2 Servicios**; Contacto A/B/C y «Nuestros trabajos» A/B/C sin elegir; datos de contacto reales.
+
+**Reglas nuevas:** nunca generar video ni gastar créditos fuertes sin el «sí» de Max con el costo. Imágenes en
+máxima calidad (4K). Las naves deben ser fieles a las reales (`Material/referencias-reales/`, `referencias-suelo/`).
+Hubo un cargo de Seedance de 160 créditos (2026-10-20 03:41 UTC) que no lanzó el agente.
+
 
 ## Repaso sección por sección (desde 2026-10-16, noche) — EN CURSO
 Max: «olvida ahorita nuestro material, vamos repasando el sitio sección por sección». Orden: 1 Portada (lista), **2 Servicios (en revisión: video `docs/repaso/2-servicios.mp4` enviado; propuesto:
