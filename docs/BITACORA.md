@@ -149,3 +149,4 @@ Las citas entre comillas son palabras de Max.
 
 - Pidió las portadas finales con cielo azul normal (Nano Banana Pro 4K, 4 créditos c/u): celular `07f39761…` (3072×5504), computadora `a519f78c…` (5056×3392) en `Material/fotos-elegidas/portada-*-cielo-azul-4k.png`; comparación `docs/repaso/1-portada-cielo-azul.jpg`. Naves iguales; el piso sigue mojado con reflejos de luces. No están en el sitio.
 - Versión computadora cielo azul con árboles detrás (Nano Banana Pro 4K, `cb3f645d…`, 4 créditos): `Material/fotos-elegidas/portada-pc-cielo-azul-arboles-4k.png`.
+- Rampas (celular cielo azul): estacionamiento y cajón de discapacitados a nivel; solo andenes de tráiler a desnivel hacia abajo. NB Pro `32cb461a…` casi no cambió; GPT Sunburst max `0c501f12…` (2160×3840) sí dejó el cajón a nivel. `Material/fotos-elegidas/rampas-*-4k.png`, comparación `docs/repaso/rampas-comparacion.jpg`.
