@@ -140,3 +140,5 @@ Las citas entre comillas son palabras de Max.
 
 - Max autorizó (192 créditos) rehacer el time-lapse con el prompt reforzado y por tiempos, 12 s.
 - Portada en celular: eligió la obra a pantalla completa con fundido suave; el título desde el segundo 2 para que todo termine en el 4. Publicado.
+
+- Max notó pérdida de calidad en el video de obra → `media/obra-m.mp4` recodificado casi sin pérdida (crf 13, veryslow, ~12 Mbps, 6.2 MB) desde el original 1080p de Seedance; cartel en calidad 92.
