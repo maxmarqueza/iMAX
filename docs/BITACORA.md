@@ -148,3 +148,4 @@ Las citas entre comillas son palabras de Max.
 - Simulador de iPhone: la portada se quedaba ~5 s en blanco porque Safari no precarga el video; ahora se espera solo el cartel (`fx/obra.js`).
 
 - Pidió las portadas finales con cielo azul normal (Nano Banana Pro 4K, 4 créditos c/u): celular `07f39761…` (3072×5504), computadora `a519f78c…` (5056×3392) en `Material/fotos-elegidas/portada-*-cielo-azul-4k.png`; comparación `docs/repaso/1-portada-cielo-azul.jpg`. Naves iguales; el piso sigue mojado con reflejos de luces. No están en el sitio.
+- Versión computadora cielo azul con árboles detrás (Nano Banana Pro 4K, `cb3f645d…`, 4 créditos): `Material/fotos-elegidas/portada-pc-cielo-azul-arboles-4k.png`.
