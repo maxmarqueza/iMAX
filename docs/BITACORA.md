@@ -146,3 +146,5 @@ Las citas entre comillas son palabras de Max.
 - Video de obra ampliado a **4K** (ByteDance en Higgsfield, `4a505d1d…`, 3.2 créditos, autorizado): `media/obra-m.mp4` = 2160×3840 30 fps, crf 17 (11.7 MB). Original en `Material/obra-celular/obra-4k-original.mp4`.
 
 - Simulador de iPhone: la portada se quedaba ~5 s en blanco porque Safari no precarga el video; ahora se espera solo el cartel (`fx/obra.js`).
+
+- Pidió las portadas finales con cielo azul normal (Nano Banana Pro 4K, 4 créditos c/u): celular `07f39761…` (3072×5504), computadora `a519f78c…` (5056×3392) en `Material/fotos-elegidas/portada-*-cielo-azul-4k.png`; comparación `docs/repaso/1-portada-cielo-azul.jpg`. Naves iguales; el piso sigue mojado con reflejos de luces. No están en el sitio.
