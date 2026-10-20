@@ -16,7 +16,10 @@
   root.classList.add("con-obra");
   const words = () => [...hero.querySelectorAll(".hero__say p .w")];
   words().forEach((w) => { w.style.opacity = "0"; });
-  FX.espera.push(new Promise((r) => { if (v.readyState >= 3) r(); v.addEventListener("canplaythrough", r, { once: true }); v.addEventListener("error", r, { once: true }); }));
+  // Se espera el cartel (el terreno), no el video: Safari de iPhone no descarga el video antes de darle play y la
+  // portada se quedaba en blanco hasta el tope de 5 s
+  const cartel = new Image(); cartel.src = v.poster;
+  FX.espera.push(FX.cargada(cartel));
 
   const R = (a, b) => a + Math.random() * (b - a);
   let titulo = false, fin = false;
