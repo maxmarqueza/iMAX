@@ -139,3 +139,4 @@ Las citas entre comillas son palabras de Max.
 - Video de obra: eligió B (pantalla completa); pidió que la nave terminada se vea una sola vez → 3 transiciones cortando el video antes del final.
 
 - Max autorizó (192 créditos) rehacer el time-lapse con el prompt reforzado y por tiempos, 12 s.
+- Portada en celular: eligió la obra a pantalla completa con fundido suave; el título desde el segundo 2 para que todo termine en el 4. Publicado.

@@ -141,12 +141,3 @@
 .v-entra .hero__say { opacity: 1 !important; transform: none !important; }
 .v-entra .hero__say p .w { display: inline-block; opacity: 1; }
 .ent-l { display: inline-block; }
-
-/* Portada en celular: las naves se construyen en video (?v=obra-a|b|c, fx/variantes.js) */
-.hero__scene .obra-video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 60%; }
-.v-obra .hero__say { opacity: 1 !important; transform: none !important; }
-.v-obra .hero__say p .w { display: inline-block; opacity: 1; }
-.obra-etapa { position: absolute; z-index: 5; left: var(--sc-gutter); bottom: calc(28px + var(--barra)); padding: 6px 14px; border-radius: 999px;
-  background: var(--sc-accent); color: var(--sc-ink); font-weight: 800; font-size: .95rem; letter-spacing: .01em; }
-
-.obra-etapa:empty { display: none; }

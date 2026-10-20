@@ -390,6 +390,11 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
   .escala text { font-size: 13px; }
 }
 
+/* Portada en celular: video de la obra encima de la foto mientras se construye (fx/obra.js) */
+.hero__scene .obra-video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 60%; }
+.con-obra .hero__say { opacity: 1 !important; transform: none !important; }
+.con-obra .hero__say p .w { display: inline-block; opacity: 1; }
+
 /* Teléfonos bajos: el título de la portada más chico para que no llegue a los techos */
 @media (max-width: 860px) and (max-height: 720px) {
   .hero__say p { font-size: 1.6rem; }

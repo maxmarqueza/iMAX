@@ -47,7 +47,7 @@ y `docs/VIDEO.md` (cómo se hicieron y se rehacen los videos).
    letras (imagen fija, desde 2026-10-18); poco texto al inicio. Debajo de IMAX dice «Inmobiliaria, desarrolladora y
    constructora de naves y parques industriales.» Al final, nada de texto encima de las bodegas: en computadora el
    título va **centrado en el cielo**; en celular va la imagen vertical de Max (la hilera en
-   perspectiva) y el título arriba a la derecha. Sin botones ni etiqueta en la portada. Imágenes de portada en 4K completo.
+   perspectiva) y el título arriba a la derecha; antes, al pasar la M, la obra se construye en video (4 s, `fx/obra.js`). Sin botones ni etiqueta en la portada. Imágenes de portada en 4K completo.
 10. **Las naves deben parecer las de IMAX** (lámina blanca, techos de dientes de sierra, ladrillo rosa, columnas
    blancas, cortinas, escala mexicana), no centros de distribución de EE. UU. Al recrear con IA, **no modificar las
    bodegas reales**: usar sus tomas como referencia y cambiar solo cámara, luz o cielo.
