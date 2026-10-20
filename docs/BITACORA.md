@@ -142,3 +142,5 @@ Las citas entre comillas son palabras de Max.
 - Portada en celular: eligió la obra a pantalla completa con fundido suave; el título desde el segundo 2 para que todo termine en el 4. Publicado.
 
 - Max notó pérdida de calidad en el video de obra → `media/obra-m.mp4` recodificado casi sin pérdida (crf 13, veryslow, ~12 Mbps, 6.2 MB) desde el original 1080p de Seedance; cartel en calidad 92.
+
+- Video de obra ampliado a **4K** (ByteDance en Higgsfield, `4a505d1d…`, 3.2 créditos, autorizado): `media/obra-m.mp4` = 2160×3840 30 fps, crf 17 (11.7 MB). Original en `Material/obra-celular/obra-4k-original.mp4`.
