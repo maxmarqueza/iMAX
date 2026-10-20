@@ -35,3 +35,19 @@ debris and no parked cars. Real photograph, no text.
 
 ## 5. Terminada
 La portada final tal cual (la imagen adjunta). No se genera.
+
+## Prompt reforzado para Seedance 2.5 (time-lapse sin saltos)
+Modo omni_reference, 9:16, 1080p, sin audio; inicio = 1-terreno, final = portada de celular, referencias = 2-cimientos,
+3-acero, 4-muros. Duración sugerida 12 s (más tiempo entre etapas = cambios más pequeños) y luego acelerar a ~4–5 s.
+
+Continuous real construction time-lapse filmed from ONE fixed tripod camera that never moves, never zooms and never
+cuts: every frame keeps exactly the same framing, horizon, street, arrow and crosswalk. Show the actual building
+process growing gradually and physically, piece by piece, with no jumps, no dissolves and no morphing between the
+reference images: survey lines on the empty lot, excavators leveling the ground, formwork and rebar placed, concrete
+poured section by section from left to right until the slab matches the second reference; then white steel columns
+lifted one by one by a crane, beams and zigzag sawtooth roof trusses bolted on, bay after bay, until the frame matches
+the third reference; then brick walls rising course by course, windows set, white roof sheets installed panel by panel
+and scaffolding moving along the units until it matches the fourth reference; finally scaffolding removed, roll-up
+doors installed, lights switched on, pallets and parked cars arriving, ending exactly on the final image. Each stage
+flows into the next as a believable continuation; workers and machines appear only as fast motion blur. The fiery
+sunset sky, light and wet street reflections stay constant. Photorealistic construction footage, no text, no logos.
