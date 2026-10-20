@@ -253,7 +253,7 @@
   }
 
   // ---------------------------------------------------------------- Portada en celular: las naves se construyen (video)
-  // ?v=obra-a|b|c, solo en pantallas angostas (el video es vertical). Time-lapse de Seedance 2.5 (media/obra-m.mp4, 4 s):
+  // ?v=obra-a|b|c, solo en pantallas angostas (el video es vertical). Time-lapse de Seedance 2.5 (media/obra-m.mp4, 6 s):
   // del terreno a la portada terminada; al acabar se funde con la foto 4K y cae el título.
   // A: el video corre dentro de las letras IMAX y después la cámara entra por la M.
   // B: las letras muestran el terreno vacío; al pasar la M se construye a pantalla completa.
@@ -278,10 +278,10 @@
     FX.espera.push(new Promise((r) => { if (v.readyState >= 3) r(); v.addEventListener("canplaythrough", r, { once: true }); v.addEventListener("error", r, { once: true }); }));
     // A: la cámara espera a que termine la obra dentro de las letras
     if (vo === "a") FX.retrasoM = 4300;
-    const etapas = [[0, "Terreno"], [0.6, "Cimientos"], [1.5, "Estructura"], [2.5, "Muros"], [3.4, "Terminada"]];
+    const etapas = [[0, "Terreno"], [1, "Cimientos"], [2, "Estructura"], [3.5, "Muros"], [5, "Terminada"]];
     // Transición a la foto final (?v=obra-b,fin-a|b|c): el video se corta antes de que la nave ya esté terminada, para que
     // la nave terminada se vea una sola vez (la foto). [segundo de corte, duración del fundido en ms]
-    const corte = { a: [3.3, 250], b: [3.2, 550], c: [3.3, 0] }[root.getAttribute("data-v-fin")];
+    const corte = { a: [4.95, 250], b: [4.8, 550], c: [4.95, 0] }[root.getAttribute("data-v-fin")];
     const final = (fundido) => {
       const ms = fundido == null ? 450 : fundido;
       const fuera = () => { v.remove(); root.classList.remove("v-obra"); };
